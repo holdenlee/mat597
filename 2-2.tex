@@ -25,7 +25,7 @@ We make the \ivocab{equidistribution assumption}: every configuration with the s
 where $Z$ is a normalization constant.
 Here, $\one[\text{cond}] := \begin{cases}
 1,&\text{condition satisfied}\\
-0,&\text{elsewhere}
+0,&\text{else}
 \end{cases}$.
 
 For every function $f:\Om\to \R$ assigning a real number to each configuration, define the \ivocab{microcanonical ensemble average} by
@@ -56,7 +56,7 @@ In the grand canonical ensemble, each configuration contributes. There is a valu
 \bal
 \wt\La & \to \Z^d\\
 N & \to \iy\\
-\fc{N}{\wt \La} & \to \rh.
+\fc{N}{|\wt \La|} & \to \rh.
 \end{align*}
 
 %If all that matters it the number of particles in $\La$, then we care about the induced distribution on $\La$. %What is the probability distribution 
@@ -65,9 +65,9 @@ What is the induced distribution of the micro-canonical ensemble on $\La$? Under
 takes a particular value with $\sum_{n}n_x=k$? %If you specify a configuration in $\L$
 We count the number of ways to complete the configuration in $\La^c=\wt\La\bs \La$:
 \bal
-\fc{|\set{n_{\La^c}}{\sum_{x\in \La^c}n_x=N-k}|}{C}
+\fc{|\set{n_{\La^c}}{\sum_{x\in \La^c}n_x=N-k}|}{Z}
 \end{align*}
-where $C$ is a normalization constant.
+where $Z$ is a normalization constant.
 
 The number of configurations of $M$ particles in volume $V$ is $\binom{V}{M} = \fc{V!}{M!(V-M)!}$. Using Stirling's approximation
 \[
@@ -76,45 +76,58 @@ The number of configurations of $M$ particles in volume $V$ is $\binom{V}{M} = \
 %gymnastics of elementary type.
 %Boltzmann grade in Vienna
 %entropy
-letting the \ivocab{entropy} $S$ be the logarithm of the number of configurations, %$S=k\ln W$,
+letting the \ivocab{entropy} $S$ be the logarithm of the number of configurations and %$S=k\ln W$,
+\[
+s(\rh) = -[\rh \ln \rh + (1-\rh)\ln (1-\rh)],
+\]
+we have
 \[
 \binom{V}{M} = \fc{V!}{M!(V-M)!} 
 =: e^{S(M,V)}
 \approx e^{Vs(\rh)}
 \]
-(do this calculation as an exercise)
-where 
-\[
-s(\rh) = -[\rh \ln \rh + (1-\rh)\ln (1-\rh)].
-\]
+(do this calculation as an exercise).
+
 Shannon also found such a formula for entropy.
 
-This attains maximum at $\ln 2$ at $\rc2$ where it has quadratic behavior.
+This attains maximum of $\ln 2$ at $\rc2$ where it has quadratic behavior.
 
-The implication is that if you slightly change the density, the number of configurations changes drastically. In physical substances $V$ may be $10^{23}$. The change is $e^{10^{23}\De s}$. In any average over configurations, only those at the peak contribute, ``winner takes all."
+The implication is that if you slightly change the density, the number of configurations changes drastically. In physical substances $V$ may be $10^{23}$. The change would then be $e^{10^{23}\De s}$. In any average over configurations, only those at the peak contribute: ``winner takes all."
 
 What is the probability of observing $k$ particles in the small box given $n$ in the big box?
 \bal
 \Pj(n_{\La}) &\approx \fc{e^{|\La^c|s\pf{N-k}{|\wt \La| - |\La|}}}{C}\\ %\quad \rh=\fc{N}{|\wt{\La}|}
 %volume of completent times density.
-\fc{N-k}{|\wt\La|-|\La|}&=\rh - \fc{k}{|\wt\La|-|\La|}\\
+\fc{N-k}{|\wt\La|-|\La|}&=\rh - \ub{\pa{\rh - \fc{N}{|\wt \La | - |\La|}}}{\to 0 \text{ independent of $k$}} -
+\fc{k}{|\wt\La|-|\La|}\\
 s\pf{N-k}{|\wt\La|-|\La|} & \approx s(\rh) - s'(\rh)\fc{k}{|\La^c|}
 %particles here is small fraction of number of outside.
 \end{align*}
 Changing $k$ by a little bit affects how many particles are outside but not so much the density outside: the correction term is small. Hence for $\sum_{x\in \La}n_x$,
 \[
-\Pj(n_\La) = \fc{e^{|\La^c|s(\rh)}e^{s'(\rh)}k}{C}.
+\Pj(n_\La) \approx \fc{e^{|\La^c|s(\rh)}e^{-s'(\rh)k}}{Z}.
 \]
-$e^{|\La^c|s(\rh)}$ is a huge factor but it does not vary with $k$ so we can omit it. This is then ($\mu = e^{-s'(\rh)}$)
+$e^{|\La^c|s(\rh)}$ is a huge factor but it does not vary with $k$ so we can omit it. Writing out $Z$ as the sum of the numerators over all $n_\La$,  and letting $\mu = s'(\rh)$, we get that this equals
 \[
-=\fc{e^{-\mu k}}{\sum_{n'\in \Om_{\La}}e^{-\mu\sum_{x\in \La} n'_x}}.
+=\fc{e^{-\mu k}}{\sum_{n'\in \Om_{\La}}e^{-\mu\sum_{x\in \La} n'_x}},
 \]
+which is the grand canonical ensemble average.
 The rest of the system acts on the small system as a ``particle (heat) bath."
+%\begin{thm}[Equivalence principle]
+%Let $f:\Om \to \R$ be a function depending 
+%\end{thm}
 
-Here we used very explicit machinery.
+Here we used very explicit machinery, namely, the Stirling formula. We want a general expression that doesn't rely on the Stirling formula because in more complicated models, we will not have the luxury of using the Stirling approximation. We'll do this in the next section.
 
- Note we can also apply this method where there are more energy constraints. Make a list of energy constraints; there is a generalization of the equivalence where we averaging over configurations where the constraints have prescribed values. %meet the constraint. All of them get equal weight.
-Functions which depend on a small region, can be computed with Gibbs factors, $e^{-\mu N(n) - \be\cal E(n)}$ where $N(n)$ is the number of particles, and $-\mu N(n)$ is the Gibbs factor, and $\cal E(n)$ the energy.
+%Note we can also apply this method 
+Then we will be able to consider models where there are more energy constraints. The general procedure is first make a list of energy constraint. There is a generalization of the equivalence principle where 
+\begin{itemize}
+\item
+in the micro-canonical ensemble we average over configurations where the constraints have prescribed values. (We considered the special case where just the number of particles was prescribed.) %meet the constraint. All of them get equal weight.
+\item 
+in the grand canonical ensemble, we add an energy term to the exponential: $e^{-\mu N(n) - \be\cal E(n)}$ where $N(n)$ is the number of particles, $-\mu N(n)$ is the Gibbs factor, and $\cal E(n)$ the energy.
+\end{itemize}
+%Functions which depend on a small region, can be computed with Gibbs factors, $e^{-\mu N(n) - \be\cal E(n)}$ where $N(n)$ is the number of particles, $-\mu N(n)$ is the Gibbs factor, and $\cal E(n)$ the energy.
 
 How can we construct an alternative method without the Stirling formula?
 
