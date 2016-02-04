@@ -1,0 +1,197 @@
+
+\blu{2-4-16}
+
+%Lattice gas
+%$\La, M$ particles
+%$n:\La\to \{0,1\}$
+%Configuration space $\Om=\bit^{\La}$.
+%Study particles within region. The fact that the total number of particles is fixed is less visible in a small region.
+%For the grand canonical ensemble, we have independence.
+%Can: $\Pj(n) = \fc{\one[N(n)=M]}{C}$, 
+%The grand canonical ensemble $\fc{e^{-\mu N(n)}}{Z_\La(\mu)}$.
+%we can compute using the entropy.
+%how without stirling.
+\subsection{Second proof}
+
+The \ivocab{partition function} for the grand canonical ensemble is
+\bal
+Z_\La & = \sum_{n\in \Om} e^{-\mu N(n)} = (1+e^{-\mu})^{|\La|}\\
+\rc{|\La|} \ln Z_{\La} &= 1+e^{-\mu}
+\end{align*}
+At each site there are 2 possibilities, and the different sites are independent.
+We find\footnote{Mathematicians are paranoid, so we use $\sup$ instead of $\max$. For many practical purposes they are the same.}
+\begin{align}%\llabel
+\lim_{|\La|\to \iy} \rc{|\La|}\ln Z_{\La} &= \sup_{0\le \rh\le 1} [s(\rh) - \rh \mu].
+\end{align}
+%We know this is true because 
+In slow motion, note that the only thing that matters in the summand is the number of particles in $n$, so let's group the summands by this. Letting $\rh=\fc{N}{|\La|}$,
+\bal
+Z_N&=\sum_{n\in \Om} e^{-\mu N(n)}\\
+& =\sum_{n\in \Om} e^{-\mu N(n)} e^{|\La|s(\rh)}\\
+& =\sum_{\rh} e^{|\La|[s(\rh)-\mu \rh]}.
+%concave modified by a linear function.
+%for each $\mu$ there is some maximum.
+%when you look at contribution of points $\ep$ away, it changes by a factor of the volume. 2
+%all terms which are $\ep$ away contribute a negligible amount.
+\end{align*}
+The multiplicity is the exponential of the volume times the entropy.
+%Should we should multiply by the range . 
+The error we are making by focusing on the maximal point rather than counting with multiplicity the near-maximal value. We lose at most a factor equal to the volume. But $\rc{|\La|}\ln |\La|\to 0$. %excessively meticulous.
+
+We find 
+%taking logs.
+\[
+\max_{\rh}[s(\rh) - \mu \rh] \le \rc{|\La|}\ln Z_{\La} \le \max_\rh [s(\rh)-\mu \rh] + \ub{\rc{|\La|}\ln |\La|}{\to 0}
+\]
+%from the partition function we can extract the entropy.
+%consistent with Stirling formula? Can we do without? Yes.
+
+Hence 
+\[
+\sum_{0\le \rh\le 1}[s(\rh) - \mu\rh] = 1+e^{-\mu}
+\]
+%This is essentially Legendre transform. It is in particular invertible.
+%Stirling's approximation gave us the answer for the entropy. Any other model: you will not have the luxury of the Stirling approx argument. 
+For $s(\rh) = -[\rh\ln \rh +(1-\rh) \ln (1-\rh)]$, we find the critical point by setting the derivative to 0. %\footnote{don't differentiate in public} 
+Trick: $[x(\ln x-1)]'=\ln x$. We can subtract 1 from each of the logs changing the expression by a constant. Thus
+\[
+s'(\rh) = -\ln \rh +\ln (1-\rh) - \mu.
+\]
+Solving gives $\fc{\rh}{1-\rh}=e^{-\mu}$. 
+
+\subsection{Legendre transform}
+In general, a micro-canonical ensemble specifies all the conserved quantities: Particles, energies, and whatever else is there. Th grand canonical ensemble also generalizes by changing the factor to $e^{-\mu N} e^{\be H}$.
+Such factors are referred to as \ivocab{Gibbs factors} %states
+or Gibbs measures.
+%variational characterization of those.
+Next topics.
+\begin{itemize}
+\item
+Legendre transform
+\item
+Convexity/concavity
+\item A variational characterization of Gibbs states
+\item First order phase transitions (thermodynamics and statistical mechanics perspectives)
+\end{itemize}
+
+\begin{df}
+A function on $\R^k$ is \ivocab{concave} (\ivocab{convex}) if for any $x_0,x_1\in \R^k$, $0\le \la \le 1$,
+\[
+F(\la x_1+(1-\la)x_0)\lge \la F(x_1)+(1-\la) F(x_0).
+\]
+\end{df}
+Concavity (convexity) means if you draw a chord between two points, it will lie below (above) the curve.
+%A concave curve frowns.
+
+%useful for variational principle
+For a strictly concave function, a maximum, whenever it exists, is unique.
+%Feynman: getting the sign right is the hardest thing.
+
+\begin{thm}
+For any concave function on $\R$, 
+\begin{enumerate}
+\item
+The directional derivatives $F'(x\pm0)$ exist at all $x\in \R$. The \ivocab{directional derivative} is defined as
+\bal
+F'(x+0)&=\lim_{\ep\to 0^+} \fc{F(x+\ep)-F(x)}{\ep}\\
+F'(x-0)&=\lim_{\ep\to 0^-} \fc{F(x+\ep)-F(x)}{\ep}.
+\end{align*}
+\item $F'(x-0)\ge F'(x+0)$ and $F'(x\pm 0)$ are decreasing.
+\item For all but countably many values $x\in \R$, $F'(x-0)=F'(x+0)$, i.e., $F$'s different at $x$.
+\item Let $F_n$ be a sequence of concave functions which converge pointwise: for all $x$, $\lim_{N\to \iy} F_N(x)=:\wt F(x)$ exists. 
+Then
+\begin{enumerate}
+\item
+ $\wt F$ is concave.
+\item
+At points of differentiability of $\wt F$, the derivatives also converge,
+\[
+F'(x\pm 0) \to \wt F'(x).
+\]
+\footnote{Finite energy functions are always smooth, but %as a baby's face
+their limit can have discontinuous derivative.
+%Converge pointwise without derivative converging.
+}
+\end{enumerate}
+\end{enumerate}
+\end{thm}
+
+\ig{images/2-3}{.25}
+
+Much of this generalizes to directional derivatives in $n$ dimensions.
+\begin{proof}
+Concavity implies that the slope of the line between $x,x+\ep$ is increasing as $\ep\to 0^+$.
+
+\ig{images/2-1}{.25}
+
+%The slope of the line between $x,x-\ep$ is decreasing as $\ep\to 0^-$.
+To prove 3, think of the graph of the derivative at the right. The sum of any uncountable number of steps is infinite.\footnote{More rigorously, for every nonzero interval $[F'(x+0),F'(x-0)]$, we can associate with it a rational number. $\Q$ is countable}
+\footnote{The set of discontinuities can be dense, ex. at all the rational numbers. In physics it was thought that this can't occur, but there are materials whose free energy discontinuities is dense in certain areas.}
+
+\ig{images/2-2}{.25}
+\end{proof}
+
+\begin{df}
+The \ivocab{Legendre transform} of a function is defined as
+\[
+(TG)(y) = \inf_x [y\cdot x - G(x)] = - \sup_x [G(x) - y\cdot x]
+\]
+\end{df}
+\begin{thm}
+For any function $G$, $TG$ is concave.
+\end{thm}
+%You can futz with $\ep$, but  from a certain angle this is immediate.
+\begin{proof}
+An efficient way to think about this: for each value of the parameter $x$, as a function of $y$ this is a linear function. For each $x$ we get a linear function. Define the transform by taking the infimum over that. 
+
+Take 2 points and draw the chord between them. For each linear function the chord lies below it. 
+
+\ig{images/2-4}{.25}
+\end{proof}
+I.e., we used
+\begin{pr}
+Let $\cal F$ be a collection of concave (e.g. linear) functions. Then $\inf_{f\in \cal F}f(x)$ is concave.
+\end{pr}
+\begin{df}
+The \ivocab{concave hull} $\wt G$ of $G$ is defined as the smallest concave function that is at least the function value at every point:
+\[
+\wt G(x)=\inf \set{F(x)}{F\text{ concave, }\forall u, \,F(u)\ge G(u)}.
+\]
+%look at all functions that are concave and dominate it.
+\end{df}
+
+\ig{images/2-5}{.25}
+
+\begin{thm}
+For \emph{concave} $G$,
+\[
+T(TG)=G.
+\]
+In general, $T(TG)$ is the concave hull of $G$. 
+\end{thm}
+\begin{proof}[Proof for $G$ differentiable]
+Use the fact that if $G$ is differentiable, then
+\[
+\inf_x [y\cdot x - G(x)]
+\]
+occurs at $y=G'(x)$. %learn about function in discontinuous fashion. exactly what happens in 1st order phase transitions.
+\end{proof}
+
+Note that we plotted the function and the dual function on the same graph. However, they have inverse units, for example, energy and inverse temperature. You get a lot of insights into physics if you keep track of the units.
+%energy and inverse temperature. You get a lot of insights into physics if you keep track of the units. Note $x,y$ have inverse units.
+
+
+Recall $\rh=\fc{N}{|\La|}$. %prob within configurations of observing something.
+If all $2^{|\La|}$ configurations are given equal weight, the typical value or $\rh$, the particles per unit volume is $\rc2$. The Law of Large Numbers says that with probability 1 the ratio tends to $\rc2$. Is it possible that the density is $\rc3$? Yes, but the probability of such a density is given by the entropy: it's exponentially small, $e^{|\La|[s\prc{3} -\ln 2]}$. Anything other than $\rc2$ is a large deviation; they occur with exponentially small probability. We want to quantify the probability of large deviation events. Here is a language that people found useful.
+\begin{df}
+A sequence of probability measures on $\R$ is said to satisfy a \ivocab{large deviation principle} with speed $\{a_N\}$, and rate function $I$ if for each $x\in \R$, $\ep>0$,
+%raghu vadhan
+\[
+-\inf_{|u-x|<\ep} I(u)\le 
+\liminf_{N\to \iy}\rc{a_N} \ln \Pj_N((x-\ep,x+\ep]) \le \limsup_{N\to \iy} \rc{a_N} \ln \Pj_N((x-\ep,x+\ep]) \le 
+-\inf_{|x-u|\le \ep} I(u)
+\]
+%much more complicated situations
+\end{df}
+For us, $I(x)=\ln 2 - s(x)$.
+%This definition generalizes the situation where the previous applies.

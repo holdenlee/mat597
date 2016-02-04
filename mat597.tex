@@ -1,0 +1,124 @@
+\def\filepath{C:/Users/Owner/Dropbox/Math/templates}
+%\def\filepath{C:/Users/holden-lee/Dropbox/Math/templates}
+
+\input{\filepath/packages_book.tex}
+\input{\filepath/theorems_with_boxes.tex}
+\input{\filepath/macros.tex}
+\input{\filepath/formatting.tex}
+\input{\filepath/other.tex}
+\input{\filepath/theorem_num.tex}
+
+\def\name{Mathematical Physics}
+
+
+\pagestyle{fancy}
+%\addtolength{\headwidth}{\marginparsep} %these change header-rule width
+%\addtolength{\headwidth}{\marginparwidth}
+\lhead{PHY521/MAT597}
+\chead{} 
+\rhead{Mathematical Physics} 
+\lfoot{} 
+\cfoot{\thepage} 
+\rfoot{} % !! Remember to change the problem set number
+\renewcommand{\headrulewidth}{.3pt} 
+%\renewcommand{\footrulewidth}{.3pt}
+\setlength\voffset{0in}
+%\setlength\textheight{648pt}
+
+\begin{document}
+%\input{\filepath/titlepage.tex}
+%\maketitle
+\title{Mathematical Physics}
+\author{taught by Michael Aizenman}
+\maketitle
+%\tableofcontents
+
+\startcontents
+\printcontents{ }{-1}{}
+
+\chapter*{Introduction}
+Notes from Michael Aizenman's class ``Mathematical Physics" at Princeton in Spring 2016. 
+
+This class is of interest to both physicists and mathematicians. Several recent Fields medals are for work related to these topics.
+
+%don't assume knowledge
+I plan to cover the following topics. The focus is on \vocab{Topics in Mathematical Statistic Mechanics}.
+\begin{enumerate}
+\item
+\textbf{The statistical mechanic perspective}: systems can be described at the microscopic level with many degrees of freedom. We observe their collective behavior and find emergent behavior.
+\item
+\textbf{Thermodynamics principles}:
+%fasci
+%macroscopic description of physical system
+In departure from mechanics, which cares about equalities like $F=ma, E=mc^2$, a unique thing about thermodynamics is that its key principle is in inequality: entropy increases.
+\[
+\De S\ge 0
+\]
+%Entropy comes up as a emergent phenomenon from the statistical mechanics description of reality.
+\item
+\vocab{The emergence of thermodynamics from statistical mechanics via the equidistribution assumption and the ``large deviation theory"}. %vadhan - abel prize for large deviation theory.
+Mathematicians formalized the theory but the concepts were introduced earlier by physicists.
+\item 
+\vocab{Phase transitions}: %Consider $H_2O$. You can control it by temperature and pressure. 
+A small change in parameters produces a discontinuous change in the system.
+For example, a small change in the temperature of water can change it from liquid to solid. 
+\item 
+\vocab{Critical phenomena, critical exponents, universality classes}. Systems are macroscopically different, but the singularities you observe are given by the same power laws.
+%Wilson.
+\item
+\vocab{Exact solution of the 2-D Ising model}. %From the perspective of physics. 
+Mathematically, 3 is the hardest dimension to comprehend.
+\begin{enumerate}
+\item
+1-D is solvable: correlations can be described by Markov chains, and can be computed. 
+\item
+In 2-D, the conformal group is very important. It gives many constraints on critical behavior, leading to a rich behavior. 
+\item
+In 3-D, this does not apply except for ongoing work finding consequences in 3-D from results in 2-D. 
+\item
+Anything with $\ge 4$ dimensions gets simpler. High dimensions are characterized by the fact that loop effects do not play a large role. In 1-D a simple random walk is recurrent. In sufficient high dimensions, a simple random walk is not recurrent.
+The infinite-dimensional case reduces to models on trees; high dimensions exhibit the same behavior as infinite dimensions.
+\end{enumerate}
+In coding theory and discrete math people study phase transitions of different graphs and are interested in the same topics.
+
+I will study the 2D Ising model through ``graph zeta functions." 
+%There are analogues 
+There is a relationship between them and the solution of the graph Ising model.
+\item
+\vocab{Stochastic geometry behind correlation functions at criticality}: in the Ising model we have a collection of spin variables $\si_x=\pm1$ for $x\in \Z^d$. The energy favors correlations; agreement among neighbors is encouraged. These correlations spread through the system. Represent this system of correlated spins with a shadow system where we play the following game: the collection of spins is decomposed at random into connected clusters. For each such decomposition, the spins are the same in each connected cluster.
+
+Ex. students form cliques, and each clique votes independently and unanimously. Someone who doesn't see the cliques and just the votes sees clusters. The pattern becomes transparent once you know the cliques.
+
+The cliques become larger and more fractal. There is an interesting fractal geometry which tells us about correlation functions.
+\item \vocab{Scaling limits}: when we have a statistic mechanical system which macroscopically is described by a myriad of variables. We want to know properties of this substance. There is a technique for find these properties. %from the macroscopic description. 
+This gives a link between statistical mechanics and field theory.
+\item \vocab{Related results for quantum spin systems}.
+\end{enumerate}
+%random operators
+%weekly packages
+
+There is a broad spectrum of references, none of which I'll follow exclusively. 
+\begin{itemize}
+\item
+Sacha Friedli and Yvan Velenik's online book project (on mathematical statistical mechanics) at \url{http://www.unige.ch/math/folks/velenik/smbook/index.html}. I recommend this for people totally new to the subject.
+\item
+David Ruelle formulated models and basic results mathematically (late 70's). His book helped physicists organize their thoughts. It became outdated quickly, but remains a good starting point and reference for the formalism.
+\end{itemize}
+
+
+
+%\setcounter{chapter}{-1}
+
+\input{2-2.tex}
+\input{2-4.tex}
+%INSERT_HERE
+
+%\appendix
+%\input{distribution_chapters/a.tex}
+
+%\bibliographystyle{plain}
+%\bibliography{\filepath/refs}
+
+\printnomenclature
+\printindex
+\end{document}
