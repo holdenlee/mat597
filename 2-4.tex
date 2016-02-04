@@ -11,60 +11,87 @@
 %The grand canonical ensemble $\fc{e^{-\mu N(n)}}{Z_\La(\mu)}$.
 %we can compute using the entropy.
 %how without stirling.
-\subsection{Second proof}
+\subsection{Second take}
 
-The \ivocab{partition function} for the grand canonical ensemble is
-\bal
-Z_\La & = \sum_{n\in \Om} e^{-\mu N(n)} = (1+e^{-\mu})^{|\La|}\\
+Define the \ivocab{partition function} for the grand canonical ensemble as the (unnormalized) sum of the likelihoods over all configurations. At each site there are 2 possibilities and they are independent, so the sum factors into a product.\footnote{Note that $\La$ in the last section is the micro-canonical ensemble, but here it is the grand canonical ensemble.}
+\begin{align}
+\nonumber
+Z_\La & = \sum_{n\in \Om} e^{-\mu N(n)} \\
+\nonumber
+&=\sum_{n\in \Om} \prod_{x\in \La} e^{-\mu \one[n_x=1]}\\
+\nonumber
+&=\prod_{x\in \wt{\La}}(1+e^{-\mu})\\
+\nonumber
+&= (1+e^{-\mu})^{|\La|}\\
 \rc{|\La|} \ln Z_{\La} &= 1+e^{-\mu}
-\end{align*}
-At each site there are 2 possibilities, and the different sites are independent.
-We find\footnote{Mathematicians are paranoid, so we use $\sup$ instead of $\max$. For many practical purposes they are the same.}
-\begin{align}%\llabel
-\lim_{|\La|\to \iy} \rc{|\La|}\ln Z_{\La} &= \sup_{0\le \rh\le 1} [s(\rh) - \rh \mu].
+\llabel{eq:z1}
 \end{align}
-%We know this is true because 
-In slow motion, note that the only thing that matters in the summand is the number of particles in $n$, so let's group the summands by this. Letting $\rh=\fc{N}{|\La|}$,
-\bal
-Z_N&=\sum_{n\in \Om} e^{-\mu N(n)}\\
-& =\sum_{n\in \Om} e^{-\mu N(n)} e^{|\La|s(\rh)}\\
-& =\sum_{\rh} e^{|\La|[s(\rh)-\mu \rh]}.
+
+We calculate $Z_\La$ a different way, as follows.
+Note that the only thing that matters in the summand is the number of particles in $n$, so let's group the summands by this. Letting $\rh=\fc{N}{|\La|}$, and using the fact that the number of states with density $\rh$ is $e^{|\La|s(\rh)}$,\footnote{Rather than getting this  with $s(\rh)=-[\rh\ln(\rh) - (1-\rh) \ln (1-\rh)]$ by the Stirling approximation in the last section, we can take this as the \emph{definition} of $s$ here, and use it to solve for $s$.}
+\begin{align}
+\nonumber
+Z_\La&=\sum_{n\in \Om} e^{-\mu N(n)}\\
+\nonumber
+& \approx \sum_{\rh \in \fc{1}{|\La|}\Z} e^{-\mu N(n)} e^{|\La|s(\rh)}\\
+\nonumber
+& =\sum_{\rh \in \fc{1}{|\La|}\Z} e^{|\La|[s(\rh)-\mu \rh]}\\
 %concave modified by a linear function.
 %for each $\mu$ there is some maximum.
 %when you look at contribution of points $\ep$ away, it changes by a factor of the volume. 2
 %all terms which are $\ep$ away contribute a negligible amount.
-\end{align*}
-The multiplicity is the exponential of the volume times the entropy.
+\llabel{eq:z2}
+&\approx e^{|\La|\max_{\rh\in [0,1]}[s(\rh)-\mu\rh]}.
+\end{align}
+%The multiplicity is the exponential of the volume $|\La|$ times the entropy $s(\rh)$.
 %Should we should multiply by the range . 
-The error we are making by focusing on the maximal point rather than counting with multiplicity the near-maximal value. We lose at most a factor equal to the volume. But $\rc{|\La|}\ln |\La|\to 0$. %excessively meticulous.
+To get the last step, note that the error we are making by focusing on the maximal point rather than counting with multiplicity the near-maximal value is at most a factor equal to the volume. But $\rc{|\La|}\ln |\La|\to 0$. (Details to follow.) 
+%excessively meticulous.
 
-We find 
-%taking logs.
-\[
-\max_{\rh}[s(\rh) - \mu \rh] \le \rc{|\La|}\ln Z_{\La} \le \max_\rh [s(\rh)-\mu \rh] + \ub{\rc{|\La|}\ln |\La|}{\to 0}
-\]
+The expression $\max_{\rh\in [0,1]}[s(\rh)-\mu\rh]$ is called the \ivocab{Legendre transform} of the entropy and denoted by $s^*(\rh)$. 
+Matching~\eqref{eq:z1} and~\eqref{eq:z2},
+\beq{eq:s-leg}
+s^*(\mu):= \max_\rh [s(\rh) - \mu\rh] = \ln (1+e^{-\mu})
+\eeq
+
+%The maximal value of $\fc KV$ takes it all: this is
+
+Using this, we can derive the expression the formula for $s(\rh)$, using the inverse Legendre transform.
+
+
+To check that taking the maximum in~\eqref{eq:z2} was legit, note that\footnote{Mathematicians are paranoid, so we use $\sup$ instead of $\max$. For many practical purposes they are the same.}
+\begin{align*}%\llabel
+\max_{\rh}[s(\rh) - \mu \rh] &\le \rc{|\La|}\ln Z_{\La} \le \max_\rh [s(\rh)-\mu \rh] + \ub{\rc{|\La|}\ln |\La|}{\to 0}\\
+\implies
+\lim_{|\La|\to \iy} \rc{|\La|}\ln Z_{\La} &= \sup_{0\le \rh\le 1} [s(\rh) - \rh \mu].
+\end{align*}
+%We know this is true because 
 %from the partition function we can extract the entropy.
 %consistent with Stirling formula? Can we do without? Yes.
 
-Hence 
-\[
-\sum_{0\le \rh\le 1}[s(\rh) - \mu\rh] = 1+e^{-\mu}
-\]
+%Hence 
+%\[
+%\max_{0\le \rh\le 1}[s(\rh) - \mu\rh] = 1+e^{-\mu}
+%\]
 %This is essentially Legendre transform. It is in particular invertible.
 %Stirling's approximation gave us the answer for the entropy. Any other model: you will not have the luxury of the Stirling approx argument. 
-For $s(\rh) = -[\rh\ln \rh +(1-\rh) \ln (1-\rh)]$, we find the critical point by setting the derivative to 0. %\footnote{don't differentiate in public} 
-Trick: $[x(\ln x-1)]'=\ln x$. We can subtract 1 from each of the logs changing the expression by a constant. Thus
+
+We can verify that  $s(\rh) = -[\rh\ln \rh +(1-\rh) \ln (1-\rh)]$
+does indeed make~\eqref{eq:s-leg} hold. We find the maximum (critical point) or $s(\rh)-\mu \rh$ by setting the derivative to 0. %\footnote{don't differentiate in public} 
+We use the trick 
+\[[x(\ln x-1)]'=\ln x.\] We can subtract 1 from each of the logs changing the expression by a constant. Thus
 \[
-s'(\rh) = -\ln \rh +\ln (1-\rh) - \mu.
+s'(\rh) = -\ln \rh +\ln (1-\rh) - \mu \implies \fc{\rh}{1-\rh}=e^{-\mu}.
 \]
-Solving gives $\fc{\rh}{1-\rh}=e^{-\mu}$. 
+We can use this to solve for $\rh$ and find $s^*(\mu)$ (do this yourself).
+%Solving gives $\fc{\rh}{1-\rh}=e^{-\mu}$. 
 
 \subsection{Legendre transform}
-In general, a micro-canonical ensemble specifies all the conserved quantities: Particles, energies, and whatever else is there. Th grand canonical ensemble also generalizes by changing the factor to $e^{-\mu N} e^{\be H}$.
+In general, a micro-canonical ensemble specifies all the conserved quantities: Particles, energies, and whatever else there is. The grand canonical ensemble also generalizes by changing the factor to $e^{-\mu N} e^{\be H}$.
 Such factors are referred to as \ivocab{Gibbs factors} %states
 or Gibbs measures.
 %variational characterization of those.
-Next topics.
+Our next topics are:
 \begin{itemize}
 \item
 Legendre transform
@@ -97,21 +124,20 @@ F'(x+0)&=\lim_{\ep\to 0^+} \fc{F(x+\ep)-F(x)}{\ep}\\
 F'(x-0)&=\lim_{\ep\to 0^-} \fc{F(x+\ep)-F(x)}{\ep}.
 \end{align*}
 \item $F'(x-0)\ge F'(x+0)$ and $F'(x\pm 0)$ are decreasing.
-\item For all but countably many values $x\in \R$, $F'(x-0)=F'(x+0)$, i.e., $F$'s different at $x$.
+\item For all but countably many values $x\in \R$, $F'(x-0)=F'(x+0)$, i.e., $F$ is differentiable at $x$.
 \item Let $F_n$ be a sequence of concave functions which converge pointwise: for all $x$, $\lim_{N\to \iy} F_N(x)=:\wt F(x)$ exists. 
 Then
 \begin{enumerate}
 \item
  $\wt F$ is concave.
 \item
-At points of differentiability of $\wt F$, the derivatives also converge,
-\[
-F'(x\pm 0) \to \wt F'(x).
-\]
-\footnote{Finite energy functions are always smooth, but %as a baby's face
+At points of differentiability of $\wt F$, the derivatives also converge,\footnote{Finite energy functions are always smooth, but %as a baby's face
 their limit can have discontinuous derivative.
 %Converge pointwise without derivative converging.
 }
+\[
+F'(x\pm 0) \to \wt F'(x).
+\]
 \end{enumerate}
 \end{enumerate}
 \end{thm}
@@ -120,13 +146,13 @@ their limit can have discontinuous derivative.
 
 Much of this generalizes to directional derivatives in $n$ dimensions.
 \begin{proof}
-Concavity implies that the slope of the line between $x,x+\ep$ is increasing as $\ep\to 0^+$.
+For (1) note that concavity implies that the slope of the line between $x,x+\ep$ is increasing as $\ep\to 0^+$.
 
 \ig{images/2-1}{.25}
 
 %The slope of the line between $x,x-\ep$ is decreasing as $\ep\to 0^-$.
-To prove 3, think of the graph of the derivative at the right. The sum of any uncountable number of steps is infinite.\footnote{More rigorously, for every nonzero interval $[F'(x+0),F'(x-0)]$, we can associate with it a rational number. $\Q$ is countable}
-\footnote{The set of discontinuities can be dense, ex. at all the rational numbers. In physics it was thought that this can't occur, but there are materials whose free energy discontinuities is dense in certain areas.}
+To prove 3, think of the graph of the derivative at the right, $F'(x+0)$. It is decreasing. Any monotonic function has a countable number of discontinuity points because the sum of any uncountable number of steps is infinite.\footnote{More rigorously, for every nonzero interval $[F'(x+0),F'(x-0)]$, we can associate with it a rational number. Then note $\Q$ is countable. }
+\footnote{The set of discontinuities can be dense, ex. all the rational numbers. In physics it used to be thought that this can't occur, but there are materials whose free energy discontinuities are dense in certain areas.}
 
 \ig{images/2-2}{.25}
 \end{proof}
@@ -142,16 +168,12 @@ For any function $G$, $TG$ is concave.
 \end{thm}
 %You can futz with $\ep$, but  from a certain angle this is immediate.
 \begin{proof}
-An efficient way to think about this: for each value of the parameter $x$, as a function of $y$ this is a linear function. For each $x$ we get a linear function. Define the transform by taking the infimum over that. 
+An efficient way to think about this is the following: for each value of the parameter $x$, as a function of $y$ this is a linear function. For each $x$ we get a linear function. Define the transform by taking the infimum over that. 
 
-Take 2 points and draw the chord between them. For each linear function the chord lies below it. 
+Take 2 points and draw the chord between them. For each linear function the chord lies below it.\footnote{I.e., we use the following : Let $\cal F$ be a collection of concave (e.g. linear) functions. Then $\inf_{f\in \cal F}f(x)$ is concave.} 
 
 \ig{images/2-4}{.25}
 \end{proof}
-I.e., we used
-\begin{pr}
-Let $\cal F$ be a collection of concave (e.g. linear) functions. Then $\inf_{f\in \cal F}f(x)$ is concave.
-\end{pr}
 \begin{df}
 The \ivocab{concave hull} $\wt G$ of $G$ is defined as the smallest concave function that is at least the function value at every point:
 \[
@@ -188,7 +210,7 @@ A sequence of probability measures on $\R$ is said to satisfy a \ivocab{large de
 %raghu vadhan
 \[
 -\inf_{|u-x|<\ep} I(u)\le 
-\liminf_{N\to \iy}\rc{a_N} \ln \Pj_N((x-\ep,x+\ep]) \le \limsup_{N\to \iy} \rc{a_N} \ln \Pj_N((x-\ep,x+\ep]) \le 
+\varliminf_{N\to \iy}\rc{a_N} \ln \Pj_N((x-\ep,x+\ep]) \le \varlimsup_{N\to \iy} \rc{a_N} \ln \Pj_N((x-\ep,x+\ep]) \le 
 -\inf_{|x-u|\le \ep} I(u)
 \]
 %much more complicated situations

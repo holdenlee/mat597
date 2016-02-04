@@ -4,7 +4,7 @@
 
 \section{The equivalence principle}
 \subsection{Configurations and ensembles}
-One way to start is with the axioms of statistical mechanics. Instead I'll take a simple problem, see how it works, and present results in that context. There are simple problems that teach us a lot. The simplest is a lattice gas.
+One way to start is with the axioms of statistical mechanics. Instead I'll take a simple problem, see how it works, and present results in that context. There are simple problems that teach us a lot. (``The elementary problems are the most precious, once you absorb them they are part of your makeup.") The simplest is a lattice gas.
 
 A lattice gas is a substrate where at each lattice site there may or may not be a particle. 
 
@@ -46,7 +46,7 @@ The \ivocab{grand canonical ensemble average} is defined as
 \]
 (Later on we will omit superscripts where it is clear.)
 
-\subsection{Equivalence principle: first proof}
+\subsection{Equivalence principle}
 
 Consider functions which depend only on a system $\La\subeq \wt{\La}$ of much smaller volume, $|\La|\ll |\wt{\La}|$. This is the sense in which the averages match up.
 
@@ -131,33 +131,3 @@ in the grand canonical ensemble, we add an energy term to the exponential: $e^{-
 
 How can we construct an alternative method without the Stirling formula?
 
-Define
-\[
-Z_{\wt \La} = \sum_{n\in \Om} e^{-\mu N(n)}.
-\]
-This can be easily computed without Stirling. From the value of this, you can learn the value of the entropy function:
-\bal
-&=\sum_{n\in \Om} \prod_{x\in \wt\La} e^{-\mu \one[n_x=1]}\\
-&=\prod{x\in \wt{\La}}(1+e^{-\mu}) = (1+e^{-\mu})^{|\wt \La|}.
-\end{align*}
-However, 
-\bal
-Z_{\wt \La} &=\sum_{n\in \Om} e^{-\mu N(n)}\\
-&= \sum_{K\in \N} e^{-\mu K}e^{V s\pf{K}{v}}\\
-&= \sum_{K\in \N} e^{V(s\pf{K}{V}-\mu \fc{K}V)}.
-\end{align*}
-For each $k$ count how many configurations have that value of $k$. Here $S(V,K)=Vs\pf{K}{V}$.
-Suppose we find it acceptable to say the system \emph{has} an entropy.
-
-The maximal value of $\fc KV$ takes it all: this is
-\[
-=e^{V\max_{\rh\in [0,1]}[s(\rh)-\mu\rh]}.
-\]
-This is the \ivocab{Legendre transform} of the entropy.
-Let
-\beq{eq:s-leg}
-s^*(\mu):= \max_\rh [s(\rh) - \mu\rh] = \ln (1+e^{-\mu})
-\eeq
-Next time we'll discuss how to derive from this expression the formula for $s(\rh)$, using the inverse Legendre transform.
-
-``The elementary problems are the most precious, once you absorb them they are part of your makeup."
