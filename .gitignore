@@ -15,6 +15,7 @@
 *.log
 *.nlo
 *.out
+*.ptc
 *.ptx
 *.gz
 
