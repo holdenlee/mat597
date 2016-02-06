@@ -28,14 +28,17 @@
 \begin{document}
 %\input{\filepath/titlepage.tex}
 %\maketitle
+
+
 \title{Mathematical Physics}
-\author{taught by Michael Aizenman}
+\author{Course Instructor: Michael Aizenman}
+% Scribes: Holden Lee & Kiran Vodrahalli
 \maketitle
 
-%\tableofcontents
+\tableofcontents
 
-\startcontents
-\printcontents{ }{-1}{}
+%\startcontents
+%\printcontents{ }{-1}{}
 
 \chapter*{Introduction}
 Notes from Michael Aizenman's class ``Mathematical Physics" at Princeton in Spring 2016. 
@@ -50,7 +53,8 @@ I plan to cover the following topics. The focus is on \vocab{Topics in Mathemati
 \item
 \textbf{Thermodynamics principles}:
 %fasci
-%macroscopic description of physical system
+%macroscopic description of physical system 
+Intellectually preceding statistical mechanics is thermodynamics, a field of physics which emerged through experimental and intellectual work trying to understand what is happening with the transfer of heat. A couple of principles emerged. This framework is more appropriate to the macroscopic description of physical systems.
 In departure from mechanics, which cares about equalities like $F=ma, E=mc^2$, a unique thing about thermodynamics is that its key principle is in inequality: entropy increases.
 \[
 \De S\ge 0
@@ -58,13 +62,13 @@ In departure from mechanics, which cares about equalities like $F=ma, E=mc^2$, a
 %Entropy comes up as a emergent phenomenon from the statistical mechanics description of reality.
 \item
 \vocab{The emergence of thermodynamics from statistical mechanics via the equidistribution assumption and the ``large deviation theory"}. %vadhan - abel prize for large deviation theory.
-Mathematicians formalized the theory but the concepts were introduced earlier by physicists.
+I would like to discuss the emergence of thermodynamics from statistical mechanics. Mathematicians formalized the theory but the concepts were introduced earlier by physicists. These principles led Boltzmann to introduce these ideas; it took a while for physics to absorb the ideas, which may have led to his premature death via suicide. 
 \item 
 \vocab{Phase transitions}: %Consider $H_2O$. You can control it by temperature and pressure. 
-A small change in parameters produces a discontinuous change in the system.
-For example, a small change in the temperature of water can change it from liquid to solid. 
+When you have a system, say $H_2O$, which you can control with temperature and pressure, you can induce changes in state. Continuous change in control parameters results in discrete jumps in result. 
+
 \item 
-\vocab{Critical phenomena, critical exponents, universality classes}. Systems are macroscopically different, but the singularities you observe are given by the same power laws.
+\vocab{Critical phenomena, critical exponents, universality classes}. Phase transitions are fascinating since there are interesting critical phenomena which are characterized by critical exponents, which turn out (this is one of the suprising discoveries experimentally) to result in universality classes of critical phenomena. Systems are macroscopically different, but the singularities you observe are given by the same power laws.
 %Wilson.
 \item
 \vocab{Exact solution of the 2-D Ising model}. %From the perspective of physics. 
@@ -82,18 +86,15 @@ The infinite-dimensional case reduces to models on trees; high dimensions exhibi
 \end{enumerate}
 In coding theory and discrete math people study phase transitions of different graphs and are interested in the same topics.
 
-I will study the 2D Ising model through ``graph zeta functions." 
-%There are analogues 
-There is a relationship between them and the solution of the graph Ising model.
+The 2D Ising model is usually a highly specialized topic, but we will do it in a way done a bit differently from normal. We would like to do this through ``graph zeta functions''. What I found fascinating about this topics is that there are a lot of connections to other topics. There are analogues of the Riemann zeta function on graphs, and there is a relationship. It is actually one of the simplest paths to tackle this proof by. 
+
 \item
-\vocab{Stochastic geometry behind correlation functions at criticality}: in the Ising model we have a collection of spin variables $\si_x=\pm1$ for $x\in \Z^d$. The energy favors correlations; agreement among neighbors is encouraged. These correlations spread through the system. Represent this system of correlated spins with a shadow system where we play the following game: the collection of spins is decomposed at random into connected clusters. For each such decomposition, the spins are the same in each connected cluster.
+\vocab{Stochastic geometry behind correlation functions at criticality}: in the Ising model we have a collection of spin variables $\si_x=\pm1$ for $x\in \Z^d$. The spins are correlated in such a way that agreement among neighbors is encouraged. Thus there are correlations which spread through the system. It is interesting and powerful to represent this correlation between spins is via a ``shadow system'' in which you can play the following game: You decompose at random into connected clusters, and when you see spin values, you don't see who is connected to whom: But for each such decomposition the spins are connected on each cluster. You can think of it as forming cliques in class, and then each clique chooses what to do and votes unanimously. So if you just saw the voting pattern, you would see some cliques, but the nature of correlations among the votes become transparent if you know the clusters. These states for critical Ising models become longer and longer, but become fractal. Fractal geometric objects can be used to explain the structure. We will introduce all of this later in much detail from the ground up. If you have heard of percolation, this topic is related.
+There is an interesting fractal geometry which tells us about correlation functions.
 
-Ex. students form cliques, and each clique votes independently and unanimously. Someone who doesn't see the cliques and just the votes sees clusters. The pattern becomes transparent once you know the cliques.
+\item \vocab{Scaling limits}: Finally, if time permits, I would like to discuss scaling limits. You may want to know properties of a substance when you have something like a lattice that is very fine-grained, a statistic mechanical system which macroscopically is described by a myriad of variables. There are techniques of describing the relevant quantities from the macroscopic perspective, and this becomes relevant for describing the critical state. This provides a fascinating link between statistical mechanics and field theory. It's related to quantum field theory, except we are now in the Euclidean regime. There are some related results for quantum spin systems. 
 
-The cliques become larger and more fractal. There is an interesting fractal geometry which tells us about correlation functions.
-\item \vocab{Scaling limits}: when we have a statistic mechanical system which macroscopically is described by a myriad of variables. We want to know properties of this substance. There is a technique for find these properties. %from the macroscopic description. 
-This gives a link between statistical mechanics and field theory.
-\item \vocab{Related results for quantum spin systems}.
+
 \end{enumerate}
 %random operators
 %weekly packages
