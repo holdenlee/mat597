@@ -11,7 +11,10 @@
 %The grand canonical ensemble $\fc{e^{-\mu N(n)}}{Z_\La(\mu)}$.
 %we can compute using the entropy.
 %how without stirling.
-\subsection{Second take}
+\subsection{Generalizing Ensemble Analysis to Harder Cases}
+
+Previous we used very specific machinery to derive the grand canonical ensemble for the lattice gas; how might we derive similar expressions for more complicated systems?  We would like to avoid using the Stirling formula, which only happened to work in the simple case. 
+To derive the entropy bypassing Stirling's approximation, you may proceed by analyzing partition functions. 
 
 Define the \ivocab{partition function} for the grand canonical ensemble as the (unnormalized) sum of the likelihoods over all configurations. At each site there are 2 possibilities and they are independent, so the sum factors into a product.\footnote{Note that $\La$ in the last section is the micro-canonical ensemble, but here it is the grand canonical ensemble.}
 \begin{align}
@@ -27,8 +30,8 @@ Z_\La & = \sum_{n\in \Om} e^{-\mu N(n)} \\
 \llabel{eq:z1}
 \end{align}
 
-We calculate $Z_\La$ a different way, as follows.
-Note that the only thing that matters in the summand is the number of particles in $n$, so let's group the summands by this. Letting $\rh=\fc{N}{|\La|}$, and using the fact that the number of states with density $\rh$ is $e^{|\La|s(\rh)}$,\footnote{Rather than getting this  with $s(\rh)=-[\rh\ln(\rh) - (1-\rh) \ln (1-\rh)]$ by the Stirling approximation in the last section, we can take this as the \emph{definition} of $s$ here, and use it to solve for $s$.}
+So what does this have to do with entropy? We can calculate $Z_\La$ a different way, as follows.
+Note that the only thing that matters in the summand is the number of particles in $n$, so let's group the summands by this. Letting $\rh=\fc{N}{|\La|}$, and using the fact that the number of states with density $\rh$ is $e^{|\La|s(\rh)}$,\footnote{Rather than getting this with $s(\rh)=-[\rh\ln(\rh) - (1-\rh) \ln (1-\rh)]$ by the Stirling approximation in the last section, we can take this as the \emph{definition} of $s$ here, and use it to solve for $s$.}
 \begin{align}
 \nonumber
 Z_\La&=\sum_{n\in \Om} e^{-\mu N(n)}\\
@@ -45,19 +48,20 @@ Z_\La&=\sum_{n\in \Om} e^{-\mu N(n)}\\
 \end{align}
 %The multiplicity is the exponential of the volume $|\La|$ times the entropy $s(\rh)$.
 %Should we should multiply by the range . 
-To get the last step, note that the error we are making by focusing on the maximal point rather than counting with multiplicity the near-maximal value is at most a factor equal to the volume. But $\rc{|\La|}\ln |\La|\to 0$. (Details to follow.) 
+To get the last step, note that the error we are making by focusing on the maximal point rather than counting with multiplicity the near-maximal value is at most a factor equal to the volume, since we can upper bound our error by taking all points in $\La$ instead of merely an $\ep$-ball around the maximum. ``In analysis, it often pays to avoid being excessively generous.'' Since $\rc{|\La|}\ln |\La|\to 0$, this term is negligible. %details to follow
 %excessively meticulous.
-
 The expression $\max_{\rh\in [0,1]}[s(\rh)-\mu\rh]$ is called the \ivocab{Legendre transform} of the entropy and denoted by $s^*(\rh)$. 
-Matching~\eqref{eq:z1} and~\eqref{eq:z2},
+
+Matching~\eqref{eq:z1} and~\eqref{eq:z2}, we can define 
+\begin{df} Legendre entropy. \\
 \beq{eq:s-leg}
-s^*(\mu):= \max_\rh [s(\rh) - \mu\rh] = \ln (1+e^{-\mu})
+s^*(\mu):= \max_{0\le \rh\le 1} [s(\rh) - \mu\rh] = \ln (1+e^{-\mu})
 \eeq
+\end{df}
 
 %The maximal value of $\fc KV$ takes it all: this is
 
 Using this, we can derive the expression the formula for $s(\rh)$, using the inverse Legendre transform.
-
 
 To check that taking the maximum in~\eqref{eq:z2} was legit, note that\footnote{Mathematicians are paranoid, so we use $\sup$ instead of $\max$. For many practical purposes they are the same.}
 \begin{align*}%\llabel
@@ -68,7 +72,7 @@ To check that taking the maximum in~\eqref{eq:z2} was legit, note that\footnote{
 %We know this is true because 
 %from the partition function we can extract the entropy.
 %consistent with Stirling formula? Can we do without? Yes.
-
+Now why is this equation true? It's a very fundamental point. This is true since we applied Stirling to the counting function, which comes from the fact that when you compute the partition function, it's the sum over all allowed configurations: $Z_N = \sum_{m \in \Omega} e^{-\mu N(m)}$. Let's classify these terms according to the value of $N$. Recall density $\rho$ is just number of particles per volume: $N/ |\Lambda|$. Let's write $N(m) = \rho\cdot |\Lambda|$. Thus we can rewrite $Z_N = \sum_{\rho_{1/|\Lambda|}} e^{-\mu \rho |\Lambda|}e^{|\Lambda|s(\rho)} = \sum_{\rho_{1/|\Lambda|}} e^{|\Lambda|(s(\rho) - \mu \rho)}$. $\rho \in [0, 1]$ and we discretize over $1/|\Lambda|$. As we saw before, we use the maximum because when we deviate a small amount from the maximum, a \textbf{slight drop}, all terms which are $\epsilon$ away, contribute an entirely negligible amount. 
 %Hence 
 %\[
 %\max_{0\le \rh\le 1}[s(\rh) - \mu\rh] = 1+e^{-\mu}
@@ -77,7 +81,7 @@ To check that taking the maximum in~\eqref{eq:z2} was legit, note that\footnote{
 %Stirling's approximation gave us the answer for the entropy. Any other model: you will not have the luxury of the Stirling approx argument. 
 
 We can verify that  $s(\rh) = -[\rh\ln \rh +(1-\rh) \ln (1-\rh)]$
-does indeed make~\eqref{eq:s-leg} hold. We find the maximum (critical point) or $s(\rh)-\mu \rh$ by setting the derivative to 0. %\footnote{don't differentiate in public} 
+does indeed make~\eqref{eq:s-leg} hold. We find the maximum (critical point) or $s(\rh)-\mu \rh$ by setting the derivative to 0.\footnote{Don't differentiate in public.} 
 We use the trick 
 \[[x(\ln x-1)]'=\ln x.\] We can subtract 1 from each of the logs changing the expression by a constant. Thus
 \[
@@ -85,29 +89,33 @@ s'(\rh) = -\ln \rh +\ln (1-\rh) - \mu \implies \fc{\rh}{1-\rh}=e^{-\mu}.
 \]
 We can use this to solve for $\rh$ and find $s^*(\mu)$ (do this yourself).
 %Solving gives $\fc{\rh}{1-\rh}=e^{-\mu}$. 
-
-\subsection{Legendre transform}
 In general, a micro-canonical ensemble specifies all the conserved quantities: Particles, energies, and whatever else there is. The grand canonical ensemble also generalizes by changing the factor to $e^{-\mu N} e^{\be H}$.
 Such factors are referred to as \ivocab{Gibbs factors} %states
 or Gibbs measures.
 %variational characterization of those.
-Our next topics are:
-\begin{itemize}
-\item
-Legendre transform
-\item
-Convexity/concavity
-\item A variational characterization of Gibbs states
-\item First order phase transitions (thermodynamics and statistical mechanics perspectives)
-\end{itemize}
+%Our next topics are:
+%\begin{itemize}
+%\item
+%Legendre transform
+%\item
+%Convexity/concavity
+%\item A variational characterization of Gibbs states
+%\item First order phase transitions (thermodynamics and statistical mechanics perspectives)
+%\end{itemize}
+
+\section{Concavity and the Legendre transform}
+
+\subsection{Basic concavity results}
 
 \begin{df}
-A function on $\R^k$ is \ivocab{concave} (\ivocab{convex}) if for any $x_0,x_1\in \R^k$, $0\le \la \le 1$,
+A function on $\R^k$ is \ivocab{concave} if for any $x_0,x_1\in \R^k$, $0\le \la \le 1$,
 \[
-F(\la x_1+(1-\la)x_0)\lge \la F(x_1)+(1-\la) F(x_0).
+F(\la x_1+(1-\la)x_0)\geq \la F(x_1)+(1-\la) F(x_0).
 \]
-\end{df}
+For a \ivocab{convex} function, the same inequality with the sign flipped holds. A negative convex function is concave. 
 Concavity (convexity) means if you draw a chord between two points, it will lie below (above) the curve.
+``As Richard Feynmann pointed out, getting the sign right is the hardest thing.''
+\end{df}
 %A concave curve frowns.
 
 %useful for variational principle
@@ -151,11 +159,13 @@ For (1) note that concavity implies that the slope of the line between $x,x+\ep$
 \ig{images/2-1}{.25}
 
 %The slope of the line between $x,x-\ep$ is decreasing as $\ep\to 0^-$.
-To prove 3, think of the graph of the derivative at the right, $F'(x+0)$. It is decreasing. Any monotonic function has a countable number of discontinuity points because the sum of any uncountable number of steps is infinite.\footnote{More rigorously, for every nonzero interval $[F'(x+0),F'(x-0)]$, we can associate with it a rational number. Then note $\Q$ is countable. }
-\footnote{The set of discontinuities can be dense, ex. all the rational numbers. In physics it used to be thought that this can't occur, but there are materials whose free energy discontinuities are dense in certain areas.}
+To prove (3), consider the graph of the derivative $F'(x + 0)$. It's a monotone decreasing function which starts somewhere and goes down. It may actually decrease by steps. A nice thing about monotone steps is that a sum of any uncountable collection of nonzero numbers is $\infty$.\footnote{More rigorously, for every nonzero interval $[F'(x+0),F'(x-0)]$, we can associate with it a rational number. Then note $\Q$ is countable. } If you have a function which decreases by steps, the total collection of discontinuity points has to be countable. The total sum of the drops is finite, which implies that the number of drops is actually finite. At points where there is a continuity, they agree. They only disagree at points of discontinuity. Since we have summable jumps, the collection of points of discontinuity is at most countable.
+\footnote{The set of discontinuities can still be devilishly dense, ex. all the rational numbers. In physics it used to be thought that weird functions with Cantor-like sets of discontinuties could not occur, but there are materials whose free energy discontinuities are dense in certain areas.}
 
 \ig{images/2-2}{.25}
 \end{proof}
+
+\subsection{Concave properties of the Legendre transform}
 
 \begin{df}
 The \ivocab{Legendre transform} of a function is defined as
@@ -166,7 +176,7 @@ The \ivocab{Legendre transform} of a function is defined as
 \begin{thm}
 For any function $G$, $TG$ is concave.
 \end{thm}
-%You can futz with $\ep$, but  from a certain angle this is immediate.
+%You can futz with $\ep$, but from a certain angle this is immediate.
 \begin{proof}
 An efficient way to think about this is the following: for each value of the parameter $x$, as a function of $y$ this is a linear function. For each $x$ we get a linear function. Define the transform by taking the infimum over that. 
 
@@ -206,7 +216,7 @@ Note that we plotted the function and the dual function on the same graph. Howev
 Recall $\rh=\fc{N}{|\La|}$. %prob within configurations of observing something.
 If all $2^{|\La|}$ configurations are given equal weight, the typical value or $\rh$, the particles per unit volume is $\rc2$. The Law of Large Numbers says that with probability 1 the ratio tends to $\rc2$. Is it possible that the density is $\rc3$? Yes, but the probability of such a density is given by the entropy: it's exponentially small, $e^{|\La|[s\prc{3} -\ln 2]}$. Anything other than $\rc2$ is a large deviation; they occur with exponentially small probability. We want to quantify the probability of large deviation events. Here is a language that people found useful.
 \begin{df}
-A sequence of probability measures on $\R$ is said to satisfy a \ivocab{large deviation principle} with speed $\{a_N\}$, and rate function $I$ if for each $x\in \R$, $\ep>0$,
+A sequence of probability measures on $\R$ is said to satisfy a \ivocab{large deviation principle} with speed $\{a_N\}$, and rate function $I(x)$ if for each $x\in \R$, $\ep>0$,
 %raghu vadhan
 \[
 -\inf_{|u-x|<\ep} I(u)\le 
@@ -217,3 +227,4 @@ A sequence of probability measures on $\R$ is said to satisfy a \ivocab{large de
 \end{df}
 For us, $I(x)=\ln 2 - s(x)$.
 %This definition generalizes the situation where the previous applies.
+
