@@ -6,8 +6,8 @@
 \subsection{Configurations and ensembles}
 One way to start is with the axioms of statistical mechanics. Instead I'll take a simple problem, see how it works, and present results in that context. There are simple problems that teach us a lot. (``The elementary problems are the most precious, once you absorb them they are part of your makeup.") The simplest is a lattice gas.
 
-\begin{df} \ivocab{Lattice gas}. \\
-A lattice gas is a substrate where at each lattice site there may or may not be a particle. This model has been used to describe alloys where you have a substrate which you can draw as a simple lattice (in particular, we will use $\Z^d$ for simplicity). Each point may have a particle of a certain type.
+\begin{df}[Lattice gas]
+A \ivocab{lattice gas} is a substrate where at each lattice site there may or may not be a particle. This model has been used to describe alloys where you have a substrate which you can draw as a simple lattice (in particular, we will use $\Z^d$ for simplicity). Each point may have a particle of a certain type.
 
 The \ivocab{configuration} is a function $n:\Z^d\to \{0,1\}$:
 \[
@@ -16,7 +16,7 @@ n_x=\begin{cases}
 0,&\text{$x$ is vacant}.
 \end{cases}
 \]
-For now let us ignore energy conservations. Let us suppose it is neutral, or at some infinite temperature; energy is not an issue. 
+For now let us ignore energy conservation. Let us suppose the system is neutral, or at some infinite temperature; energy is not an issue. 
 
 I'll use $L$ to denote the size of the box we are considering, and $\La\sub \Z^d$ to be a region (subset of the system) and we have $m$ particles. The \vocab{configuration space} is the space of possible $n$'s, $\Om = \{0,1\}^{\La}$.
 
@@ -24,16 +24,16 @@ If you have a finite system and energy does not play a role, but there is conser
 \end{df}
 
 
-\begin{df} The \ivocab{equidistribution assumption}. \\
+\begin{df}[\ivocab{Equidistribution assumption}]
 All particle configurations which have an equal number of particles have equal probability.
 \end{df}
 
 This gives rise to the notion of ensembles. 
-\begin{df} Ensemble. \\
-An ensemble is a probability measure with respect to which you do averages over the configuration space $\Om$. 
+\begin{df}[Ensemble]
+An \vocab{ensemble} is a probability measure with respect to which you do averages over the configuration space $\Om$. 
 \end{df} 
-First, we define some notation: 
-\begin{df} Indicator function. \\
+First, we define some notation.
+\begin{df}[Indicator function]
 \[
 \one[\text{cond}] := \begin{cases}
 1,&\text{condition satisfied}\\
@@ -43,8 +43,8 @@ First, we define some notation:
 \end{df}
 Now we define two specific ensembles, the \ivocab{microcanonical ensemble} and the \ivocab{grand canonical ensemble}. 
 
-\begin{df} Microcanonical ensemble. \\
-We have
+\begin{df}[Microcanonical ensemble]
+In the microcanonical ensemble,
 \[
 \Pj(n_{\Om})= \fc{\one[\sum_{x\in \Om}n_x=N]}{Z}
 \]
@@ -57,7 +57,7 @@ For every function $f:\Om\to \R$ assigning a real number to each configuration, 
 \end{df}
 The ensemble we will focus on for this course is the grand canonical ensemble. 
 
-\begin{df} Grand canonical ensemble. \\
+\begin{df}[Grand canonical ensemble]
 The \ivocab{grand canonical ensemble average} is defined as
 \[
 \an{f}_{\mu, \La}^{\text{Gr.C}} = \fc{\sum_{n\in \Om} e^{-\mu  \sum_{x\in \La}n_x}f(n)}{\sum_{n\in \Om}e^{-\mu \sum_{x\in \La} n_x}}
@@ -67,7 +67,7 @@ The \ivocab{grand canonical ensemble average} is defined as
 
 We can relate these two notions with the \ivocab{equivalence principle}. 
 
-\begin{df} Equivalence principle. \\
+\begin{df}[Equivalence principle]
 Loosely, the equivalence principle says that for any ``local function", the microcanonical average is approximately the grand canonical ensemble average
 \[
 \an{f}_{N,\La}^{\text{Can}}\approx \an{f}_{\mu, \La}^{\text{Gr.C}}
@@ -79,7 +79,7 @@ when we take $\mu = \fc{N}{|\La|}$.
 
 \subsection{The equivalence principle}
 
-Consider functions which depend only on a system $\La\subeq \wt{\La}$ of much smaller volume, $|\La|\ll |\wt{\La}|$. This is the sense in which the averages match up.
+Consider functions which depend only on a system $\La\sub \wt{\La}$ of much smaller volume, $|\La|\ll |\wt{\La}|$. This is the sense in which the averages match up.
 
 %sociological interest. 
 We can think of the difference as the difference between two socities. One is draconian. The first is highly centralized control economy. If you don't fit the build, you get weight $0$ and you're thrown out. In the grand canonical, everything goes. Some contribute more than others, and the contributions depend on the parameter $\mu$ which is adjustable. The density of particles depends on $\mu$. And there is a value of $\mu$ for which the density is equal to $N/|\tilde{\Lambda}|$. Here, the average of the draconian system is equal to the average of the lackadaiscal system, asymptotically. 
@@ -112,7 +112,8 @@ The number of configurations of $M$ particles in volume $V$ is $\binom{V}{M} = \
 %entropy
 After some gymnastics of an elementary nature, there is a fundamental formula. The logarithm of the number of configurations is of tremendous important. Ludwig Boltzmann's grave has the formula which opened people's eyes to what this mysterious \ivocab{entropy} $S$ truly is: the logarithm of the number of configurations. 
 
-\begin{lem} Entropy. \\
+\begin{lem}[Entropy]
+Defining
 \[
 s(\rh) = -[\rh \ln \rh + (1-\rh)\ln (1-\rh)],
 \]
@@ -122,7 +123,9 @@ we have
 =: e^{S(M,V)}
 \approx e^{Vs(\rh)}
 \]
-where density $\rho = m/V$ and $s(p) = -p\ln(p) - (1- p)\ln(1 - p)$. $\rho$ varies between $0$ and $1$. $s(\rho)$ is concave. This function attains maximum of $\ln 2$ at $\rc2$ where it has quadratic behavior.
+where density $\rho = m/V$ and $s(p) = -p\ln(p) - (1- p)\ln(1 - p)$. 
+
+The ratio $\rho$ varies between $0$ and $1$. $s(\rho)$ is concave and attains maximum of $\ln 2$ at $\rc2$ where it has quadratic behavior.
 \end{lem}
 \begin{proof}
 Please do this exercise once in your life; it's good to do it once but not too often.

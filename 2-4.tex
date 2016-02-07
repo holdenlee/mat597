@@ -52,12 +52,17 @@ To get the last step, note that the error we are making by focusing on the maxim
 %excessively meticulous.
 The expression $\max_{\rh\in [0,1]}[s(\rh)-\mu\rh]$ is called the \ivocab{Legendre transform} of the entropy and denoted by $s^*(\rh)$. 
 
-Matching~\eqref{eq:z1} and~\eqref{eq:z2}, we can define 
-\begin{df} Legendre entropy. \\
-\beq{eq:s-leg}
+Matching~\eqref{eq:z1} and~\eqref{eq:z2}, we find
+\[
 s^*(\mu):= \max_{0\le \rh\le 1} [s(\rh) - \mu\rh] = \ln (1+e^{-\mu})
-\eeq
-\end{df}
+\]
+%this isn't a definition.
+%can define 
+%\begin{df} Legendre entropy. \\
+%\beq{eq:s-leg}
+%s^*(\mu):= \max_{0\le \rh\le 1} [s(\rh) - \mu\rh] = \ln (1+e^{-\mu})
+%\eeq
+%\end{df}
 
 %The maximal value of $\fc KV$ takes it all: this is
 
@@ -72,7 +77,9 @@ To check that taking the maximum in~\eqref{eq:z2} was legit, note that\footnote{
 %We know this is true because 
 %from the partition function we can extract the entropy.
 %consistent with Stirling formula? Can we do without? Yes.
-Now why is this equation true? It's a very fundamental point. This is true since we applied Stirling to the counting function, which comes from the fact that when you compute the partition function, it's the sum over all allowed configurations: $Z_N = \sum_{m \in \Omega} e^{-\mu N(m)}$. Let's classify these terms according to the value of $N$. Recall density $\rho$ is just number of particles per volume: $N/ |\Lambda|$. Let's write $N(m) = \rho\cdot |\Lambda|$. Thus we can rewrite $Z_N = \sum_{\rho_{1/|\Lambda|}} e^{-\mu \rho |\Lambda|}e^{|\Lambda|s(\rho)} = \sum_{\rho_{1/|\Lambda|}} e^{|\Lambda|(s(\rho) - \mu \rho)}$. $\rho \in [0, 1]$ and we discretize over $1/|\Lambda|$. As we saw before, we use the maximum because when we deviate a small amount from the maximum, a \textbf{slight drop}, all terms which are $\epsilon$ away, contribute an entirely negligible amount. 
+
+%comment: This is essentially the same as the series of equations~\eqref{eq:s2}.
+%Now why is this equation true? It's a very fundamental point. This is true since we applied Stirling to the counting function, which comes from the fact that when you compute the partition function, it's the sum over all allowed configurations: $Z_N = \sum_{m \in \Omega} e^{-\mu N(m)}$. Let's classify these terms according to the value of $N$. Recall density $\rho$ is just number of particles per volume: $N/ |\Lambda|$. Let's write $N(m) = \rho\cdot |\Lambda|$. Thus we can rewrite $Z_N = \sum_{\rho_{1/|\Lambda|}} e^{-\mu \rho |\Lambda|}e^{|\Lambda|s(\rho)} = \sum_{\rho_{1/|\Lambda|}} e^{|\Lambda|(s(\rho) - \mu \rho)}$. $\rho \in [0, 1]$ and we discretize over $1/|\Lambda|$. As we saw before, we use the maximum because when we deviate a small amount from the maximum, a \textbf{slight drop}, all terms which are $\epsilon$ away, contribute an entirely negligible amount. 
 %Hence 
 %\[
 %\max_{0\le \rh\le 1}[s(\rh) - \mu\rh] = 1+e^{-\mu}
@@ -89,6 +96,7 @@ s'(\rh) = -\ln \rh +\ln (1-\rh) - \mu \implies \fc{\rh}{1-\rh}=e^{-\mu}.
 \]
 We can use this to solve for $\rh$ and find $s^*(\mu)$ (do this yourself).
 %Solving gives $\fc{\rh}{1-\rh}=e^{-\mu}$. 
+
 In general, a micro-canonical ensemble specifies all the conserved quantities: Particles, energies, and whatever else there is. The grand canonical ensemble also generalizes by changing the factor to $e^{-\mu N} e^{\be H}$.
 Such factors are referred to as \ivocab{Gibbs factors} %states
 or Gibbs measures.
@@ -113,8 +121,7 @@ A function on $\R^k$ is \ivocab{concave} if for any $x_0,x_1\in \R^k$, $0\le \la
 F(\la x_1+(1-\la)x_0)\geq \la F(x_1)+(1-\la) F(x_0).
 \]
 For a \ivocab{convex} function, the same inequality with the sign flipped holds. A negative convex function is concave. 
-Concavity (convexity) means if you draw a chord between two points, it will lie below (above) the curve.
-``As Richard Feynmann pointed out, getting the sign right is the hardest thing.''
+Concavity (convexity) means if you draw a chord between two points, it will lie below (above) the curve.\footnote{``As Richard Feynmann pointed out, getting the sign right is the hardest thing.''}
 \end{df}
 %A concave curve frowns.
 
@@ -159,7 +166,14 @@ For (1) note that concavity implies that the slope of the line between $x,x+\ep$
 \ig{images/2-1}{.25}
 
 %The slope of the line between $x,x-\ep$ is decreasing as $\ep\to 0^-$.
-To prove (3), consider the graph of the derivative $F'(x + 0)$. It's a monotone decreasing function which starts somewhere and goes down. It may actually decrease by steps. A nice thing about monotone steps is that a sum of any uncountable collection of nonzero numbers is $\infty$.\footnote{More rigorously, for every nonzero interval $[F'(x+0),F'(x-0)]$, we can associate with it a rational number. Then note $\Q$ is countable. } If you have a function which decreases by steps, the total collection of discontinuity points has to be countable. The total sum of the drops is finite, which implies that the number of drops is actually finite. At points where there is a continuity, they agree. They only disagree at points of discontinuity. Since we have summable jumps, the collection of points of discontinuity is at most countable.
+To prove (3), consider the graph of the derivative $F'(x + 0)$. It's a monotone decreasing function: it starts somewhere and goes down. 
+%Rewrite
+At points where $F'(x+0)$ is continuous, we have $F'(x+0)=F'(x-0)$. The discontinuities, or ``steps," are the points where $F'(x+0)\ne F'(x-0)$. Now we use the fact that the sum of any uncountable collection of nonzero numbers is $\infty$. 
+Applying this to the steps, we find that the number of steps is countable, i.e., the total collection of discontinuity points has to be countable.\footnote{More rigorously, for every nonzero interval $[F'(x+0),F'(x-0)]$, we can associate with it a rational number. Then note $\Q$ is countable.}
+%Hence, if you have a function which decreases by steps, the total collection of discontinuity points has to be countable.
+%It may actually decrease by steps. A nice thing about monotone steps is that a sum of any uncountable collection of nonzero numbers is $\infty$.\footnote{More rigorously, for every nonzero interval $[F'(x+0),F'(x-0)]$, we can associate with it a rational number. Then note $\Q$ is countable. } If you have a function which decreases by steps, the total collection of discontinuity points has to be countable. %The total sum of the drops is finite, which implies that the number of drops is actually finite. 
+%This is FALSE: it can be countable.
+%At points where there is a continuity, they agree. They only disagree at points of discontinuity. Since we have summable jumps, the collection of points of discontinuity is at most countable.
 \footnote{The set of discontinuities can still be devilishly dense, ex. all the rational numbers. In physics it used to be thought that weird functions with Cantor-like sets of discontinuties could not occur, but there are materials whose free energy discontinuities are dense in certain areas.}
 
 \ig{images/2-2}{.25}
