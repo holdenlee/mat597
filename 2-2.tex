@@ -55,7 +55,6 @@ For every function $f:\Om\to \R$ assigning a real number to each configuration, 
 \an{f}_{N,n}^{\text{Can}} = \fc{\sum_{n\in \Om} \one[n_x=N] f(n)}{\sum_{n\in \Om} \one[\sum n_x=N]}.
 \]
 \end{df}
-
 The ensemble we will focus on for this course is the grand canonical ensemble. 
 
 \begin{df} Grand canonical ensemble. \\
@@ -134,9 +133,9 @@ The implication is that if you slightly change the density, the number of config
 
 What is the probability of observing $k$ particles in the small box given $n$ in the big box?
 \bal
-\Pj(n_{\La}) &\approx \fc{e^{|\La^c|s\pf{N-k}{|\wt \La| - |\La|}}}{C}\\ %\quad \rh=\fc{N}{|\wt{\La}|}
+\Pj(n_{\La}) &\approx \fc{e^{|\La^c|s\pf{N-k}{|\wt \La| - |\La|}}}{Z} %\quad \rh=\fc{N}{|\wt{\La}|}
 \end{align*}
-where $C$ is a normalizing constant. The probability is propotional in exponent to the volume of the complement multiplied times the entropy of the density, which we saw in the exercise above. Then we re-write the density of the small box in terms of the overall density: 
+where $Z$ is a normalizing constant. The probability is propotional in exponent to the volume of the complement multiplied times the entropy of the density, which we saw in the exercise above. Then we re-write the density of the small box in terms of the overall density: 
 \bal
 \fc{N-k}{|\wt\La|-|\La|}&=\rh - \ub{\pa{\rh - \fc{N}{|\wt \La | - |\La|}}}{\to 0 \text{ independent of $k$}} -
 \fc{k}{|\wt\La|-|\La|}
