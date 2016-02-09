@@ -1,7 +1,245 @@
 
-\blu{2-9-16}
+\blu{2-9-16: Today we'll talk about Gibbs states: definition, variational principle, and relations to thermodynamic foundations.}
 
-\section{A variational characterization of Gibbs States} 
+\begin{thm}[Jensen's inequality]
+\index{Jensen's inequality}
+Let $\rh(dx)$ be a probability measure on $\R$ ($\R^d$) with finite expectation $\int |X| \rh(dx)<\iy$, and let $F:\R\to \R$ be a concave function. Then
+\[
+\int F(X)\rh(dx) \le F\pa{\int X\rh(dx)}.
+\]
+\end{thm}
+To remember this, draw a picture. Consider the case where the measure is concentrated on two points. The interpolated value $\int F$ is less than the function value $F(\int)$. (In the case of two points, this is the definition of Jensen.)
+
+\ig{images/3-1}{.25}
+
+\begin{proof}
+Let $\an{X} = \int X\rh(dx)$. Take any tangent to $F$ at $\an{X}$. 
+Note that $F$ may not be differentiable, so take the line to have slope $F'(\an{X}+0)$.
+%Note that $F$ may not be differentiable, so by this we mean take a line passing through $(\an{X},F(\an{X}))$ with slope
+%\[
+%F'(\an{X}+0) \le \mu \le F'(\an{X}-0).
+%\]
+%Then for all $x$, $F(x)$
+The first inequality~\eqref{eq:jensen1} follows from concavity.
+\ig{images/3-2}{.25}
+Integrate and note that $F(\an{X})$ is constant to get~\eqref{eq:jensen2}.
+\begin{align}
+\llabel{eq:jensen1}
+F(X) &\le F(\an{X}) + (X-\an{X}) F'(\an{X}+0)\\
+\llabel{eq:jensen2}
+\int F(X)\rh(dx)& \le \ub{F(\an{X})}{\int \rh(dx)=1} + \ub{0}{\int [X-\an{X}]\,\rh(dx)=0}.
+\end{align}
+\end{proof}
+This theorem is elementary but very useful. 
+
+\section{Basic setup for statistical mechanics}
+%The basic setup for statistical mechanics is as follows. 
+
+The basic setup consists of... 
+
+\begin{enumerate}
+\item
+A \textbf{lattice or a homogeneous graph} like $\Z^d$. %Often I'll use this as an example.
+It will be important that for $\La_L=[-L,L]^d$, 
+\beq{eq:bdary-ratio}
+\fc{|\pl \La_L|}{|\La_L|} \xra{L\to \iy} 0.
+\eeq
+
+Here $|\cdot|$ means the size in terms of number of points (it doesn't matter much how you count---e.g. whether you count just the points on the edge, or adjacent too, etc.). \eqref{eq:bdary-ration} says when you chop space into regions, the boundary plays a small role. This is good becase we should be talking about extensive quantities.
+\item
+\vocab{Collection of local variables} like $\{n_x\}$ taking values in 0, 1, or $\{\si_x\}$ taking values in $\pm1$, magnetizations, etc.
+%magnetization, other value of interest
+\item
+An extensive \ivocab{energy function}, defined on finite subsets. 
+%interesting things happen in the infinite limit.
+%Associate energy with finite subsets. 
+For example, 
+\[
+H_{\La}(\si)=-\sum_{(x,y)\sub \La, |x-y|\le r}%\int_{x-y} 
+\si_x\si_y - h\sum_{x\in \La} \si_x.
+%HL: not sure about this.
+\]
+This is over a finite range; we can also consider unbounded ranges with some decay.
+
+Here there are only pairwise interactions, but more generally, there can be interactions between more variables: 3, 4... Typically the interactions are translation invariant. The general equation is
+\[
+H_{\La}(\si) = \sum_{A\sub \Z^d, \diam(A)\le R} K_A(\si),
+\]
+where $K_A(\si)$ depends on $\si_{\upharpoonright A}$ ($\si$ restricted to $A$), and are shift covariant.
+
+%finite range.
+\item
+%reference probability distribution.
+A \vocab{reference a-priori (probability) measure} $\rh_0(d\si)$ (a probability distribution with respect to which we integrate) on the configuration space $\Om_\La$ ($=\{-1,+1\}^{\Z^d}$).
+
+For example, $\rh_0(d\si)$ could be the product measure where $\{\si_x\}$ are iid variables. (Think of a system at high temperature.)\footnote{Note that it makes sense to talk about e.g. an infinite number of coin flips. There is such a thing as an infinite product of probability measures. In an infinite product space, the result of any finite collection is independent.  Any single value has probability 0.}\footnote{How does the Declaration of Independence go? ``We hold these truths to be self-evident... inalienable rights..." The definition of person is time-dependent. But there is a reference measure, individuals are treated equally. That's how we start in statistical mechanics. E.g. Every spin configuration gives equal value. If the spins are continuous, what would be a good starting point? Perhaps they are independently distributed on the sphere.}
+
+We will also allow measures which are not probability measures---normalization may be ``part of the game."
+
+Particle configurations are given by specifying locations and momenta. We can chop space into boxes, and specify the number of particles in each box, and their positions and momenta. The starting point is the Liouville measure, which is invariant under time evolution by the Hamiltonian.
+\end{enumerate}
+
+\subsection{Gibbs equilibrium measure}
+\begin{df}\llabel{df:gibbs-eq}
+The finite-volume \ivocab{Gibbs equilibrium measure} at temperature $T=\be^{-1}$ is 
+\beq{eq:gibbs-eq}
+\text{Prob}(d\si) = \fc{e^{-\be H_{\La}(\si)}}{Z_\La} \rh_0(d\si_{\La}).
+\eeq
+Here $Z_{\La}$ is the normalizing (partition) function
+\beq{eq:zla}
+Z_{\La}(\be) = \int e^{-\be H_\La(\si_\La)} \rh_0(d\si_A).
+\eeq
+\end{df}
+This is a \ivocab{generating function} because taking the derivatives we can learn about the distribution of the random variable.
+
+The Gibbs equilibrium measure is the uniform measure %by tilting it with 
+multiplied by the Gibbs factor. Here, $\be$ is a factor corresponding to the inverse of the \ivocab{temperature}.
+
+\begin{itemize}
+\item
+When $\be=0$, local variables are independently distributed. We have chaos; all states are equally likely.
+\item
+When $\be$ cranked up, i.e., temperature is lowered, the probability distribution becomes more concentrated (near the ``ground state"). When $\be=\iy$, the distribution becomes concentrated on configurations which minimize the energy.
+\end{itemize}•
+We will see that the Gibbs equilibrium measure is the distribution of a system at thermal equilibrium at temperature $T$. Why is that so and what is the relation to microcanonical ensemble?
+
+We will try to understand the structure of these measures and the phase transition they manifest.
+
+\subsection{Introduction to the Ising model}
+
+In biology, they study Drosophila, the fruit fly. Studying this simple organism tells us a lot.
+The Ising model is the Drosophila of statistical physics. What you learn from it extrapolates to many other systems, but not everything.
+
+%At low configurations, the configurations settle close to the ground state. 
+
+Consider the \ivocab{Ising model} on $\Z^d$,
+\[
+H_\La(\si) = -\rc 2\sum_{|x-y|=1} J \si_x\si_y - h\sum_{x\in \La} \si_x, \qquad J\ge 0.
+\]
+At $T=0,\be=\iy$, the state with all $+$'s and the state with all $-$'s are equally likely.
+There is no continuous way to go from all spins $+$ to all spins $-$.
+%analytic in finite volume may have nonanalytic limits.
+%Nontrivial statement that the Gibbs function is analytic in $x$ for $h$ nonzero. Another statement, one of the general things you learn in statistical mechanics, is that for $H=0$ this is an analytic function even after you take the infinite limit. 
+For nonzero, analytic even after take infinite limit.
 
 
-\section{First order phase transitions}
+However, the analyticity would fail, and in fact you would find a line of first order transitions at $H=0$ up to some temperature $T_c$. 
+What happens is a natural extension at zero temperature and infinite $\be$. You go from configuration that is all $+$ to all $-$ going through a discontinuity. 
+The Gibbs state---the trivial distribution at this temperature---comes in 2 flavors (at least, other possibilities can hold): The state would remember whether the magnetic field $H$ was turned to 0 from the positive or negative side. This is a beautiful example of what you observe in magnets. 
+
+The floor under the Atlantic ocean has ferromagnetic rocks. It was detected that the direction of magnetization changes. When you cool a ferromagnet (ferromagnets develops magnetic moments), which way it points is affected by the prevalent external field. According to prevailing wisdom, as the sea floor was expanding, the Earth's magnetic moment flipped. The rocks have encoded in them the direction of magnetization when they were cooled past this critical temperature. This phenomenon is called residual magnetization.
+%There is a phenomenon of residual magnetization which remembers how it got to this state.. 
+This phenomenon is eliminated when you raise to high enough temperature; then the state becomes the analytic. 
+%infinite volume measure. 
+We will discuss more about this phase transition, including behavior near the critical point, later.
+
+This refers to the infinite volume limit of such measures. In finite volume, everything is analytic. 
+At 0 temperature the configuration is all $+$, but at small temperature, thermal fluctuations occur. Unlike when $\be=\iy$, when $\be$ is finite, every local configuration gets some nonzero weight. Even thoguht there is a preference for agreement, the system exhibits fluctuations. Among the $+$'s there will be islands of minority spins. As temperature increase, minority fluctutions increase to a point where each spin tries to agree both with its neighbors and with magnetic field. When there is a lot of fluctuation among its neighbors, the effect of magnetic field is not so significant. That's how this discontinuity evaporates when you increase temperature.
+
+\subsection{Entropy, energy, and free energy}
+\begin{df}
+Let $\rh_0$ be a reference measure.
+\begin{enumerate}
+\item
+For any probability measure $\mu$ on $\Om_{\La}$\footnote{that is absolutely continuous with respect to $\rh_0$}, we can write it in terms of $\rh_0$,
+\[
+\mu(d\si_\La) = g(\si) \rh_0(d\si_\La).
+%ratio of the measures
+\]
+The function $g(\si)$, the ``ratio" of the measures, is called the \ivocab{Radon-Nikodym derivative}, and denoted by
+\[
+g(\si) = \fc{\de\mu}{\de\rh_0}.
+\]
+%trace of density times log of density.
+%canonical symbol is Radon-Nikodym derivative.
+\item
+Define the \vocab{entropy} of $\mu$ as
+\[
+S_\La(\mu|\rh_0) = -\int g(\si_\La)\ln g(\si_\La) \rh_0(d\si_\La).
+\]
+\item Define the \ivocab{energy content} of $\mu$ as 
+\[
+E(\mu) = \int H_{\La}(\si_{\La}) \ub{g(\si_{\La})\rh_0 (d\si_\La)}{\mu(d\si_A)}.
+\]
+
+\end{enumerate}•
+\end{df}
+%expected value of energy with respect to measure, entropy
+\begin{thm}\llabel{thm:gibbs-eq}
+For each $\be\in [0,\iy)$, the Gibbs equilibrium measure~\eqref{eq:gibbs-eq} is the unique minimizer of 
+\[
+\be F_\La(\mu) := \be E_{\La}(\mu) - S_\La(\mu|\rh_0),
+\]
+equivalently, the unique maximizer of $S_{\La}(\mu|\rh_0) - \be E_{\La}(\mu)$.
+%negative temperature?
+\end{thm}
+\begin{df}
+The quantity $\be F_{\La}(\mu)$ is called the \vocab{free energy}.
+\end{df}
+We'll keep $\be$ positive, but we can make sense of some of the theory when $\be$ is negative. Sometimes we can even talk about $\be$ complex!
+%temperature is positive, otherwise call a doctor.
+
+The second law of thermodynamics says that nature ``maximizes entropy under constraints." %Except at the thermal size, 
+Here we're maximizing entropy minus energy. How to reconcile this? 
+%it's constrainted in the microcanonical ensemble, not constrained in the grand canonical ensemble. 
+There is some reservoir where the system trades with the entropy. As it trades off energy with the reservoir, the energy of the reservoir is affected. It is the effect of the entropy of the reservoir that the system has energy $E$. What the system is really maximizing is the entropy of the \emph{system and reservoir}.
+%nice to think in terms of entropy
+
+The free energy $\be F_{\La}(\mu)$ is the energy you get from the system when in thermal contact.\footnote{It's funny to talk about the energy crisis: we never run out of energy. The problem is that we have too little \emph{free} energy, we have too much entropy.}
+
+\begin{proof}[Proof of Theorem~\ref{thm:gibbs-eq}]
+Let $\rh_\be (d\si) = e^{-\be  H_\La(\si)}{Z_\La(\Ga)} \rh_0(d\si)$. Let $\psi(x)=-x\ln x$  which looks like the following.
+\ig{images/3-3}{.1}
+We bound the entropy using Jensen's inequality with $X= \fc{\de\mu}{\de \rh_\be}$,
+\bal
+S(\mu|\rh_0)&=-\int \fc{\de\mu}{\de\rh_\be} \ln \pf{\de\mu}{\de\rh_\be} \,\rh_\be (d\si_\La)\\
+& =\int \psi\pa{\fc{\de\mu}{\de\rh_\be}(\si_\La)}\rh_\be(d\si_\La)\\
+& \le \psi\pa{\an{\fc{\de\mu}{\de\rh_\be}}}=\psi(1)=0
+\end{align*}
+%average of concave function is below function at the midpoint
+%using $\an{X} = \int \fc{\de\mu}{\de \rh_\be}$, $\int \mu(d\si_\La)=1$, with 
+Equality holds if and only if 
+\[
+\fc{\de\mu}{\de\rh_\be} = \an{\fc{\de\mu}{\de\rh_\be} }= 1
+%evaluate what this means you end up with this expression.
+\]
+where 
+\[
+\fc{\de\mu}{\de\rh_\be} = \fc{\de \mu}{\de \rh_0} \fc{Z_\La(\be)}{e^{-\be H_\la(\be)}}
+\stackrel{\text{claim}}= S(\La)(\mu|\rh_0)-\be E_{\La}(\mu).
+\]
+%take the log
+To see the claim, note that the LHS is
+\bal
+&=\int \fc{\de\mu}{\de\rh_\be} \ln \pf{\de\mu}{\de\rh_0} \rh_\be(d\si)
++ \ln Z_\La(\be) \ub{\int \fc{\de\mu}{\de\rh_\be}\rh_\be(d\si)}{=1} - \be \ub{\int \fc{\de\mu}{\de\rh_\be}H_{\La}(\si) \rh_\be (d\si)}{H_\La(\si) \mu(d\si_\La)}
+%energy function, last \de/\de. same as 
+%changes of notation, need experience.
+\end{align*}
+\fixme{This isn't quite right. I will post a complete derivation later. Change of variables?}
+\end{proof}
+%By Jensen's inequality, the entropy is maximized when $S_{\La}(\mu|\rh_c)$. %, so it's uniquely maximized when equal to thermal state. 
+
+What comes out? The thermal states are the states which maximize the difference. This allows to quantify the difference. When $\be$ is small, the energy plays a minor role. The states maximize the entropy. As the temperature descreases and $\be$ increases, $\be E_\La(\mu)$ in the variational principle plays an increasing role; the energy has to be low; $\be$ controls how low it has to be. 
+
+What's coming next? We'll pay attention to the factor $\ln Z_\La(\be)$. (Recall $Z_\La(\be)$ was defined in~\eqref{eq:zla}.) We will calculate 
+\[\lim_{\La \nearrow\Z^d} \rc{|\La_L|} \ln Z_{\La}(\be).\]
+%This ($S-\be E$) would be
+%\[
+%Z_{\La}(\be) = \int e^{-\be H_\La(\si)} \rh_0(\de).
+%\]
+The relevant contribution comes only from configurations which are at an energy where the entropy is maximized. 
+
+Entropy appears in many guises. We talked about entropy over a measure, but you can also talk about the entropy function of energy; the contribution from those particles would be $e^{S(E)}e^{-\be E}$. Now it's just a function of the energy. This function picks up the Legendre transform of the entropy.
+%It picks up the Legendre transform... as a function of energy. 
+
+ %the contribution comes is $e^{-\
+
+In the Ising model, there is a discontinuity in the nature of the states. Differentiability of the free energy function breaks down across the line. There is an interplay between convexity properties of thermodynamic functions. The left and right derivative---the mean values of the magnetization---corresponds to 2 different limiting values, that are the two different magnetizations depending on which way you arrive. %Concave functions of parameters.
+
+Statistical mechanics translates into the nonuniqueness of Gibbs equilibriums state. Statistical mechanics provides much more information because it looks at the joint distribution of all these variables, whereas thermodynamics just fixes attention on a few relevant parameters. We will clarify this relation. 
+We will clarify this and then discuss techniques to find the phase transitions.
+%\section{A variational characterization of Gibbs States} 
+
+%\section{First order phase transitions}
+
