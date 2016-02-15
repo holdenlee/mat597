@@ -72,7 +72,7 @@ Now, we derive a useful relation for  $\rho_{\beta}(d\sigma)  = \frac{e^{-\beta 
 \beq{eq:2-11-2}
 S(\mu | \rho_0) - \beta \int H(\sigma) \mu d(\sigma) = \ln(Z) + S(\mu | \rho_{\beta})
 \eeq
-With a bit of political license, you may refer to this as the amount of free energy: It's $\beta$ times the entropy. We mean energy in that particular state. 
+With a bit of political license, you may refer to this as the amount of free energy: It's $\beta$ times the entropy. %We mean energy in that particular state. 
 %FIXME
 \begin{proof}
 %The LHS $- \ln(Z) =$
@@ -87,67 +87,76 @@ Now we must show this is the same thing as $S(\mu | \rho_{\beta})$. We can look 
 \]
 by definition. 
 \end{proof}
-This is rather cool: It says a thermodynamic flavored quantity is equal to the relative entropy with respect to the Gibbs-measure plus a positive constant. Equality holds only when we take entropy with respect to the Gibbs state. %FIXME
+This is rather cool: It says a thermodynamic flavored quantity is equal to the relative entropy with respect to the Gibbs-measure plus a positive constant. %Equality holds only when we take entropy with respect to the Gibbs state. %FIXME
 
 So with this we have proof of what we said last time.
 
 \begin{thm*}[Theorem~\ref{thm:gibbs-eq}]
 The (finite volume) \vocab{Gibbs equilibrium} measure $\rho_{\beta}(d\sigma)$ is the unique maximum of 
 \[
--\beta F(\mu) := S(\mu|\rho_0) - \rho \int H(\sigma) \mu d\sigma
+-\beta F(\mu) := S(\mu|\rho_0) - \be \int H(\sigma) \mu (d\sigma)
 \]
 \end{thm*}
+\begin{proof}[Proof of Theorem~\ref{thm:gibbs-eq}]
+By \eqref{eq:2-11-2}, this equals $\ln Z + S(\mu|\rh_\be)$. $S(\mu|\rh_\be)$ is maximized for $\mu=\rh_\be$.
+\end{proof}
+
 The point was to show that this measure would be dominated by the Gibbs state. It's useful to know when things are maximum. 
 
-This correction factor, which is very typical in thermodynamics, in situations where you have conservative dynamics, the energy of a measure in a given state is changed only due to interaction with a heat path, some other large system at some fixed temperature which can exchange energy. Then the fluctuations of the system energy are affectedby fluctuations in the reservoir. This second term corresponds to the state of the universe if your state is at state $\mu$. And the fact that the Gibbs state is where this is maximal is a reflection of the second law of thermodynamics. The fact is that the measure $\rho_0$ is not just any measure, it's a natural notion of an \textit{a priori} measure which is what the system typically does. 
+%This correction factor, which is very typical in thermodynamics, in situations where you have conservative dynamics, the energy of a measure in a given state is changed only due to interaction with a heat path, some other large system at some fixed temperature which can exchange energy.
+This kind of correction factor is typical in thermodynamics. It appears in dynamics with some kind of conservation law, where the energy changes only due to interaction with a heat path or some other large system at some fixed temperature which can exchange energy. 
+Then the fluctuations of the system energy are affectedby fluctuations in the reservoir. This second term corresponds to the state of the universe if your state is at state $\mu$. The fact that the Gibbs state is where this is maximal is a reflection of the second law of thermodynamics. The fact is that the measure $\rho_0$ is not just any measure; it's a natural notion of an \textit{a priori} measure which is what the system typically does. 
 
-You may want to think of the statistical mechanics of a regular system like a lattice. You may think to specify the dynamics by saying the number of particles in each box, and let everything flow freely. What would be a natural measure $\rho_0$. Well you want a probability measure of the system that is invariant with respect to state. You could just take the product $\frac{1}{N!}\prod dq_i \cdots dq_j$: It's the classical measure which is stationary under any Hamiltonian evolution regardless of the state function. Of course, people working in probability theory are aware of the Bayesian approach to probability, where some notion of what \text{a priori} measure is is fundamental. 
+You may want to think of the statistical mechanics of a regular system like a lattice. We can specify the dynamics by specifying the number of particles in each box, and let everything flow freely. What would be a natural measure $\rho_0$? We want a probability measure of the system that is invariant with respect to state. You could just take the product $\frac{1}{N!}\prod dq_i \cdots dq_j$: This is the classical measure which is stationary under any Hamiltonian evolution regardless of the state function. Of course, people working in probability theory are aware of the Bayesian approach to probability, where some notion of what \text{a priori} measure is is fundamental. 
 
 
-\subsection{Large deviation theory}
+\section{Large deviation theory}
 
-In fact, you remember we talked about \vocab{large deviation theory}. For instance, consider spin states: 
+We've touched on \vocab{large deviation theory} (Definition~\ref{df:ldp}). For instance, consider spin states: 
 \[
 \sigma_x = 
 \begin{cases}
-+1 & p = 1/2 \\
--1 & p = 1/2
++1, & w.p.\, \rc2 \\
+-1 & w.p.\,\rc2.
 \end{cases}
 \]
-Let's take a space $\Lambda$ with some finite volume. The empirical average is $\frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x$. The Law of Large Numbers says 
+Let's take a space $\Lambda$ with some finite volume. The empirical average spin is $\frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x$. The Law of Large Numbers says 
 \[
-\mathbb{P}\left(\left|\frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x - \langle \sigma \rangle \right| > \epsilon \right) \to 0
+\mathbb{P}\left(\left|\frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x - \langle \sigma \rangle \right| > \ep \right) \to 0
 \]
-as $|\Lambda| \to \infty$. Significant deviation from the mean $\langle \sigma \rangle$ tends to zero. So we might ask now what the probability that the empirical average is close to any other value $m$ is close to $0$? 
+as $|\Lambda| \to \infty$. Significant deviation from the mean $\langle \sigma \rangle$ tends to zero. So we might ask now: what id the probability that the empirical average is close to any other value $m$ is close to $0$? 
 \[
-\mathbb{P}\left(\left|\frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x - m\right| \leq \epsilon \right) \approx e^{-a_n I(m)}
+\mathbb{P}\left(\left|\frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x - m\right| \leq \ep \right) \approx e^{-a_n I(m)}
 \]
-In this situation, $a_n = |\Lambda_n|$, where we are taking a sequence of increasing volumes. I am a bit ambiguous here, since for our purposes, these constants will be proportional to the volume. In a book about large deviation theory, they would be formulating things in a more general way. It goes without saying the volume is very large in the limit we are discussing, so this is a very tiny probability. What we mean by approximate is also a little ambiguous here: it means when you take a log of the RHS, you'll get the exponent in the probability. For us, the $I(m)$ is nothing more than the entropy corrected by a constant. Again, we use the $I$ notation to agree with large deviation books. 
+In this situation, $a_n = |\Lambda_n|$, where we are taking a sequence of increasing volumes. I am a bit ambiguous here, since for our purposes, these constants will be proportional to the volume. A book on large deviation theory would formulate things in a more general way. It goes without saying the volume is very large in the limit we are discussing, so this is a very tiny probability. What we mean by approximate is also a little ambiguous here: it means when you take a log of the RHS, you'll get the exponent in the probability. For us, the $I(m)$ is nothing more than the entropy corrected by a constant. Again, we use the $I$ notation to agree with large deviation books. 
 
-You never ask for a precise value of $m$ since the probability is typically $0$, unless it's a multiple of $|\Lambda|$, instead you have some tolerance level $\epsilon$. Now how to prove this? In the first lecture we used the Stirling formula, and derived it by hand. But I would now like to present a method to conclude this kind of result. These variables are not independent variables, they might be correlated like spin states. 
+You never ask for a precise value of $m$ since the probability is typically $0$, unless it's a multiple of $|\Lambda|$, instead you have some tolerance level $\ep$. Now how to prove this? In the first lecture we used the Stirling formula, and derived it by hand. But I would now like to present a method to conclude this kind of result. These variables are not independent variables, they might be correlated like spin states. 
 
 The validity of a \vocab{large-deviation principle} can often be deduced using the following theorem: 
-\begin{thm}  (G{\"a}rtner-Ellis). \\
+\begin{thm}[G{\"a}rtner-Ellis]
 Assume that for a sequence of random variables $E$, the limit
 \[
 Q(\lambda) = \lim_{n \to \infty}\frac{1}{a_n} \ln \mathbb{E}\left(e^{\lambda E}\right)
 \]
 exists and is finite for all $\lambda$ (here, $a_n$ is the volume).
-We will also use more generally $X$ as a vector of random variables: Then, the expression becomes
+We will also use more generally $X$ as a vector of random variables, in which case define
 \[
-Q(\lambda) = \lim_{n \to \infty}\frac{1}{a_n} \ln \mathbb{E}\left(e^{\lambda \cdot X}\right)
+Q(\lambda) = \lim_{n \to \infty}\frac{1}{a_n} \ln \mathbb{E}\left(e^{\lambda \cdot X}\right).
 \]
 Then for any closed set $F$ and open set $G$: 
-\[
-\lim_{n \to \infty} \frac{1}{a_n} \ln\mathbb{P}(E \subset F) \leq -\text{inf}_{x \in F} Q^*(x)
-\]
-\[
-\lim_{n \to \infty} \frac{1}{a_n} \ln\mathbb{P}(E \subset G) \geq -\text{inf}_{x \in F} Q^*(x)
-\]
-with $Q^*(x) = \text{sup}_x \left[\lambda x - Q(\lambda)\right]$ and $F$ is the set of exposed points of $Q^*$. 
+\bal
+\lim_{n \to \infty} \frac{1}{a_n} \ln\mathbb{P}(E \in F) &\leq -\inf_{x \in F} Q^*(x)\\
+\lim_{n \to \infty} \frac{1}{a_n} \ln\mathbb{P}(E \in G) &\geq -\inf_{x \in G'} Q^*(x)
+\end{align*}
+%check this
+with $Q^*(x) = \text{sup}_x \left[\lambda x - Q(\lambda)\right]$ and $G'$ is the set of \ivocab{exposed points} of $Q^*$. 
 \end{thm}
 
-We would like to consider systems of large volume, and the number of points $a_n = |\Lambda_n|$. Let $E_n$ be something like the total energy in the volume $\Lambda_n$ with configuration $\sigma$: $E_n = H(_{\Lambda_n}(\sigma))$. Or rather, we can take the total energy in the box and say it's the volume times the energy per volume: $E_n = a_n \cdot x$ ($x = \frac{E_n}{a_n}$ is the energy density). Let us take the mean value of the total energy in the $n^{th}$ box, and estimate how large it should be should a large deviation principle apply. 
+We would like to consider systems of large volume. Let the number of points be $a_n = |\Lambda_n|$. Let $E_n$ be  %something like 
+the total energy of configuration $\sigma$ in the volume $\Lambda_n$ , 
+\[E_n = H_{\Lambda_n}(\sigma).\] 
+Alternatively, we can take the total energy in the box and break it down as the volume times the energy per volume, 
+$E_n = a_n \cdot x$, where $x = \frac{E_n}{a_n}$ is the energy density. We will calculate the mean value of the total energy in the $n^{th}$ box, and estimate how large it should be should a large deviation principle apply. 
 \[
 \mathbb{E} \left(e^{\lambda E_n}\right) = \int e^{\lambda x a_n} \mathbb{P}(E_n \in a_n dx)
 \] 
@@ -155,16 +164,17 @@ We want to reflect the fact that this probability is ridiculously small, as we s
 \[
 \int e^{a_n\left[ \lambda x - I(x)\right]}a_n dx
 \]
-In effect we are integrating $x$ over the exponential of a volume times some reasonable quantity. So when you take the logarithm of that and divide by the volume, $\frac{1}{a_n}\ln(\mathbb{E}(e^{\lambda E_n})) \approx \max_x \{\lambda x - I(x)\}$. And then you say, ``Ah, I know what this is - this is the Legendre transform of the rate function!''. So what you're really doing is picking the Legendre trasnform which is sensitive to the convex hull of the rate function. 
+In effect we are integrating $x$ over the exponential of a volume times some reasonable quantity. So when you take the logarithm of that and divide by the volume, 
+\[\frac{1}{a_n}\ln(\mathbb{E}(e^{\lambda E_n})) \approx \max_x [\lambda x - I(x)].\] Seeing this, you say, ``Ah, I know what this is---this is the Legendre transform of the rate function!''. What you're really doing is taking the Legendre trasnform which is sensitive to the convex hull of the rate function. 
 
-Suppose there is a certain interval where there are few configurations in a fallen entropy. What would contribute to the expected value. Well in that situation, there will be competition between situations: The volume may decompose into situations where you have a small energy density for part of the volume and large energy density for the rest of the volume. So it averages to something larger: Thus the expected value of the partition function gives you information about the Legendre transform. This theorem tells you that if you want to learn about the function, you need to do the inverse Legendre transform. The Legendre transform has the property that you can recover the points of $I(x)$ on the convex hull of $I(x)$. 
+Suppose there is a certain interval where there are few configurations in a fallen entropy. What would contribute to the expected value? In that situation, there will be competition between situations: The volume may decompose into situations where you have a small energy density for part of the volume and large energy density for the rest of the volume. So it averages to something larger: Thus the expected value of the partition function gives you information about the Legendre transform. This theorem tells you that if you want to learn about the function, you need to do the inverse Legendre transform. The Legendre transform has the property that you can recover the points of $I(x)$ on the convex hull of $I(x)$. 
 
 Now what are ``exposed points of $Q^*(x)$''? Exposed points are points on the intersection of the convex hull and the original function. 
 
-We can learn about the thermodynamics of the system $\frac{1}{|\Lambda_n|}\ln(Z(\beta))$. Notions of convexity carry very nicely from the real line to general affine spaces. In that case, what you want to do for spin systems like this, is you may ask more detailed questions, like ``What is the probability of the energy for unit volume to be in some area $dE$, and the sum of the magnetization to be in some interval dm?''. Such things are typically governed by large deviation principles. 
+We can learn about the thermodynamics of the system $\frac{1}{|\Lambda_n|}\ln(Z(\beta))$. Notions of convexity carry very nicely from the real line to general affine spaces. In that case, what you want to do for spin systems like this, is to ask more detailed questions, like ``What is the probability that the energy for unit volume is in some area $dE$, and the sum of the magnetization is in some interval $dm$?''. Such things are typically governed by large deviation principles. 
 In order to answer these kinds of questions, you can just take the partition function as $Z_n = \mathbb{E}(e^{-\lambda \cdot X})$ where $X$ is the quantities you are interested in, and then you can just apply the multidimensional version of the theorem we just stated. 
 
-I would also post some homework about using the calculation we derived here instead of the Stirling inequality. 
+\blu{I would also post some homework about using the calculation we derived here instead of the Stirling inequality. }
 %At some point we will have to get a bit more formal about probability measures of products. 
 
 

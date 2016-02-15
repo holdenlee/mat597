@@ -187,40 +187,40 @@ There is some reservoir where the system trades with the entropy. As it trades o
 
 The free energy $\be F_{\La}(\mu)$ is the energy you get from the system when in thermal contact.\footnote{It's funny to talk about the energy crisis: we never run out of energy. The problem is that we have too little \emph{free} energy, we have too much entropy.}
 
-\begin{proof}[Proof of Theorem~\ref{thm:gibbs-eq}]
-Let $\rh_\be (d\si) = e^{-\be  H_\La(\si)}{Z_\La(\Ga)} \rh_0(d\si)$. Let $\psi(x)=-x\ln x$  which looks like the following.
-\ig{images/3-3}{.1}
-We bound the entropy using Jensen's inequality with $X= \fc{\de\mu}{\de \rh_\be}$,
-\bal
-S(\mu|\rh_0)&=-\int \fc{\de\mu}{\de\rh_\be} \ln \pf{\de\mu}{\de\rh_\be} \,\rh_\be (d\si_\La)\\
-& =\int \psi\pa{\fc{\de\mu}{\de\rh_\be}(\si_\La)}\rh_\be(d\si_\La)\\
-& \le \psi\pa{\an{\fc{\de\mu}{\de\rh_\be}}}=\psi(1)=0
-\end{align*}
-%average of concave function is below function at the midpoint
-%using $\an{X} = \int \fc{\de\mu}{\de \rh_\be}$, $\int \mu(d\si_\La)=1$, with 
-Equality holds if and only if 
-\[
-\fc{\de\mu}{\de\rh_\be} = \an{\fc{\de\mu}{\de\rh_\be} }= 1
-%evaluate what this means you end up with this expression.
-\]
-where 
-\[
-\fc{\de\mu}{\de\rh_\be} = \fc{\de \mu}{\de \rh_0} \fc{Z_\La(\be)}{e^{-\be H_\la(\be)}}
-\stackrel{\text{claim}}= S(\La)(\mu|\rh_0)-\be E_{\La}(\mu).
-\]
-%take the log
-To see the claim, note that the LHS is
-\bal
-&=\int \fc{\de\mu}{\de\rh_\be} \ln \pf{\de\mu}{\de\rh_0} \rh_\be(d\si)
-+ \ln Z_\La(\be) \ub{\int \fc{\de\mu}{\de\rh_\be}\rh_\be(d\si)}{=1} - \be \ub{\int \fc{\de\mu}{\de\rh_\be}H_{\La}(\si) \rh_\be (d\si)}{H_\La(\si) \mu(d\si_\La)}
-%energy function, last \de/\de. same as 
-%changes of notation, need experience.
-\end{align*}
-\fixme{This isn't quite right. I will post a complete derivation later. Change of variables?}
-\end{proof}
+%\begin{proof}[Proof of Theorem~\ref{thm:gibbs-eq}]
+%Let $\rh_\be (d\si) = e^{-\be  H_\La(\si)}{Z_\La(\Ga)} \rh_0(d\si)$. Let $\psi(x)=-x\ln x$  which looks like the following.
+%\ig{images/3-3}{.1}
+%We bound the entropy using Jensen's inequality with $X= \fc{\de\mu}{\de \rh_\be}$,
+%\bal
+%S(\mu|\rh_0)&=-\int \fc{\de\mu}{\de\rh_\be} \ln \pf{\de\mu}{\de\rh_\be} \,\rh_\be (d\si_\La)\\
+%& =\int \psi\pa{\fc{\de\mu}{\de\rh_\be}(\si_\La)}\rh_\be(d\si_\La)\\
+%& \le \psi\pa{\an{\fc{\de\mu}{\de\rh_\be}}}=\psi(1)=0
+%\end{align*}
+%%average of concave function is below function at the midpoint
+%%using $\an{X} = \int \fc{\de\mu}{\de \rh_\be}$, $\int \mu(d\si_\La)=1$, with 
+%Equality holds if and only if 
+%\[
+%\fc{\de\mu}{\de\rh_\be} = \an{\fc{\de\mu}{\de\rh_\be} }= 1
+%%evaluate what this means you end up with this expression.
+%\]
+%where 
+%\[
+%\fc{\de\mu}{\de\rh_\be} = \fc{\de \mu}{\de \rh_0} \fc{Z_\La(\be)}{e^{-\be H_\la(\be)}}
+%\stackrel{\text{claim}}= S(\La)(\mu|\rh_0)-\be E_{\La}(\mu).
+%\]
+%%take the log
+%To see the claim, note that the LHS is
+%\bal
+%&=\int \fc{\de\mu}{\de\rh_\be} \ln \pf{\de\mu}{\de\rh_0} \rh_\be(d\si)
+%+ \ln Z_\La(\be) \ub{\int \fc{\de\mu}{\de\rh_\be}\rh_\be(d\si)}{=1} - \be \ub{\int \fc{\de\mu}{\de\rh_\be}H_{\La}(\si) \rh_\be (d\si)}{H_\La(\si) \mu(d\si_\La)}
+%%energy function, last \de/\de. same as 
+%%changes of notation, need experience.
+%\end{align*}
+%\fixme{This isn't quite right. I will post a complete derivation later. Change of variables?}
+%\end{proof}
 %By Jensen's inequality, the entropy is maximized when $S_{\La}(\mu|\rh_c)$. %, so it's uniquely maximized when equal to thermal state. 
 
-What comes out? The thermal states are the states which maximize the difference. This allows to quantify the difference. When $\be$ is small, the energy plays a minor role. The states maximize the entropy. As the temperature descreases and $\be$ increases, $\be E_\La(\mu)$ in the variational principle plays an increasing role; the energy has to be low; $\be$ controls how low it has to be. 
+What is the consequence? The thermal states are the states which maximize the difference. This allows to quantify the difference. When $\be$ is small, the energy plays a minor role. The states maximize the entropy. As the temperature descreases and $\be$ increases, $\be E_\La(\mu)$ in the variational principle plays an increasing role; the energy has to be low; $\be$ controls how low it has to be. 
 
 What's coming next? We'll pay attention to the factor $\ln Z_\La(\be)$. (Recall $Z_\La(\be)$ was defined in~\eqref{eq:zla}.) We will calculate 
 \[\lim_{\La \nearrow\Z^d} \rc{|\La_L|} \ln Z_{\La}(\be).\]
