@@ -1,0 +1,130 @@
+\blu{2-18}
+
+%Thermodynamics limit
+
+Good references include David Ruelle and Friedli-Velenik (see the introduction).
+
+What is a thermodynamic limit? We would like to discuss systems of large volumes.
+%make more sense after we complete it.
+\begin{df}
+Let $\La(a) = \set{x\in \R^d}{0\le x_j\le a}$. (When we talk about the lattice, replace $\R^d$ with $\Z^d$.) Let $\La_n (a) = \La(a)+na$ where $n\in \Z^d$. (The shifts tile space by boxes of size $a$.)
+
+For any $\La\sub \R^d$, let 
+\bal
+N_a^+(\La) &= \ab{\set{n\in\Z^d}{\La_n(a) \cap \La \ne \phi}}\\
+N_a^-(\La)&=  \ab{\set{n\in\Z^d}{\La_n(a) \subeq \La}}.
+\end{align*}
+They are the number of cells needed to cover $\La$ and the number of cells completely inside $\La$, respectively.
+\end{df}
+%eventually every point is covered
+\begin{df}
+A sequence $\La_k$ converges to $\Z^d$ in the \ivocab{van Hove} sense if for all $0<a<\iy$,\footnote{Careful: we use subscripts here in a different sense than in the previous definition.}
+\begin{enumerate}
+\item
+$\La_k\to \Z^d$,
+\item
+$N_a^-(\La_k) \to \iy$,
+\item
+$\fc{N_a^+(\La_k)}{N_a^-(\La_k)}\to 1$ as $k\to \iy$. (This is equivalent to the surface-to-volume ratio $\fc{|\pl \La_k|}{|\La_k|}\to 0$.)
+\end{enumerate}
+\end{df}
+An example of a sequence violating (3) is a sequence of boxes with many ``arms." The arms have volume proportional to the whole volume; in the arms, the distance to the boundary is $O(1)$. We don't want shapes whose boundaries are on the order of the volume.
+
+%coast of britain
+%measure in terms of lattice units, not more than the total number of points. 
+It is important that the conditions hold for all $a$. %Thermodynamic limit.
+We will compute the free energy in regular cubes, and see that whatever we prove for regular cubes is valid for a sequence converging in the van Hove sense.
+%all volumes
+
+Define the partition function in a box $\La$ as 
+\[
+Z_{\La}^{\#}(\be,h) = \int_{\Om(\La)} e^{-\be H^{\#}_\La(\si_\La)}\rh_0(d\si_\La)
+\]
+where the $\#$ means we take into account the boundary conditions,
+\[
+H_{\La}^{\#}(\si_\La) = \sum_{A\subeq \La} \phi_A(\si_A) + \sumr{B\cap \pl \La\ne \phi}{\text{periodic terms}} \phi^{\#}_B(\si_A)
+\]
+Here, 
+\begin{itemize}
+\item
+we allow finite-range interactions at the boundary. 
+\item
+we also allow periodic (wrap-around) boundary conditions, e.g. a term to depend on a pair of one point on the far left and a point on the far right.
+%finite range
+\end{itemize}
+We define the \ivocab{pressure} in $\La$ as
+\[
+\psi_{\La}(\be, h,\ldots) = \rc{|\La|}\ln Z_{\La}
+\]
+(last time we defined this as $-\be F$).
+
+\begin{thm}
+For any Hamiltonian with a finite range translation invariant interaction,
+\[
+\lim_{k\to \iy}\psi_{\La_k}(\be, h) = \psi(\be, h)
+\]
+exists for any van Hove sequence $\La_k\to \Z^d$ and is independent of the boundary conditions.
+\end{thm}
+\begin{proof}
+Consider first $\La_k = \La(ka)$ where
+\[
+H_{\La(ka)} = \sum_{n, 0\le n_j< k} H_{\La_n(a)} + R_k
+\]
+where the sum gives the interactions within boxes, and the second term gives interactions at the boundary of the boxes.
+%R_k$ are interactions between boxes.
+We bound the total effect of the $R_k$ (the boundary corridors) to estimate $Z(ka)$. Here $r$ is the radius of interactions (the width of the corridors),
+\bal
+\ve{R_k}_{\iy} & \le C_r|\pl \La(a)| k^d\\
+Z_{\La(ka)} &= \int e^{-\be H_{\La(ka)}} \rh(d\si_{\La(ka)})\\
+(Z_{\La(a)})^{k^n}  e^{-C|\pl \La(a)|h^d}\le Z(ka)&\le Z_{\La(a)}^{k^n} e^{C|\pl \La(a)|k^d}\\
+%Z(ka)& \ge \\
+\rc{\La(ka)} \ln Z(ka) & = \rc{|\La(a)|}\rc{k^d} \ln Z(ka)\\
+\fc{\ln Z(a)}{\La(a)} - C_r \fc{|\pl \La(a)|}{|\La(a)|} \le 
+\rc{\La(ka)} \ln Z(ka) & \le \fc{\ln Z(a)}{\La(a)} + C_r \fc{|\pl \La(a)|}{|\La(a)|}
+%
+\end{align*}
+($C_r\propto r$, but the exact dependence is not so important.)
+%split - factorizes
+%Each cube contributes
+The log of the main term is proportional to the number of boxes. Dividing by the number of boxes, we are left with the following estimate.
+\[
+\ab{\rc{|\La(ka)|} \ln Z(ka) - \rc{|\La(a)|} \ln Z(a)}\le C_r \fc{|\pl \La(a)|}{\ab{\La(a)}}.
+\]
+(The partition function in the larger box, up to small error, is equal to the partition function in the smaller box.)
+For any $\ep>0$, choose $a$ such that $C_r \af{|\pl \La(a)|}{|\La(a)|}\le\ep$.  Then for all $k_1,k_2\in \N$, 
+%using this as a yarstick to approximate the free enegy of lager volumes. The free energy per volume 
+%this is a cauchy sequence
+\[
+\ab{
+\fc{\ln Z(k_1,a)}{|\La(k_1,a)|} - \fc{\ln Z(k_2,a)}{|\La(k_2,a)|}
+}\le 2\ep.
+\]
+This says that $\fc{\ln Z(k_1,a)}{|\La(k_1,a)|}$ forms a Cauchy sequence for $k\nearrow \iy$.
+%dependence of $C$ on $r$? $r$ is the range of the interaction.
+
+\begin{clm}
+For all $a$,
+\bal
+\limsup_{m\to\iy} \rc{|\La(m)|}\ln Z(\La(m))& \le \fc{\ln \La(a)}{\La(n)} + C_r\fc{|\pl \La(a)|}{|\La(a)|}\\
+\limsup_{m\to\iy} \rc{|\La(m)|}\ln Z(\La(m)) & \ge \fc{\ln \La(a)}{\La(n)} - C_r\fc{|\pl \La(a)|}{|\La(a)|}\\
+\end{align*}
+\end{clm}
+Using tiling of boxes of length $a$, for large cubes you the free energy is approximately what you get from the boxes of length $a$. 
+The lim sup and lim inf are close up to small error.
+\[
+\psi_{\La(a)}-C_r \fc{|\pl \La (a)|}{|\La(a)|}
+\le
+\liminf_{m\to \iy} \psi_{\La(m)}\le \limsup_{m\to \iy} \psi_{\La(m)} 
+\le 
+\psi_{\La(a)}+C_r \fc{|\pl \La (a)|}{|\La(a)|}
+\]
+The interval is of width $C_r \fc{|\pl \La (a)|}{|\La(a)|}\to 0$. We have to take the 2 limits in the right order:
+\[
+\lim_{a\to \iy}\lim_{m\to \iy}.
+\]
+%a/m, correction drops out.
+%lim sup is bounded by finite volume plus error.
+\end{proof}
+%when you go to the van Hove sequence, tilefor large functions, and esimate difference between log partition function of those, estimate effect of imperfections, a similar estimate shows it's similarly small.
+
+It's of interest to extend this theorem (of fundamental importance in physics, free energy exists independent of boundary conditions) to (decaying) long-range interactions; what is the cutoff at which the argument breaks? The analogy is that analysts first prove for the nicest (smooth) functions, and then estimate, for what range of slowly decaying functions does this still work?
