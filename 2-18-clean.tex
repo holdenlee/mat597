@@ -1,0 +1,130 @@
+{\color{blue}2-18}
+
+%Thermodynamics limit
+
+Good references include David Ruelle and Friedli-Velenik (see the introduction).
+
+What is a thermodynamic limit? We would like to discuss systems of large volumes.
+%make more sense after we complete it.
+\begin{definition}
+Let $\Lambda(a) = \left\{{x\in \mathbb{R}^d}:{0\le x_j\le a}\right\}$. (When we talk about the lattice, replace $\mathbb{R}^d$ with $\mathbb{Z}^d$.) Let $\Lambda_n (a) = \Lambda(a)+na$ where $n\in \mathbb{Z}^d$. (The shifts tile space by boxes of size $a$.)
+
+For any $\Lambda\subset \mathbb{R}^d$, let 
+\begin{align*}
+N_a^+(\Lambda) &= \left| {\left\{{n\in\mathbb{Z}^d}:{\Lambda_n(a) \cap \Lambda \ne \phi}\right\}} \right|\\
+N_a^-(\Lambda)&=  \left| {\left\{{n\in\mathbb{Z}^d}:{\Lambda_n(a) \subseteq \Lambda}\right\}} \right|.
+\end{align*}
+They are the number of cells needed to cover $\Lambda$ and the number of cells completely inside $\Lambda$, respectively.
+\end{definition}
+%eventually every point is covered
+\begin{definition}
+A sequence $\Lambda_k$ converges to $\mathbb{Z}^d$ in the \index{van Hove}\textbf{van Hove} sense if for all $0<a<\infty$,\footnote{Careful: we use subscripts here in a different sense than in the previous definition.}
+\begin{enumerate}
+\item
+$\Lambda_k\to \mathbb{Z}^d$,
+\item
+$N_a^-(\Lambda_k) \to \infty$,
+\item
+$\frac{N_a^+(\Lambda_k)}{N_a^-(\Lambda_k)}\to 1$ as $k\to \infty$. (This is equivalent to the surface-to-volume ratio $\frac{|\partial \Lambda_k|}{|\Lambda_k|}\to 0$.)
+\end{enumerate}
+\end{definition}
+An example of a sequence violating (3) is a sequence of boxes with many ``arms." The arms have volume proportional to the whole volume; in the arms, the distance to the boundary is $O(1)$. We don't want shapes whose boundaries are on the order of the volume.
+
+%coast of britain
+%measure in terms of lattice units, not more than the total number of points. 
+It is important that the conditions hold for all $a$. %Thermodynamic limit.
+We will compute the free energy in regular cubes, and see that whatever we prove for regular cubes is valid for a sequence converging in the van Hove sense.
+%all volumes
+
+Define the partition function in a box $\Lambda$ as 
+\be
+Z_{\Lambda}^{\#}(\beta,h) = \int_{\Omega(\Lambda)} e^{-\beta H^{\#}_\Lambda(\sigma_\Lambda)}\rho_0(d\sigma_\Lambda)
+\ee
+where the $\#$ means we take into account the boundary conditions,
+\be
+H_{\Lambda}^{\#}(\sigma_\Lambda) = \sum_{A\subseteq \Lambda} \phi_A(\sigma_A) + \sum_{\scriptsize \begin{array}{c}{B\cap \partial \Lambda\ne \phi}\\{\text{periodic terms}}\end{array}} \phi^{\#}_B(\sigma_A)
+\ee
+Here, 
+\begin{itemize}
+\item
+we allow finite-range interactions at the boundary. 
+\item
+we also allow periodic (wrap-around) boundary conditions, e.g. a term to depend on a pair of one point on the far left and a point on the far right.
+%finite range
+\end{itemize}
+We define the \index{pressure}\textbf{pressure} in $\Lambda$ as
+\be
+\psi_{\Lambda}(\beta, h,\ldots) = \frac{1}{|\Lambda|}\ln Z_{\Lambda}
+\ee
+(last time we defined this as $-\beta F$).
+
+\begin{theorem}
+For any Hamiltonian with a finite range translation invariant interaction,
+\be
+\lim_{k\to \infty}\psi_{\Lambda_k}(\beta, h) = \psi(\beta, h)
+\ee
+exists for any van Hove sequence $\Lambda_k\to \mathbb{Z}^d$ and is independent of the boundary conditions.
+\end{theorem}
+\begin{proof}
+Consider first $\Lambda_k = \Lambda(ka)$ where
+\be
+H_{\Lambda(ka)} = \sum_{n, 0\le n_j< k} H_{\Lambda_n(a)} + R_k
+\ee
+where the sum gives the interactions within boxes, and the second term gives interactions at the boundary of the boxes.
+%R_k$ are interactions between boxes.
+We bound the total effect of the $R_k$ (the boundary corridors) to estimate $Z(ka)$. Here $r$ is the radius of interactions (the width of the corridors),
+\begin{align*}
+\left\Vert {R_k}\right\Vert_{\infty} & \le C_r|\partial \Lambda(a)| k^d\\
+Z_{\Lambda(ka)} &= \int e^{-\beta H_{\Lambda(ka)}} \rho(d\sigma_{\Lambda(ka)})\\
+(Z_{\Lambda(a)})^{k^n}  e^{-C|\partial \Lambda(a)|h^d}\le Z(ka)&\le Z_{\Lambda(a)}^{k^n} e^{C|\partial \Lambda(a)|k^d}\\
+%Z(ka)& \ge \\
+\frac{1}{\Lambda(ka)} \ln Z(ka) & = \frac{1}{|\Lambda(a)|}\frac{1}{k^d} \ln Z(ka)\\
+\frac{\ln Z(a)}{\Lambda(a)} - C_r \frac{|\partial \Lambda(a)|}{|\Lambda(a)|} \le 
+\frac{1}{\Lambda(ka)} \ln Z(ka) & \le \frac{\ln Z(a)}{\Lambda(a)} + C_r \frac{|\partial \Lambda(a)|}{|\Lambda(a)|}
+%
+\end{align*}
+($C_r\propto r$, but the exact dependence is not so important.)
+%split - factorizes
+%Each cube contributes
+The log of the main term is proportional to the number of boxes. Dividing by the number of boxes, we are left with the following estimate.
+\be
+\left| {\frac{1}{|\Lambda(ka)|} \ln Z(ka) - \frac{1}{|\Lambda(a)|} \ln Z(a)} \right|\le C_r \frac{|\partial \Lambda(a)|}{\left| {\Lambda(a)} \right|}.
+\ee
+(The partition function in the larger box, up to small error, is equal to the partition function in the smaller box.)
+For any $\varepsilon>0$, choose $a$ such that $C_r \left| {\frac{|\partial \Lambda(a)|}{|\Lambda(a)|}} \right|\le\varepsilon$.  Then for all $k_1,k_2\in \mathbb{N}$, 
+%using this as a yarstick to approximate the free enegy of lager volumes. The free energy per volume 
+%this is a cauchy sequence
+\be
+\left| {
+\frac{\ln Z(k_1,a)}{|\Lambda(k_1,a)|} - \frac{\ln Z(k_2,a)}{|\Lambda(k_2,a)|}
+} \right|\le 2\varepsilon.
+\ee
+This says that $\frac{\ln Z(k_1,a)}{|\Lambda(k_1,a)|}$ forms a Cauchy sequence for $k\nearrow \infty$.
+%dependence of $C$ on $r$? $r$ is the range of the interaction.
+
+\begin{clm}
+For all $a$,
+\begin{align*}
+\limsup_{m\to\infty} \frac{1}{|\Lambda(m)|}\ln Z(\Lambda(m))& \le \frac{\ln \Lambda(a)}{\Lambda(n)} + C_r\frac{|\partial \Lambda(a)|}{|\Lambda(a)|}\\
+\limsup_{m\to\infty} \frac{1}{|\Lambda(m)|}\ln Z(\Lambda(m)) & \ge \frac{\ln \Lambda(a)}{\Lambda(n)} - C_r\frac{|\partial \Lambda(a)|}{|\Lambda(a)|}\\
+\end{align*}
+\end{clm}
+Using tiling of boxes of length $a$, for large cubes you the free energy is approximately what you get from the boxes of length $a$. 
+The lim sup and lim inf are close up to small error.
+\be
+\psi_{\Lambda(a)}-C_r \frac{|\partial \Lambda (a)|}{|\Lambda(a)|}
+\le
+\liminf_{m\to \infty} \psi_{\Lambda(m)}\le \limsup_{m\to \infty} \psi_{\Lambda(m)} 
+\le 
+\psi_{\Lambda(a)}+C_r \frac{|\partial \Lambda (a)|}{|\Lambda(a)|}
+\ee
+The interval is of width $C_r \frac{|\partial \Lambda (a)|}{|\Lambda(a)|}\to 0$. We have to take the 2 limits in the right order:
+\be
+\lim_{a\to \infty}\lim_{m\to \infty}.
+\ee
+%a/m, correction drops out.
+%lim sup is bounded by finite volume plus error.
+\end{proof}
+%when you go to the van Hove sequence, tilefor large functions, and esimate difference between log partition function of those, estimate effect of imperfections, a similar estimate shows it's similarly small.
+
+It's of interest to extend this theorem (of fundamental importance in physics, free energy exists independent of boundary conditions) to (decaying) long-range interactions; what is the cutoff at which the argument breaks? The analogy is that analysts first prove for the nicest (smooth) functions, and then estimate, for what range of slowly decaying functions does this still work?

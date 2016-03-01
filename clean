@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+de-macro mat597-no-macros
+sed -i -e 's/\\\[/\\be/g' -e 's/\\\]/\\ee/g' -e 's/\\begin{thm}/\\begin{theorem}/g' -e 's/\\begin{conj}/\\begin{conjecture}/g' -e 's/\\begin{df}/\\begin{definition}/g' -e 's/\\begin{cor}/\\begin{corollary}/g' -e 's/\\begin{thm*}/\\begin{theorem*}/g' -e 's/\\begin{lem}/\\begin{lemma}/g' -e 's/\\begin{lem*}/\\begin{lemma}/g' -e 's/\\begin{ex}/\\begin{example}/g' -e 's/\\begin{rem}/\\begin{remark}/g' -e 's/\\begin{exr}/\\begin{exercise}/g' -e 's/\\begin{rem*}/\\begin{remark}/g' -e 's/\\begin{prb}/\\begin{prob}/g' -e 's/\\begin{prb*}/\\begin{prob*}/g' -e 's/\\end{thm}/\\end{theorem}/g' -e 's/\\end{conj}/\\end{conjecture}/g' -e 's/\\end{df}/\\end{definition}/g' -e 's/\\end{cor}/\\end{corollary}/g' -e 's/\\end{thm*}/\\end{theorem*}/g' -e 's/\\end{lem}/\\end{lemma}/g' -e 's/\\end{lem*}/\\end{lemma}/g' -e 's/\\end{ex}/\\end{example}/g' -e 's/\\end{rem}/\\end{remark}/g' -e 's/\\end{exr}/\\end{exercise}/g' -e 's/\\end{rem*}/\\end{remark}/g' -e 's/\\end{prb}/\\end{prob}/g' -e 's/\\end{prb*}/\\end{prob*}/g' *-clean.tex
+

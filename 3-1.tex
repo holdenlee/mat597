@@ -1,0 +1,153 @@
+\blu{3-1: First, notational adjustments}
+
+Let
+\bal
+H_\La(\si)&=\sum_{A\subeq \La} J_A\phi_A(\si)
+\end{align*}
+and assume $\phi$ is normalized so that 
+\[
+\sup_\si |\phi_A(\si)|  = 1
+\]
+(if it is not identically 0). For $J=\{1_A\}$, define 
+\[
+\ve{J} = \sum_{A\ni 0} \rc{|A|} |J_A|.
+\]
+\begin{df}
+$H$ is translation invariant if for all $A\subeq \La$,
+\begin{enumerate}
+\item
+(Coupling is translation covariant)
+$\phi_{A+u}(\si) = \phi_A(S_u\si)$, where $(S_u\si)_x = \si_{x+u}$. 
+\item
+$J_A=J_{A+u}$.
+\end{enumerate}
+\end{df}
+Note that $\phi$ is really ``shift covariant" whereas $H$ is ``shift invariant", i.e. $H(S_n\si) = H(\si)$ (formally). This is a formal expression because for an infinite system, the energy is infinite. (There are various ways to make sense of this mathematically. For example, you can look at a finite system with periodic bounary conditions, and we can talk about shift invariance there.)
+
+For translation invariant Hamiltonians,
+\bal
+\psi(\be, J) &=\lim_{\La \uparrow \Z^d} \rc{|\La|} \ln Z_{\La} (\be, J))
+%a priori measure
+%try to stick to prob measures
+%product measure
+\end{align*}
+where $Z_{\La}(\be, J) = \int_{\Om_\La} e^{-\be H_{\La}(\be)}\rh_0(d\si_{\La})$.
+
+We proved 2 theorems, Theorem~\ref{thm:j-limit} and the following.
+Let $h$ be one of the parameters of $J=\{J_\La\}$ and $M$ be the conjugate quantity 
+\[M_\La(\si) = -\pdd{h} H_{\La}(\be, J).\]
+The example to keep in mind is the following.
+%when you differentiate the hamiltonian
+
+\begin{ex}
+The Ising model is $H_{\La}(\si) =\sum_{\{x,y\}} J_{x-y}\si_x\si_u - h\sum_{x\in \La }\si_x$.
+Here, 
+\[
+-\pdd{H_\La(\si)}{\pl h} = \si_{x\in \La}\si_x\equiv M.
+\]
+\end{ex}
+We have $\rc{|\La|} \E(M_{\La}) = \rc{\be} \pdd h \psi$.
+\begin{thm}
+For any $(\be, J)$, for $\ep>0$, there exists $\de(\ep)>0$ such that for any van Hove sequence, 
+\[\lim_{\La \uparrow \Z^d} \rc{|\La|}
+\ln \Pj_{\La}\coltwo{
+\rc{|\La|} M_{\La}(\si) \ge \rc{\be} \left.\pdd h \psi\right|_{+0} + \ep\text{ or}
+}{
+\rc{|\La|} M_{\La}(\si) \le \rc{\be} \left.\pdd h \psi\right|_{-0} -\ep
+}\le -\de(\ep)
+\]
+\end{thm}
+In the differentiable case the derivative is just $\pd{\psi}{h}$.  The probability of observing magnetization greater or smaller is exponentially small. $\de(\ep)$ is the \vocab{rate function}.
+
+This says that
+%usually diffble
+\[
+\Pj_{\La} \pa{\rc{|\La|}M_{\La} \ge \pdd{\psi}h + \ep} \approx e^{-\de(\ep)|\La|}.
+\]
+%max depth of belly is $\de(\ep)$. High $\ep$, high belly.
+
+
+Consider the 1-D Ising model. The spins are $\si_n=\pm 1$; the energy is
+\[
+H(\si) = -J\sum_{n} \si_n\si_{n+1} - h\sum \si_n.
+\]
+The first term encourages neighbors the agree, and the second term encourages the spins to agree with the applied field.
+%solvable if limit to nearest neighbors
+
+(Here we just have nearet-neighbor interactions. In general we can have interactions between longer distances, which complicates the calculations. When there are long-range interactions (following a power law), there can be a phase transition.)
+%large - phase transition. power law, decay not too fast.
+\begin{thm}
+Let $\wh h = \be h$. Then
+\[
+\psi(\be, h):= \lim_{N\to \iy} \rc{N} \ln Z_N = \ln [e^{\be J} \cosh \wh h + (e^{2\be J} \sinh^2 \wh h + e^{-2\be})^{\rc 2}]
+\]
+\end{thm}
+The particular form of the formula is not so important; what's important is that it is explicit. As a corollary, $\psi$ is differentiable at all $\be \ge 0$, $h\in \R$ with 
+\[
+m(\be, h):=\pd{\psi}h =  \fc{e^{\be}\sinh \wh h}{[e^{2\be }\sinh^2 \wh h + e^{-2\be}]^{\rc 2}}
+\]
+%arg of log is nonzero.
+In particular, 
+\[
+\lim_{\be\to \iy} m(\be, h) = \begin{cases}
+1,&h>0\\
+0,&h=0\\
+-1,&h<0.
+\end{cases}
+\]
+%story of the dog. did you notice strange behavior of dog. did not do anything, that's the point.
+Note that we do not see the signature of a first-order phase transition, that the energy is discontinuous. The derivative is discontinuous, but the energy is not. We observe something like this only at infinite $\be$. This is a general feature of 1-D statistical mechanical models: there is no symmetry breaking unless the model has very long-range interactions.
+
+\begin{proof}
+Take an Ising model with periodic boundary conditions $\si_L=\si_0$.
+%sometimes parity matters sometimes not. Here it doesn't. 
+Then (it helps to symmetrize the sum)
+\bal
+Z_{[0,L]}^{\text{per}} &= \sumr{\si_j=\pm 1}{\si_0=\si_L} e^{\be \sum_{m=1}^L \si_m\si_{m+1} + \wh h \sumo 1L \fc{\si_n+\si_{n+1}}2}\\
+&=\tr (A^L)
+\end{align*}
+where 
+\[
+A = \matt{A_{++}}{A_{+-}}{A_{-+}}{A_{--}} = \matt{e^{\be + \wh h}}{e^{-\be}}{e^{-\be}}{e^{\be - \wh h}}.
+\]
+Recall that 
+\[
+\tr(A^L) = \sum_{\si_0=\si_L\in \pm 1} (A^L)_{\si_0\si_L} = \sumr{\si_i=\pm 1}{\si_0=\si_L} A_{\si_0,\si_1}A_{\si_1,\si_2}\cdots A_{\si_{L-1},\si_0}.
+\]
+Since $A$ is self-adjoint, $A$ is diagonalizable. The eigenvalues have different modulus, $|\la_1|>|\la_2|$, and
+\bal
+\Tr(A^L) &= \la_1^L +\la_2^L = \la_1^L\ba{1+\pf{\la_2}{\la_1}^L}\\
+\rc{L} \ln Z_L &= \ln \la_1 + \ub{\rc{L} \ln \ba{1+\pf{\la_2}{\la_1}^L}}{\approx \rc{L}\pf{\la_2}{\la_1}^L}&\text{using }\ln (1+\ep)\approx \ep.\\
+\lim_{L\to \iy} \rc{L} \ln Z_L &=\ln \la_1 
+%goes to 0 exp fast
+\end{align*}
+%if same, then identity. In modulus are not the same.
+%$\la_2$ positive?
+
+The matrix $A$ is a \ivocab{transfer matrix} (as in a Markov chain). 
+%pressure independent of boundary conditions. 
+Fixing the boundary conditions $\si_0,\si_L$, we have
+\[
+Z_L^{b.c.} = \sum A_{\si_0\si_1}A_{\si_1\si_2}\cdots A_{\si_{L-1}\si_L} = (A^L)_{\si_0\si_L}
+\]
+(Exercise: write this in terms of the eigenvalues.)
+%hit on head for disagreement
+\end{proof}
+Consider $Z_L^{++},Z_L^{+-},Z_L^{-+},Z_L^{--}$.
+Assuming the magnetic field is positive ($h>0$), the maximum is $Z_L^{++}$; if $h<0$ then the maximum is $Z_L^{--}$. We have
+\[
+\af{Z^{++}-Z^{--}}{Z^{++}} \le \af{\la_2}{\la_1}^L
+\]
+
+%if open-ended boundary conditions, can ask the following.
+With open-ended boundary conditions, the spins are an array of variables with the Markov property. If you specify a spin, then the distribution of the future does not depend on the past beyond the value of the previous spin. Thus the values form a Markov chain, and the transfer matrix is familiar from the theory of Markov chains. 
+
+What happens beyond 1 dimension? Then the Markov property re-emerges in an interesting way. When you talk about the distribution of a finite system, it's sufficient to give the spins at the boundary. 
+%we have a 
+%because of interactions 
+There is a multidimensional Markov property, specified by boundary spins. %Limiting boundary distribution,
+We will arrive at the theory of Gibbs states.
+%get into statistical mech, joint dist of 
+
+
+%distinguish?

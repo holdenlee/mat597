@@ -1,0 +1,179 @@
+\chapter{Introduction to statistical mechanics}
+
+{\color{blue}2-2-16}
+
+\section{Canonical Ensembles for the Lattice Gas}
+\subsection{Configurations and ensembles}
+One way to start is with the axioms of statistical mechanics. Instead I'll take a simple problem, see how it works, and present results in that context. There are simple problems that teach us a lot. (``The elementary problems are the most precious, once you absorb them they are part of your makeup.") The simplest is a lattice gas.
+
+\begin{definition}[Lattice gas]
+A \index{lattice gas}\textbf{lattice gas} is a substrate where at each lattice site there may or may not be a particle. This model has been used to describe alloys where you have a substrate which you can draw as a simple lattice (in particular, we will use $\mathbb{Z}^d$ for simplicity). Each point may have a particle of a certain type.
+
+The \index{configuration}\textbf{configuration} is a function $n:\mathbb{Z}^d\to \{0,1\}$:
+\be
+n_x=\begin{cases}
+1,&\text{$x$ is occupied},\\
+0,&\text{$x$ is vacant}.
+\end{cases}
+\ee
+For now let us ignore energy conservation. Let us suppose the system is neutral, or at some infinite temperature; energy is not an issue. 
+
+I'll use $L$ to denote the size of the box we are considering, and $\Lambda\subset \mathbb{Z}^d$ to be a region (subset of the system) and we have $m$ particles. The \textbf{configuration space} is the space of possible $n$'s, $\Omega = \{0,1\}^{\Lambda}$.
+
+If you have a finite system and energy does not play a role, but there is conservation of the number of particles, if you shake the box the state may change. Essentially each configuration gets equal weight, and particles do not overlap. 
+\end{definition}
+
+
+\begin{definition}[\index{Equidistribution assumption}\textbf{Equidistribution assumption}]
+All particle configurations which have an equal number of particles have equal probability.
+\end{definition}
+
+This gives rise to the notion of ensembles. 
+\begin{definition}[Ensemble]
+An \textbf{ensemble} is a probability measure with respect to which you do averages over the configuration space $\Omega$. 
+\end{definition} 
+First, we define some notation.
+\begin{definition}[Indicator function]
+\be
+\mathbbm{1}[\text{cond}] := \begin{cases}
+1,&\text{condition satisfied}\\
+0,&\text{else}
+\end{cases}
+\ee
+\end{definition}
+Now we define two specific ensembles, the \index{microcanonical ensemble}\textbf{microcanonical ensemble} and the \index{grand canonical ensemble}\textbf{grand canonical ensemble}. 
+
+\begin{definition}[Microcanonical ensemble]
+In the microcanonical ensemble,
+\be
+\mathbb{P}(n_{\Omega})= \frac{\mathbbm{1}[\sum_{x\in \Omega}n_x=N]}{Z}
+\ee
+where $Z$ is a normalization constant.
+
+For every function $f:\Omega\to \mathbb{R}$ assigning a real number to each configuration, define the \index{microcanonical ensemble average}\textbf{microcanonical ensemble average} by
+\be
+\left\langle {f}\right\rangle_{N,n}^{\text{Can}} = \frac{\sum_{n\in \Omega} \mathbbm{1}[n_x=N] f(n)}{\sum_{n\in \Omega} \mathbbm{1}[\sum n_x=N]}.
+\ee
+\end{definition}
+The ensemble we will focus on for this course is the grand canonical ensemble. 
+
+\begin{definition}[Grand canonical ensemble]
+The \index{grand canonical ensemble average}\textbf{grand canonical ensemble average} is defined as
+\be
+\left\langle {f}\right\rangle_{\mu, \Lambda}^{\text{Gr.C}} = \frac{\sum_{n\in \Omega} e^{-\mu  \sum_{x\in \Lambda}n_x}f(n)}{\sum_{n\in \Omega}e^{-\mu \sum_{x\in \Lambda} n_x}}
+\ee
+(Later on we will omit superscripts where it is clear.)
+\end{definition}
+
+We can relate these two notions with the \index{equivalence principle}\textbf{equivalence principle}. 
+
+\begin{definition}[Equivalence principle]
+Loosely, the equivalence principle says that for any ``local function", the microcanonical average is approximately the grand canonical ensemble average
+\be
+\left\langle {f}\right\rangle_{N,\Lambda}^{\text{Can}}\approx \left\langle {f}\right\rangle_{\mu, \Lambda}^{\text{Gr.C}}
+\ee 
+when we take $\mu = \frac{N}{|\Lambda|}$.
+%at suitable $\mu=\mu\pf{N}{n}$.
+\end{definition}
+
+
+\subsection{The equivalence principle}
+
+Consider functions which depend only on a system $\Lambda\subset \widetilde{\Lambda}$ of much smaller volume, $|\Lambda|\ll |\widetilde{\Lambda}|$. This is the sense in which the averages match up.
+
+%sociological interest. 
+We can think of the difference as the difference between two socities. One is draconian. The first is highly centralized control economy. If you don't fit the build, you get weight $0$ and you're thrown out. In the grand canonical, everything goes. Some contribute more than others, and the contributions depend on the parameter $\mu$ which is adjustable. The density of particles depends on $\mu$. And there is a value of $\mu$ for which the density is equal to $N/|\tilde{\Lambda}|$. Here, the average of the draconian system is equal to the average of the lackadaiscal system, asymptotically. 
+
+The micro-canonical ensemble is draconian: the number of particles is prescribed, all other configurations get weight 0. %if don't fit bill get weight 0. 
+In the grand canonical ensemble, each configuration contributes. There is a value of $\mu$ where the density is the same; at that value the local average of the draconian system is asymptotically the same at that of the more relaxed system. This $\approx$ becomes $=$ when you take the thermodynamic limit,
+\begin{align*}
+\widetilde{\Lambda} & \to \mathbb{Z}^d\\
+N & \to \infty\\
+\frac{N}{|\widetilde{\Lambda}|} & \to \rho.
+\end{align*}
+
+%If all that matters it the number of particles in $\La$, then we care about the induced distribution on $\La$. %What is the probability distribution 
+Now let us see where this comes from. What is the induced distribution of the micro-canonical ensemble on $\Lambda$? If all you care about is the number of particles in the average you care about, you just care about getting a small system. If the whole system has a large number of particles, then it does not matter if you focus on a much smaller box since you can trade particles very easily, if the larger volume has a ton of particles. Under the microcanonical ensemble, the probability that $n_{|\Lambda}$ ($n$ restricted to $\Lambda$) takes a particular value depends only on one quantity, which is the number of particles the configuration has ($\sum_{\Lambda} n_x = k$ in the big box). This expression is equal to the cardinality (number) of configurations in the rest of the big box ($n_{|\Lambda^c}$, $\Lambda$ complement) such that the total number of points in $\Lambda^c$ is equal to $N - k$. And that of course must be normalized. Now we come to the question of how many configurations there are in the complement of $\Lambda$.
+
+%n_{\Ga_n}
+ %If you specify a configuration in $\L$
+We count the number of ways to complete the configuration in $\Lambda^c=\widetilde{\Lambda}\backslash \Lambda$:
+\begin{align*}
+\frac{|\left\{{n_{\Lambda^c}}:{\sum_{x\in \Lambda^c}n_x=N-k}\right\}|}{Z}
+\end{align*}
+where $Z$ is a normalization constant.
+
+The number of configurations of $M$ particles in volume $V$ is $\binom{V}{M} = \frac{V!}{M!(V-M)!}$. Using Stirling's approximation
+\be
+\ln (M!) = M(\ln M-1)(1+o(1)),
+\ee
+%gymnastics of elementary type.
+%Boltzmann grade in Vienna
+%entropy
+After some gymnastics of an elementary nature, there is a fundamental formula. The logarithm of the number of configurations is of tremendous important. Ludwig Boltzmann's grave has the formula which opened people's eyes to what this mysterious \index{entropy}\textbf{entropy} $S$ truly is: the logarithm of the number of configurations. 
+
+\begin{lemma}[Entropy]
+Defining
+\be
+s(\rho) = -[\rho \ln \rho + (1-\rho)\ln (1-\rho)],
+\ee
+we have
+\be
+\binom{V}{M} = \frac{V!}{M!(V-M)!} 
+=: e^{S(M,V)}
+\approx e^{Vs(\rho)}
+\ee
+where density $\rho = m/V$ and $s(p) = -p\ln(p) - (1- p)\ln(1 - p)$. 
+
+The ratio $\rho$ varies between $0$ and $1$. $s(\rho)$ is concave and attains maximum of $\ln 2$ at $\frac{1}{2}$ where it has quadratic behavior.
+\end{lemma}
+\begin{proof}
+Please do this exercise once in your life; it's good to do it once but not too often.
+\end{proof}
+Shannon also found such a formula for entropy.
+
+The implication is that if you slightly change the density, the number of configurations changes drastically. In physical substances $V$ may be $10^{23}$. The change would then be $e^{10^{23}\Delta s}$. In any average over configurations, only those at the peak contribute: ``winner takes all."
+
+What is the probability of observing $k$ particles in the small box given $n$ in the big box?
+\begin{align*}
+\mathbb{P}(n_{\Lambda}) &\approx \frac{e^{|\Lambda^c|s\left( {\frac{N-k}{|\widetilde{\Lambda}| - |\Lambda|}} \right)}}{Z} %\quad \rh=\fc{N}{|\wt{\La}|}
+\end{align*}
+where $Z$ is a normalizing constant. The probability is propotional in exponent to the volume of the complement multiplied times the entropy of the density, which we saw in the exercise above. Then we re-write the density of the small box in terms of the overall density: 
+\begin{align*}
+\frac{N-k}{|\widetilde{\Lambda}|-|\Lambda|}&=\rho - \underbrace{\left( {\rho - \frac{N}{|\widetilde{\Lambda} | - |\Lambda|}} \right)}_{\to 0 \text{ independent of $k$}} -
+\frac{k}{|\widetilde{\Lambda}|-|\Lambda|}
+\end{align*}
+The entropy is infinitely differentiable except at the endpoints, so we can just expand. Whatever you see inside affects the number outside, but does not effect the density outside. This explains why we only have a tiny correction to $\rho$. Thus 
+\begin{align*}
+s\left( {\frac{N-k}{|\widetilde{\Lambda}|-|\Lambda|}} \right) & \approx s(\rho) - s'(\rho)\frac{k}{|\Lambda^c|}
+%particles here is small fraction of number of outside.
+\end{align*}
+Changing $k$ by a little bit affects how many particles are outside but not so much the density outside: the correction term is small. Hence for $\sum_{x\in \Lambda}n_x$,
+\be
+\mathbb{P}(n_\Lambda) \approx \frac{e^{|\Lambda^c|s(\rho)}e^{-s'(\rho)k}}{Z}.
+\ee
+$e^{|\Lambda^c|s(\rho)}$ is a huge factor but it does not vary with $k$ so we can omit it. Writing out $Z$ as the sum of the numerators over all $n_\Lambda$,  and letting $\mu = s'(\rho)$, we get that this equals
+\be
+=\frac{e^{-\mu k}}{\sum_{n'\in \Omega_{\Lambda}}e^{-\mu\sum_{x\in \Lambda} n'_x}},
+\ee
+which is the grand canonical ensemble average.
+So all you have to do is be sure to pick $\mu$ as the derivative of the thermodynamic function at the correct density. That is how we derive the canonical ensemble in this case. 
+The rest of the system acts on the small system as a ``particle (heat) bath."
+%\begin{theorem}[Equivalence principle]
+%Let $f:\Om \to \R$ be a function depending 
+%\end{theorem}
+
+Here we used very explicit machinery, namely, the Stirling formula. We want a general expression that doesn't rely on the Stirling formula because in more complicated models, we will not have the luxury of using the Stirling approximation. We'll do this in the next section.
+
+%Note we can also apply this method 
+Then we will be able to consider models where there are more energy constraints. The general procedure is first make a list of energy constraint. There is a generalization of the equivalence principle where 
+\begin{itemize}
+\item
+in the micro-canonical ensemble we average over configurations where the constraints have prescribed values. (We considered the special case where just the number of particles was prescribed.) %meet the constraint. All of them get equal weight.
+\item 
+in the grand canonical ensemble, we add an energy term to the exponential: $e^{-\mu N(n) - \beta\mathcal{E}(n)}$ where $N(n)$ is the number of particles, $-\mu N(n)$ is the Gibbs factor, and $\mathcal{E}(n)$ the energy.
+\end{itemize}
+%Functions which depend on a small region, can be computed with Gibbs factors, $e^{-\mu N(n) - \be\cal E(n)}$ where $N(n)$ is the number of particles, $-\mu N(n)$ is the Gibbs factor, and $\cal E(n)$ the energy.
+
+How can we construct an alternative method without the Stirling formula?
+

@@ -1,44 +1,44 @@
 
-\blu{2-16-16}
+{\color{blue}2-16-16}
 
 \section{Free energy}
 
 We now discuss free energy. 
 
-Let us first start with a finite system. Consider a finite subset $\La$ of the grid $\Z^d$. In particular, consider $\Lambda_L = [-L, L]^d$, a cube of size $2L$ in each dimension. The configuration space is $\Omega_{\Lambda}$, which is the space of $\sigma=\{\sigma_x\}_{x \in \Lambda}$ with 
+Let us first start with a finite system. Consider a finite subset $\Lambda$ of the grid $\mathbb{Z}^d$. In particular, consider $\Lambda_L = [-L, L]^d$, a cube of size $2L$ in each dimension. The configuration space is $\Omega_{\Lambda}$, which is the space of $\sigma=\{\sigma_x\}_{x \in \Lambda}$ with 
 \begin{itemize}
 \item
 $\sigma_x \in \{\pm 1\}$ for the Ising model, or 
-\item $\si_x\in \{1, \cdots, Q\}$ for the Potts model. 
+\item $\sigma_x\in \{1, \cdots, Q\}$ for the Potts model. 
 \end{itemize}
 There are other possibilities as well. 
 
 We have the a priori probability measure $\rho_0(d\sigma) = \bigotimes_x \rho_(d\sigma_x)$. 
 
 First we define free energy. Recall the  partition function
-\beq{eq:zla}
-Z_{\Lambda} = \int_{\Omega_\La} e^{-\beta H_{\Lambda}(\sigma_{\Lambda})}\rho_0(d\sigma_\La)
-\eeq
+\begin{equation}\label{eq:zla}\text{{\color{red}\tiny eq:zla}}
+Z_{\Lambda} = \int_{\Omega_\Lambda} e^{-\beta H_{\Lambda}(\sigma_{\Lambda})}\rho_0(d\sigma_\Lambda)
+\end{equation}
 where the integral is over the spins in the cube with respect to the product measure, and 
-\[
+\be
 H_{\Lambda}(\sigma_{\Lambda}) = \sum_{A \subset \Lambda, \txtn{diam} A \leq R} J_A \Phi_{A}(\sigma_A)
-\]
+\ee
 where $\Phi$ is a translation invariant function and $J_A$ is a coupling constant.  
 
 For instance, in the Ising model, 
-\beq{eq:ising-h}
+\begin{equation}\label{eq:ising-h}\text{{\color{red}\tiny eq:ising-h}}
 H_{\Lambda} = -\sum_{x, y, |x - y| = 1} J \sigma_x\sigma_y - h\sum_x \sigma_x
-\eeq 
+\end{equation} 
 (we sum over neighbors). This is an example of a formula in the type given above. Here $J$ is a coupling constant, and for single sites, the translation invariant coupling constant is $h$.  
 
-\begin{df}[Free energy]
+\begin{definition}[Free energy]
 %We can write free energy as follows
 The free energy is defined as 
-\[
-F(\beta, \Phi) = -\frac{1}{\beta}\ln(Z_\La)
-\]
-where $Z_{\La}$ is defined in~\eqref{eq:zla}.
-\end{df}
+\be
+F(\beta, \Phi) = -\frac{1}{\beta}\ln(Z_\Lambda)
+\ee
+where $Z_{\Lambda}$ is defined in~\eqref{eq:zla}.
+\end{definition}
 Here $\Phi$ can in general be complicated and $\beta = \frac{1}{k_{B}T}$, where $k_{B}$ is the Boltzman constant (in the following, choose units so $k_B=1$). For simplicity, given a specific model, we could just write $(J, h)$ instead of $\Phi$. 
 
 
@@ -49,18 +49,18 @@ When we formulate the following models, we assume that $\max_{\sigma_A} |\phi_A(
 \begin{enumerate}
  
 \item Assume the system obeys a large deviation principle with an entropy function $S(E) $ where $E$ denotes the energy per unit volume. Using $E = \frac{H_{\Lambda}(\sigma_{\Lambda})}{|\Lambda|}$, we calculate
-\[
+\be
 Z_{\Lambda} = \int e^{-\beta H_{\Lambda}(\sigma)}\rho_0(d\sigma) \approx \int e^{-\beta|\Lambda|\cdot E} e^{|\Lambda|s(E)} ``dE\text{''}
-\]
+\ee
 where $dE$ is kind of notation abuse: The number of values the energy can take is essentially integer values over volume units, and this gives you essentially an integral. %So recall if you take the logarithm and divide by the volume, the $dE$ factor is not too
 The integral is dominated by the energy that gives the maximal exponent, and the fact that the integral is an approximation is not too important.
-\[
+\be
 \int e^{|\Lambda|\max_E(s(E) - \beta E)}``dE\text{''}
-\]
-Then we can write the free energy as ($T=\rc{\be}$)
-\[
+\ee
+Then we can write the free energy as ($T=\frac{1}{\beta}$)
+\be
 F(\beta) = - \frac{1}{\beta} \max_E(s(E) - \beta E) = \txtn{inf}_E\{E - Ts(E)\}
-\]
+\ee
 This is why it's called the free energy: It's the energy term corrected by $Ts(E)$ and is related to the Legendre transform.\footnote{I would love it if energy was written in terms of entropy. Somehow, mankind discovered ``energy'' before ``entropy'', so we are continuously having to change notation between energy and entropy.} The free energy is as much energy you can extract from the system when it's in contact with a thermal reservoir, and this is limited. 
 
 Recalling that energy is conserved, if you have a finite but huge system and let the system evolve under whatever dynamics it has, it is reasonable to assume that all states are equally likely (as in the microcanonical ensemble). If you look at a sub-system, however, then energy fluctuates. The bulk of the system serves as a reservoir for sub-systems. 
@@ -70,65 +70,65 @@ At what temperature is this reservoir? Through the large deviation principle for
 Hence, systems serve as the reservoir for the subsystems. 
 
 \item The free energy function is a generating function. The Gibbs state average energy per volume is 
-\[
+\be
 \frac{\langle H \rangle}{|\Lambda|} = \frac{1}{|\Lambda|} \int H_{\Lambda}(\sigma_{\Lambda}) \frac{e^{-\beta H_{\Lambda}(\sigma_{\Lambda})} \rho_0(d\sigma_{\Lambda})}{Z_{\Lambda}} = \frac{\partial}{\partial\beta}\left[\beta F(\beta)\right]
-\]
+\ee
 
 We have $\beta F(\beta) = -\frac{1}{|\Lambda|}\txtn{ln}(Z_{\Lambda})$. 
 
-Suppose you want to know the total value of the Ising model magnetization,  $\an{ \frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x }$. 
-Here, $H_\La$ is given by~\eqref{eq:ising-h}. To find $\an{ \frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x }$,  
+Suppose you want to know the total value of the Ising model magnetization,  $\left\langle { \frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x }\right\rangle$. 
+Here, $H_\Lambda$ is given by~\eqref{eq:ising-h}. To find $\left\langle { \frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x }\right\rangle$,  
 differentiate with respect to $h$, 
-\[\frac{\partial}{\partial h}\txtn{ln}(Z_{\Lambda}) = \frac{\beta}{|\Lambda|} \int (\sum_{x \in \Lambda} \sigma_x) \frac{e^{-\beta H_{\Lambda}(\sigma)}}{Z} \rho_0(d\sigma_{\Lambda}).\] 
+\be\frac{\partial}{\partial h}\txtn{ln}(Z_{\Lambda}) = \frac{\beta}{|\Lambda|} \int (\sum_{x \in \Lambda} \sigma_x) \frac{e^{-\beta H_{\Lambda}(\sigma)}}{Z} \rho_0(d\sigma_{\Lambda}).\ee 
 In general, derivatives of the log of the partition function generate the averages you desire. For instance, if you are somewhat sensitive to sums over triangles, then differentiating the free energy with respect to this parameter would give you the average value of that. 
 
-\item Variance of $H_{\Lambda}$: To find the variance of $H_{\La}$, differentiate with respect to $\beta$ again. We have 
-\beq{eq:var-h}
-- \frac{\partial^2}{\partial\beta^2} \beta F(\beta) = - \frac{\partial}{\partial\beta} \int \frac{H_\La}{|\Lambda|} \frac{e^{-\beta H_{\Lambda}}}{Z_{\Lambda}(\beta)} \rho_0(d\sigma) = \an{ \frac{H^2}{|\Lambda|} }- \frac{\langle H \rangle^2}{|\Lambda|} = \frac{\langle (H - \langle H \rangle)^2\rangle}{|\Lambda|},
-\eeq
+\item Variance of $H_{\Lambda}$: To find the variance of $H_{\Lambda}$, differentiate with respect to $\beta$ again. We have 
+\begin{equation}\label{eq:var-h}\text{{\color{red}\tiny eq:var-h}}
+- \frac{\partial^2}{\partial\beta^2} \beta F(\beta) = - \frac{\partial}{\partial\beta} \int \frac{H_\Lambda}{|\Lambda|} \frac{e^{-\beta H_{\Lambda}}}{Z_{\Lambda}(\beta)} \rho_0(d\sigma) = \left\langle { \frac{H^2}{|\Lambda|} }\right\rangle- \frac{\langle H \rangle^2}{|\Lambda|} = \frac{\langle (H - \langle H \rangle)^2\rangle}{|\Lambda|},
+\end{equation}
 which is the fluctuation, or variance, in the total energy. 
 
 What is the difference between the bulk (average) energy and the minimum energy? Assuming the free energy is twice differentiable, how big would the fluctuation of the total energy minus its mean be? It's going to be big (we're talking about energy in a big universe). 
 
 \eqref{eq:var-h} is of order $1$, so $\langle (H - \langle H \rangle)^2\rangle$ is on the order of $\sqrt{|\Lambda|}$ which is reminiscent of independence of random variables. 
-The Central Limit Theorem says that if you have a sum of random variables, the fluctuation is  $O\pa{\sqrt{|\Lambda|}}$. We can prove an analogue of the CLT if the function is twice differentiable, but this requires more work. 
+The Central Limit Theorem says that if you have a sum of random variables, the fluctuation is  $O\left( {\sqrt{|\Lambda|}} \right)$. We can prove an analogue of the CLT if the function is twice differentiable, but this requires more work. 
 
-Note $F(\beta)$ is convex in $\beta$ since it's a supremum of linear functions in $\beta$ \fixme{(?)}, and we just proved that $\beta F(\beta)$ is concave. Concavity immediately implies differentiability with the possible exception of some countable set of points\footnote{which could even be dense, this set of points can be of extreme interest: they are first order phase transitions}. In infinite systems, there is more to be said, but for most sets, the second derivative is finite. Hence for Lesbegue almost every value of $\beta$, $\beta F(\beta)$ is differentiable in $\beta$ and has a finite and bounded second derivative. 
+Note $F(\beta)$ is convex in $\beta$ since it's a supremum of linear functions in $\beta$ {\color{red}(?)}, and we just proved that $\beta F(\beta)$ is concave. Concavity immediately implies differentiability with the possible exception of some countable set of points\footnote{which could even be dense, this set of points can be of extreme interest: they are first order phase transitions}. In infinite systems, there is more to be said, but for most sets, the second derivative is finite. Hence for Lesbegue almost every value of $\beta$, $\beta F(\beta)$ is differentiable in $\beta$ and has a finite and bounded second derivative. 
 
 \end{enumerate}
 
 Our next goal is the following two theorems.
 
-\begin{thm} 
+\begin{theorem} 
 For any translation invariant system as described previously, the following limit exists: 
-\[
+\be
 \lim_{L \to \infty} \frac{1}{|\Lambda_L|} \txtn{ln}(Z_{\Lambda}(\beta)) = -\frac{1}{\beta}F(\beta)
-\]
-\end{thm}
+\ee
+\end{theorem}
 The limiting function is concave in $\beta$ because the limit of concave functions is concave. 
 The theorem says that the finite volume free energies converge (the limit is infinite dimensional). 
 
 If the system is not translation invariant, the limit need not exist: if you set coupling constant to new values as you go along, in that case, there's no consistency between different scales and the limit will not exist. However, translation invariance is a very rigid statement: ``Whatever was will be''. This general principle can be relaxed a bit, and it requires that the system is stochastically invariant: It looks similar at different places. 
 
 
-\begin{thm}
+\begin{theorem}
 If the infinite volume free energy $F$ is differentiable at $\beta$,
 \begin{enumerate}
 
 \item 
-\[
+\be
 \langle E \rangle_{L, \beta} = \langle \frac{H_{\Lambda_L}}{|\Lambda_L|}_{\Lambda_L, \beta} \rangle \to \frac{\partial}{\partial \beta} \left[\beta F(\beta)\right]
-\]
+\ee
 
 
 \item For any $\epsilon > 0$, then 
-\[
+\be
 \mathbb{P}_{\Lambda_L; \beta}\left(\left|\frac{1}{|\Lambda_L|}H_{\Lambda_L}(\sigma_{\Lambda_L}) - \langle E \rangle_{\Lambda_L, \beta} \right| \geq \epsilon \right) \to^{L \to \infty} 0
-\]
+\ee
 the probability is with respect to the Gibbs measure $\rho_{\Lambda, \beta}$. 
 
 \end{enumerate}
-\end{thm}
+\end{theorem}
 To explain part 1, we know the energy density in the finite volume is given by the finite volume free energy. But what do the derivatives of finite volume functions have to do with derivatives of limiting functions? There are functions which converge pointwise but whose derivatives do not! So the first statement gives us a nontrivial fact. However, derivatives of convex functions converge pointwise as well if a function converges pointwise, so we get a bit extra. 
 
 Now, not only is the mean energy given in the limit, but we get part 2 above. Part 2 says that if we consider a gorwing sequence of finite boxes of size $L$, the empirical average of the energy per volume is predictable. 

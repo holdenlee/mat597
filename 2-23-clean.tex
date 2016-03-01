@@ -1,0 +1,73 @@
+{\color{blue}2-23: Make great reference to Prof. Aizenman's other notes. Some of this stuff will be added and corrected by Aizenman soon, for next class.}
+
+Refer to the notes given by hand as a basis for the discussion today. 
+
+We are discussing the first major result of the subject, which is the free energy. For an extensive system, a useful form for Hamiltonian is an extensive function in finite volume, and $H_{\Lambda}(\sigma)$ refers to a sum over spin configurations, where $\Lambda \subset \mathbb{Z}{}^d$ is a subset of a lattice or more generally a homogenous graph. We can write 
+\be
+H_{\Lambda}(\sigma) = \sum_{A \subset \Lambda} \phi_A(\sigma) = \sum_{x \in \Lambda}\left[\sum_{x \in A} \frac{1}{|A|}\phi_A(\sigma_A)\right]
+\ee
+This is true by summation by parts.  Now why is this useful? This collection includes the sum of those terms which affect the spin at $x$. It's convenient to define as $\| \phi \| = \sum_{0 \in A} \frac{1}{|A|} \txtn{sup}_{\sigma} |\psi_A(\sigma)|$. What are spins in Ising models? For Ising, there are two types of interactions: Pairs of spins, so we sum over $\|\phi_{Ising}\| = \frac{1}{2}\sum_{u \neq 0} |J_{0, u}| + h$, where $h$ comes from the external field. What is the range of interactions tolerated by the formalism? Well, the norm must be finite, so the interactions must be summable. 
+Also note that this expression is good for translation invariant actions (see Eq. $1.12$). 
+
+The basic theorem we are after is in on pg. $32$ of the notes. Let us discuss boundary conditions: If you have a system, it's open to effects outside of the system, which we denote via the $\#$ symbol. Sometimes we like to put periodic boundary conditions. When I was student, it took me a while to figure out why people talk about periodic boundary conditions (we're effectively saying the boundary is neighbors). The reason is for very large systems, you see emergent system invariants, and locally, often, things look similar in different places. So by adding interactions across boundaries, you encourage this directly and it's very mathematically convenient. Thus we have equation $1.18$. In fact, in the infinite volume limit, if you had a tiny bit of external field which is moved, the resulting state may or may not depend on it. The argument can tolerate this extra term, as long as it's $ \|\frac{\phi_{\Lambda}^{\#}(\sigma)}{|\Lambda|}\| \to 0$ (this part is more important). (See Eq. $1.20$). 
+
+Now the strategy for the more general theorem is on page $32$ (see Thm $1.4.4$). Assuming $\phi$ is translation invariant, we can just assume that $\|\phi\| < \infty$ is finite, and the extra boundary terms are $o(|\Lambda|)$, the quantity $\frac{1}{|\Lambda|}\txt{ln}(Z_{\Lambda}^{\#}) \to 4(\beta, \phi)$. For any van-Hove sequence, $\Lambda_n \to \mathbb{Z}{}^d$ (approaches the lattice) and asymptotically covers the graph, and the boundary over the volume tends to $0$ ($\frac{|\partial N}{|\Lambda|} \to 0$), where you measure it in terms of a discretized system. If you take the volume and pack it by large cubes, then first pick the size of the cube you're using for packing, measure the boundary by the number of cubes which overlap, and the volume by the number of cubes which fit inside, then the fraction goes to $0$ no matter what size of box you used. 
+
+Now this is called the \textbf{pressure}. The boundary conditions you add do not effect the pressure. This is the physical notion of pressure. To explain this we will have to go into thermodynamics, so we will postpone that. 
+
+I would like to discuss the strategy, since it is an example of how analysts approach problems. You were trying to analyze a system with in principle, a potentially unbounded range of interactions. It seems the energy per volume is dominated by the norm of the interaction. Remember the norm of the interaction is defined in such a way as $|H_{\Lambda}(\sigma)| \leq \left|\sum_{x \in \Lambda} \left[\sum_{x \in A} \frac{1}{|\Lambda|} \phi_A(\sigma)\right] \right|$. So now the question to ask is how can I trim to get the system to get something similar. Now as long as the norm is finite, as long as you chop diameters with terms larger than $R$, you're not making much of a dent in the volume. For every $\epsilon > 0$, there exists $R_{\epsilon}$ which is finite such that $|H_{\Lambda}(\sigma) - H_{\Lambda}^{R_{\epsilon}}(\sigma) | \leq \epsilon |\Lambda|$. So you are shifting the energy per density by a small amount. After all, we are interested in the logartihm of the partition function. We have $Z = \int e^{-\beta H(\sigma)} \rho_0(d\sigma_{\Lambda})$.  The effect of terms which are that small leads us to bound $Z$ by a factor at most exponential. Then $|\frac{1}{|\Lambda|} \txtn{ln}(Z) - \frac{1}{|\Lambda|} \txtn{ln} Z_{\Lambda}^{R_{\epsilon}}| \leq \epsilon$ to prove it converges.  
+
+Now, let us divide up the space of size $n \times n$ into squares of size $m \times m$ with $n >> m$. Now there may be some boundary layer around the space which includes no $m$ inside. Now how much is the partition function affected by turning off the boundary, and terms which involve different boxes. These terms can be estimated by removing thin rectangles of size $R_{\epsilon}$ (call these of terms of type $1$). What is effect of the energy of this on these terms on one over the volume on the partition in this box. The right question to ask is how much energy can you pack into the rectangle. We don't care about constants since this is analysis. 
+
+
+Each box contributes a corridor of order $R_{\epsilon}$, so we have 
+\be
+|\frac{1}{|\Lambda_m|}\txtn{ln}(Z_{\Lambda_m}^{R_{\epsilon}})  - \frac{1}{|\Lambda_m|}\txtn{ln}(Z_{\Lambda_m})| \leq d\beta \|\phi\| \left[ \frac{R}{m} + \frac{m}{n} \right]
+\ee
+
+Here's a cool way to prove this works: For $n$ fixed, the limit when $n \to \infty$ yields (if it exists, however, just take the lim sup if this is the case), you learn $|\txtn{lim sup}_{n \to \infty}  |\frac{1}{|\Lambda_m|}\txtn{ln}(Z_{\Lambda_m}^{R_{\epsilon}})  - \frac{1}{|\Lambda_m|}\txtn{ln}(Z_{\Lambda_m})| \leq d\beta \|\phi\| \left[ \frac{R}{m} + \frac{m}{n} \right] \to \frac{R}{m}\|\phi\|d\beta$. So now we see that $\frac{1}{|\Lambda_m|}\txtn{ln}(Z_{\Lambda_m}^{R_{\epsilon}})$ is a number. We learn that the finite volume partition functions are close to that number, with distance at most $1/m$. Taking $m \to \infty$, we see that the upper bound goes to $0$, and therefore $\frac{1}{|\Lambda_m|}\txtn{ln}(Z_{\Lambda_m}) \to \frac{1}{|\Lambda_m|}\txtn{ln}(Z_{\Lambda_m}^{R_{\epsilon}})$. This is very typical argument in analysis. If you now have an unbounded interaction, you just use a norm estimate. That's the proof outlined in the notes. Later today I'll upload the full proof using all approximations. 
+
+Now what is this free energy/pressure used for? We have $\psi(\beta, \phi)$  or $\psi(\beta, h)$. Finite volume Gibbs equilibrium states are $\rho_{\beta}$ are measures in the volume on spin configurations (in discrete case, this amounts to $\delta$-measure where weights add up to $1$), and the measure is defined as $\rho_{\beta, \Lambda}^{\#}(\sigma_{\Lambda}) = \frac{e^{-\beta H_{\Lambda}^{\#}}\rho_0(d\sigma_{\Lambda})}{Z_{\Lambda}^{\#}}$ where $\beta = 1/T$. 
+
+In thermodynamics, you take about extensive quantities, temperature, density, etc. In statistical mechanics, you want to know the joint distribution of states in multitude of local variables in Gibbs equilibrium. How does this inform you? It tells you some information, but not everything. All of this is not complicated once you understand it, but let's talk about probability referring to $\rho$. Now consider $\frac{1}{|\Lambda|} \txtn{ln}(Z_{\Lambda}^{\#}(\beta + \Delta \beta)) = \frac{1}{|\Lambda|} \txtn{ln}(Z_{\Lambda}^{\#}(\beta))$. Then 
+\be
+\frac{1}{|\Lambda|} \txtn{ln} \int e^{-(\Delta\beta)H_{\Lambda}(\sigma) \rho_{\beta}(d\sigma_{\Lambda})}
+\ee
+
+So we write 
+\be
+Z_{\Lambda}(\beta + \Delta \beta) = \int e^{-(\beta + \Delta \beta)H_{\Lambda}}\rho_0(d\sigma) = Z_{\Lambda}(\beta) \mathbb{E}_{\beta}(e^{-(\Delta \beta H_{\Lambda})})
+\ee
+
+We basically split up the exponent, and divided by the normalizing factor, pulling it outside the integral. The resulting integral is no more than $e^{-(\Delta\beta)H_{\Lambda}}$ averaged with respect to an average measure. 
+Thus we have 
+\be
+\mathbb{E}_{\beta, \Lambda}(e^{-(\Delta\beta)H_{\Lambda}}) = \frac{Z_{\Lambda}(\beta + \Delta\beta)}{Z_{\Lambda}(\beta)} \geq e^{-\Delta\beta E}\mathbb{P}_{\beta}(H_{\Lambda} < E)
+\ee
+This is exponentially small. Hence, for $\Delta\beta < 0$, we learn that $\mathbb{P}_{\beta}(H_{\Lambda} < E) \leq e^{E\Delta \beta} \frac{Z_{\Lambda}(\beta + \Delta \beta)}{Z(\beta)}$. Now divide by the volume to get
+
+\be
+\frac{1}{|\Lambda|} \txtn{ln}(\mathbb{P}_{\beta}(H_{\Lambda} < E)) \leq \Delta\beta \frac{E}{|\Lambda|}\left[ \psi(\beta + \Delta\beta - \psi(\beta)\right]
+\ee
+
+Let me just stop and give a picture and see the organized notes. Let's just explain what's going on: Convex functions have directional derivatives exists, this means that as you move along $\psi$ (image) and $\beta$ (domain), the pressure along $\beta$ gives the mean value of the energy. What does this tell you about actual values? We want to extract that the energy deviates by $\epsilon$ is a probability distribution, we can get it by studying the way the function behaves, the main idea is that the slope of the function gives you mean energy, and if you want to study energy which differs from slope, look at the free energy function. If you move by slope different from tangent, you reach right above it. Then the biggest gap you can create is a gap of exponential decay which is how much probability there is between yourself and the mean. 
+
+At those temperatures where the pressure is differentiable, then the energy density is equal to the thermodynamic value and is exponentially small in the volume. Each of the Hamiltonian terms will get its own shift-invariant coefficient. Functions which are jointly convex in a finite number of parameters are differentiable almost everywhere. You can then read the expected values of the energy, the quantity related to $H$ (magnetization), and various other local variables, can all be read off of this thermodynamic function $\psi$, and if you want more parameters, just add those. So you capture parameters which are existing where pressure is differentiable. People who study statistical mechanics not where everything is smooth, but where the pressure is not differentiable. What happens at such points? The Gibbs equilibrium states behave as if the slope of the function is the same at the point according to higher up, it's like there is one state. From the other side, you get a different energy density. It's very similar to phase transitions (solid $\to$ liquid $\to$ gas). 
+
+%We have using Chebyshev 
+%\be
+%\mathbb{P}_{\beta, \Lambda}^{\#}\left(|H_{\Lambda}^{\#}(\sigma) - \langle H_{\Lambda}^{\#}(\sigma)\rangle \leq -\epsilon |\Lambda|\right) \leq
+%\ee%
+
+%Recall that Chebyshev inequality says let's look at $\mathbb{E}(e^{tX})$. This is $\geq e^{t y}\mathbb{P}(X > y)$, from which you get $\mathbb{P}(X > y) \leq e^{-ty}\mathbb{E}(t^X)$ to get a moment generating function. 
+
+
+
+
+
+
+
+
+
+
+

@@ -1,46 +1,46 @@
 
-\blu{2-11-16: I started a couple of lines of discussion involving entropy; I would like to tie up a few of those loose ends. Just to remind you, please do not hesitate to ask questions about notation and the like; we have a very mixed audience and it's good to be reminded of elementary questions.}
+{\color{blue}2-11-16: I started a couple of lines of discussion involving entropy; I would like to tie up a few of those loose ends. Just to remind you, please do not hesitate to ask questions about notation and the like; we have a very mixed audience and it's good to be reminded of elementary questions.}
 
-\begin{rem}
+\begin{remark}
 %Just a word about the configuration space for a finite system, perhaps 
 Let $\Omega_0$ be the possible states (e.g., $\{-1, +1\}$ for spin states) for a single particle, and $\Omega = \Omega_0^G$ where $G$ is the lattice graph. Any $\sigma \in \Omega$ is in the form $\sigma = \{\sigma_x\}_{x \in G}$, where $\sigma_x \in \Omega_0$. 
 %are something like the spin states ($\pm 1$). 
-In the discrete case ($\Omega_0$ and $G$ are finite), the probability of configuration $\si$ is $\rh(\si) = \rh(\{\si\})$.
+In the discrete case ($\Omega_0$ and $G$ are finite), the probability of configuration $\sigma$ is $\rho(\sigma) = \rho(\{\sigma\})$.
 %For probability measures, with the discrete case it's given by $p(\{\sigma\})$. We might denote expectation for a finite space as 
 The expectation in the discrete case is a sum,
-\[
+\be
 \mathbb{E}_{\rho}(f) = \sum_{\sigma \in \Omega} f(\sigma) \rho(\sigma).
-\]
+\ee
 %More generally, we would write this as an integral
 In general, the expectation is an integral,
-\[
+\be
 \int f(\sigma) \rho(d\sigma).
-\]
+\ee
 
 Note that the sum is just integration respect to a discrete measure. The integral notation is more flexible because it adapts to non-discrete cases, for instance, when $\Omega_0 = S$ takes values on the sphere. 
-\end{rem}
+\end{remark}
 
 
 We talked about relative entropy, and entropy entered the situation different times in different ways. Entropy appears in many different areas, and they are all either related by precise relations or analogy. 
 
-\begin{df} 
+\begin{definition} 
 %For a pair of probability measures $\rho, \mu$ with
-Let $\rho,\mu$ be probability measures such that $\mu$ is absolutely continuous with respect to $\rh$. Let $\mu = G(\si)d\si$, i.e., $G=\frac{\delta\mu}{\delta\rho}$ is the Radon-Nikodym derivative with respect to $\rh$. 
-The \vocab{relative entropy} is 
-\[
+Let $\rho,\mu$ be probability measures such that $\mu$ is absolutely continuous with respect to $\rho$. Let $\mu = G(\sigma)d\sigma$, i.e., $G=\frac{\delta\mu}{\delta\rho}$ is the Radon-Nikodym derivative with respect to $\rho$. 
+The \textbf{relative entropy} is 
+\be
 S(\mu | \rho) = -\int G(\sigma) \ln(G(\sigma))\rho(d\sigma) = - \int \ln G(\sigma) \mu(d\sigma)
-\]
+\ee
 %Think of the cause where $\mu(d\sigma)$ is \vocab{absolutely continuous} with respect to $\rho$. This is denoted as the \vocab{Radon-Nikodym derivative} with respect to $\rho$ ($\frac{\delta\mu}{\delta\rho})$. 
-\end{df}
+\end{definition}
 
 Before we talk about the Gibbs measure and the variational principle, let us give a useful lemma.
 
-\begin{lem} For any pair of probability measures, %(on a finite set, though this holds more generally) 
-\[
+\begin{lemma} For any pair of probability measures, %(on a finite set, though this holds more generally) 
+\be
 S(\mu | \rho) \leq 0
-\]
+\ee
 with equality iff $\mu = \rho$ (as measures).
-\end{lem}
+\end{lemma}
 %We give this proof in essence, using Jensen's inequality.
 %seems to just follow from concavity of $x\ln x$...
 \begin{proof}
@@ -52,39 +52,39 @@ Take $\psi(x) = -x\ln(x)$. Look at the tangent line $(1 - x)$ intersecting the $
 \\
 \nonumber
 S(\mu | \rho) &= 
-\int  \psi\pa{\frac{\delta\mu}{\delta\rho}} \rho(d\sigma)\\
+\int  \psi\left( {\frac{\delta\mu}{\delta\rho}} \right) \rho(d\sigma)\\
 \nonumber
-&=\int \left[ \psi\pa{\frac{\delta\mu}{\delta\rho}} - \pa{1 - \frac{\delta\mu}{\delta\rho}}\right]\rho(d\sigma)\\
+&=\int \left[ \psi\left( {\frac{\delta\mu}{\delta\rho}} \right) - \left( {1 - \frac{\delta\mu}{\delta\rho}} \right)\right]\rho(d\sigma)\\
 \nonumber &\leq 0
 %\end{split}
 \end{align}
-where we used the fact that the derivative of $\rho$ against the Radon-Nikodym derivative with respect to $\rho$ is just $1$, \[\int \left(\frac{\delta \mu}{\delta \rho} \right) \rho (d\sigma )= \int \mu (d\sigma) = 1,\] 
+where we used the fact that the derivative of $\rho$ against the Radon-Nikodym derivative with respect to $\rho$ is just $1$, \be\int \left(\frac{\delta \mu}{\delta \rho} \right) \rho (d\sigma )= \int \mu (d\sigma) = 1,\ee 
 so that $1-\frac{\delta\mu}{\delta\rho}$ integrates to $0$. We added this term order to use~\eqref{eq:2-11-1}. 
 %Note that the 
 \end{proof}
 Hence, this is a variational principle for entropy. 
 
-\begin{rem}
+\begin{remark}
 For cases where things are not absolutely continuous, we define the relative entropy to be $-\infty$, since things will blow up. 
-\end{rem}
+\end{remark}
 
 Now, we derive a useful relation for  $\rho_{\beta}(d\sigma)  = \frac{e^{-\beta H(\sigma)}}{Z} \rho_0 (d\sigma)$:
-\beq{eq:2-11-2}
+\begin{equation}\label{eq:2-11-2}\text{{\color{red}\tiny eq:2-11-2}}
 S(\mu | \rho_0) - \beta \int H(\sigma) \mu d(\sigma) = \ln(Z) + S(\mu | \rho_{\beta})
-\eeq
+\end{equation}
 With a bit of political license, you may refer to this as the amount of free energy: It's $\beta$ times the entropy. %We mean energy in that particular state. 
 %FIXME
 \begin{proof}
 %The LHS $- \ln(Z) =$
 We have
-\[
-\pa{S(\mu | \rho_0) - \beta \int H(\sigma) \mu d(\sigma)} - \ln (Z)=
--\int \ln\left(\frac{\delta\mu}{\delta\rho}\cdot \fc{Z}{e^{-\be H(s)}}\right) \mu (d\sigma )
-\]
+\be
+\left( {S(\mu | \rho_0) - \beta \int H(\sigma) \mu d(\sigma)} \right) - \ln (Z)=
+-\int \ln\left(\frac{\delta\mu}{\delta\rho}\cdot \frac{Z}{e^{-\beta H(s)}}\right) \mu (d\sigma )
+\ee
 Now we must show this is the same thing as $S(\mu | \rho_{\beta})$. We can look at it slighlty differently, as though we are modifying the Radon-Nikodym derivative with respect to the modified measure. The above equals
-\[
+\be
 = -\int \ln\left(\frac{\delta\mu}{\delta\rho_{\beta}}\right) \mu d\sigma = S(\mu|\rho_{\beta})
-\]
+\ee
 by definition. 
 \end{proof}
 This is rather cool: It says a thermodynamic flavored quantity is equal to the relative entropy with respect to the Gibbs-measure plus a positive constant. %Equality holds only when we take entropy with respect to the Gibbs state. %FIXME
@@ -92,13 +92,13 @@ This is rather cool: It says a thermodynamic flavored quantity is equal to the r
 So with this we have proof of what we said last time.
 
 \begin{thm*}[Theorem~\ref{thm:gibbs-eq}]
-The (finite volume) \vocab{Gibbs equilibrium} measure $\rho_{\beta}(d\sigma)$ is the unique maximum of 
-\[
--\beta F(\mu) := S(\mu|\rho_0) - \be \int H(\sigma) \mu (d\sigma)
-\]
+The (finite volume) \textbf{Gibbs equilibrium} measure $\rho_{\beta}(d\sigma)$ is the unique maximum of 
+\be
+-\beta F(\mu) := S(\mu|\rho_0) - \beta \int H(\sigma) \mu (d\sigma)
+\ee
 \end{thm*}
 \begin{proof}[Proof of Theorem~\ref{thm:gibbs-eq}]
-By \eqref{eq:2-11-2}, this equals $\ln Z + S(\mu|\rh_\be)$. $S(\mu|\rh_\be)$ is maximized for $\mu=\rh_\be$.
+By \eqref{eq:2-11-2}, this equals $\ln Z + S(\mu|\rho_\beta)$. $S(\mu|\rho_\beta)$ is maximized for $\mu=\rho_\beta$.
 \end{proof}
 
 The point was to show that this measure would be dominated by the Gibbs state. It's useful to know when things are maximum. 
@@ -112,60 +112,60 @@ You may want to think of the statistical mechanics of a regular system like a la
 
 \section{Large deviation theory}
 
-We've touched on \vocab{large deviation theory} (Definition~\ref{df:ldp}). For instance, consider spin states: 
-\[
+We've touched on \textbf{large deviation theory} (Definition~\ref{df:ldp}). For instance, consider spin states: 
+\be
 \sigma_x = 
 \begin{cases}
-+1, & w.p.\, \rc2 \\
--1 & w.p.\,\rc2.
++1, & w.p.\, \frac{1}{2} \\
+-1 & w.p.\,\frac{1}{2}.
 \end{cases}
-\]
+\ee
 Let's take a space $\Lambda$ with some finite volume. The empirical average spin is $\frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x$. The Law of Large Numbers says 
-\[
-\mathbb{P}\left(\left|\frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x - \langle \sigma \rangle \right| > \ep \right) \to 0
-\]
+\be
+\mathbb{P}\left(\left|\frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x - \langle \sigma \rangle \right| > \varepsilon \right) \to 0
+\ee
 as $|\Lambda| \to \infty$. Significant deviation from the mean $\langle \sigma \rangle$ tends to zero. So we might ask now: what id the probability that the empirical average is close to any other value $m$ is close to $0$? 
-\[
-\mathbb{P}\left(\left|\frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x - m\right| \leq \ep \right) \approx e^{-a_n I(m)}
-\]
+\be
+\mathbb{P}\left(\left|\frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x - m\right| \leq \varepsilon \right) \approx e^{-a_n I(m)}
+\ee
 In this situation, $a_n = |\Lambda_n|$, where we are taking a sequence of increasing volumes. I am a bit ambiguous here, since for our purposes, these constants will be proportional to the volume. A book on large deviation theory would formulate things in a more general way. It goes without saying the volume is very large in the limit we are discussing, so this is a very tiny probability. What we mean by approximate is also a little ambiguous here: it means when you take a log of the RHS, you'll get the exponent in the probability. For us, the $I(m)$ is nothing more than the entropy corrected by a constant. Again, we use the $I$ notation to agree with large deviation books. 
 
-You never ask for a precise value of $m$ since the probability is typically $0$, unless it's a multiple of $|\Lambda|$, instead you have some tolerance level $\ep$. Now how to prove this? In the first lecture we used the Stirling formula, and derived it by hand. But I would now like to present a method to conclude this kind of result. These variables are not independent variables, they might be correlated like spin states. 
+You never ask for a precise value of $m$ since the probability is typically $0$, unless it's a multiple of $|\Lambda|$, instead you have some tolerance level $\varepsilon$. Now how to prove this? In the first lecture we used the Stirling formula, and derived it by hand. But I would now like to present a method to conclude this kind of result. These variables are not independent variables, they might be correlated like spin states. 
 
-The validity of a \vocab{large-deviation principle} can often be deduced using the following theorem: 
-\begin{thm}[G{\"a}rtner-Ellis]
+The validity of a \textbf{large-deviation principle} can often be deduced using the following theorem: 
+\begin{theorem}[G{\"a}rtner-Ellis]
 Assume that for a sequence of random variables $E$, the limit
-\[
+\be
 Q(\lambda) = \lim_{n \to \infty}\frac{1}{a_n} \ln \mathbb{E}\left(e^{\lambda E}\right)
-\]
+\ee
 exists and is finite for all $\lambda$ (here, $a_n$ is the volume).
 We will also use more generally $X$ as a vector of random variables, in which case define
-\[
+\be
 Q(\lambda) = \lim_{n \to \infty}\frac{1}{a_n} \ln \mathbb{E}\left(e^{\lambda \cdot X}\right).
-\]
+\ee
 Then for any closed set $F$ and open set $G$: 
-\bal
+\begin{align*}
 \lim_{n \to \infty} \frac{1}{a_n} \ln\mathbb{P}(E \in F) &\leq -\inf_{x \in F} Q^*(x)\\
 \lim_{n \to \infty} \frac{1}{a_n} \ln\mathbb{P}(E \in G) &\geq -\inf_{x \in G'} Q^*(x)
 \end{align*}
 %check this
-with $Q^*(x) = \text{sup}_x \left[\lambda x - Q(\lambda)\right]$ and $G'$ is the set of \ivocab{exposed points} of $Q^*$. 
-\end{thm}
+with $Q^*(x) = \text{sup}_x \left[\lambda x - Q(\lambda)\right]$ and $G'$ is the set of \index{exposed points}\textbf{exposed points} of $Q^*$. 
+\end{theorem}
 
 We would like to consider systems of large volume. Let the number of points be $a_n = |\Lambda_n|$. Let $E_n$ be  %something like 
 the total energy of configuration $\sigma$ in the volume $\Lambda_n$ , 
-\[E_n = H_{\Lambda_n}(\sigma).\] 
+\beE_n = H_{\Lambda_n}(\sigma).\ee 
 Alternatively, we can take the total energy in the box and break it down as the volume times the energy per volume, 
 $E_n = a_n \cdot x$, where $x = \frac{E_n}{a_n}$ is the energy density. We will calculate the mean value of the total energy in the $n^{th}$ box, and estimate how large it should be should a large deviation principle apply. 
-\[
+\be
 \mathbb{E} \left(e^{\lambda E_n}\right) = \int e^{\lambda x a_n} \mathbb{P}(E_n \in a_n dx)
-\] 
+\ee 
 We want to reflect the fact that this probability is ridiculously small, as we saw before in large deviation principle: $\mathbb{P}(E_n \in a_ndx) = e^{-a_nI(x)}$. Combining these factors, you get the following integral: 
-\[
+\be
 \int e^{a_n\left[ \lambda x - I(x)\right]}a_n dx
-\]
+\ee
 In effect we are integrating $x$ over the exponential of a volume times some reasonable quantity. So when you take the logarithm of that and divide by the volume, 
-\[\frac{1}{a_n}\ln(\mathbb{E}(e^{\lambda E_n})) \approx \max_x [\lambda x - I(x)].\] Seeing this, you say, ``Ah, I know what this is---this is the Legendre transform of the rate function!''. What you're really doing is taking the Legendre trasnform which is sensitive to the convex hull of the rate function. 
+\be\frac{1}{a_n}\ln(\mathbb{E}(e^{\lambda E_n})) \approx \max_x [\lambda x - I(x)].\ee Seeing this, you say, ``Ah, I know what this is---this is the Legendre transform of the rate function!''. What you're really doing is taking the Legendre trasnform which is sensitive to the convex hull of the rate function. 
 
 Suppose there is a certain interval where there are few configurations in a fallen entropy. What would contribute to the expected value? In that situation, there will be competition between situations: The volume may decompose into situations where you have a small energy density for part of the volume and large energy density for the rest of the volume. So it averages to something larger: Thus the expected value of the partition function gives you information about the Legendre transform. This theorem tells you that if you want to learn about the function, you need to do the inverse Legendre transform. The Legendre transform has the property that you can recover the points of $I(x)$ on the convex hull of $I(x)$. 
 
@@ -174,7 +174,7 @@ Now what are ``exposed points of $Q^*(x)$''? Exposed points are points on the in
 We can learn about the thermodynamics of the system $\frac{1}{|\Lambda_n|}\ln(Z(\beta))$. Notions of convexity carry very nicely from the real line to general affine spaces. In that case, what you want to do for spin systems like this, is to ask more detailed questions, like ``What is the probability that the energy for unit volume is in some area $dE$, and the sum of the magnetization is in some interval $dm$?''. Such things are typically governed by large deviation principles. 
 In order to answer these kinds of questions, you can just take the partition function as $Z_n = \mathbb{E}(e^{-\lambda \cdot X})$ where $X$ is the quantities you are interested in, and then you can just apply the multidimensional version of the theorem we just stated. 
 
-\blu{I would also post some homework about using the calculation we derived here instead of the Stirling inequality. }
+{\color{blue}I would also post some homework about using the calculation we derived here instead of the Stirling inequality. }
 %At some point we will have to get a bit more formal about probability measures of products. 
 
 
