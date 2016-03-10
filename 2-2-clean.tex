@@ -35,7 +35,7 @@ An \textbf{ensemble} is a probability measure with respect to which you do avera
 First, we define some notation.
 \begin{definition}[Indicator function]
 \be
-\mathbbm{1}[\text{cond}] := \begin{cases}
+\mathds{1}[\text{cond}] := \begin{cases}
 1,&\text{condition satisfied}\\
 0,&\text{else}
 \end{cases}
@@ -46,13 +46,13 @@ Now we define two specific ensembles, the \index{microcanonical ensemble}\textbf
 \begin{definition}[Microcanonical ensemble]
 In the microcanonical ensemble,
 \be
-\mathbb{P}(n_{\Omega})= \frac{\mathbbm{1}[\sum_{x\in \Omega}n_x=N]}{Z}
+\mathbb{P}(n_{\Omega})= \frac{\mathds{1}[\sum_{x\in \Omega}n_x=N]}{Z}
 \ee
 where $Z$ is a normalization constant.
 
 For every function $f:\Omega\to \mathbb{R}$ assigning a real number to each configuration, define the \index{microcanonical ensemble average}\textbf{microcanonical ensemble average} by
 \be
-\left\langle {f}\right\rangle_{N,n}^{\text{Can}} = \frac{\sum_{n\in \Omega} \mathbbm{1}[n_x=N] f(n)}{\sum_{n\in \Omega} \mathbbm{1}[\sum n_x=N]}.
+\left\langle {f}\right\rangle_{N,n}^{\text{Can}} = \frac{\sum_{n\in \Omega} \mathds{1}[n_x=N] f(n)}{\sum_{n\in \Omega} \mathds{1}[\sum n_x=N]}.
 \ee
 \end{definition}
 The ensemble we will focus on for this course is the grand canonical ensemble. 

@@ -1,0 +1,145 @@
+%what can you learn from therm dyn pressure from Gibbs states
+{\color{blue}3-3-16}
+
+\subsection{Transfer matrix method}
+
+This method applies to any finite model in 1 dimension. Suppose the individual states are $\sigma=\pm1$, $\{\sigma_i\}_{i=0}^L$
+%observing particular configurtion.
+The probability of observing a particular configuration is %boundar configuration $\si=(\si_0,\si_L)$ can be factorized as follows, %(having boundary conditions means we specify $\si_0,\si_L$),
+\begin{align}
+\mathbb{P}_\beta^{b.c.}(\{\sigma_{\Lambda_L}\}) &= \frac{e^{-\beta H_L^{bc}(\sigma)}}{Z_L^{br}(\beta)}\mathds{1}[\sigma_0,\sigma_L\text{ satisfy boundary conditions}]\\
+\mathbb{P}_\beta(\sigma\text{ has boundary conditions } \sigma_0,\sigma_L)&=(T^L)_{\sigma_0,\sigma_L} \\
+&= \sum_{\sigma =\{-1,1\}^{[1,L-1]}} T_{\sigma_0,\sigma_1}\cdots T_{\sigma_{L-1}\sigma_L}.
+%how take matrix products.
+\end{align}
+Here, 
+\begin{align}
+T_{\sigma,\sigma'} &= e^{-\left[ {\beta J \sigma\sigma' + \widehat{h}\left( {\frac{\sigma+\sigma'}{2}} \right)} \right]}\\
+&= e^{-\beta H(\sigma)} e^{\widehat{h}\left( {\frac{\sigma_0+\sigma_L}{2}} \right)}.
+\end{align}
+The product of these is
+\be
+e^{-\beta H(\sigma)} = e^{-\beta \sum_{j=0}^{L-1}\sigma_j\sigma_{j+1} - \widehat{h} \sum_{j=0}^L \sigma_j}.
+\ee
+%sum for each contraction?
+%attractive nature, fluctuating spins which tend to be on the positive side. $\pm$ make a transition from one to another. 
+
+%From $\si',\si$
+%multiply get exactly Gibbs factor.
+%pay attention to individual terms.
+Another natural boundary condition is the periodic boundary conditions: we only allow states where $\sigma_0=\sigma_L$, so 
+\be
+Z_L^{\text{per}} = Z_L^{+,+}+Z_L^{-,-} = \text{Tr} (T^L).
+\ee
+
+\subsection{Markov chains}
+
+We summarize some basic facts about Markov chains.
+\begin{definition}
+A $Q$-state \index{Markov chain}\textbf{Markov chain} is a collection of random variables $\{w_n\}$ with values in $[Q]=\{1,\ldots, Q\}$. Let $\Psi_n = 
+\begin{pmatrix}
+{P_n(1)}\\
+{\vdots}\\
+{P_n(Q)}
+\end{pmatrix}
+$ where $P_n(k) = \mathbb{P}(\omega_n=k)$.
+
+$\Psi_1$ is in a given initial state\footnote{Probabilists use ``state" to mean the value of the random variable; physicists use ``states" to correspond to probability measure. (In quantum physics, not all variables have concrete values.)}, i.e., the probability distribution of $\omega_1$, and 
+\be
+\Psi_{n+1} = A\Psi_n
+\ee
+where $A_{ij}=\mathbb{P}(\omega_{n+1}|\omega_n=j)$ is \index{doubly stochastic}\textbf{doubly stochastic} $\sum_{j}A_{ij} = 1 = \sum_i A_{ij}$, $A_{ij}\ge 0$.\footnote{The LHS equality says that the Markov chain is reversible.}
+\end{definition}
+Think of $n$ as the discrete time.
+Taking powers, we have
+\be
+\Psi_{n+1} = A^n \Psi_1.
+\ee
+%start with initial configuration and is propagated by a transition matrix.
+
+Markov chains have finite memory; the effect of the initial value decays exponentially.
+Nice Markov chains have a ``destiny" (equilibrium distribution). 
+%arrow of time.
+\footnote{The basic laws of physics seem reversible; how to explain the arrow of time? Consider colliding molecules; the impact parameters seem to be coming without precise aim in an uncorrelated way (Boltzmann's hypothesis), which isn't true if it is played in reverse. Entropy keeps increasing. Is there a moment when the entropy starts decreasing; does the arrow of time reverse?}
+%arrow of time where 
+
+A 1-D finite system looks like a Markov chain; boundary conditions are equivalent to specifying initial and final states.
+
+\begin{theorem}[Perron-Frobenius]
+Let $A=(a_{ij})$ be a $Q\times Q$ positive matrix $a_{ij}\ge 0$. 
+\begin{enumerate}
+\item
+There is a positive eigenvalue $r$ (the Perron-Frobenius eigenvalue) such that the spectral radius of $A$ is $\rho(A)=r$ and $A$ has no other eigenvalue with $|\alpha|=r$.
+\item
+This eigenvalue is simple, and the corresponding eigenvector is positive.
+\item Letting $|{v}\rangle$, $\langle{w}|$ be the left and right eigenvectors of $A$ corresponding to the largest eigenvalue, $A|{v}\rangle=r|{v}\rangle, \langle{w}| = r \langle{w}|$,
+\footnote{We use Dirac's notation $|{v}\rangle=v^T$, $\langle{w}|=w$.}
+\be
+\lim_{L\to \infty} \frac{1}{r^L}A^L = |{v}\rangle\langle{w}|
+\ee
+\end{enumerate}
+\end{theorem}
+In other words, there is $S$ such that 
+\beS^{-1}AS\approx r^L\begin{pmatrix}
+1&0&\cdots\\
+0&0&\cdots\\
+\vdots &\vdots &\ddots
+\end{pmatrix}.\ee
+Applying this to the 1-D Ising model,
+\begin{align}
+Z^{\text{per}} &=
+\sum_{j=1}^{Q} \lambda_j^L\\
+& \approx \lambda_{\max}^L \left( {1+\left| {\frac{\lambda_2}{\lambda_1}} \right|^L +\cdots} \right)
+%if you take the ising model, in the infinite volume limit the state exhibits exponential decay of correlations.
+\end{align}
+where 
+\be
+1>\left| {\frac{\lambda_2}{\lambda_1}} \right| = e^{-\delta}
+\ee
+where $\delta\lambda>0$ is the spectral gap, the gap between $\lambda_{\max}$ and the next smaller eigenvalue (in absolute value).
+Using this, it is an exercise to show that in the Ising model, in the infinite volume limit the state exhibits exponential decay of correlations,
+\be
+\lim_{L\to \infty} \left| {\left\langle {\sigma_x,\sigma_y}\right\rangle_{[-L,L]}} \right| \le Ae^{-\delta |x-y|},
+\ee
+where $\left\langle {A,B}\right\rangle=\left\langle {AB}\right\rangle-\left\langle {A}\right\rangle\left\langle {B}\right\rangle$ is the covariance.
+In the 1-D Ising model,
+\be
+\Psi(\beta,h)=\lim_{L\to \infty} \frac{1}{L}Z_L= \ln \lambda_{\max},
+\ee
+where $\lambda_{\max}$ is the Perron-Frobenius eigenvalue of $T=
+\begin{pmatrix}
+{e^{\beta+\widehat{h}}}&{e^{-\beta}}\\
+{e^{-\beta}}&{e^{\beta-\widehat{h}}}
+\end{pmatrix}
+$.
+
+The matrix elements are analytic. Can we conclude from this the analyticity of eigenvalues? They are when they don't bump into each other. When they do, funny things can happen. But here, Perron-Frobenius tells us that eigenvalues will not be equal (all entries in $T$ are positive). Thus the eigenvalues will be differentiable in $\beta,h$ and there is no phase transition.
+
+\section{2-D Ising model}
+
+Studying the transfer matrix going up, certain models are integrable; you can get a formula for the partition function. We'll present a different method which is culturally very important.
+%early on in their career see solution of 3d 
+%many careers were lost.
+There is no closed-form solution in 3-D.
+
+In contrast to the 1-dimensional case, in 2 dimensions, the free energy is not differentiable. 
+
+Next we will show that for the 2D Ising model, for $\beta$ large enough ($\beta>\beta_c$) there exists $m(\beta)>0$ such that 
+\begin{align}
+\mathbb{P}_{\beta,k=0}^+\left( {\frac{1}{|\Lambda_L|}\sum_{x\in \Lambda_L} \sigma_x m\ge\frac{m}{2}} \right)&\to 1\\
+\mathbb{P}_{\beta,k=0}^-\left( {\frac{1}{|\Lambda_L|}\sum_{x\in \Lambda_L} \sigma_x m\le \frac{m}{2}} \right)&\to 1
+\end{align}
+as $L\to \infty$. This indicates a phase transition. 
+The signature of a phase transition is that when you take $\beta>\beta_c$, $h=0$ (so the Hamiltonian is invariant under spin-flip).
+%in principle, true.
+
+The Hamiltonian is $H=-\sum_{x,y\text{ neighbors}} \sigma_x\sigma_y$.
+With $+$ boundary conditions, the spins are overwhelmingly positive. With $-$ boundary conditions, the spins are overwhelmingly negative. The system deep inside remembers the boundary conditions. 
+Locally, there is symmetry; globally we have symmetry breaking.
+
+What if we take symmetric boundary conditions, with $+$'s and $-$'s? Since it is invariant under a reflection, the probability of observing $\ge \frac{m}{2}+\varepsilon$ vanishes exponentially. The system organizes itself as follows: close to the $+/-$ boundary there is mostly $+/-$ with islands of $-/+$; in between there is an interface.
+
+%There is a discontinuity
+%We show that $\an{\si_x}$ is sandwiched between the left and right derivatives, $\an{\si_x}=-\pdd{h}\Psi$.
+
+We will see Pious's argument (?).

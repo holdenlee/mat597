@@ -1,0 +1,168 @@
+
+\blu{3-8}
+
+Peiech showed that these models can exhibit symmetry breaking.
+
+In the 2-D Ising model, 
+\[
+H=-J\sum_{\{x,y\}} \si_x\si_y - h\sum_x \si_x.
+\]
+\begin{thm}[Peiech]
+For the 2D nonnegative Ising model, there exists $\be_0<\iy$ such that for $\be>\be_0$, at $h=0$,
+\bal
+\an{\si_x}_{\La,\be,0}^+ &\ge m(\be)\\
+\an{\si_x}_{\La,\be,0}^- & \le -m(\be).
+\end{align*}
+with some $m(\be)>0$. 
+\end{thm}
+Why is this ``symmetry breaking"? If you take the model at external field $h=0$ (so that the measure is invariant under global spin flip), the expected value of any anti-symmetric quantity like spin is 0. If you put $+$ boundary conditions all around, then you expect there to be more $+$'s.  
+More surprisingly, if you fix \emph{any} spin, even if the spins are far away, the bias persists.
+%The place where you are furthest is 0, so it suffices to prove for that.
+
+The theorem implies by linearity
+\[
+\an{\rc{|\La|} \sum_{x\in \La} \si_x}^+ \ge m(\be).
+\]
+Taking the van Hove limit,
+\bal
+\pdd{h} \Psi(\be,0+) & = \lim_{\La\Uparrow \Z^2} \an{\rc{|\La|} \sum_{x\in \La} \si_x}^+ \ge m(\be)\\
+\pdd{h} \Psi(\be,0-)& = \lim_{\La\Uparrow \Z^2} \an{\rc{|\La|} \sum_{x\in \La} \si_x}^- \le - m(\be).
+\end{align*}
+%derivative at zero
+Thus the left and right derivatives of $\Psi$ are unequal. There is a cusp at 0; there is a phase transition.
+
+The theorem shows there is an asymmetry in the infinite volume limit of magnetization at a site.
+
+For each $\si_{\La}\in \Om_\La$ draw a green line separating $+/-$ spins. 
+Using
+\[\si_x\si_y = 2\one[\si_x=\si_y]-1\]
+(this takes $\pm1$ values). 
+We have
+\bal
+e^{-\be H(0)}&=\prod_{\{x,y\}} e^{\be \si_x\si_y} = e^{\be|\xi|} \prod_{\{x,y\}}  e^{-2\be \one[\si_x\ne \si_y]} = K e^{-2\be|C|}
+\end{align*}
+where $K$ is a constant and $C$ is the set of contour lines.
+
+%suppressed by $e^{-2\be}$ times the number of lines.
+%loops cost energy. excitation.
+%hamiltonian. What is the energetically most favorable thing to do?
+%particles of the model...
+
+If the boundary conditions are $+$, then for there to be a $-$, it must be separated from the boundary by a green loop. We want to show that the probability for a given site to be separated from the boundary by a loop is strictly less than $\rc2$. Then the probability it agrees with the boundary is $>\rc2$.
+
+Let $\Om_{\ga}$ be the set of configurations which has $\ga$ as a contour.
+\begin{lem}[Peiech]
+The probability that a given loop $\ga$ is among the contours lines $C(\si)$ satisfies
+\[
+\Pj_{\La,\be,0}^+(C(\si) \ni \ga )= \an{\one_{\Om_{\ga}}}^+_{\La,\be,0}\le e^{-2\be |\ga|}.
+\]
+\end{lem}
+\begin{proof}
+First we do an energy estimate.
+
+The idea is that each configuration can be associated with another configuration by a mapping $T_\ga$ which flips the spin of all sites inside $\ga$. The disagreements of $\ga$ would be erased. Because all spins inside are flipped, no other disagreement is affected. Note $T_\ga$ is an involution---it is its own inverse.
+%takes out of set in invertible way. 
+%consider mapping which flips the spin. disagreement would be erased, all inside is flipped, so no other disagreement is affected.
+
+For each $\si\in \Om_{\ga}$, its flip has higher probability because it has less disagreement, so
+\[
+\Pj^+(\{\si\}) = e^{-2\be |\ga|} \Pj(\{T_\ga\si\})%\le e^{-2\be |\ga}.
+\]
+Summing over $\si\in \Om_{\ga}$,
+\[
+\Pj^+(\Om_{\ga}) = e^{-2\be |\ga|} \Pj(T_\ga\Om_{\ga}) \le e^{-2\be |\ga}.
+\]
+%For each $\si\in \Om_{\ga}$, 
+%\[
+%\Pj^+(\{\si})\le
+%\fc{\Pj^+(\{\si\})}{\Pj(\{T_\ga\si\})+\Pj(\{\si\})} 
+%= \fc{e^{-2\be |\ga|}}{1+e^{-2\be |\ga|}} \le 2^{-2\be|\ga|}.
+%\]
+%winning one mi
+
+Next we need an entropy estimate: we need to estimate how many loops there are so we can do a union bound over them.
+\begin{lem}[Entropy estimate]
+The number of non-repeating loops of length $l$ starting from a specified point is $N_l\le \fc 433^l$.
+\end{lem}
+\begin{proof}
+There are 4 possibilities for the first step; for each of the next step there are $\le3$ choices for the other $l-1$ steps because it can't backtrack.
+\end{proof}
+
+Now we put the energy and entropy bound together.
+For each each loop around $x$, we can start it at an node between 0 and $\fc l2$ steps to the right of $x$ where the path goes up. Then %  Choosing the first step to be up in the path
+\bal
+\Pj^+(\si_x=-1) &\le \Pj^+\pat{$x$ is separated from $\pl \La$}\\ 
+&\le \sum_{\ga\text{ loop separating $x$ from $\pl \La$}} e^{-2\be |\ga|}\\
+&\le \sum_{l=4}^{\iy} \fc l2 3^{l-1} e^{-2\be l}\\
+&=\rc6 \sum_{l=4}^{\iy} l(3e^{-2\be})^l.
+\end{align*}
+This is $\le \rc 2 - \de(\be)$ for $\be>\be_0$ where  $\be_0$ is defined by the condition
+\[
+\rc 6 \sum_{l=4}^{\iy} l (3e^{-\be_0})^l = \rc2.
+\]
+%number of choices.
+%how unlikely for a given contour to happen.
+\end{proof}
+The condition is ugly. With some extra finesse, we can show $3e^{-\be}<1$ is sufficient for there to be symmetry breaking.
+
+This implies that for $\be>\be_0$
+\[
+\an{\si_0}_{\Z^2}^+=\lim_{\La \Uparrow \Z^2} \an{\si_0}_{\La,\be,0}^+ \ge m(\be)>0.
+%local quantity with _ boundary conditions.
+%prob dist of measure
+\]
+Here we define an infinite volume probability distribution by taking the limit of finite probability distributions with $+$ boundary conditions.   Similarly define $\an{\si_0}_{\Z^2}^-$. Symmetry breaking refers to the fact that
+\[
+\an{\si_0}_{\Z^2}^+\ne \an{\si_0}_{\Z^2}^-.
+\]
+
+Consider a function $G(m)=G(-m)$. If $G$ has the symmetry of the variational problem, the minimum is at 0.
+%In symmetry breaking the minimum is not at 0. %: the solution of the variational problem. 
+If the minimum does not have the symmetry of the variational problem, there may be multiple minima. We refer to this as symmetry breaking.
+
+\begin{rem}
+One can deduce symmetry breaking already for $\be>\be_1$ with $\be$ defined by $3e^{-2\be_1}=1$. 
+
+Actually we're counting self-avoiding walks; the rate that they grow is smaller than $3^l$. So we can replace 3 by the actual rate; this is more complicated. It's harder to come up with exact values.
+\end{rem}
+%Convergence gives symmetry breaking.
+
+The part of the estimate which is not relevant is short loops. Let's look at a larger scale and only count loops which surround a larger box. If the probability of there being a large loop around $x$ is $<\rc2$, then we can already conclude symmetry breaking. For $3e^{-2\be}<1$, we can choose $l$ large enough so that this holds.
+
+If the box of size $n$ is not surrounded by a loop, we can conclude there exists some loop of $+$ spins outside the box which is connected to the boundary. %encircling the box of size $n$. 
+This event is not compatible with the flip of the event. Thus the probability that there is a loop of $-$'s of size $>n$ connected to the boundary (with $-$) is $<\rc2$.
+
+In the infinite volume case, we cannot both have a loop connected to $\iy$ with $-$'s and a loop connected to $\iy$ with $+$'s. The $+$ event is more likely.
+
+If you start with $+$ boundary conditions, the $+$ case will occur with large probability.
+
+There is percolation of $+$ sites. If there is no symmetry breaking, there is percolation of $-$ sites. You have to work to show that you can't have infinite line of $+$'s and infinite line of $-$'s with nonzero probability  %In our case, both cannot occur simultaneously. %choke line of 
+Harris developed the theory of this. We take a shortcut and show that a stronger condition (with the ring of $+/-$'s) is incompatible.
+
+%We take shortcuts. 
+%estimates do not squeeze most.
+When you take this approach, there are 2 special values of the parameters: a $\be$ for which we get no information (the sum diverges), and the $\be$ for which the sum is less than a certain threshold ($\rc2$). Looking at a renormalized version which eliminates the noise from the low cases of the sum, and you can improve the $\be$ threshold.
+
+In higher dimensions, you have to enumerate surfaces. The energy bound is easy. The energy (enumerating surfaces) is messier. The entropy estimate gives worse bounds. You have to be clever to bring other techniques.
+
+Another way is to take the restriction to 2 dimensions (a slice of the cube). If you decouple the layers you just get the 2D model. Having other spins around only increases cooperations. 
+%clusters of cooperation
+%connected to floors above and below.
+This brings us to the use of inequalities. For the 3D model, the magnetization is greater than the 2D model for the same temperature. 
+
+With appropriate inequalities one can show
+\[
+\an{\si_0}_{[-L,L]^3}^+\ge \an{\si_0}_{[-L,L]}^+.
+\]
+This implies symmetry breaking in higher dimensions at the same temperature, so the critical temperature is smaller,
+\[
+\be_{c}^{3D} \le \be_c^{2D}.
+\]
+Here
+\[
+\be_c = \inf \set{\be}{\an{\si_0}_{\be'}>0 \forall \be'>\be}.
+\]
+For 2 dimensions, $\be_c$ is calculable; for 3 dimensions we don't have an exact value. The 2-D Ising model is exactly solvable by a nontrivial argument. We'll present Feynman's solution.
+%There is a discontinuity in the spontaneous ... across this line.
+
+How singular is the magnetization? That's not expected to change with local details, but with dimension. We do not know $\be_c$ for range 5 Ising model, but we expect that the power of $m(\be)$ is the same (it grows like a power function from the critical temperature).

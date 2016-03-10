@@ -1,0 +1,151 @@
+
+\blu{3-10: We continue the 2D Ising model. Much of what we say will hold true for other planar graphs. }
+
+The energy is 
+\[
+\sum_{b\in \cal E}J_b (\si\si)_b - h\sum_{x\in G}\si_x
+\] 
+where the first sum is over edges (bonds) and if $b=b_1b_2$, then $(\si\su)_b$ denotes $\si_{b_1}\si_{b_2}$.
+
+The state changes discontinuously across the line $h=0$ until some critical temperature $T_c$. Along the symmetry line the model is solvable.
+\begin{thm}[Onsager]
+For the nn $\Z^2$ at $h=0$, $J_b=J$, 
+\[
+\rc{|\La|} \ln Z_{\La}^{\text{per}} (\be, 0) = \ln \cosh (\be J)
++ \rc 2 \int_{(-\pi, \pi]^2} \fc{dx_1\dx_2}{(2\pi)^2}\ln \bc{
+\ba{
+Y(\be) + Y^{-1}(\be) - 2
+} + \cal E(k)
+}
+\]
+where $\cal E(k) = 2\ba{\sin^2 \pf{k_1}2 + \sin^2\pf{k_2}2}$.
+
+By the integral we really mean the discrete sum over $k\in (-\pi,\pi]^2 \cap \fc{2\pi}{L}\Z^2$. (In the infinite volume limit it is an integral.)
+%elastic membrane.
+\end{thm}
+%discrete momenta as sites in spce.
+For square summable function in a box, we can look at a basis of delta functions, or the Fourier basis $e^{ik\cdot x}$ for $k\in (-\pi,\pi]^2 \cap \fc{2\pi}{L}\Z^2$. I.e., $k$ is sampled from the dual lattice; $[-\pi,\pi]$ is subdivided to have the right number of points.
+%condensed matter physics. Fourier analysis.
+%In many books where Onsager's theorem..., they stop short of this expression.
+
+Note $\sinh$ is an unbounded monotone increasing function. 
+%what $Y+Y^{-2}-2$ looks like: min 0 at 1.
+%sum won't be both 0 if temperature is other than 0.
+%At the critical temperature, $Y(\be)+Y^{-1}(\be)-2$ vanishes, and the singularities are those of $\cal E(k)$.
+
+For $h=0, b\in \cal E(\cal G)$,
+\begin{align*}
+Z_{\La} &= \rc{2^{|\La|}} \sum_{\si \in \Om_{\La}} e^{-\be H_{\La}(\si)}\\
+&\qquad e^{-\be H(\si)} = e^{\sum_b (\si\si)_b \be J_b} = \prod_b e^{\be J_b (\si\si)_b}& \text{(factorizing over bonds)}\\
+&=\rc{2^{|\La|}} \sum_{\si\in \Om_{\La}} \prod_b [\cosh(\be J_b) + \sinh(\be J_b)(\si\si)_b]&e^x = \cosh x + \sinh x\\
+&=\ba{\prod_b \cosh(\be J_b)} \rc{2^{|\La|}}\sum_{\si\in \Om_{\La}} \prod_b[1+K_b(\si\si)_b]&\text{where }K_b=\tanh(\be J_b)\\
+&=\ba{\prod_b \cosh(\be J_b)} \EE_{\si} \sum_{\Ga\subeq \cal E(\cal G)}\prod_{b\in \Ga}K_b \pa{\prod_{b=\{x,y\}\text{ in }\Ga} (\si\si)_b}\\ 
+&=\ba{\prod_b \cosh(\be J_b)} \sum_{\Ga}\prod_{b\in \Ga}K_b
+\EE_{\si} \pa{\prod_{b=\{x,y\}\text{ in }\Ga} (\si\si)_b}&\text{linearity of expectation}
+\end{align*}
+We expressed the sum in terms of the symmetric and anti-symmetric parts and pulled out a factor $\cosh$. 
+%\fixme{Where $\Ga$...}
+%Here $\Ga$ is over sets of loops (i.e., possibilities for the places where $(\si\si)_b=-1$).
+%nmber of bonds contain a site x
+%if single side for which this is an odd poewr, the average is 0.
+%if the power is even for all spins, the averge is 1.
+The average is easy to compute: if there is a spin for which the power is odd, the average is 0; if the power is even for all spins, the average is 1.
+\[
+\EE_{\si} \pa{\prod_{b\in \Ga} (\si\si)_b} = \EE_{\si}\prod_x \si_x^{\sum_{b\in \Ga} \one [b\ni x]}
+= \one[\forall x,(-1)^{\sum_{b\in \Ga} \one[b\ni x]}=1]
+\]
+%good graph obtained from closing
+
+%Factorize over bonds
+%\bal
+%e^{-\be H(\si)} &= e^{\sum_b (\si\si)_b \be J_b} = \prod_b e^{\be J_b (\si\si)_b}.
+%\end{align*}
+Let $(\pl \Ga)_2=\set{x}{x\text{ belongs to an odd number of edges}}$. The condition for the summand to not vanish is $(\pl \Ga)_2=\phi$.
+
+We summarize this calculation as a lemma.
+
+%\begin{thm}[Feynman-Sherman]
+%
+%\end{thm}
+%complexity not reduced yet.
+\begin{lem}
+For $h=0$,
+\bal
+Z_\La &= \ba{\prod_b \cosh(\be J_b)} \sum_{\Ga, (\pl \Ga)_2=\phi} \prod_{b\in \Ga}K_b.
+\end{align*}
+\end{lem}
+
+\begin{thm}[Feynman-Sherman]
+Let $K(\La)= \prod_{b\in \Ga} K_b$.
+\[
+\sum_{\Ga:(\pl \Ga)_2=\phi} K(\Ga) =  \prod_{\text{loops}}[1+(-1)^{n(l)}K(l)]
+\]
+where $n(l)$ is the number of self-intersections of $l$.
+\end{thm}
+Each graph can be covered by a collection of loops (which can cross and repeat edges).
+%completing loops
+%start from RHS: double counting.
+Note the RHS is an infinite sum. By a lot of identities this infinite sum reduces to a finite sum.
+
+Kac-Ward introduced the Ihara zeta function.
+
+The RHS is 
+\bal
+ \prod_{\text{loops}}[1+(-1)^{n(l)}K(l)] &= \sum_{m:\cal E(G) \to \Z_+} {\prod_b K_b^{m_b}} W(m)\\
+\text{where }W(m) &= \sum_{\ell_1,\ldots} \prod_j (-1)^{n_{\ell_j}}\one_m[\{\ell_1,\ldots, \ell_k\}].
+\end{align*}
+
+%how many times is each bond is visited by each loop of collection...
+%when weights small enough, convergent infinite product
+%how many ways edge is visited.
+
+\begin{lem}
+If $\ve{m}_{\iy}:=\max_b(m_b)=1$ then $W(m)=1$.
+\end{lem}
+%If weights are 0 or 1 for all bonds, then the contribution of the RHS is 1. Sticking just with $W(m)=1$, this captures all partition functions.
+
+Sum over the multisets of edges. We need to enumerate how many ways the multisets can be realized as a union of loops. 
+The Katz-Ward idea is enumerate all the different ways to resolve the traffic jams at each vertex with an intersection: sum over all possible choices with the right signs. The other vertices don't present any choices for the prospective loop.
+
+The three possibilities are:
+
+PICTURE.
+
+%The sum is 1.
+%Think of loops as limits of continuous curves. It's not clear whether under magnification... the number of times curves cross each other.
+The parity is certain. 
+%the number of crossings disappear from view.
+%deformation: disentangle wire.
+%Whitney theorem. Intuitive things hard to prove.
+%crossing of single curve with self or other. 
+%Two curves always have an even number of intersections. (If you pull them apart, intersections will disappear in pairs.)
+
+\begin{lem}
+If $\ve{m}_{\iy}=2$ then $W=0$.
+\end{lem}
+\begin{proof}
+This means there is one edge traversed twice. Take one of these edges. How are the loops arranged in the complement? There are 2 possibilities for how the loops hook up through the bond. Summing you get 0.
+\end{proof}
+What if it's $>2$? This is in fact true for any value $>1$.
+
+Why are the higher powers 0? %There are things like graph zeta functions.
+
+\begin{thm}[Sherman]
+\[
+\prod_{\text{loops}} [1+(-1)^{n(\ell)}K(\ell)]^2 = \det(\one - \cal L)
+\]
+where $\cal L$ is a $2|\cal E|\times 2|\cal E|$ matrix indexed by the oriented edges. Here 
+\[
+\cal L_{e,e'} = \de_{D(e'),t(e)} e^{\fc{i\angle(e,e')}2}K_e.
+%$e$ to flow into $e'$.
+\]
+(The Kronecker delta function says that $e$ has to flow into $e'$, i.e., the terminal of $e$ is the same as the start of $e'$. Here $\angle(e,e')$ means the angle between $e,e'$. We get a phase number that's half the sum of the turns. For a simple loop, we get $-1$.)
+\end{thm}
+$\Tr \cal L^n = \sum_{e_1,\ldots, e_n} = \cal L_{e_1,e_n}\cdots \cal L_{e_2,e_1}$. This is associated to an oriented loop.
+%n(\ell)$ self intersections.
+
+%There's a general relation...
+%Finite product expression for infinite product.
+Buried in this is an infinite collection of relations. In principle we have contributions in the RHS of the theorem with arbitrarily many loops. But Sherman's theorem says that it is multilinear in the weights of the edges. Higher powers do not contribute. 
+
+You can decompose the Hilbert space into Fourier modes. For each value of the momentum you have a finite-dimensional space. Edges are indexed by position and direction. If you change to momenta and direction, the different momenta are not mixed by shifting. The determinant is a block determinant where different values of the momenta are not mixed. We get $4\times 4$ blocks; the determinants can be computed and we get the solution.

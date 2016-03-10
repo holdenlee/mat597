@@ -36,6 +36,7 @@ where $Z_{\La}(\be, J) = \int_{\Om_\La} e^{-\be H_{\La}(\be)}\rh_0(d\si_{\La})$.
 We proved 2 theorems, Theorem~\ref{thm:j-limit} and the following.
 Let $h$ be one of the parameters of $J=\{J_\La\}$ and $M$ be the conjugate quantity 
 \[M_\La(\si) = -\pdd{h} H_{\La}(\be, J).\]
+\[M_\La(\si) = -\pdd{h} H_{\La}(\be, J).\]
 The example to keep in mind is the following.
 %when you differentiate the hamiltonian
 
@@ -57,7 +58,6 @@ For any $(\be, J)$, for $\ep>0$, there exists $\de(\ep)>0$ such that for any van
 }\le -\de(\ep)
 \]
 \end{thm}
-In the differentiable case the derivative is just $\pd{\psi}{h}$.  The probability of observing magnetization greater or smaller is exponentially small. $\de(\ep)$ is the \vocab{rate function}.
 
 This says that
 %usually diffble
@@ -74,7 +74,7 @@ H(\si) = -J\sum_{n} \si_n\si_{n+1} - h\sum \si_n.
 The first term encourages neighbors the agree, and the second term encourages the spins to agree with the applied field.
 %solvable if limit to nearest neighbors
 
-(Here we just have nearet-neighbor interactions. In general we can have interactions between longer distances, which complicates the calculations. When there are long-range interactions (following a power law), there can be a phase transition.)
+(Here we just have nearest-neighbor interactions. In general we can have interactions between longer distances, which complicates the calculations. When there are long-range interactions (following a power law), there can be a phase transition.)
 %large - phase transition. power law, decay not too fast.
 \begin{thm}
 Let $\wh h = \be h$. Then
@@ -147,12 +147,5 @@ Assuming the magnetic field is positive ($h>0$), the maximum is $Z_L^{++}$; if $
 With open-ended boundary conditions, the spins are an array of variables with the Markov property. If you specify a spin, then the distribution of the future does not depend on the past beyond the value of the previous spin. Thus the values form a Markov chain, and the transfer matrix is familiar from the theory of Markov chains. 
 
 What happens beyond 1 dimension? Then the Markov property re-emerges in an interesting way. When you talk about the distribution of a finite system, it's sufficient to give the spins at the boundary. 
-%we have a 
-%because of interactions 
 There is a multidimensional Markov property, specified by boundary spins. %Limiting boundary distribution,
 We will arrive at the theory of Gibbs states.
-%Z_L^{++}s.
-%get into statistical mech, joint dist of 
-
-
-%distinguish?

@@ -21,7 +21,7 @@ Z_{\Lambda} = \int_{\Omega_\Lambda} e^{-\beta H_{\Lambda}(\sigma_{\Lambda})}\rho
 \end{equation}
 where the integral is over the spins in the cube with respect to the product measure, and 
 \be
-H_{\Lambda}(\sigma_{\Lambda}) = \sum_{A \subset \Lambda, \txtn{diam} A \leq R} J_A \Phi_{A}(\sigma_A)
+H_{\Lambda}(\sigma_{\Lambda}) = \sum_{A \subset \Lambda, \textnormal{diam} A \leq R} J_A \Phi_{A}(\sigma_A)
 \ee
 where $\Phi$ is a translation invariant function and $J_A$ is a coupling constant.  
 
@@ -59,7 +59,7 @@ The integral is dominated by the energy that gives the maximal exponent, and the
 \ee
 Then we can write the free energy as ($T=\frac{1}{\beta}$)
 \be
-F(\beta) = - \frac{1}{\beta} \max_E(s(E) - \beta E) = \txtn{inf}_E\{E - Ts(E)\}
+F(\beta) = - \frac{1}{\beta} \max_E(s(E) - \beta E) = \textnormal{inf}_E\{E - Ts(E)\}
 \ee
 This is why it's called the free energy: It's the energy term corrected by $Ts(E)$ and is related to the Legendre transform.\footnote{I would love it if energy was written in terms of entropy. Somehow, mankind discovered ``energy'' before ``entropy'', so we are continuously having to change notation between energy and entropy.} The free energy is as much energy you can extract from the system when it's in contact with a thermal reservoir, and this is limited. 
 
@@ -74,12 +74,12 @@ Hence, systems serve as the reservoir for the subsystems.
 \frac{\langle H \rangle}{|\Lambda|} = \frac{1}{|\Lambda|} \int H_{\Lambda}(\sigma_{\Lambda}) \frac{e^{-\beta H_{\Lambda}(\sigma_{\Lambda})} \rho_0(d\sigma_{\Lambda})}{Z_{\Lambda}} = \frac{\partial}{\partial\beta}\left[\beta F(\beta)\right]
 \ee
 
-We have $\beta F(\beta) = -\frac{1}{|\Lambda|}\txtn{ln}(Z_{\Lambda})$. 
+We have $\beta F(\beta) = -\frac{1}{|\Lambda|}\textnormal{ln}(Z_{\Lambda})$. 
 
 Suppose you want to know the total value of the Ising model magnetization,  $\left\langle { \frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x }\right\rangle$. 
 Here, $H_\Lambda$ is given by~\eqref{eq:ising-h}. To find $\left\langle { \frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x }\right\rangle$,  
 differentiate with respect to $h$, 
-\be\frac{\partial}{\partial h}\txtn{ln}(Z_{\Lambda}) = \frac{\beta}{|\Lambda|} \int (\sum_{x \in \Lambda} \sigma_x) \frac{e^{-\beta H_{\Lambda}(\sigma)}}{Z} \rho_0(d\sigma_{\Lambda}).\ee 
+\be\frac{\partial}{\partial h}\textnormal{ln}(Z_{\Lambda}) = \frac{\beta}{|\Lambda|} \int (\sum_{x \in \Lambda} \sigma_x) \frac{e^{-\beta H_{\Lambda}(\sigma)}}{Z} \rho_0(d\sigma_{\Lambda}).\ee 
 In general, derivatives of the log of the partition function generate the averages you desire. For instance, if you are somewhat sensitive to sums over triangles, then differentiating the free energy with respect to this parameter would give you the average value of that. 
 
 \item Variance of $H_{\Lambda}$: To find the variance of $H_{\Lambda}$, differentiate with respect to $\beta$ again. We have 
@@ -102,7 +102,7 @@ Our next goal is the following two theorems.
 \begin{theorem} 
 For any translation invariant system as described previously, the following limit exists: 
 \be
-\lim_{L \to \infty} \frac{1}{|\Lambda_L|} \txtn{ln}(Z_{\Lambda}(\beta)) = -\frac{1}{\beta}F(\beta)
+\lim_{L \to \infty} \frac{1}{|\Lambda_L|} \textnormal{ln}(Z_{\Lambda}(\beta)) = -\frac{1}{\beta}F(\beta)
 \ee
 \end{theorem}
 The limiting function is concave in $\beta$ because the limit of concave functions is concave. 
