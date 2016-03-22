@@ -107,9 +107,11 @@ If $\ve{m}_{\iy}:=\max_b(m_b)=1$ then $W(m)=1$.
 Sum over the multisets of edges. We need to enumerate how many ways the multisets can be realized as a union of loops. 
 The Katz-Ward idea is enumerate all the different ways to resolve the traffic jams at each vertex with an intersection: sum over all possible choices with the right signs. The other vertices don't present any choices for the prospective loop.
 
+\ig{images/12-2}{.25}
+
 The three possibilities are:
 
-PICTURE.
+\ig{images/12-3}{.25}
 
 %The sum is 1.
 %Think of loops as limits of continuous curves. It's not clear whether under magnification... the number of times curves cross each other.
@@ -130,16 +132,16 @@ What if it's $>2$? This is in fact true for any value $>1$.
 
 Why are the higher powers 0? %There are things like graph zeta functions.
 
-\begin{thm}[Sherman]
+\begin{thm}[Sherman]\label{thm:sherman} %Kac-Wald, 
 \[
 \prod_{\text{loops}} [1+(-1)^{n(\ell)}K(\ell)]^2 = \det(\one - \cal L)
 \]
 where $\cal L$ is a $2|\cal E|\times 2|\cal E|$ matrix indexed by the oriented edges. Here 
 \[
-\cal L_{e,e'} = \de_{D(e'),t(e)} e^{\fc{i\angle(e,e')}2}K_e.
+\cal L_{e,e'} = \de_{O(e'),t(e)} e^{\fc{i\angle(e,e')}2}K_e.
 %$e$ to flow into $e'$.
 \]
-(The Kronecker delta function says that $e$ has to flow into $e'$, i.e., the terminal of $e$ is the same as the start of $e'$. Here $\angle(e,e')$ means the angle between $e,e'$. We get a phase number that's half the sum of the turns. For a simple loop, we get $-1$.)
+(The Kronecker delta function says that $e$ has to flow into $e'$, i.e., the terminal of $e$ is the same as the origin of $e'$. Here $\angle(e,e')$ means the angle between $e,e'$. We get a phase number that's half the sum of the turns. For a simple loop, we get $-1$.)
 \end{thm}
 $\Tr \cal L^n = \sum_{e_1,\ldots, e_n} = \cal L_{e_1,e_n}\cdots \cal L_{e_2,e_1}$. This is associated to an oriented loop.
 %n(\ell)$ self intersections.

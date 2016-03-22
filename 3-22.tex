@@ -1,0 +1,129 @@
+
+\blu{3-22}
+
+We can use the transfer matrix method for 1D systems with finite range correlations (of distance $R$), not just nearest-neighbor interactions. Let the states be $\tau_x=\{(\si_x,\si_{x+1},\ldots, \si_{x+R})\}$. Switching to this space, we can now express the energy in terms of nearest neighbor interactions,
+\[
+H=\sum_n \Phi(\tau_n,\tau_{n+1}).
+\]
+
+%aggregating some states.
+
+\subsection{Ihara graph zeta function}
+
+\begin{df}
+A \vocab{path} in a graph $\cal G$ is a set of edges $(x_1,x_2),\ldots, (x_n,x_{n+1})\in \cal E$. For an \vocab{oriented path}, the direction matters. In a \vocab{closed path}, $x_{n+1}=x_1$. An \vocab{oriented loop} is a closed oriented path where we don't care about the starting point, i.e., an equivalence class of paths modulo cyclic permutation. Two paths are equivalent here if $y_i=x_{i+h}$, with indices taken modulo $n$.
+
+Edges are allowed to repeat.
+
+For a path $p$, denote by $|p|$ the number of edges in $p$.
+\end{df}
+We would like to eliminate paths which are powers of more elementary paths, complete repetitions of a primitive path. A path is primitive if it is not a power of a shorter path.
+
+\begin{df}
+A path is \vocab{primitive} if it cannot be written as $q^k$, $k>1$, where $q$ is a closed path.
+\end{df}
+This may remind you of prime numbers. Any number can be written as a product of numbers which cannot be decomposed. People applied number-theoretic ideas to graphs.
+%People started thinking about number-theoretic
+
+\begin{thm}
+Let $M$ be a matrix indexed by sites of a graph $\cal G$.
+For $\ve{M}$ small enough, %hen
+\[
+\det(\one-M) = \prod_{p^{*}} [1-\chi_\mu(p)]
+\]
+where the product is over equivalence classes $p^*$ of primitive oriented loops.
+%matrix nonzero only for edges. don't hopscotch crazily.
+
+Here 
+\[
+\chi_p=\prod_{n=1}^{|p|} M_{x_{n},x_{n+1}}.
+\]
+\end{thm}
+%invar under cyclic reparametrization.
+
+On the RHS, when we open the brackets, we can worry about convergence. For matrices of small norm, it is convergent. To define the function for all $\la$, note the theorem establishes that for small $\la$,
+\[
+\det(\one-\la M) = \prod_{p^{*}} [1-\la \chi_\mu(p)].
+\]
+Now we can take the analytic continuation.
+
+Note the LHS is a finite calculation (and a multilinear function in entries of $M$), while the RHS is an infinite product/sum.
+
+%mats with no loop
+%for $\la$ small enough.
+
+It follows from the proof that the RHS is a convergent product (for $\ve{M}$ small enough).
+\begin{proof}
+First assume $\ve{M}<1$. (This is the operator norm, $\ve{M}=\max_v\fc{\ve{Mv}}{\ve{v}}$.) Then
+\[
+\ln \det(1-M)  = \tr\ln (\one -M).
+\]
+For Hermitian matrices, prove this by diagonalization: the LHS is $\ln \prod_j (1-\la_j) = \sum_j \ln (1-\la_j)$. 
+
+For the general case, we can still use this method. Write $M=S^{-1}TS$ where $T$ is upper triangular. If the diagonal entries are $\la_1,\ldots, \la_n$, the determinant is still $\prod_j(1-\la_j)$. 
+%the only factor in the product is the diagonal.
+%operator norm.
+
+Expanding gives
+\bal
+\ln \det(\one-M) &= -\sumo n{\iy} \rc n \tr(M^n) \\
+%&= -\sumo k{\iy} \sum_{p^*} \rc{k|p^*|} k \chi_n(p^*)^k
+%elem enumeration for closed paths
+%conribut at rate proportion to nmber of places where can start, total length / k.
+&= \sum_{x = (x_0,\ldots, x_n)} \rc n \pa{\prod_{j=1}^n M_{x_{j+1},x_j}} \\
+%&= \sumo k{\iy}\pa{\sum_{x\text{ primitive}}M_{x_{j+1},x_j}}}\\
+%&= \sum_x \sumo k{\iy}
+&=-\sumo k{\iy}\sum_{p^*} \rc{k|p^*|} \chi_M(p^*)^k\\
+&=-\sum_{p^*} \ln (1-\chi_M(p^*)).
+\end{align*}
+$k$ comes from properly weighing the volume of the path.
+%This is a sum over closed paths
+\end{proof}
+
+We want to avoid backtracking. %Think of $\cal L$
+%\begin{thm}
+%Let $\cal E$ be the graph of oriented edges of $\cal G$.
+%%backtracking and tadpoles
+%%powers generate closed walks to avoid backtracking.
+%
+%\end{thm}
+\begin{thm*}[Theorem~\ref{thm:sherman}]
+Let $\cal E$ be the graph of oriented edges of a planar graph. Let 
+\bal
+\cal L_{e,e'} = \one[O(e')=t(e)]K_e e^{\fc{i\angle(e',e)}2}
+\end{align*}
+For any oriented closed path,
+\bal
+\prod_j \cal L_{e_j,e_{j+1}} = \prod_i K_e(-1)^{w(p)}
+\end{align*}
+%winding number.
+with 
+\[
+(-1)^{w(p)} n= -(-1)^{n(p)}.
+\]
+where $w(p)$ is the winding number and $n(p)$ is the number of crossings. 
+
+\end{thm*}
+%take 
+%If cross sel, at that poit rerout to avoid the path
+%reduces winding number of 2
+We have
+\bal
+\prod_{p^*} [1-\chi_{\cal L}(p^*)] 
+&=\sum_{\cal P= (p_1^*,\ldots, p_n^*)} \prod_j (-1)^{n(p_j)} k[p]\\
+&=\sum_m\pi_e K_e^{m_e}W_m
+%n?
+%characterize by not thinking about the ... but the frequency of edges travesed.
+%realized through collections of paths.
+\end{align*}
+where $W_m$ is the number of of paths with a given frequency of edges traversed. 
+
+\begin{lem}[Kac-Ward]
+We have
+\[
+\sum_{P: \max_e(m(P))= 1} (-1)^{n(P)}K(P) = \sum_{\Ga:\pl \Ga = \phi} \prod_{e\in \Ga} K_e = Z(\be)
+\]
+for $K_e=\tanh (\be J_e)$. 
+\end{lem}
+
+Each vertex has 3 possibilities.

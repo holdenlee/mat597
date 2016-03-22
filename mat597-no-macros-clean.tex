@@ -195,7 +195,7 @@
 \end{tikzpicture}\\%
 }
 }
-\newcommand{\prbbox}[1]{\prbox{\begin{prb}#1\end{prb}}}
+\newcommand{\prbbox}[1]{\prbox{\begin{prob}#1\end{prob}}}
 \newcommand{\expbox}[1]{\prbox{\begin{expl}#1\end{expl}}}
 \newcommand{\sprbbox}[1]{\prbox{\begin{sprb}#1\end{sprb}}}
 
@@ -212,7 +212,7 @@
 }}
 %6.68
 
-\newcommand{\thmbox}[1]{\thbox{\begin{thm}#1\end{thm}}}
+\newcommand{\thmbox}[1]{\thbox{\begin{theorem}#1\end{theorem}}}
 \newcommand{\dfbox}[1]{\thbox{\begin{df*}#1\end{df*}}}
 
 \newcommand{\grbox}[1]{{
@@ -385,9 +385,9 @@ I plan to cover the following topics. The focus is on \textbf{Topics in Mathemat
 %macroscopic description of physical system 
 Intellectually preceding statistical mechanics is thermodynamics, a field of physics which emerged through experimental and intellectual work trying to understand what is happening with the transfer of heat. A couple of principles emerged. This framework is more appropriate to the macroscopic description of physical systems.
 In departure from mechanics, which cares about equalities like $F=ma, E=mc^2$, a unique thing about thermodynamics is that its key principle is in inequality: entropy increases.
-\[
+\be
 \Delta S\ge 0
-\]
+\ee
 %Entropy comes up as a emergent phenomenon from the statistical mechanics description of reality.
 \item
 \textbf{The emergence of thermodynamics from statistical mechanics via the equidistribution assumption and the ``large deviation theory"}. %vadhan - abel prize for large deviation theory.
@@ -485,7 +485,7 @@ An \textbf{ensemble} is a probability measure with respect to which you do avera
 First, we define some notation.
 \begin{definition}[Indicator function]
 \be
-\mathbbm{1}[\text{cond}] := \begin{cases}
+\mathds{1}[\text{cond}] := \begin{cases}
 1,&\text{condition satisfied}\\
 0,&\text{else}
 \end{cases}
@@ -496,13 +496,13 @@ Now we define two specific ensembles, the \index{microcanonical ensemble}\textbf
 \begin{definition}[Microcanonical ensemble]
 In the microcanonical ensemble,
 \be
-\mathbb{P}(n_{\Omega})= \frac{\mathbbm{1}[\sum_{x\in \Omega}n_x=N]}{Z}
+\mathbb{P}(n_{\Omega})= \frac{\mathds{1}[\sum_{x\in \Omega}n_x=N]}{Z}
 \ee
 where $Z$ is a normalization constant.
 
 For every function $f:\Omega\to \mathbb{R}$ assigning a real number to each configuration, define the \index{microcanonical ensemble average}\textbf{microcanonical ensemble average} by
 \be
-\left\langle {f}\right\rangle_{N,n}^{\text{Can}} = \frac{\sum_{n\in \Omega} \mathbbm{1}[n_x=N] f(n)}{\sum_{n\in \Omega} \mathbbm{1}[\sum n_x=N]}.
+\left\langle {f}\right\rangle_{N,n}^{\text{Can}} = \frac{\sum_{n\in \Omega} \mathds{1}[n_x=N] f(n)}{\sum_{n\in \Omega} \mathds{1}[\sum n_x=N]}.
 \ee
 \end{definition}
 The ensemble we will focus on for this course is the grand canonical ensemble. 
@@ -651,7 +651,7 @@ Define the \index{partition function}\textbf{partition function} for the grand c
 \nonumber
 Z_\Lambda & = \sum_{n\in \Omega} e^{-\mu N(n)} \\
 \nonumber
-&=\sum_{n\in \Omega} \prod_{x\in \Lambda} e^{-\mu \mathbbm{1}[n_x=1]}\\
+&=\sum_{n\in \Omega} \prod_{x\in \Lambda} e^{-\mu \mathds{1}[n_x=1]}\\
 \nonumber
 &=\prod_{x\in \widetilde{\Lambda}}(1+e^{-\mu})\\
 \nonumber
@@ -1324,7 +1324,7 @@ Z_{\Lambda} = \int_{\Omega_\Lambda} e^{-\beta H_{\Lambda}(\sigma_{\Lambda})}\rho
 \end{equation}
 where the integral is over the spins in the cube with respect to the product measure, and 
 \be
-H_{\Lambda}(\sigma_{\Lambda}) = \sum_{A \subset \Lambda, \txtn{diam} A \leq R} J_A \Phi_{A}(\sigma_A)
+H_{\Lambda}(\sigma_{\Lambda}) = \sum_{A \subset \Lambda, \textnormal{diam} A \leq R} J_A \Phi_{A}(\sigma_A)
 \ee
 where $\Phi$ is a translation invariant function and $J_A$ is a coupling constant.  
 
@@ -1362,7 +1362,7 @@ The integral is dominated by the energy that gives the maximal exponent, and the
 \ee
 Then we can write the free energy as ($T=\frac{1}{\beta}$)
 \be
-F(\beta) = - \frac{1}{\beta} \max_E(s(E) - \beta E) = \txtn{inf}_E\{E - Ts(E)\}
+F(\beta) = - \frac{1}{\beta} \max_E(s(E) - \beta E) = \textnormal{inf}_E\{E - Ts(E)\}
 \ee
 This is why it's called the free energy: It's the energy term corrected by $Ts(E)$ and is related to the Legendre transform.\footnote{I would love it if energy was written in terms of entropy. Somehow, mankind discovered ``energy'' before ``entropy'', so we are continuously having to change notation between energy and entropy.} The free energy is as much energy you can extract from the system when it's in contact with a thermal reservoir, and this is limited. 
 
@@ -1377,12 +1377,12 @@ Hence, systems serve as the reservoir for the subsystems.
 \frac{\langle H \rangle}{|\Lambda|} = \frac{1}{|\Lambda|} \int H_{\Lambda}(\sigma_{\Lambda}) \frac{e^{-\beta H_{\Lambda}(\sigma_{\Lambda})} \rho_0(d\sigma_{\Lambda})}{Z_{\Lambda}} = \frac{\partial}{\partial\beta}\left[\beta F(\beta)\right]
 \ee
 
-We have $\beta F(\beta) = -\frac{1}{|\Lambda|}\txtn{ln}(Z_{\Lambda})$. 
+We have $\beta F(\beta) = -\frac{1}{|\Lambda|}\textnormal{ln}(Z_{\Lambda})$. 
 
 Suppose you want to know the total value of the Ising model magnetization,  $\left\langle { \frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x }\right\rangle$. 
 Here, $H_\Lambda$ is given by~\eqref{eq:ising-h}. To find $\left\langle { \frac{1}{|\Lambda|} \sum_{x \in \Lambda} \sigma_x }\right\rangle$,  
 differentiate with respect to $h$, 
-\be\frac{\partial}{\partial h}\txtn{ln}(Z_{\Lambda}) = \frac{\beta}{|\Lambda|} \int (\sum_{x \in \Lambda} \sigma_x) \frac{e^{-\beta H_{\Lambda}(\sigma)}}{Z} \rho_0(d\sigma_{\Lambda}).\ee 
+\be\frac{\partial}{\partial h}\textnormal{ln}(Z_{\Lambda}) = \frac{\beta}{|\Lambda|} \int (\sum_{x \in \Lambda} \sigma_x) \frac{e^{-\beta H_{\Lambda}(\sigma)}}{Z} \rho_0(d\sigma_{\Lambda}).\ee 
 In general, derivatives of the log of the partition function generate the averages you desire. For instance, if you are somewhat sensitive to sums over triangles, then differentiating the free energy with respect to this parameter would give you the average value of that. 
 
 \item Variance of $H_{\Lambda}$: To find the variance of $H_{\Lambda}$, differentiate with respect to $\beta$ again. We have 
@@ -1405,7 +1405,7 @@ Our next goal is the following two theorems.
 \begin{theorem} 
 For any translation invariant system as described previously, the following limit exists: 
 \be
-\lim_{L \to \infty} \frac{1}{|\Lambda_L|} \txtn{ln}(Z_{\Lambda}(\beta)) = -\frac{1}{\beta}F(\beta)
+\lim_{L \to \infty} \frac{1}{|\Lambda_L|} \textnormal{ln}(Z_{\Lambda}(\beta)) = -\frac{1}{\beta}F(\beta)
 \ee
 \end{theorem}
 The limiting function is concave in $\beta$ because the limit of concave functions is concave. 
@@ -1585,7 +1585,7 @@ We are discussing the first major result of the subject, which is the free energ
 \be
 H_{\Lambda}(\sigma) = \sum_{A \subset \Lambda} \phi_A(\sigma) = \sum_{x \in \Lambda}\left[\sum_{x \in A} \frac{1}{|A|}\phi_A(\sigma_A)\right]
 \ee
-This is true by summation by parts.  Now why is this useful? This collection includes the sum of those terms which affect the spin at $x$. It's convenient to define as $\| \phi \| = \sum_{0 \in A} \frac{1}{|A|} \txtn{sup}_{\sigma} |\psi_A(\sigma)|$. What are spins in Ising models? For Ising, there are two types of interactions: Pairs of spins, so we sum over $\|\phi_{Ising}\| = \frac{1}{2}\sum_{u \neq 0} |J_{0, u}| + h$, where $h$ comes from the external field. What is the range of interactions tolerated by the formalism? Well, the norm must be finite, so the interactions must be summable. 
+This is true by summation by parts.  Now why is this useful? This collection includes the sum of those terms which affect the spin at $x$. It's convenient to define as $\| \phi \| = \sum_{0 \in A} \frac{1}{|A|} \textnormal{sup}_{\sigma} |\psi_A(\sigma)|$. What are spins in Ising models? For Ising, there are two types of interactions: Pairs of spins, so we sum over $\|\phi_{Ising}\| = \frac{1}{2}\sum_{u \neq 0} |J_{0, u}| + h$, where $h$ comes from the external field. What is the range of interactions tolerated by the formalism? Well, the norm must be finite, so the interactions must be summable. 
 Also note that this expression is good for translation invariant actions (see Eq. $1.12$). 
 
 The basic theorem we are after is in on pg. $32$ of the notes. Let us discuss boundary conditions: If you have a system, it's open to effects outside of the system, which we denote via the $\#$ symbol. Sometimes we like to put periodic boundary conditions. When I was student, it took me a while to figure out why people talk about periodic boundary conditions (we're effectively saying the boundary is neighbors). The reason is for very large systems, you see emergent system invariants, and locally, often, things look similar in different places. So by adding interactions across boundaries, you encourage this directly and it's very mathematically convenient. Thus we have equation $1.18$. In fact, in the infinite volume limit, if you had a tiny bit of external field which is moved, the resulting state may or may not depend on it. The argument can tolerate this extra term, as long as it's $ \|\frac{\phi_{\Lambda}^{\#}(\sigma)}{|\Lambda|}\| \to 0$ (this part is more important). (See Eq. $1.20$). 
@@ -1594,23 +1594,23 @@ Now the strategy for the more general theorem is on page $32$ (see Thm $1.4.4$).
 
 Now this is called the \textbf{pressure}. The boundary conditions you add do not effect the pressure. This is the physical notion of pressure. To explain this we will have to go into thermodynamics, so we will postpone that. 
 
-I would like to discuss the strategy, since it is an example of how analysts approach problems. You were trying to analyze a system with in principle, a potentially unbounded range of interactions. It seems the energy per volume is dominated by the norm of the interaction. Remember the norm of the interaction is defined in such a way as $|H_{\Lambda}(\sigma)| \leq \left|\sum_{x \in \Lambda} \left[\sum_{x \in A} \frac{1}{|\Lambda|} \phi_A(\sigma)\right] \right|$. So now the question to ask is how can I trim to get the system to get something similar. Now as long as the norm is finite, as long as you chop diameters with terms larger than $R$, you're not making much of a dent in the volume. For every $\epsilon > 0$, there exists $R_{\epsilon}$ which is finite such that $|H_{\Lambda}(\sigma) - H_{\Lambda}^{R_{\epsilon}}(\sigma) | \leq \epsilon |\Lambda|$. So you are shifting the energy per density by a small amount. After all, we are interested in the logartihm of the partition function. We have $Z = \int e^{-\beta H(\sigma)} \rho_0(d\sigma_{\Lambda})$.  The effect of terms which are that small leads us to bound $Z$ by a factor at most exponential. Then $|\frac{1}{|\Lambda|} \txtn{ln}(Z) - \frac{1}{|\Lambda|} \txtn{ln} Z_{\Lambda}^{R_{\epsilon}}| \leq \epsilon$ to prove it converges.  
+I would like to discuss the strategy, since it is an example of how analysts approach problems. You were trying to analyze a system with in principle, a potentially unbounded range of interactions. It seems the energy per volume is dominated by the norm of the interaction. Remember the norm of the interaction is defined in such a way as $|H_{\Lambda}(\sigma)| \leq \left|\sum_{x \in \Lambda} \left[\sum_{x \in A} \frac{1}{|\Lambda|} \phi_A(\sigma)\right] \right|$. So now the question to ask is how can I trim to get the system to get something similar. Now as long as the norm is finite, as long as you chop diameters with terms larger than $R$, you're not making much of a dent in the volume. For every $\epsilon > 0$, there exists $R_{\epsilon}$ which is finite such that $|H_{\Lambda}(\sigma) - H_{\Lambda}^{R_{\epsilon}}(\sigma) | \leq \epsilon |\Lambda|$. So you are shifting the energy per density by a small amount. After all, we are interested in the logartihm of the partition function. We have $Z = \int e^{-\beta H(\sigma)} \rho_0(d\sigma_{\Lambda})$.  The effect of terms which are that small leads us to bound $Z$ by a factor at most exponential. Then $|\frac{1}{|\Lambda|} \textnormal{ln}(Z) - \frac{1}{|\Lambda|} \textnormal{ln} Z_{\Lambda}^{R_{\epsilon}}| \leq \epsilon$ to prove it converges.  
 
 Now, let us divide up the space of size $n \times n$ into squares of size $m \times m$ with $n >> m$. Now there may be some boundary layer around the space which includes no $m$ inside. Now how much is the partition function affected by turning off the boundary, and terms which involve different boxes. These terms can be estimated by removing thin rectangles of size $R_{\epsilon}$ (call these of terms of type $1$). What is effect of the energy of this on these terms on one over the volume on the partition in this box. The right question to ask is how much energy can you pack into the rectangle. We don't care about constants since this is analysis. 
 
 
 Each box contributes a corridor of order $R_{\epsilon}$, so we have 
 \be
-|\frac{1}{|\Lambda_m|}\txtn{ln}(Z_{\Lambda_m}^{R_{\epsilon}})  - \frac{1}{|\Lambda_m|}\txtn{ln}(Z_{\Lambda_m})| \leq d\beta \|\phi\| \left[ \frac{R}{m} + \frac{m}{n} \right]
+|\frac{1}{|\Lambda_m|}\textnormal{ln}(Z_{\Lambda_m}^{R_{\epsilon}})  - \frac{1}{|\Lambda_m|}\textnormal{ln}(Z_{\Lambda_m})| \leq d\beta \|\phi\| \left[ \frac{R}{m} + \frac{m}{n} \right]
 \ee
 
-Here's a cool way to prove this works: For $n$ fixed, the limit when $n \to \infty$ yields (if it exists, however, just take the lim sup if this is the case), you learn $|\txtn{lim sup}_{n \to \infty}  |\frac{1}{|\Lambda_m|}\txtn{ln}(Z_{\Lambda_m}^{R_{\epsilon}})  - \frac{1}{|\Lambda_m|}\txtn{ln}(Z_{\Lambda_m})| \leq d\beta \|\phi\| \left[ \frac{R}{m} + \frac{m}{n} \right] \to \frac{R}{m}\|\phi\|d\beta$. So now we see that $\frac{1}{|\Lambda_m|}\txtn{ln}(Z_{\Lambda_m}^{R_{\epsilon}})$ is a number. We learn that the finite volume partition functions are close to that number, with distance at most $1/m$. Taking $m \to \infty$, we see that the upper bound goes to $0$, and therefore $\frac{1}{|\Lambda_m|}\txtn{ln}(Z_{\Lambda_m}) \to \frac{1}{|\Lambda_m|}\txtn{ln}(Z_{\Lambda_m}^{R_{\epsilon}})$. This is very typical argument in analysis. If you now have an unbounded interaction, you just use a norm estimate. That's the proof outlined in the notes. Later today I'll upload the full proof using all approximations. 
+Here's a cool way to prove this works: For $n$ fixed, the limit when $n \to \infty$ yields (if it exists, however, just take the lim sup if this is the case), you learn $|\textnormal{lim sup}_{n \to \infty}  |\frac{1}{|\Lambda_m|}\textnormal{ln}(Z_{\Lambda_m}^{R_{\epsilon}})  - \frac{1}{|\Lambda_m|}\textnormal{ln}(Z_{\Lambda_m})| \leq d\beta \|\phi\| \left[ \frac{R}{m} + \frac{m}{n} \right] \to \frac{R}{m}\|\phi\|d\beta$. So now we see that $\frac{1}{|\Lambda_m|}\textnormal{ln}(Z_{\Lambda_m}^{R_{\epsilon}})$ is a number. We learn that the finite volume partition functions are close to that number, with distance at most $1/m$. Taking $m \to \infty$, we see that the upper bound goes to $0$, and therefore $\frac{1}{|\Lambda_m|}\textnormal{ln}(Z_{\Lambda_m}) \to \frac{1}{|\Lambda_m|}\textnormal{ln}(Z_{\Lambda_m}^{R_{\epsilon}})$. This is very typical argument in analysis. If you now have an unbounded interaction, you just use a norm estimate. That's the proof outlined in the notes. Later today I'll upload the full proof using all approximations. 
 
 Now what is this free energy/pressure used for? We have $\psi(\beta, \phi)$  or $\psi(\beta, h)$. Finite volume Gibbs equilibrium states are $\rho_{\beta}$ are measures in the volume on spin configurations (in discrete case, this amounts to $\delta$-measure where weights add up to $1$), and the measure is defined as $\rho_{\beta, \Lambda}^{\#}(\sigma_{\Lambda}) = \frac{e^{-\beta H_{\Lambda}^{\#}}\rho_0(d\sigma_{\Lambda})}{Z_{\Lambda}^{\#}}$ where $\beta = 1/T$. 
 
-In thermodynamics, you take about extensive quantities, temperature, density, etc. In statistical mechanics, you want to know the joint distribution of states in multitude of local variables in Gibbs equilibrium. How does this inform you? It tells you some information, but not everything. All of this is not complicated once you understand it, but let's talk about probability referring to $\rho$. Now consider $\frac{1}{|\Lambda|} \txtn{ln}(Z_{\Lambda}^{\#}(\beta + \Delta \beta)) = \frac{1}{|\Lambda|} \txtn{ln}(Z_{\Lambda}^{\#}(\beta))$. Then 
+In thermodynamics, you take about extensive quantities, temperature, density, etc. In statistical mechanics, you want to know the joint distribution of states in multitude of local variables in Gibbs equilibrium. How does this inform you? It tells you some information, but not everything. All of this is not complicated once you understand it, but let's talk about probability referring to $\rho$. Now consider $\frac{1}{|\Lambda|} \textnormal{ln}(Z_{\Lambda}^{\#}(\beta + \Delta \beta)) = \frac{1}{|\Lambda|} \textnormal{ln}(Z_{\Lambda}^{\#}(\beta))$. Then 
 \be
-\frac{1}{|\Lambda|} \txtn{ln} \int e^{-(\Delta\beta)H_{\Lambda}(\sigma) \rho_{\beta}(d\sigma_{\Lambda})}
+\frac{1}{|\Lambda|} \textnormal{ln} \int e^{-(\Delta\beta)H_{\Lambda}(\sigma) \rho_{\beta}(d\sigma_{\Lambda})}
 \ee
 
 So we write 
@@ -1626,7 +1626,7 @@ Thus we have
 This is exponentially small. Hence, for $\Delta\beta < 0$, we learn that $\mathbb{P}_{\beta}(H_{\Lambda} < E) \leq e^{E\Delta \beta} \frac{Z_{\Lambda}(\beta + \Delta \beta)}{Z(\beta)}$. Now divide by the volume to get
 
 \be
-\frac{1}{|\Lambda|} \txtn{ln}(\mathbb{P}_{\beta}(H_{\Lambda} < E)) \leq \Delta\beta \frac{E}{|\Lambda|}\left[ \psi(\beta + \Delta\beta - \psi(\beta)\right]
+\frac{1}{|\Lambda|} \textnormal{ln}(\mathbb{P}_{\beta}(H_{\Lambda} < E)) \leq \Delta\beta \frac{E}{|\Lambda|}\left[ \psi(\beta + \Delta\beta - \psi(\beta)\right]
 \ee
 
 Let me just stop and give a picture and see the organized notes. Let's just explain what's going on: Convex functions have directional derivatives exists, this means that as you move along $\psi$ (image) and $\beta$ (domain), the pressure along $\beta$ gives the mean value of the energy. What does this tell you about actual values? We want to extract that the energy deviates by $\epsilon$ is a probability distribution, we can get it by studying the way the function behaves, the main idea is that the slope of the function gives you mean energy, and if you want to study energy which differs from slope, look at the free energy function. If you move by slope different from tangent, you reach right above it. Then the biggest gap you can create is a gap of exponential decay which is how much probability there is between yourself and the mean. 
@@ -1655,23 +1655,23 @@ At those temperatures where the pressure is differentiable, then the energy dens
 
 \subsection{Convexity of the pressure and its implications}
 
-\begin{thm}[H\"older inequality]
+\begin{theorem}[H\"older inequality]
 For any pair of functions $f,g:\Omega\to \mathbb{R}$ on a (positive) measure space, for $\frac{1}{p}+ \frac{1}{q}=1$,
 %use different symbols, but that's life.
-\[
+\be
 \left| {\int f(\omega) g(\omega) \,d\mu(\omega)} \right| \le \int \left[ {\int |f|^p \,d \mu} \right]^{\frac{1}{p}} \left[ {\int |g|^q\,d\mu} \right]^{\frac{1}{q}}.
-\]
-\end{thm}
+\ee
+\end{theorem}
 This can be proved using Jensen's inequality.
 
-\begin{thm}
+\begin{theorem}
 For any function $\phi:\Omega\to \mathbb{R}$, 
-\[
+\be
 P(h) = \ln \int e^{h\phi(\omega)}\,d\mu(\omega)
-\]
+\ee
 is convex in $h$.
 %good to see another proof
-\end{thm}
+\end{theorem}
 \begin{proof}[Proof 1]
 Differentiate:
 \begin{align*}
@@ -1686,9 +1686,9 @@ Let $h_t=th_0+(1-t)h_1$. Then
 &\le \left( {\int e^{h_0}\,d\mu} \right)^t \left( {\int e^{h_1}\,d\mu} \right)^{1-t}.
 \end{align*}
 Hence 
-\[
+\be
 P(h_t) \le tP(h_0) + (1-t) P(h_1).
-\]
+\ee
 %regardless of differentiability properties. Never assume differentiability of $\phi$.
 \end{proof}
 Note the proof doesn't assume differentiability of $\phi$.
@@ -1702,9 +1702,9 @@ Our goal is to estimate
 &=\int_{\Omega_\Lambda} \mathbbm{1}[H(\sigma)\le \left\langle {H}\right\rangle_\beta - \varepsilon |\Lambda|] \frac{e^{-\beta H_\Lambda(\sigma)}\,\rho_0(d\sigma)}{Z_{\Lambda}(\beta)}.
 \end{align*}
 We use the bound 
-\[
+\be
 \mathbbm{1}[H\le \left\langle {H}\right\rangle-\varepsilon |\Lambda|] \le e^{-tH} e^{t\left\langle {H}\right\rangle - \varepsilon|\Lambda|}.
-\]
+\ee
 Then 
 \begin{align*}
 \mathbb{P}(H(\sigma)\le \left\langle {H}\right\rangle_\beta - \varepsilon |\Lambda|)
@@ -1727,21 +1727,21 @@ Using this, we get
 Thinking of $\psi$ as a function of inverse temperature $\beta$, $\psi$ is convex. The slope at a point is $\psi'(\beta)$. In the denominator is a linear function which is equal to $\psi(\beta)$ at $\beta$ but increases a bit faster than the tangent line.
 
 By convexity, for all $\varepsilon>0$, $t>0$ small enough, % there exists $t(\ep), \de(\ep)>0$ such that
-\[
+\be
 \psi(\beta) + t_\varepsilon [\psi'(\beta) + \varepsilon] - \psi(\beta+t) \ge 0
-\]
+\ee
 Pick $t$ to maximize this difference. Denoting $\delta(\varepsilon)=\sup_{t>0}\delta(t)$ we have
-\[
+\be
 \mathbb{P}_\beta (H_\Lambda\le \left\langle {H_{\Lambda}}\right\rangle - \varepsilon|\Lambda|) \le e^{-\delta (\varepsilon)|\Lambda|}.
-\]
+\ee
 
 \begin{center}\includegraphics[scale=.25]{images/9-1}\end{center}
 
 The probability that the energy density falls by $\varepsilon$ below its mean decays exponentially. This is the kind of decay we were talking about with large deviation principles.
 Similarly we can show 
-\[
+\be
 \mathbb{P}_\beta (H\ge \left\langle {H}\right\rangle + \varepsilon|\Lambda|) \le e^{-\delta_+ (\varepsilon)|\Lambda|}.
-\]
+\ee
 %kettle on the floor.
 %kettle on the table
 This is left as an argument. 
@@ -1757,13 +1757,13 @@ you can conclude that given a van Hove sequence, for $\Lambda$ large enough, you
 
 \subsection{Large deviation principle for van Hove sequences}
 
-\begin{thm}
+\begin{theorem}
 Assume that the infinite volume pressure $\psi$ is differentiable at $\beta_0$. Then for all $\Lambda_n\uparrow \mathbb{Z}^d$ (in the van Hove sense). %don't have to be cubes. suface-to-volume goes to 0.
 Then for any $\varepsilon$, there is $N<\infty$ such that for all $n\ge N$, 
-\[
+\be
 \mathbb{P}_{\beta, \Lambda_n}\left( {\left| {\frac{1}{|\Lambda|}H_\Lambda(\sigma) + \psi'(\beta)} \right|\ge \varepsilon} \right)\le e^{-\frac{\delta(\varepsilon)}{2}|\Lambda|}.
-\]
-\end{thm}
+\ee
+\end{theorem}
 If the infinite volume pressure is differentiable at a particular $\beta$, then in large enough finite volume, then the fluctuations per volume is small. with high probability. 
 %corridor of small width, eventually finite volume pressures with $\ep$ of that. Half of that gap is realized. $\de(\ep)$ is read from the infinite value limit function. 
 Look at the infinite volume function; for every $\varepsilon$, ask when we move right (left) at $\varepsilon$ greater (less) than the slope, how far we move to have the largest discrepancy. Wait for the gap between the infinite and finite volume case function to be less than half. 
@@ -1783,32 +1783,32 @@ Without assuming differentiability of $\psi(\beta)$, we have
 \mathbb{P}_{\beta,\Lambda} \left( {\frac{1}{|\Lambda|} H \le  \psi'(\beta-0) -\varepsilon} \right) &\le e^{-\frac{\delta(\varepsilon)}{2}|\Lambda|}.
 \end{align*}
 (Note $\psi'(\beta-0)\le \psi'(\beta+0)$.) To extend to the densities of other local observables,
-\[
+\be
 H(\sigma) = \sum_{A\subseteq \mathbb{Z}^d} J_A \phi_A(\sigma)
-\]
+\ee
 with $J_A = J_{S_n}A$ for all shifts $S_n$. 
 (The proper way to do this is to introduce coupling constants depending on the equivalence class of terms modulo translation. For example, Ising coupling has 2 parameters corresponding to nearest neighbor coupling and external field.)
 
 For a collection of translation-invariant interactions, we denote 
-\[
+\be
 \psi(\beta,J) = \lim_{\lambda \uparrow \mathbb{Z}^d} \frac{1}{|\Lambda|} \ln Z_{\Lambda}(J,\phi).
-\]
-\begin{thm}\label{thm:j-limit}
+\ee
+\begin{theorem}\label{thm:j-limit}
 For any translation-invariant interaction with $\left\Vert {J}\right\Vert<\infty$, %$\phi$ with $\ve{\phi}<\iy$, 
 the limit 
 $
 \psi(\beta, J) 
 $
 exists and is a convex function of $J$ (it is jointly convex in all parameters). 
-\end{thm}
+\end{theorem}
 We think of pressure as a function of both the temperature and parameters such as the magnetic field.
 %notation is not consistent.
 %Banach space notation...
 For example, for $H=-J\sum_{\{x,y\},|x-y|=1} \sigma_x\sigma_y - h\sum_x \sigma_x$, %infinitely many terms but 2 paramters. 
 $\psi$ is a function $\psi(\beta, J,h)$. We have
-\[
+\be
 \frac{\partial \psi_{\Lambda}}{\partial h} = \beta\left\langle { \frac{1}{|\Lambda|}\sum_{x\in A} \sigma_x}\right\rangle.
-\]
+\ee
 and
 \begin{align*}
 \psi_{\Lambda}(\beta, J, h) &= \frac{1}{|\Lambda|} \ln \int e^{\beta(J\sum_{\left\langle {x,y}\right\rangle} \sigma_x\sigma_y+ h\sum_{x\in A} \sigma_x)}\rho_0(d\sigma)\\
@@ -1816,17 +1816,778 @@ and
 \end{align*}
 %jointly convex is almost everywhere diffble
 %regardless whether continuous, can sandwich typical values within the left and right derivatives. 
-%\begin{thm}
+%\begin{theorem}
 %For any $\phi$ with $\ve{\phi}<\iy$, $\psi(\be,J)$ is jointly convex in $J$.
-%\end{thm}
+%\end{theorem}
 Introduce as many parameters as you think are relevant.
 
 In the homework, you will look at the simplest system, ideal gas. There are no interactions. We introduce something akin to the magnetization. Compute the pressure for an ideal gas and use this to compute the entropy of the system. The Legendre transform allows you to read the ... from the free energy. You'll learn how to arrive at this celebrated formula 
-\[
+\be
 -\rho\ln \rho + (1-\rho)\ln (1-\rho).
-\]
+\ee
 It becomes a challenge to evaluate partition functions and find their singularities. Ising calculated the partition function for the 1-D model; you will do the calculation too. He said it has no singularity. If you move to 2 dimensions, it does exhibit a phase transition. %Initial people we wrong.
 The 2-D model is solvable by other techniques.
+{\color{blue}3-1: First, notational adjustments}
+
+Let
+\begin{align*}
+H_\Lambda(\sigma)&=\sum_{A\subseteq \Lambda} J_A\phi_A(\sigma)
+\end{align*}
+and assume $\phi$ is normalized so that 
+\be
+\sup_\sigma |\phi_A(\sigma)|  = 1
+\ee
+(if it is not identically 0). For $J=\{1_A\}$, define 
+\be
+\left\Vert {J}\right\Vert = \sum_{A\ni 0} \frac{1}{|A|} |J_A|.
+\ee
+\begin{definition}
+$H$ is translation invariant if for all $A\subseteq \Lambda$,
+\begin{enumerate}
+\item
+(Coupling is translation covariant)
+$\phi_{A+u}(\sigma) = \phi_A(S_u\sigma)$, where $(S_u\sigma)_x = \sigma_{x+u}$. 
+\item
+$J_A=J_{A+u}$.
+\end{enumerate}
+\end{definition}
+Note that $\phi$ is really ``shift covariant" whereas $H$ is ``shift invariant", i.e. $H(S_n\sigma) = H(\sigma)$ (formally). This is a formal expression because for an infinite system, the energy is infinite. (There are various ways to make sense of this mathematically. For example, you can look at a finite system with periodic bounary conditions, and we can talk about shift invariance there.)
+
+For translation invariant Hamiltonians,
+\begin{align*}
+\psi(\beta, J) &=\lim_{\Lambda \uparrow \mathbb{Z}^d} \frac{1}{|\Lambda|} \ln Z_{\Lambda} (\beta, J))
+%a priori measure
+%try to stick to prob measures
+%product measure
+\end{align*}
+where $Z_{\Lambda}(\beta, J) = \int_{\Omega_\Lambda} e^{-\beta H_{\Lambda}(\beta)}\rho_0(d\sigma_{\Lambda})$.
+
+We proved 2 theorems, Theorem~\ref{thm:j-limit} and the following.
+Let $h$ be one of the parameters of $J=\{J_\Lambda\}$ and $M$ be the conjugate quantity 
+\beM_\Lambda(\sigma) = -\frac{\partial}{\partial h} H_{\Lambda}(\beta, J).\ee
+\beM_\Lambda(\sigma) = -\frac{\partial}{\partial h} H_{\Lambda}(\beta, J).\ee
+The example to keep in mind is the following.
+%when you differentiate the hamiltonian
+
+\begin{example}
+The Ising model is $H_{\Lambda}(\sigma) =\sum_{\{x,y\}} J_{x-y}\sigma_x\sigma_u - h\sum_{x\in \Lambda }\sigma_x$.
+Here, 
+\be
+-\frac{\partial}{\partial H_\Lambda(\sigma)}{\partial h} = \sigma_{x\in \Lambda}\sigma_x\equiv M.
+\ee
+\end{example}
+We have $\frac{1}{|\Lambda|} \mathbb{E}(M_{\Lambda}) = \frac{1}{\beta} \frac{\partial}{\partial h} \psi$.
+\begin{theorem}
+For any $(\beta, J)$, for $\varepsilon>0$, there exists $\delta(\varepsilon)>0$ such that for any van Hove sequence, 
+\be\lim_{\Lambda \uparrow \mathbb{Z}^d} \frac{1}{|\Lambda|}
+\ln \mathbb{P}_{\Lambda}
+\begin{pmatrix}
+{
+\frac{1}{|\Lambda|} M_{\Lambda}(\sigma) \ge \frac{1}{\beta} \left.\frac{\partial}{\partial h} \psi\right|_{+0} + \varepsilon\text{ or}
+}\\
+{
+\frac{1}{|\Lambda|} M_{\Lambda}(\sigma) \le \frac{1}{\beta} \left.\frac{\partial}{\partial h} \psi\right|_{-0} -\varepsilon
+}
+\end{pmatrix}\le -\delta(\varepsilon)
+\ee
+\end{theorem}
+
+This says that
+%usually diffble
+\be
+\mathbb{P}_{\Lambda} \left( {\frac{1}{|\Lambda|}M_{\Lambda} \ge \frac{\partial}{\partial \psi}h + \varepsilon} \right) \approx e^{-\delta(\varepsilon)|\Lambda|}.
+\ee
+%max depth of belly is $\de(\ep)$. High $\ep$, high belly.
+
+\section{1-D Ising model}
+Consider the 1-D Ising model. The spins are $\sigma_n=\pm 1$; the energy is
+\be
+H(\sigma) = -J\sum_{n} \sigma_n\sigma_{n+1} - h\sum \sigma_n.
+\ee
+The first term encourages neighbors the agree, and the second term encourages the spins to agree with the applied field.
+%solvable if limit to nearest neighbors
+
+(Here we just have nearest-neighbor interactions. In general we can have interactions between longer distances, which complicates the calculations. When there are long-range interactions (following a power law), there can be a phase transition.)
+%large - phase transition. power law, decay not too fast.
+\begin{theorem}
+Let $\widehat{h} = \beta h$. Then
+\be
+\psi(\beta, h):= \lim_{N\to \infty} \frac{1}{N} \ln Z_N = \ln [e^{\beta J} \cosh \widehat{h} + (e^{2\beta J} \sinh^2 \widehat{h} + e^{-2\beta})^{\frac{1}{2}}]
+\ee
+\end{theorem}
+The particular form of the formula is not so important; what's important is that it is explicit. As a corollary, $\psi$ is differentiable at all $\beta \ge 0$, $h\in \mathbb{R}$ with 
+\be
+m(\beta, h):=\frac{\partial \psi}{\partial h} =  \frac{e^{\beta}\sinh \widehat{h}}{[e^{2\beta }\sinh^2 \widehat{h} + e^{-2\beta}]^{\frac{1}{2}}}
+\ee
+%arg of log is nonzero.
+In particular, 
+\be
+\lim_{\beta\to \infty} m(\beta, h) = \begin{cases}
+1,&h>0\\
+0,&h=0\\
+-1,&h<0.
+\end{cases}
+\ee
+%story of the dog. did you notice strange behavior of dog. did not do anything, that's the point.
+Note that we do not see the signature of a first-order phase transition, that the energy is discontinuous. The derivative is discontinuous, but the energy is not. We observe something like this only at infinite $\beta$. This is a general feature of 1-D statistical mechanical models: there is no symmetry breaking unless the model has very long-range interactions.
+
+\begin{center}\includegraphics[scale=.25]{images/9-2}\end{center}
+
+\begin{center}\includegraphics[scale=.25]{images/9-3}\end{center}
+
+\begin{proof}
+Take an Ising model with periodic boundary conditions $\sigma_L=\sigma_0$.
+%sometimes parity matters sometimes not. Here it doesn't. 
+Then (it helps to symmetrize the sum)
+\begin{align*}
+Z_{[0,L]}^{\text{per}} &= \sum_{\scriptsize \begin{array}{c}{\sigma_j=\pm 1}\\{\sigma_0=\sigma_L}\end{array}} e^{\beta \sum_{m=1}^L \sigma_m\sigma_{m+1} + \widehat{h} \sum_{1=1}^{L} \frac{\sigma_n+\sigma_{n+1}}{2}}\\
+&=\text{tr} (A^L)
+\end{align*}
+where 
+\be
+A = 
+\begin{pmatrix}
+{A_{++}}&{A_{+-}}\\
+{A_{-+}}&{A_{--}}
+\end{pmatrix}
+ = 
+\begin{pmatrix}
+{e^{\beta + \widehat{h}}}&{e^{-\beta}}\\
+{e^{-\beta}}&{e^{\beta - \widehat{h}}}
+\end{pmatrix}
+.
+\ee
+Recall that 
+\be
+\text{tr}(A^L) = \sum_{\sigma_0=\sigma_L\in \pm 1} (A^L)_{\sigma_0\sigma_L} = \sum_{\scriptsize \begin{array}{c}{\sigma_i=\pm 1}\\{\sigma_0=\sigma_L}\end{array}} A_{\sigma_0,\sigma_1}A_{\sigma_1,\sigma_2}\cdots A_{\sigma_{L-1},\sigma_0}.
+\ee
+Since $A$ is self-adjoint, $A$ is diagonalizable. The eigenvalues have different modulus, $|\lambda_1|>|\lambda_2|$, and
+\begin{align*}
+\text{Tr}(A^L) &= \lambda_1^L +\lambda_2^L = \lambda_1^L\left[ {1+\left( {\frac{\lambda_2}{\lambda_1}} \right)^L} \right]\\
+\frac{1}{L} \ln Z_L &= \ln \lambda_1 + \underbrace{\frac{1}{L} \ln \left[ {1+\left( {\frac{\lambda_2}{\lambda_1}} \right)^L} \right]}_{\approx \frac{1}{L}\left( {\frac{\lambda_2}{\lambda_1}} \right)^L}&\text{using }\ln (1+\varepsilon)\approx \varepsilon.\\
+\lim_{L\to \infty} \frac{1}{L} \ln Z_L &=\ln \lambda_1 
+%goes to 0 exp fast
+\end{align*}
+%if same, then identity. In modulus are not the same.
+%$\la_2$ positive?
+
+The matrix $A$ is a \index{transfer matrix}\textbf{transfer matrix} (as in a Markov chain). 
+%pressure independent of boundary conditions. 
+Fixing the boundary conditions $\sigma_0,\sigma_L$, we have
+\be
+Z_L^{b.c.} = \sum A_{\sigma_0\sigma_1}A_{\sigma_1\sigma_2}\cdots A_{\sigma_{L-1}\sigma_L} = (A^L)_{\sigma_0\sigma_L}
+\ee
+(Exercise: write this in terms of the eigenvalues.)
+%hit on head for disagreement
+\end{proof}
+Consider $Z_L^{++},Z_L^{+-},Z_L^{-+},Z_L^{--}$.
+Assuming the magnetic field is positive ($h>0$), the maximum is $Z_L^{++}$; if $h<0$ then the maximum is $Z_L^{--}$. We have
+\be
+\left| {\frac{Z^{++}-Z^{--}}{Z^{++}}} \right| \le \left| {\frac{\lambda_2}{\lambda_1}} \right|^L
+\ee
+
+%if open-ended boundary conditions, can ask the following.
+With open-ended boundary conditions, the spins are an array of variables with the Markov property. If you specify a spin, then the distribution of the future does not depend on the past beyond the value of the previous spin. Thus the values form a Markov chain, and the transfer matrix is familiar from the theory of Markov chains. 
+
+What happens beyond 1 dimension? Then the Markov property re-emerges in an interesting way. When you talk about the distribution of a finite system, it's sufficient to give the spins at the boundary. 
+There is a multidimensional Markov property, specified by boundary spins. %Limiting boundary distribution,
+We will arrive at the theory of Gibbs states.
+%what can you learn from therm dyn pressure from Gibbs states
+{\color{blue}3-3-16}
+
+\subsection{Transfer matrix method}
+
+This method applies to any finite model in 1 dimension. Suppose the individual states are $\sigma=\pm1$, $\{\sigma_i\}_{i=0}^L$
+%observing particular configurtion.
+The probability of observing a particular configuration is %boundar configuration $\si=(\si_0,\si_L)$ can be factorized as follows, %(having boundary conditions means we specify $\si_0,\si_L$),
+\begin{align}
+\mathbb{P}_\beta^{b.c.}(\{\sigma_{\Lambda_L}\}) &= \frac{e^{-\beta H_L^{bc}(\sigma)}}{Z_L^{br}(\beta)}\mathds{1}[\sigma_0,\sigma_L\text{ satisfy boundary conditions}]\\
+\mathbb{P}_\beta(\sigma\text{ has boundary conditions } \sigma_0,\sigma_L)&=(T^L)_{\sigma_0,\sigma_L} \\
+&= \sum_{\sigma =\{-1,1\}^{[1,L-1]}} T_{\sigma_0,\sigma_1}\cdots T_{\sigma_{L-1}\sigma_L}.
+%how take matrix products.
+\end{align}
+Here, 
+\begin{align}
+T_{\sigma,\sigma'} &= e^{-\left[ {\beta J \sigma\sigma' + \widehat{h}\left( {\frac{\sigma+\sigma'}{2}} \right)} \right]}\\
+&= e^{-\beta H(\sigma)} e^{\widehat{h}\left( {\frac{\sigma_0+\sigma_L}{2}} \right)}.
+\end{align}
+The product of these is
+\be
+e^{-\beta H(\sigma)} = e^{-\beta \sum_{j=0}^{L-1}\sigma_j\sigma_{j+1} - \widehat{h} \sum_{j=0}^L \sigma_j}.
+\ee
+%sum for each contraction?
+%attractive nature, fluctuating spins which tend to be on the positive side. $\pm$ make a transition from one to another. 
+
+%From $\si',\si$
+%multiply get exactly Gibbs factor.
+%pay attention to individual terms.
+Another natural boundary condition is the periodic boundary conditions: we only allow states where $\sigma_0=\sigma_L$, so 
+\be
+Z_L^{\text{per}} = Z_L^{+,+}+Z_L^{-,-} = \text{Tr} (T^L).
+\ee
+
+\subsection{Markov chains}
+
+We summarize some basic facts about Markov chains.
+\begin{definition}
+A $Q$-state \index{Markov chain}\textbf{Markov chain} is a collection of random variables $\{w_n\}$ with values in $[Q]=\{1,\ldots, Q\}$. Let $\Psi_n = 
+\begin{pmatrix}
+{P_n(1)}\\
+{\vdots}\\
+{P_n(Q)}
+\end{pmatrix}
+$ where $P_n(k) = \mathbb{P}(\omega_n=k)$.
+
+$\Psi_1$ is in a given initial state\footnote{Probabilists use ``state" to mean the value of the random variable; physicists use ``states" to correspond to probability measure. (In quantum physics, not all variables have concrete values.)}, i.e., the probability distribution of $\omega_1$, and 
+\be
+\Psi_{n+1} = A\Psi_n
+\ee
+where $A_{ij}=\mathbb{P}(\omega_{n+1}|\omega_n=j)$ is \index{doubly stochastic}\textbf{doubly stochastic} $\sum_{j}A_{ij} = 1 = \sum_i A_{ij}$, $A_{ij}\ge 0$.\footnote{The LHS equality says that the Markov chain is reversible.}
+\end{definition}
+Think of $n$ as the discrete time.
+Taking powers, we have
+\be
+\Psi_{n+1} = A^n \Psi_1.
+\ee
+%start with initial configuration and is propagated by a transition matrix.
+
+Markov chains have finite memory; the effect of the initial value decays exponentially.
+Nice Markov chains have a ``destiny" (equilibrium distribution). 
+%arrow of time.
+\footnote{The basic laws of physics seem reversible; how to explain the arrow of time? Consider colliding molecules; the impact parameters seem to be coming without precise aim in an uncorrelated way (Boltzmann's hypothesis), which isn't true if it is played in reverse. Entropy keeps increasing. Is there a moment when the entropy starts decreasing; does the arrow of time reverse?}
+%arrow of time where 
+
+A 1-D finite system looks like a Markov chain; boundary conditions are equivalent to specifying initial and final states.
+
+\begin{theorem}[Perron-Frobenius]
+Let $A=(a_{ij})$ be a $Q\times Q$ positive matrix $a_{ij}\ge 0$. 
+\begin{enumerate}
+\item
+There is a positive eigenvalue $r$ (the Perron-Frobenius eigenvalue) such that the spectral radius of $A$ is $\rho(A)=r$ and $A$ has no other eigenvalue with $|\alpha|=r$.
+\item
+This eigenvalue is simple, and the corresponding eigenvector is positive.
+\item Letting $|{v}\rangle$, $\langle{w}|$ be the left and right eigenvectors of $A$ corresponding to the largest eigenvalue, $A|{v}\rangle=r|{v}\rangle, \langle{w}| = r \langle{w}|$,
+\footnote{We use Dirac's notation $|{v}\rangle=v^T$, $\langle{w}|=w$.}
+\be
+\lim_{L\to \infty} \frac{1}{r^L}A^L = |{v}\rangle\langle{w}|
+\ee
+\end{enumerate}
+\end{theorem}
+In other words, there is $S$ such that 
+\beS^{-1}AS\approx r^L\begin{pmatrix}
+1&0&\cdots\\
+0&0&\cdots\\
+\vdots &\vdots &\ddots
+\end{pmatrix}.\ee
+Applying this to the 1-D Ising model,
+\begin{align}
+Z^{\text{per}} &=
+\sum_{j=1}^{Q} \lambda_j^L\\
+& \approx \lambda_{\max}^L \left( {1+\left| {\frac{\lambda_2}{\lambda_1}} \right|^L +\cdots} \right)
+%if you take the ising model, in the infinite volume limit the state exhibits exponential decay of correlations.
+\end{align}
+where 
+\be
+1>\left| {\frac{\lambda_2}{\lambda_1}} \right| = e^{-\delta}
+\ee
+where $\delta\lambda>0$ is the spectral gap, the gap between $\lambda_{\max}$ and the next smaller eigenvalue (in absolute value).
+Using this, it is an exercise to show that in the Ising model, in the infinite volume limit the state exhibits exponential decay of correlations,
+\be
+\lim_{L\to \infty} \left| {\left\langle {\sigma_x,\sigma_y}\right\rangle_{[-L,L]}} \right| \le Ae^{-\delta |x-y|},
+\ee
+where $\left\langle {A,B}\right\rangle=\left\langle {AB}\right\rangle-\left\langle {A}\right\rangle\left\langle {B}\right\rangle$ is the covariance.
+In the 1-D Ising model,
+\be
+\Psi(\beta,h)=\lim_{L\to \infty} \frac{1}{L}Z_L= \ln \lambda_{\max},
+\ee
+where $\lambda_{\max}$ is the Perron-Frobenius eigenvalue of $T=
+\begin{pmatrix}
+{e^{\beta+\widehat{h}}}&{e^{-\beta}}\\
+{e^{-\beta}}&{e^{\beta-\widehat{h}}}
+\end{pmatrix}
+$.
+
+The matrix elements are analytic. Can we conclude from this the analyticity of eigenvalues? They are when they don't bump into each other. When they do, funny things can happen. But here, Perron-Frobenius tells us that eigenvalues will not be equal (all entries in $T$ are positive). Thus the eigenvalues will be differentiable in $\beta,h$ and there is no phase transition.
+
+\section{2-D Ising model}
+
+Studying the transfer matrix going up, certain models are integrable; you can get a formula for the partition function. We'll present a different method which is culturally very important.
+%early on in their career see solution of 3d 
+%many careers were lost.
+There is no closed-form solution in 3-D.
+
+In contrast to the 1-dimensional case, in 2 dimensions, the free energy is not differentiable. 
+
+Next we will show that for the 2D Ising model, for $\beta$ large enough ($\beta>\beta_c$) there exists $m(\beta)>0$ such that 
+\begin{align}
+\mathbb{P}_{\beta,k=0}^+\left( {\frac{1}{|\Lambda_L|}\sum_{x\in \Lambda_L} \sigma_x m\ge\frac{m}{2}} \right)&\to 1\\
+\mathbb{P}_{\beta,k=0}^-\left( {\frac{1}{|\Lambda_L|}\sum_{x\in \Lambda_L} \sigma_x m\le \frac{m}{2}} \right)&\to 1
+\end{align}
+as $L\to \infty$. This indicates a phase transition. 
+The signature of a phase transition is that when you take $\beta>\beta_c$, $h=0$ (so the Hamiltonian is invariant under spin-flip).
+%in principle, true.
+
+The Hamiltonian is $H=-\sum_{x,y\text{ neighbors}} \sigma_x\sigma_y$.
+With $+$ boundary conditions, the spins are overwhelmingly positive. With $-$ boundary conditions, the spins are overwhelmingly negative. The system deep inside remembers the boundary conditions. 
+Locally, there is symmetry; globally we have symmetry breaking.
+
+What if we take symmetric boundary conditions, with $+$'s and $-$'s? Since it is invariant under a reflection, the probability of observing $\ge \frac{m}{2}+\varepsilon$ vanishes exponentially. The system organizes itself as follows: close to the $+/-$ boundary there is mostly $+/-$ with islands of $-/+$; in between there is an interface.
+
+%There is a discontinuity
+%We show that $\an{\si_x}$ is sandwiched between the left and right derivatives, $\an{\si_x}=-\pdd{h}\Psi$.
+
+We will see Peiech's argument (?).
+
+
+{\color{blue}3-8}
+
+Peiech showed that these models can exhibit symmetry breaking.
+
+In the 2-D Ising model, 
+\be
+H=-J\sum_{\{x,y\}} \sigma_x\sigma_y - h\sum_x \sigma_x.
+\ee
+\begin{theorem}[Peiech]
+For the 2D nonnegative Ising model, there exists $\beta_0<\infty$ such that for $\beta>\beta_0$, at $h=0$,
+\begin{align*}
+\left\langle {\sigma_x}\right\rangle_{\Lambda,\beta,0}^+ &\ge m(\beta)\\
+\left\langle {\sigma_x}\right\rangle_{\Lambda,\beta,0}^- & \le -m(\beta).
+\end{align*}
+with some $m(\beta)>0$. 
+\end{theorem}
+Why is this ``symmetry breaking"? If you take the model at external field $h=0$ (so that the measure is invariant under global spin flip), the expected value of any anti-symmetric quantity like spin is 0. If you put $+$ boundary conditions all around, then you expect there to be more $+$'s.  
+More surprisingly, if you fix \emph{any} spin, even if the spins are far away, the bias persists.
+%The place where you are furthest is 0, so it suffices to prove for that.
+
+The theorem implies by linearity
+\be
+\left\langle {\frac{1}{|\Lambda|} \sum_{x\in \Lambda} \sigma_x}\right\rangle^+ \ge m(\beta).
+\ee
+Taking the van Hove limit,
+\begin{align*}
+\frac{\partial}{\partial h} \Psi(\beta,0+) & = \lim_{\Lambda\Uparrow \mathbb{Z}^2} \left\langle {\frac{1}{|\Lambda|} \sum_{x\in \Lambda} \sigma_x}\right\rangle^+ \ge m(\beta)\\
+\frac{\partial}{\partial h} \Psi(\beta,0-)& = \lim_{\Lambda\Uparrow \mathbb{Z}^2} \left\langle {\frac{1}{|\Lambda|} \sum_{x\in \Lambda} \sigma_x}\right\rangle^- \le - m(\beta).
+\end{align*}
+%derivative at zero
+Thus the left and right derivatives of $\Psi$ are unequal. There is a cusp at 0; there is a phase transition.
+
+The theorem shows there is an asymmetry in the infinite volume limit of magnetization at a site.
+
+For each $\sigma_{\Lambda}\in \Omega_\Lambda$ draw a green line separating $+/-$ spins. 
+Using
+\be\sigma_x\sigma_y = 2\mathds{1}[\sigma_x=\sigma_y]-1\ee
+(this takes $\pm1$ values). 
+We have
+\begin{align*}
+e^{-\beta H(0)}&=\prod_{\{x,y\}} e^{\beta \sigma_x\sigma_y} = e^{\beta|\xi|} \prod_{\{x,y\}}  e^{-2\beta \mathds{1}[\sigma_x\ne \sigma_y]} = K e^{-2\beta|C|}
+\end{align*}
+where $K$ is a constant and $C$ is the set of contour lines.
+
+%suppressed by $e^{-2\be}$ times the number of lines.
+%loops cost energy. excitation.
+%hamiltonian. What is the energetically most favorable thing to do?
+%particles of the model...
+
+If the boundary conditions are $+$, then for there to be a $-$, it must be separated from the boundary by a green loop. We want to show that the probability for a given site to be separated from the boundary by a loop is strictly less than $\frac{1}{2}$. Then the probability it agrees with the boundary is $>\frac{1}{2}$.
+
+Let $\Omega_{\gamma}$ be the set of configurations which has $\gamma$ as a contour.
+\begin{lemma}[Peiech]
+The probability that a given loop $\gamma$ is among the contours lines $C(\sigma)$ satisfies
+\be
+\mathbb{P}_{\Lambda,\beta,0}^+(C(\sigma) \ni \gamma )= \left\langle {\mathds{1}_{\Omega_{\gamma}}}\right\rangle^+_{\Lambda,\beta,0}\le e^{-2\beta |\gamma|}.
+\ee
+\end{lemma}
+\begin{proof}
+First we do an energy estimate.
+
+The idea is that each configuration can be associated with another configuration by a mapping $T_\gamma$ which flips the spin of all sites inside $\gamma$. The disagreements of $\gamma$ would be erased. Because all spins inside are flipped, no other disagreement is affected. Note $T_\gamma$ is an involution---it is its own inverse.
+%takes out of set in invertible way. 
+%consider mapping which flips the spin. disagreement would be erased, all inside is flipped, so no other disagreement is affected.
+
+For each $\sigma\in \Omega_{\gamma}$, its flip has higher probability because it has less disagreement, so
+\be
+\mathbb{P}^+(\{\sigma\}) = e^{-2\beta |\gamma|} \mathbb{P}(\{T_\gamma\sigma\})%\le e^{-2\be |\ga}.
+\ee
+Summing over $\sigma\in \Omega_{\gamma}$,
+\be
+\mathbb{P}^+(\Omega_{\gamma}) = e^{-2\beta |\gamma|} \mathbb{P}(T_\gamma\Omega_{\gamma}) \le e^{-2\beta |\gamma}.
+\ee
+%For each $\si\in \Om_{\ga}$, 
+%\be
+%\Pj^+(\{\si})\le
+%\fc{\Pj^+(\{\si\})}{\Pj(\{T_\ga\si\})+\Pj(\{\si\})} 
+%= \fc{e^{-2\be |\ga|}}{1+e^{-2\be |\ga|}} \le 2^{-2\be|\ga|}.
+%\ee
+%winning one mi
+
+Next we need an entropy estimate: we need to estimate how many loops there are so we can do a union bound over them.
+\begin{lemma}[Entropy estimate]
+The number of non-repeating loops of length $l$ starting from a specified point is $N_l\le \frac{4}{3}3^l$.
+\end{lemma}
+\begin{proof}
+There are 4 possibilities for the first step; for each of the next step there are $\le3$ choices for the other $l-1$ steps because it can't backtrack.
+\end{proof}
+
+Now we put the energy and entropy bound together.
+For each each loop around $x$, we can start it at an node between 0 and $\frac{l}{2}$ steps to the right of $x$ where the path goes up. Then %  Choosing the first step to be up in the path
+\begin{align*}
+\mathbb{P}^+(\sigma_x=-1) &\le \mathbb{P}^+\left( \text{$x$ is separated from $\partial \Lambda$} \right)\\ 
+&\le \sum_{\gamma\text{ loop separating $x$ from $\partial \Lambda$}} e^{-2\beta |\gamma|}\\
+&\le \sum_{l=4}^{\infty} \frac{l}{2} 3^{l-1} e^{-2\beta l}\\
+&=\frac{1}{6} \sum_{l=4}^{\infty} l(3e^{-2\beta})^l.
+\end{align*}
+This is $\le \frac{1}{2} - \delta(\beta)$ for $\beta>\beta_0$ where  $\beta_0$ is defined by the condition
+\be
+\frac{1}{6} \sum_{l=4}^{\infty} l (3e^{-\beta_0})^l = \frac{1}{2}.
+\ee
+%number of choices.
+%how unlikely for a given contour to happen.
+\end{proof}
+The condition is ugly. With some extra finesse, we can show $3e^{-\beta}<1$ is sufficient for there to be symmetry breaking.
+
+This implies that for $\beta>\beta_0$
+\be
+\left\langle {\sigma_0}\right\rangle_{\mathbb{Z}^2}^+=\lim_{\Lambda \Uparrow \mathbb{Z}^2} \left\langle {\sigma_0}\right\rangle_{\Lambda,\beta,0}^+ \ge m(\beta)>0.
+%local quantity with _ boundary conditions.
+%prob dist of measure
+\ee
+Here we define an infinite volume probability distribution by taking the limit of finite probability distributions with $+$ boundary conditions.   Similarly define $\left\langle {\sigma_0}\right\rangle_{\mathbb{Z}^2}^-$. Symmetry breaking refers to the fact that
+\be
+\left\langle {\sigma_0}\right\rangle_{\mathbb{Z}^2}^+\ne \left\langle {\sigma_0}\right\rangle_{\mathbb{Z}^2}^-.
+\ee
+
+Consider a function $G(m)=G(-m)$. If $G$ has the symmetry of the variational problem, the minimum is at 0.
+%In symmetry breaking the minimum is not at 0. %: the solution of the variational problem. 
+If the minimum does not have the symmetry of the variational problem, there may be multiple minima. We refer to this as symmetry breaking.
+
+\begin{remark}
+One can deduce symmetry breaking already for $\beta>\beta_1$ with $\beta$ defined by $3e^{-2\beta_1}=1$. 
+
+Actually we're counting self-avoiding walks; the rate that they grow is smaller than $3^l$. So we can replace 3 by the actual rate; this is more complicated. It's harder to come up with exact values.
+\end{remark}
+%Convergence gives symmetry breaking.
+
+The part of the estimate which is not relevant is short loops. Let's look at a larger scale and only count loops which surround a larger box. If the probability of there being a large loop around $x$ is $<\frac{1}{2}$, then we can already conclude symmetry breaking. For $3e^{-2\beta}<1$, we can choose $l$ large enough so that this holds.
+
+If the box of size $n$ is not surrounded by a loop, we can conclude there exists some loop of $+$ spins outside the box which is connected to the boundary. %encircling the box of size $n$. 
+This event is not compatible with the flip of the event. Thus the probability that there is a loop of $-$'s of size $>n$ connected to the boundary (with $-$) is $<\frac{1}{2}$.
+
+In the infinite volume case, we cannot both have a loop connected to $\infty$ with $-$'s and a loop connected to $\infty$ with $+$'s. The $+$ event is more likely.
+
+If you start with $+$ boundary conditions, the $+$ case will occur with large probability.
+
+There is percolation of $+$ sites. If there is no symmetry breaking, there is percolation of $-$ sites. You have to work to show that you can't have infinite line of $+$'s and infinite line of $-$'s with nonzero probability  %In our case, both cannot occur simultaneously. %choke line of 
+Harris developed the theory of this. We take a shortcut and show that a stronger condition (with the ring of $+/-$'s) is incompatible.
+
+%We take shortcuts. 
+%estimates do not squeeze most.
+When you take this approach, there are 2 special values of the parameters: a $\beta$ for which we get no information (the sum diverges), and the $\beta$ for which the sum is less than a certain threshold ($\frac{1}{2}$). Looking at a renormalized version which eliminates the noise from the low cases of the sum, and you can improve the $\beta$ threshold.
+
+In higher dimensions, you have to enumerate surfaces. The energy bound is easy. The energy (enumerating surfaces) is messier. The entropy estimate gives worse bounds. You have to be clever to bring other techniques.
+
+Another way is to take the restriction to 2 dimensions (a slice of the cube). If you decouple the layers you just get the 2D model. Having other spins around only increases cooperations. 
+%clusters of cooperation
+%connected to floors above and below.
+This brings us to the use of inequalities. For the 3D model, the magnetization is greater than the 2D model for the same temperature. 
+
+With appropriate inequalities one can show
+\be
+\left\langle {\sigma_0}\right\rangle_{[-L,L]^3}^+\ge \left\langle {\sigma_0}\right\rangle_{[-L,L]}^+.
+\ee
+This implies symmetry breaking in higher dimensions at the same temperature, so the critical temperature is smaller,
+\be
+\beta_{c}^{3D} \le \beta_c^{2D}.
+\ee
+Here
+\be
+\beta_c = \inf \left\{{\beta}:{\left\langle {\sigma_0}\right\rangle_{\beta'}>0 \forall \beta'>\beta}\right\}.
+\ee
+For 2 dimensions, $\beta_c$ is calculable; for 3 dimensions we don't have an exact value. The 2-D Ising model is exactly solvable by a nontrivial argument. We'll present Feynman's solution.
+%There is a discontinuity in the spontaneous ... across this line.
+
+How singular is the magnetization? That's not expected to change with local details, but with dimension. We do not know $\beta_c$ for range 5 Ising model, but we expect that the power of $m(\beta)$ is the same (it grows like a power function from the critical temperature).
+
+{\color{blue}3-10: We continue the 2D Ising model. Much of what we say will hold true for other planar graphs. }
+
+The energy is 
+\be
+\sum_{b\in \mathcal{E}}J_b (\sigma\sigma)_b - h\sum_{x\in G}\sigma_x
+\ee 
+where the first sum is over edges (bonds) and if $b=b_1b_2$, then $(\sigma\sum_{n=0}^{\infty})_b$ denotes $\sigma_{b_1}\sigma_{b_2}$.
+
+The state changes discontinuously across the line $h=0$ until some critical temperature $T_c$. Along the symmetry line the model is solvable.
+\begin{theorem}[Onsager]
+For the nn $\mathbb{Z}^2$ at $h=0$, $J_b=J$, 
+\be
+\frac{1}{|\Lambda|} \ln Z_{\Lambda}^{\text{per}} (\beta, 0) = \ln \cosh (\beta J)
++ \frac{1}{2} \int_{(-\pi, \pi]^2} \frac{dx_1\,dx_2}{(2\pi)^2}\ln \left\{ {
+\left[ {
+Y(\beta) + Y^{-1}(\beta) - 2
+} \right] + \mathcal{E}(k)
+} \right\}
+\ee
+where $\mathcal{E}(k) = 2\left[ {\sin^2 \left( {\frac{k_1}{2}} \right) + \sin^2\left( {\frac{k_2}{2}} \right)} \right]$.
+
+By the integral we really mean the discrete sum over $k\in (-\pi,\pi]^2 \cap \frac{2\pi}{L}\mathbb{Z}^2$. (In the infinite volume limit it is an integral.)
+%elastic membrane.
+\end{theorem}
+%discrete momenta as sites in spce.
+For square summable function in a box, we can look at a basis of delta functions, or the Fourier basis $e^{ik\cdot x}$ for $k\in (-\pi,\pi]^2 \cap \frac{2\pi}{L}\mathbb{Z}^2$. I.e., $k$ is sampled from the dual lattice; $[-\pi,\pi]$ is subdivided to have the right number of points.
+%condensed matter physics. Fourier analysis.
+%In many books where Onsager's theorem..., they stop short of this expression.
+
+Note $\sinh$ is an unbounded monotone increasing function. 
+%what $Y+Y^{-2}-2$ looks like: min 0 at 1.
+%sum won't be both 0 if temperature is other than 0.
+%At the critical temperature, $Y(\be)+Y^{-1}(\be)-2$ vanishes, and the singularities are those of $\cal E(k)$.
+
+For $h=0, b\in \mathcal{E}(\mathcal{G})$,
+\begin{align*}
+Z_{\Lambda} &= \frac{1}{2^{|\Lambda|}} \sum_{\sigma \in \Omega_{\Lambda}} e^{-\beta H_{\Lambda}(\sigma)}\\
+&\qquad e^{-\beta H(\sigma)} = e^{\sum_b (\sigma\sigma)_b \beta J_b} = \prod_b e^{\beta J_b (\sigma\sigma)_b}& \text{(factorizing over bonds)}\\
+&=\frac{1}{2^{|\Lambda|}} \sum_{\sigma\in \Omega_{\Lambda}} \prod_b [\cosh(\beta J_b) + \sinh(\beta J_b)(\sigma\sigma)_b]&e^x = \cosh x + \sinh x\\
+&=\left[ {\prod_b \cosh(\beta J_b)} \right] \frac{1}{2^{|\Lambda|}}\sum_{\sigma\in \Omega_{\Lambda}} \prod_b[1+K_b(\sigma\sigma)_b]&\text{where }K_b=\tanh(\beta J_b)\\
+&=\left[ {\prod_b \cosh(\beta J_b)} \right] \mathop{\mathbb E}_{\sigma} \sum_{\Gamma\subseteq \mathcal{E}(\mathcal{G})}\prod_{b\in \Gamma}K_b \left( {\prod_{b=\{x,y\}\text{ in }\Gamma} (\sigma\sigma)_b} \right)\\ 
+&=\left[ {\prod_b \cosh(\beta J_b)} \right] \sum_{\Gamma}\prod_{b\in \Gamma}K_b
+\mathop{\mathbb E}_{\sigma} \left( {\prod_{b=\{x,y\}\text{ in }\Gamma} (\sigma\sigma)_b} \right)&\text{linearity of expectation}
+\end{align*}
+We expressed the sum in terms of the symmetric and anti-symmetric parts and pulled out a factor $\cosh$. 
+%\fixme{Where $\Ga$...}
+%Here $\Ga$ is over sets of loops (i.e., possibilities for the places where $(\si\si)_b=-1$).
+%nmber of bonds contain a site x
+%if single side for which this is an odd poewr, the average is 0.
+%if the power is even for all spins, the averge is 1.
+The average is easy to compute: if there is a spin for which the power is odd, the average is 0; if the power is even for all spins, the average is 1.
+\be
+\mathop{\mathbb E}_{\sigma} \left( {\prod_{b\in \Gamma} (\sigma\sigma)_b} \right) = \mathop{\mathbb E}_{\sigma}\prod_x \sigma_x^{\sum_{b\in \Gamma} \mathds{1} [b\ni x]}
+= \mathds{1}[\forall x,(-1)^{\sum_{b\in \Gamma} \mathds{1}[b\ni x]}=1]
+\ee
+%good graph obtained from closing
+
+%Factorize over bonds
+%\bal
+%e^{-\be H(\si)} &= e^{\sum_b (\si\si)_b \be J_b} = \prod_b e^{\be J_b (\si\si)_b}.
+%\end{align*}
+Let $(\partial \Gamma)_2=\left\{{x}:{x\text{ belongs to an odd number of edges}}\right\}$. The condition for the summand to not vanish is $(\partial \Gamma)_2=\phi$.
+
+We summarize this calculation as a lemma.
+
+%\begin{theorem}[Feynman-Sherman]
+%
+%\end{theorem}
+%complexity not reduced yet.
+\begin{lemma}
+For $h=0$,
+\begin{align*}
+Z_\Lambda &= \left[ {\prod_b \cosh(\beta J_b)} \right] \sum_{\Gamma, (\partial \Gamma)_2=\phi} \prod_{b\in \Gamma}K_b.
+\end{align*}
+\end{lemma}
+
+\begin{theorem}[Feynman-Sherman]
+Let $K(\Lambda)= \prod_{b\in \Gamma} K_b$.
+\be
+\sum_{\Gamma:(\partial \Gamma)_2=\phi} K(\Gamma) =  \prod_{\text{loops}}[1+(-1)^{n(l)}K(l)]
+\ee
+where $n(l)$ is the number of self-intersections of $l$.
+\end{theorem}
+Each graph can be covered by a collection of loops (which can cross and repeat edges).
+%completing loops
+%start from RHS: double counting.
+Note the RHS is an infinite sum. By a lot of identities this infinite sum reduces to a finite sum.
+
+Kac-Ward introduced the Ihara zeta function.
+
+The RHS is 
+\begin{align*}
+ \prod_{\text{loops}}[1+(-1)^{n(l)}K(l)] &= \sum_{m:\mathcal{E}(G) \to \mathbb{Z}_+} {\prod_b K_b^{m_b}} W(m)\\
+\text{where }W(m) &= \sum_{\ell_1,\ldots} \prod_j (-1)^{n_{\ell_j}}\mathds{1}_m[\{\ell_1,\ldots, \ell_k\}].
+\end{align*}
+
+%how many times is each bond is visited by each loop of collection...
+%when weights small enough, convergent infinite product
+%how many ways edge is visited.
+
+\begin{lemma}
+If $\left\Vert {m}\right\Vert_{\infty}:=\max_b(m_b)=1$ then $W(m)=1$.
+\end{lemma}
+%If weights are 0 or 1 for all bonds, then the contribution of the RHS is 1. Sticking just with $W(m)=1$, this captures all partition functions.
+
+Sum over the multisets of edges. We need to enumerate how many ways the multisets can be realized as a union of loops. 
+The Katz-Ward idea is enumerate all the different ways to resolve the traffic jams at each vertex with an intersection: sum over all possible choices with the right signs. The other vertices don't present any choices for the prospective loop.
+
+\begin{center}\includegraphics[scale=.25]{images/12-2}\end{center}
+
+The three possibilities are:
+
+\begin{center}\includegraphics[scale=.25]{images/12-3}\end{center}
+
+%The sum is 1.
+%Think of loops as limits of continuous curves. It's not clear whether under magnification... the number of times curves cross each other.
+The parity is certain. 
+%the number of crossings disappear from view.
+%deformation: disentangle wire.
+%Whitney theorem. Intuitive things hard to prove.
+%crossing of single curve with self or other. 
+%Two curves always have an even number of intersections. (If you pull them apart, intersections will disappear in pairs.)
+
+\begin{lemma}
+If $\left\Vert {m}\right\Vert_{\infty}=2$ then $W=0$.
+\end{lemma}
+\begin{proof}
+This means there is one edge traversed twice. Take one of these edges. How are the loops arranged in the complement? There are 2 possibilities for how the loops hook up through the bond. Summing you get 0.
+\end{proof}
+What if it's $>2$? This is in fact true for any value $>1$.
+
+Why are the higher powers 0? %There are things like graph zeta functions.
+
+\begin{theorem}[Sherman]\label{thm:sherman} %Kac-Wald, 
+\be
+\prod_{\text{loops}} [1+(-1)^{n(\ell)}K(\ell)]^2 = \det(\mathds{1} - \mathcal{L})
+\ee
+where $\mathcal{L}$ is a $2|\mathcal{E}|\times 2|\mathcal{E}|$ matrix indexed by the oriented edges. Here 
+\be
+\mathcal{L}_{e,e'} = \delta_{O(e'),t(e)} e^{\frac{i\angle(e,e')}{2}}K_e.
+%$e$ to flow into $e'$.
+\ee
+(The Kronecker delta function says that $e$ has to flow into $e'$, i.e., the terminal of $e$ is the same as the origin of $e'$. Here $\angle(e,e')$ means the angle between $e,e'$. We get a phase number that's half the sum of the turns. For a simple loop, we get $-1$.)
+\end{theorem}
+$\text{Tr} \mathcal{L}^n = \sum_{e_1,\ldots, e_n} = \mathcal{L}_{e_1,e_n}\cdots \mathcal{L}_{e_2,e_1}$. This is associated to an oriented loop.
+%n(\ell)$ self intersections.
+
+%There's a general relation...
+%Finite product expression for infinite product.
+Buried in this is an infinite collection of relations. In principle we have contributions in the RHS of the theorem with arbitrarily many loops. But Sherman's theorem says that it is multilinear in the weights of the edges. Higher powers do not contribute. 
+
+You can decompose the Hilbert space into Fourier modes. For each value of the momentum you have a finite-dimensional space. Edges are indexed by position and direction. If you change to momenta and direction, the different momenta are not mixed by shifting. The determinant is a block determinant where different values of the momenta are not mixed. We get $4\times 4$ blocks; the determinants can be computed and we get the solution.
+
+{\color{blue}3-22}
+
+We can use the transfer matrix method for 1D systems with finite range correlations (of distance $R$), not just nearest-neighbor interactions. Let the states be $\tau_x=\{(\sigma_x,\sigma_{x+1},\ldots, \sigma_{x+R})\}$. Switching to this space, we can now express the energy in terms of nearest neighbor interactions,
+\be
+H=\sum_n \Phi(\tau_n,\tau_{n+1}).
+\ee
+
+%aggregating some states.
+
+\subsection{Ihara graph zeta function}
+
+\begin{definition}
+A \textbf{path} in a graph $\mathcal{G}$ is a set of edges $(x_1,x_2),\ldots, (x_n,x_{n+1})\in \mathcal{E}$. For an \textbf{oriented path}, the direction matters. In a \textbf{closed path}, $x_{n+1}=x_1$. An \textbf{oriented loop} is a closed oriented path where we don't care about the starting point, i.e., an equivalence class of paths modulo cyclic permutation. Two paths are equivalent here if $y_i=x_{i+h}$, with indices taken modulo $n$.
+
+Edges are allowed to repeat.
+
+For a path $p$, denote by $|p|$ the number of edges in $p$.
+\end{definition}
+We would like to eliminate paths which are powers of more elementary paths, complete repetitions of a primitive path. A path is primitive if it is not a power of a shorter path.
+
+\begin{definition}
+A path is \textbf{primitive} if it cannot be written as $q^k$, $k>1$, where $q$ is a closed path.
+\end{definition}
+This may remind you of prime numbers. Any number can be written as a product of numbers which cannot be decomposed. People applied number-theoretic ideas to graphs.
+%People started thinking about number-theoretic
+
+\begin{theorem}
+Let $M$ be a matrix indexed by sites of a graph $\mathcal{G}$.
+For $\left\Vert {M}\right\Vert$ small enough, %hen
+\be
+\det(\mathds{1}-M) = \prod_{p^{*}} [1-\chi_\mu(p)]
+\ee
+where the product is over equivalence classes $p^*$ of primitive oriented loops.
+%matrix nonzero only for edges. don't hopscotch crazily.
+
+Here 
+\be
+\chi_p=\prod_{n=1}^{|p|} M_{x_{n},x_{n+1}}.
+\ee
+\end{theorem}
+%invar under cyclic reparametrization.
+
+On the RHS, when we open the brackets, we can worry about convergence. For matrices of small norm, it is convergent. To define the function for all $\lambda$, note the theorem establishes that for small $\lambda$,
+\be
+\det(\mathds{1}-\lambda M) = \prod_{p^{*}} [1-\lambda \chi_\mu(p)].
+\ee
+Now we can take the analytic continuation.
+
+Note the LHS is a finite calculation (and a multilinear function in entries of $M$), while the RHS is an infinite product/sum.
+
+%mats with no loop
+%for $\la$ small enough.
+
+It follows from the proof that the RHS is a convergent product (for $\left\Vert {M}\right\Vert$ small enough).
+\begin{proof}
+First assume $\left\Vert {M}\right\Vert<1$. (This is the operator norm, $\left\Vert {M}\right\Vert=\max_v\frac{\left\Vert {Mv}\right\Vert}{\left\Vert {v}\right\Vert}$.) Then
+\be
+\ln \det(1-M)  = \text{tr}\ln (\mathds{1} -M).
+\ee
+For Hermitian matrices, prove this by diagonalization: the LHS is $\ln \prod_j (1-\lambda_j) = \sum_j \ln (1-\lambda_j)$. 
+
+For the general case, we can still use this method. Write $M=S^{-1}TS$ where $T$ is upper triangular. If the diagonal entries are $\lambda_1,\ldots, \lambda_n$, the determinant is still $\prod_j(1-\lambda_j)$. 
+%the only factor in the product is the diagonal.
+%operator norm.
+
+Expanding gives
+\begin{align*}
+\ln \det(\mathds{1}-M) &= -\sum_{n=1}^{\infty} \frac{1}{n} \text{tr}(M^n) \\
+%&= -\sumo k{\iy} \sum_{p^*} \rc{k|p^*|} k \chi_n(p^*)^k
+%elem enumeration for closed paths
+%conribut at rate proportion to nmber of places where can start, total length / k.
+&= \sum_{x = (x_0,\ldots, x_n)} \frac{1}{n} \left( {\prod_{j=1}^n M_{x_{j+1},x_j}} \right) \\
+%&= \sumo k{\iy}\pa{\sum_{x\text{ primitive}}M_{x_{j+1},x_j}}}\\
+%&= \sum_x \sumo k{\iy}
+&=-\sum_{k=1}^{\infty}\sum_{p^*} \frac{1}{k|p^*|} \chi_M(p^*)^k\\
+&=-\sum_{p^*} \ln (1-\chi_M(p^*)).
+\end{align*}
+$k$ comes from properly weighing the volume of the path.
+%This is a sum over closed paths
+\end{proof}
+
+We want to avoid backtracking. %Think of $\cal L$
+%\begin{theorem}
+%Let $\cal E$ be the graph of oriented edges of $\cal G$.
+%%backtracking and tadpoles
+%%powers generate closed walks to avoid backtracking.
+%
+%\end{theorem}
+\begin{thm*}[Theorem~\ref{thm:sherman}]
+Let $\mathcal{E}$ be the graph of oriented edges of a planar graph. Let 
+\begin{align*}
+\mathcal{L}_{e,e'} = \mathds{1}[O(e')=t(e)]K_e e^{\frac{i\angle(e',e)}{2}}
+\end{align*}
+For any oriented closed path,
+\begin{align*}
+\prod_j \mathcal{L}_{e_j,e_{j+1}} = \prod_i K_e(-1)^{w(p)}
+\end{align*}
+%winding number.
+with 
+\be
+(-1)^{w(p)} n= -(-1)^{n(p)}.
+\ee
+where $w(p)$ is the winding number and $n(p)$ is the number of crossings. 
+
+\end{thm*}
+%take 
+%If cross sel, at that poit rerout to avoid the path
+%reduces winding number of 2
+We have
+\begin{align*}
+\prod_{p^*} [1-\chi_{\mathcal{L}}(p^*)] 
+&=\sum_{\mathcal{P}= (p_1^*,\ldots, p_n^*)} \prod_j (-1)^{n(p_j)} k[p]\\
+&=\sum_m\pi_e K_e^{m_e}W_m
+%n?
+%characterize by not thinking about the ... but the frequency of edges travesed.
+%realized through collections of paths.
+\end{align*}
+where $W_m$ is the number of of paths with a given frequency of edges traversed. 
+
+\begin{lemma}[Kac-Ward]
+We have
+\be
+\sum_{P: \max_e(m(P))= 1} (-1)^{n(P)}K(P) = \sum_{\Gamma:\partial \Gamma = \phi} \prod_{e\in \Gamma} K_e = Z(\beta)
+\ee
+for $K_e=\tanh (\beta J_e)$. 
+\end{lemma}
+
+Each vertex has 3 possibilities.
 %INSERT_HERE
 
 %\appendix

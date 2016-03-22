@@ -1,0 +1,129 @@
+
+{\color{blue}3-22}
+
+We can use the transfer matrix method for 1D systems with finite range correlations (of distance $R$), not just nearest-neighbor interactions. Let the states be $\tau_x=\{(\sigma_x,\sigma_{x+1},\ldots, \sigma_{x+R})\}$. Switching to this space, we can now express the energy in terms of nearest neighbor interactions,
+\be
+H=\sum_n \Phi(\tau_n,\tau_{n+1}).
+\ee
+
+%aggregating some states.
+
+\subsection{Ihara graph zeta function}
+
+\begin{definition}
+A \textbf{path} in a graph $\mathcal{G}$ is a set of edges $(x_1,x_2),\ldots, (x_n,x_{n+1})\in \mathcal{E}$. For an \textbf{oriented path}, the direction matters. In a \textbf{closed path}, $x_{n+1}=x_1$. An \textbf{oriented loop} is a closed oriented path where we don't care about the starting point, i.e., an equivalence class of paths modulo cyclic permutation. Two paths are equivalent here if $y_i=x_{i+h}$, with indices taken modulo $n$.
+
+Edges are allowed to repeat.
+
+For a path $p$, denote by $|p|$ the number of edges in $p$.
+\end{definition}
+We would like to eliminate paths which are powers of more elementary paths, complete repetitions of a primitive path. A path is primitive if it is not a power of a shorter path.
+
+\begin{definition}
+A path is \textbf{primitive} if it cannot be written as $q^k$, $k>1$, where $q$ is a closed path.
+\end{definition}
+This may remind you of prime numbers. Any number can be written as a product of numbers which cannot be decomposed. People applied number-theoretic ideas to graphs.
+%People started thinking about number-theoretic
+
+\begin{theorem}
+Let $M$ be a matrix indexed by sites of a graph $\mathcal{G}$.
+For $\left\Vert {M}\right\Vert$ small enough, %hen
+\be
+\det(\mathds{1}-M) = \prod_{p^{*}} [1-\chi_\mu(p)]
+\ee
+where the product is over equivalence classes $p^*$ of primitive oriented loops.
+%matrix nonzero only for edges. don't hopscotch crazily.
+
+Here 
+\be
+\chi_p=\prod_{n=1}^{|p|} M_{x_{n},x_{n+1}}.
+\ee
+\end{theorem}
+%invar under cyclic reparametrization.
+
+On the RHS, when we open the brackets, we can worry about convergence. For matrices of small norm, it is convergent. To define the function for all $\lambda$, note the theorem establishes that for small $\lambda$,
+\be
+\det(\mathds{1}-\lambda M) = \prod_{p^{*}} [1-\lambda \chi_\mu(p)].
+\ee
+Now we can take the analytic continuation.
+
+Note the LHS is a finite calculation (and a multilinear function in entries of $M$), while the RHS is an infinite product/sum.
+
+%mats with no loop
+%for $\la$ small enough.
+
+It follows from the proof that the RHS is a convergent product (for $\left\Vert {M}\right\Vert$ small enough).
+\begin{proof}
+First assume $\left\Vert {M}\right\Vert<1$. (This is the operator norm, $\left\Vert {M}\right\Vert=\max_v\frac{\left\Vert {Mv}\right\Vert}{\left\Vert {v}\right\Vert}$.) Then
+\be
+\ln \det(1-M)  = \text{tr}\ln (\mathds{1} -M).
+\ee
+For Hermitian matrices, prove this by diagonalization: the LHS is $\ln \prod_j (1-\lambda_j) = \sum_j \ln (1-\lambda_j)$. 
+
+For the general case, we can still use this method. Write $M=S^{-1}TS$ where $T$ is upper triangular. If the diagonal entries are $\lambda_1,\ldots, \lambda_n$, the determinant is still $\prod_j(1-\lambda_j)$. 
+%the only factor in the product is the diagonal.
+%operator norm.
+
+Expanding gives
+\begin{align*}
+\ln \det(\mathds{1}-M) &= -\sum_{n=1}^{\infty} \frac{1}{n} \text{tr}(M^n) \\
+%&= -\sumo k{\iy} \sum_{p^*} \rc{k|p^*|} k \chi_n(p^*)^k
+%elem enumeration for closed paths
+%conribut at rate proportion to nmber of places where can start, total length / k.
+&= \sum_{x = (x_0,\ldots, x_n)} \frac{1}{n} \left( {\prod_{j=1}^n M_{x_{j+1},x_j}} \right) \\
+%&= \sumo k{\iy}\pa{\sum_{x\text{ primitive}}M_{x_{j+1},x_j}}}\\
+%&= \sum_x \sumo k{\iy}
+&=-\sum_{k=1}^{\infty}\sum_{p^*} \frac{1}{k|p^*|} \chi_M(p^*)^k\\
+&=-\sum_{p^*} \ln (1-\chi_M(p^*)).
+\end{align*}
+$k$ comes from properly weighing the volume of the path.
+%This is a sum over closed paths
+\end{proof}
+
+We want to avoid backtracking. %Think of $\cal L$
+%\begin{theorem}
+%Let $\cal E$ be the graph of oriented edges of $\cal G$.
+%%backtracking and tadpoles
+%%powers generate closed walks to avoid backtracking.
+%
+%\end{theorem}
+\begin{thm*}[Theorem~\ref{thm:sherman}]
+Let $\mathcal{E}$ be the graph of oriented edges of a planar graph. Let 
+\begin{align*}
+\mathcal{L}_{e,e'} = \mathds{1}[O(e')=t(e)]K_e e^{\frac{i\angle(e',e)}{2}}
+\end{align*}
+For any oriented closed path,
+\begin{align*}
+\prod_j \mathcal{L}_{e_j,e_{j+1}} = \prod_i K_e(-1)^{w(p)}
+\end{align*}
+%winding number.
+with 
+\be
+(-1)^{w(p)} n= -(-1)^{n(p)}.
+\ee
+where $w(p)$ is the winding number and $n(p)$ is the number of crossings. 
+
+\end{thm*}
+%take 
+%If cross sel, at that poit rerout to avoid the path
+%reduces winding number of 2
+We have
+\begin{align*}
+\prod_{p^*} [1-\chi_{\mathcal{L}}(p^*)] 
+&=\sum_{\mathcal{P}= (p_1^*,\ldots, p_n^*)} \prod_j (-1)^{n(p_j)} k[p]\\
+&=\sum_m\pi_e K_e^{m_e}W_m
+%n?
+%characterize by not thinking about the ... but the frequency of edges travesed.
+%realized through collections of paths.
+\end{align*}
+where $W_m$ is the number of of paths with a given frequency of edges traversed. 
+
+\begin{lemma}[Kac-Ward]
+We have
+\be
+\sum_{P: \max_e(m(P))= 1} (-1)^{n(P)}K(P) = \sum_{\Gamma:\partial \Gamma = \phi} \prod_{e\in \Gamma} K_e = Z(\beta)
+\ee
+for $K_e=\tanh (\beta J_e)$. 
+\end{lemma}
+
+Each vertex has 3 possibilities.

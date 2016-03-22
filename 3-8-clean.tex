@@ -1,0 +1,168 @@
+
+{\color{blue}3-8}
+
+Peiech showed that these models can exhibit symmetry breaking.
+
+In the 2-D Ising model, 
+\be
+H=-J\sum_{\{x,y\}} \sigma_x\sigma_y - h\sum_x \sigma_x.
+\ee
+\begin{theorem}[Peiech]
+For the 2D nonnegative Ising model, there exists $\beta_0<\infty$ such that for $\beta>\beta_0$, at $h=0$,
+\begin{align*}
+\left\langle {\sigma_x}\right\rangle_{\Lambda,\beta,0}^+ &\ge m(\beta)\\
+\left\langle {\sigma_x}\right\rangle_{\Lambda,\beta,0}^- & \le -m(\beta).
+\end{align*}
+with some $m(\beta)>0$. 
+\end{theorem}
+Why is this ``symmetry breaking"? If you take the model at external field $h=0$ (so that the measure is invariant under global spin flip), the expected value of any anti-symmetric quantity like spin is 0. If you put $+$ boundary conditions all around, then you expect there to be more $+$'s.  
+More surprisingly, if you fix \emph{any} spin, even if the spins are far away, the bias persists.
+%The place where you are furthest is 0, so it suffices to prove for that.
+
+The theorem implies by linearity
+\be
+\left\langle {\frac{1}{|\Lambda|} \sum_{x\in \Lambda} \sigma_x}\right\rangle^+ \ge m(\beta).
+\ee
+Taking the van Hove limit,
+\begin{align*}
+\frac{\partial}{\partial h} \Psi(\beta,0+) & = \lim_{\Lambda\Uparrow \mathbb{Z}^2} \left\langle {\frac{1}{|\Lambda|} \sum_{x\in \Lambda} \sigma_x}\right\rangle^+ \ge m(\beta)\\
+\frac{\partial}{\partial h} \Psi(\beta,0-)& = \lim_{\Lambda\Uparrow \mathbb{Z}^2} \left\langle {\frac{1}{|\Lambda|} \sum_{x\in \Lambda} \sigma_x}\right\rangle^- \le - m(\beta).
+\end{align*}
+%derivative at zero
+Thus the left and right derivatives of $\Psi$ are unequal. There is a cusp at 0; there is a phase transition.
+
+The theorem shows there is an asymmetry in the infinite volume limit of magnetization at a site.
+
+For each $\sigma_{\Lambda}\in \Omega_\Lambda$ draw a green line separating $+/-$ spins. 
+Using
+\be\sigma_x\sigma_y = 2\mathds{1}[\sigma_x=\sigma_y]-1\ee
+(this takes $\pm1$ values). 
+We have
+\begin{align*}
+e^{-\beta H(0)}&=\prod_{\{x,y\}} e^{\beta \sigma_x\sigma_y} = e^{\beta|\xi|} \prod_{\{x,y\}}  e^{-2\beta \mathds{1}[\sigma_x\ne \sigma_y]} = K e^{-2\beta|C|}
+\end{align*}
+where $K$ is a constant and $C$ is the set of contour lines.
+
+%suppressed by $e^{-2\be}$ times the number of lines.
+%loops cost energy. excitation.
+%hamiltonian. What is the energetically most favorable thing to do?
+%particles of the model...
+
+If the boundary conditions are $+$, then for there to be a $-$, it must be separated from the boundary by a green loop. We want to show that the probability for a given site to be separated from the boundary by a loop is strictly less than $\frac{1}{2}$. Then the probability it agrees with the boundary is $>\frac{1}{2}$.
+
+Let $\Omega_{\gamma}$ be the set of configurations which has $\gamma$ as a contour.
+\begin{lemma}[Peiech]
+The probability that a given loop $\gamma$ is among the contours lines $C(\sigma)$ satisfies
+\be
+\mathbb{P}_{\Lambda,\beta,0}^+(C(\sigma) \ni \gamma )= \left\langle {\mathds{1}_{\Omega_{\gamma}}}\right\rangle^+_{\Lambda,\beta,0}\le e^{-2\beta |\gamma|}.
+\ee
+\end{lemma}
+\begin{proof}
+First we do an energy estimate.
+
+The idea is that each configuration can be associated with another configuration by a mapping $T_\gamma$ which flips the spin of all sites inside $\gamma$. The disagreements of $\gamma$ would be erased. Because all spins inside are flipped, no other disagreement is affected. Note $T_\gamma$ is an involution---it is its own inverse.
+%takes out of set in invertible way. 
+%consider mapping which flips the spin. disagreement would be erased, all inside is flipped, so no other disagreement is affected.
+
+For each $\sigma\in \Omega_{\gamma}$, its flip has higher probability because it has less disagreement, so
+\be
+\mathbb{P}^+(\{\sigma\}) = e^{-2\beta |\gamma|} \mathbb{P}(\{T_\gamma\sigma\})%\le e^{-2\be |\ga}.
+\ee
+Summing over $\sigma\in \Omega_{\gamma}$,
+\be
+\mathbb{P}^+(\Omega_{\gamma}) = e^{-2\beta |\gamma|} \mathbb{P}(T_\gamma\Omega_{\gamma}) \le e^{-2\beta |\gamma}.
+\ee
+%For each $\si\in \Om_{\ga}$, 
+%\be
+%\Pj^+(\{\si})\le
+%\fc{\Pj^+(\{\si\})}{\Pj(\{T_\ga\si\})+\Pj(\{\si\})} 
+%= \fc{e^{-2\be |\ga|}}{1+e^{-2\be |\ga|}} \le 2^{-2\be|\ga|}.
+%\ee
+%winning one mi
+
+Next we need an entropy estimate: we need to estimate how many loops there are so we can do a union bound over them.
+\begin{lemma}[Entropy estimate]
+The number of non-repeating loops of length $l$ starting from a specified point is $N_l\le \frac{4}{3}3^l$.
+\end{lemma}
+\begin{proof}
+There are 4 possibilities for the first step; for each of the next step there are $\le3$ choices for the other $l-1$ steps because it can't backtrack.
+\end{proof}
+
+Now we put the energy and entropy bound together.
+For each each loop around $x$, we can start it at an node between 0 and $\frac{l}{2}$ steps to the right of $x$ where the path goes up. Then %  Choosing the first step to be up in the path
+\begin{align*}
+\mathbb{P}^+(\sigma_x=-1) &\le \mathbb{P}^+\left( \text{$x$ is separated from $\partial \Lambda$} \right)\\ 
+&\le \sum_{\gamma\text{ loop separating $x$ from $\partial \Lambda$}} e^{-2\beta |\gamma|}\\
+&\le \sum_{l=4}^{\infty} \frac{l}{2} 3^{l-1} e^{-2\beta l}\\
+&=\frac{1}{6} \sum_{l=4}^{\infty} l(3e^{-2\beta})^l.
+\end{align*}
+This is $\le \frac{1}{2} - \delta(\beta)$ for $\beta>\beta_0$ where  $\beta_0$ is defined by the condition
+\be
+\frac{1}{6} \sum_{l=4}^{\infty} l (3e^{-\beta_0})^l = \frac{1}{2}.
+\ee
+%number of choices.
+%how unlikely for a given contour to happen.
+\end{proof}
+The condition is ugly. With some extra finesse, we can show $3e^{-\beta}<1$ is sufficient for there to be symmetry breaking.
+
+This implies that for $\beta>\beta_0$
+\be
+\left\langle {\sigma_0}\right\rangle_{\mathbb{Z}^2}^+=\lim_{\Lambda \Uparrow \mathbb{Z}^2} \left\langle {\sigma_0}\right\rangle_{\Lambda,\beta,0}^+ \ge m(\beta)>0.
+%local quantity with _ boundary conditions.
+%prob dist of measure
+\ee
+Here we define an infinite volume probability distribution by taking the limit of finite probability distributions with $+$ boundary conditions.   Similarly define $\left\langle {\sigma_0}\right\rangle_{\mathbb{Z}^2}^-$. Symmetry breaking refers to the fact that
+\be
+\left\langle {\sigma_0}\right\rangle_{\mathbb{Z}^2}^+\ne \left\langle {\sigma_0}\right\rangle_{\mathbb{Z}^2}^-.
+\ee
+
+Consider a function $G(m)=G(-m)$. If $G$ has the symmetry of the variational problem, the minimum is at 0.
+%In symmetry breaking the minimum is not at 0. %: the solution of the variational problem. 
+If the minimum does not have the symmetry of the variational problem, there may be multiple minima. We refer to this as symmetry breaking.
+
+\begin{remark}
+One can deduce symmetry breaking already for $\beta>\beta_1$ with $\beta$ defined by $3e^{-2\beta_1}=1$. 
+
+Actually we're counting self-avoiding walks; the rate that they grow is smaller than $3^l$. So we can replace 3 by the actual rate; this is more complicated. It's harder to come up with exact values.
+\end{remark}
+%Convergence gives symmetry breaking.
+
+The part of the estimate which is not relevant is short loops. Let's look at a larger scale and only count loops which surround a larger box. If the probability of there being a large loop around $x$ is $<\frac{1}{2}$, then we can already conclude symmetry breaking. For $3e^{-2\beta}<1$, we can choose $l$ large enough so that this holds.
+
+If the box of size $n$ is not surrounded by a loop, we can conclude there exists some loop of $+$ spins outside the box which is connected to the boundary. %encircling the box of size $n$. 
+This event is not compatible with the flip of the event. Thus the probability that there is a loop of $-$'s of size $>n$ connected to the boundary (with $-$) is $<\frac{1}{2}$.
+
+In the infinite volume case, we cannot both have a loop connected to $\infty$ with $-$'s and a loop connected to $\infty$ with $+$'s. The $+$ event is more likely.
+
+If you start with $+$ boundary conditions, the $+$ case will occur with large probability.
+
+There is percolation of $+$ sites. If there is no symmetry breaking, there is percolation of $-$ sites. You have to work to show that you can't have infinite line of $+$'s and infinite line of $-$'s with nonzero probability  %In our case, both cannot occur simultaneously. %choke line of 
+Harris developed the theory of this. We take a shortcut and show that a stronger condition (with the ring of $+/-$'s) is incompatible.
+
+%We take shortcuts. 
+%estimates do not squeeze most.
+When you take this approach, there are 2 special values of the parameters: a $\beta$ for which we get no information (the sum diverges), and the $\beta$ for which the sum is less than a certain threshold ($\frac{1}{2}$). Looking at a renormalized version which eliminates the noise from the low cases of the sum, and you can improve the $\beta$ threshold.
+
+In higher dimensions, you have to enumerate surfaces. The energy bound is easy. The energy (enumerating surfaces) is messier. The entropy estimate gives worse bounds. You have to be clever to bring other techniques.
+
+Another way is to take the restriction to 2 dimensions (a slice of the cube). If you decouple the layers you just get the 2D model. Having other spins around only increases cooperations. 
+%clusters of cooperation
+%connected to floors above and below.
+This brings us to the use of inequalities. For the 3D model, the magnetization is greater than the 2D model for the same temperature. 
+
+With appropriate inequalities one can show
+\be
+\left\langle {\sigma_0}\right\rangle_{[-L,L]^3}^+\ge \left\langle {\sigma_0}\right\rangle_{[-L,L]}^+.
+\ee
+This implies symmetry breaking in higher dimensions at the same temperature, so the critical temperature is smaller,
+\be
+\beta_{c}^{3D} \le \beta_c^{2D}.
+\ee
+Here
+\be
+\beta_c = \inf \left\{{\beta}:{\left\langle {\sigma_0}\right\rangle_{\beta'}>0 \forall \beta'>\beta}\right\}.
+\ee
+For 2 dimensions, $\beta_c$ is calculable; for 3 dimensions we don't have an exact value. The 2-D Ising model is exactly solvable by a nontrivial argument. We'll present Feynman's solution.
+%There is a discontinuity in the spontaneous ... across this line.
+
+How singular is the magnetization? That's not expected to change with local details, but with dimension. We do not know $\beta_c$ for range 5 Ising model, but we expect that the power of $m(\beta)$ is the same (it grows like a power function from the critical temperature).
