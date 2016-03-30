@@ -2588,6 +2588,185 @@ for $K_e=\tanh (\beta J_e)$.
 \end{lemma}
 
 Each vertex has 3 possibilities.
+
+{\color{blue}3/24/16}
+
+Introduce $t=\frac{\beta-\beta_c}{\beta_c}$. 
+What momenta contribute to the rise in the specific heat? That which $E$ is on the order of $Y+Y^{-1}-2$. Do some dimensional analysis. 
+
+The specific heat is 
+\be
+C=\frac{\partial}{\partial T} \left\langle {H}\right\rangle_\beta = \beta^2\frac{\partial^2 }{\partial {\beta}^2}\Psi = \cdots \ln|\beta-\beta_c|+\cdots 
+\ee
+
+Certain fermionic structures pop up. We start from a classical system and out of that the excitations take the form of quantum objects, like quantum spinors (B Kaufman and Lee Scholz). This employed the 2D transfer matrix. When you try to solve it, you transfer from 1 layer to another; the dimension of the matrix is linearly proportional to $n$. In 2D, for reasons to do with integrable systems in 1D, the transfer matrix can be diagonalized. 
+
+
+The loops we generate can have 1 edge multiple times. We have to disentangle the system of graphs which correspond to configurtions of loops. 
+
+In a high dimension, loops typically miss each other. Perhaps Onsager's solutions may emerge in higher dimensions. (Dimension 3 is the hardest.)
+
+Weight each loop by the product we want. 
+%periodic orbit, multiply.
+
+
+
+%The world is really quantum
+
+{\color{blue}3-29-16}
+
+\section{Gibbs states in the infinite volume limit}
+
+Let $S$ be the set of spin states. $S$ is typically a compact space. For example, in the Ising/Potts spin models, $S=\{1,\ldots, Q\}\subset\mathbb{N}$. In the $O(n)$ spin models, $S=\left\{{\sigma\in \mathbb{R}^n}:{|\sigma|=1}\right\}$.\footnote{Note that physicists say that the sphere in $\mathbb{R}^n$ is $n$-dimensional, while mathematicians say it is ($n-1$)-dimensional.} Let $\mathcal{G}$ be a transitive graph, $\Lambda\subseteq\mathcal{G}$. (Often, $|\Lambda|<\infty$.)
+
+The configuration space is $\Omega_{\Lambda}=S^{\Lambda}$. Each $\omega\in \Omega_{\Lambda}$ is a map $\omega:\Lambda\to S$. Denote it by $\omega=\{\sigma_x\}_{x\in \Lambda}$.
+
+The configuration space of the infinite system is 
+\be
+\Omega=S^{\mathcal{G}},
+\ee
+i.e., $\omega\in \Omega$ is a map $\mathcal{G}\to S$. Denote it by $\omega=\{\sigma_x\}_{x\in \mathcal{G}}$.
+
+Recall the simplest non-finite probability space $[0,1]$. 
+Describing a point by its dyadic representation
+\be
+x=\sum_{j=1}^{\infty} \frac{1}{2^j}\sigma_j.
+\ee
+Represent it by 
+\be
+x=\{\sigma_j\}_{j=1}^{\infty},
+\ee
+an infinite sequence of binary variables. Similarly, points in the unit square $[0,1]^2$ correspond to doubly infinite sequences of binary variables.
+%For $x\in [0,1]$
+
+Since $[0,1]$ is a measure space, we can use the mapping above to make the space of infinite binary sequences a measure space. How does the notion of convergence translate? We have $x_n\to x$ as $n\to \infty$ iff for all $k<\infty$, the sequence $\{\sigma_{j}\}_{j=1}^k$ stabilizes.
+
+\begin{theorem}[Tychonoff (Tikhonov)]
+The product of any collection of compact topological spaces is compact with respect to the product topology. 
+\end{theorem}
+%No matter what finite volume you take, 
+
+%There are some subtleties to do with the word ``any."
+
+%The Greeks had a system of numbers based on integers. They were comfortable with rational numbers. They knew that $\sqrt2$, the diagonal of a square. They did not advertise thisfact. We also have a secret: current mathematics is based on countable operations. We run into a wall when we talk about operations involving a uncountable number of operations.
+%Tychonoff applies to uncountable products of countables spaces. 
+%Note we only need Tychonoff for countable collections.
+We shall typically deal with countable products.
+
+For countable products, the topology is characterized by sequential convergence. (Otherwise, we have use nets.)
+Here, $\omega_n\to \omega$ in $\Omega=S^{\mathcal{G}}$ iff $\omega_n|_\Lambda\to \omega_n|_\Lambda$ for any fnite $\Lambda\subset \mathcal{G}$ (each finite projection converges).
+
+%compact and metrizable. notion of distance. Open sets can be characterized by distance. Having a metric facilitates 
+%compact metrizable space.
+Our spaces are also metrizable. Note a countable product of metrizable spaces is metrizable. We can define the distance by
+\be
+d(\sigma,\sigma') = \sum_x \frac{1}{2^n}d(\sigma_x,\sigma_x')
+\ee
+if the distance is bounded. If it is not bounded, we normalize the distance first, 
+\be
+d(\sigma,\sigma') = \sum_x \frac{1}{2^n}\frac{d(\sigma_x,\sigma_x')}{1+d(\sigma_x,\sigma_x')}.
+\ee
+%saturating to 1.
+%similar in a sense. Unit interval in terms of representation.
+%iff they locally converge.
+
+%finite collections of variables. 
+\begin{theorem}[Riesz-Markov (Riesz representation)]
+Let $\Omega$ be a compact metric space, $C(\Omega, \mathbb{C})$ be the space of linear functionals $\rho:C(\Omega)\to \mathbb{C}$ such that 
+\begin{enumerate}
+\item
+$|\rho(f)|\le \left\Vert {f}\right\Vert_{\infty}$,
+\item
+for all $f\ge 0$, $\rho(f)>0$,
+\item
+$\rho(1)=1$.
+\end{enumerate}
+Then there exists a (Borel) probability measure $\mu$ on $(\Omega,\Sigma)$ such that $\rho(f) = \int_{\Omega} f(\omega)\,d\mu(\omega)$.
+%Borel in case metrizable space.
+\end{theorem}
+\begin{definition}
+A \textbf{state} of an infinite system is a (Borel) probability measure on its configuration space $\Omega$.
+%do not talk about prob on space, but along with $\si$-algebra.
+\end{definition}
+The state of a system is not a configuration on it, but a probability measure. (In quantum mechanics we can't always specify configurations. We have observables and expected values of operators; that's as much as we can ask for in describing the state of a system. We now use this not just in quantum mechanics.)
+
+%state of stat mech system.
+%not all subsets of uncountably infinite set can be treated as measurable.
+%contradiction if every set is measurable.
+%construct in finitary way notion.
+%set prob assigned subset of $\si$-algebra.
+
+%axiom of choice to get non-measurable set.
+
+The theorem says we can capture a probability measure by giving the probabilities of various events, or by giving the expected value of functions.
+%enter under quantum mechanics. 
+It's an analogy of von Neumann's Theorem, characterizing quantum states in terms of functionals.
+
+See Barry Simon's book. 
+%diorge's book
+
+In finite volumes, equilibrium states are measures of the form 
+\be\rho_{\Lambda,\beta}(d\sigma) = \frac{e^{-\beta H_{\Lambda}^{\left( \text{b.c.} \right)}(\sigma_\Lambda)} \rho_0(d\sigma_{\Lambda})}{Z^{\left( \text{b.c.} \right)}}.\ee
+Why can't we simply take the infinite-volume limit? 
+The energy of the system is the sum of an infinite number of terms. The typical order of magnitude is exponential in the size of the system. When you take the system to $\infty$, we get $\frac{0}{0}$ or $\frac{\infty}{\infty}$.
+%not translation invariant.
+
+What survives out of this formula for conditional distributions. It is characterized by saying how the probability of a configuration changes under local changes. If $\Lambda$ is a finite subet, conditioned on $G_{\Lambda\backslash \Lambda_0}$, we have a probability measure on $G_{\Lambda}$. This makes sense even in the infinite-volume limit. 
+
+This formula is due to Dobrushin, Lonford, and Ruelle (DLR).
+\begin{equation}\label{eq:dlr}
+\rho(\sigma_{\Lambda_0}|\sigma_{\Lambda\backslash \Lambda_0}) = \frac{e^{-\beta H_{\Lambda_0}(\sigma_{\Lambda_0}|\sigma_{\Lambda\backslash \Lambda_0})}\rho_0(d\sigma_{\Lambda_0})}{Z_{\Lambda_0}^{\sigma_{\Lambda\backslash \Lambda_0}}}
+\end{equation}
+where $H_{\Lambda}(\sigma_{\Lambda_0}|\sigma_{\Lambda\backslash \Lambda_0}) = \sum_{A\subset \Lambda, A\cap \Lambda_1\ne \phi} J_A\phi_A(\sigma_A)$. %This makes sense even if the large box go
+The outside provides boundary conditions, such that the conditional distribution is given by the Gibbs equilibrium formula.
+
+\begin{definition}
+A \index{Gibbs equilibrium state}\textbf{Gibbs equilibrium state} of an infinite system is a probability measure on $(\Omega,\Sigma)$ for which the finite volume conditional expectations are given by the DLR formula~\eqref{eq:dlr}. 
+\end{definition}
+
+\begin{definition}
+For each finite $\Lambda$, a function $f:\Omega\to \mathbb{C}$ is \textbf{measurable in $\Lambda$} if $f(\sigma) = F_{\Lambda}(\sigma_\Lambda)$ with $F_\Lambda:\Omega_\Lambda\to \mathbb{C}$ measurable.
+
+Let $\mathcal{B}_{\Lambda}$ denote the space of such functions, 
+\be
+\Sigma_{\Lambda} = \left\{{\alpha\in \Omega}:{\mathds{1}_\alpha\in \mathcal{B}_{\Lambda}}\right\}
+\ee
+and let
+\be
+\Sigma = \overline{\bigcup_{\Lambda\subset \mathcal{G},|\Lambda|<\infty} \Sigma_{\Lambda}}.
+\ee
+Define the space of functions \textbf{measurable at $\infty$} to be 
+\be
+\mathcal{B}_{\infty} = \bigcap_{|\Lambda|<\infty} \mathcal{B}_{\mathcal{G}\backslash \Lambda}.
+\ee
+\end{definition}
+%analogy of binary sequence.
+
+\begin{example}
+For $x=\{\sigma_j\}_{j=1}^{\infty}$, $\varlimsup_{L\to \infty} \frac{1}{L} \sum_{n=1}^{L} \sigma_n$ is a function that is measurable at $\infty$.
+
+For example, if $\sigma_j$ are independent Bernoulli($\frac{1}{2}$) variables, this function is a.s. $\frac{1}{2}$ by the Law of Large Numbers. If $\sigma_j$ are independent Bernoulli($p$) variables
+\begin{align*}
+\mu_p(\{\sigma_n=1\}) &= p\\
+\mu_p(\{\sigma_n=0\}) &=1-p,
+\end{align*}
+it is a.s. $p$.
+These measures are orthogonal (mutually singular): there is an event with probability 1 in one measure and 0 in the other (look at the value of the limsup).
+\end{example}
+%for each parameter $p$, ... this property.
+
+In the infinite volume limit, we can ask whether what used to be the boundary values is still detectable deep inside.
+
+We are naturally led to questions of uniqueness of Gibbs measures. A discontinuity in the derivative translates to nonuniqueness of Gibbs measures.
+%pos, negative magnetic field.
+
+We already saw one proof of phase transitions. It's a simple exercise to use the Piesch argument to prove that the ferromagnetic Gibbs measure at low temperature is not unique.
+
+Measurability at $\infty$ is a nice concept. Using results at probability theory, we can show in 1 dimension there is no phase transition. We will show that a sufficient condition for uniqueness of Gibbs state is that the total interaction to the left and right is uniformly bounded. We will show a 0-1 law.
+
+
+
+
 %INSERT_HERE
 
 %\appendix

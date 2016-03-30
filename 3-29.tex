@@ -1,0 +1,153 @@
+\blu{3-29-16}
+
+\section{Gibbs states in the infinite volume limit}
+
+Let $S$ be the set of spin states. $S$ is typically a compact space. For example, in the Ising/Potts spin models, $S=\{1,\ldots, Q\}\sub\N$. In the $O(n)$ spin models, $S=\set{\si\in \R^n}{|\si|=1}$.\footnote{Note that physicists say that the sphere in $\R^n$ is $n$-dimensional, while mathematicians say it is ($n-1$)-dimensional.} Let $\cal G$ be a transitive graph, $\La\subeq\cal G$. (Often, $|\La|<\iy$.)
+
+The configuration space is $\Om_{\La}=S^{\La}$. Each $\om\in \Om_{\La}$ is a map $\om:\La\to S$. Denote it by $\om=\{\si_x\}_{x\in \La}$.
+
+The configuration space of the infinite system is 
+\[
+\Om=S^{\cal G},
+\]
+i.e., $\om\in \Om$ is a map $\cal G\to S$. Denote it by $\om=\{\si_x\}_{x\in \cal G}$.
+
+Recall the simplest non-finite probability space $[0,1]$. 
+Describing a point by its dyadic representation
+\[
+x=\sumo j{\iy} \rc{2^j}\si_j.
+\]
+Represent it by 
+\[
+x=\{\si_j\}_{j=1}^{\iy},
+\]
+an infinite sequence of binary variables. Similarly, points in the unit square $[0,1]^2$ correspond to doubly infinite sequences of binary variables.
+%For $x\in [0,1]$
+
+Since $[0,1]$ is a measure space, we can use the mapping above to make the space of infinite binary sequences a measure space. How does the notion of convergence translate? We have $x_n\to x$ as $n\to \iy$ iff for all $k<\iy$, the sequence $\{\si_{j}\}_{j=1}^k$ stabilizes.
+
+\begin{thm}[Tychonoff (Tikhonov)]
+The product of any collection of compact topological spaces is compact with respect to the product topology. 
+\end{thm}
+%No matter what finite volume you take, 
+
+%There are some subtleties to do with the word ``any."
+
+%The Greeks had a system of numbers based on integers. They were comfortable with rational numbers. They knew that $\sqrt2$, the diagonal of a square. They did not advertise thisfact. We also have a secret: current mathematics is based on countable operations. We run into a wall when we talk about operations involving a uncountable number of operations.
+%Tychonoff applies to uncountable products of countables spaces. 
+%Note we only need Tychonoff for countable collections.
+We shall typically deal with countable products.
+
+For countable products, the topology is characterized by sequential convergence. (Otherwise, we have use nets.)
+Here, $\om_n\to \om$ in $\Om=S^{\cal G}$ iff $\om_n|_\La\to \om_n|_\La$ for any fnite $\La\sub \cal G$ (each finite projection converges).
+
+%compact and metrizable. notion of distance. Open sets can be characterized by distance. Having a metric facilitates 
+%compact metrizable space.
+Our spaces are also metrizable. Note a countable product of metrizable spaces is metrizable. We can define the distance by
+\[
+d(\si,\si') = \sum_x \rc{2^n}d(\si_x,\si_x')
+\]
+if the distance is bounded. If it is not bounded, we normalize the distance first, 
+\[
+d(\si,\si') = \sum_x \rc{2^n}\fc{d(\si_x,\si_x')}{1+d(\si_x,\si_x')}.
+\]
+%saturating to 1.
+%similar in a sense. Unit interval in terms of representation.
+%iff they locally converge.
+
+%finite collections of variables. 
+\begin{thm}[Riesz-Markov (Riesz representation)]
+Let $\Om$ be a compact metric space, $C(\Om, \C)$ be the space of linear functionals $\rh:C(\Om)\to \C$ such that 
+\begin{enumerate}
+\item
+$|\rh(f)|\le \ve{f}_{\iy}$,
+\item
+for all $f\ge 0$, $\rh(f)>0$,
+\item
+$\rh(1)=1$.
+\end{enumerate}
+Then there exists a (Borel) probability measure $\mu$ on $(\Om,\Si)$ such that $\rh(f) = \int_{\Om} f(\om)\,d\mu(\om)$.
+%Borel in case metrizable space.
+\end{thm}
+\begin{df}
+A \vocab{state} of an infinite system is a (Borel) probability measure on its configuration space $\Om$.
+%do not talk about prob on space, but along with $\si$-algebra.
+\end{df}
+The state of a system is not a configuration on it, but a probability measure. (In quantum mechanics we can't always specify configurations. We have observables and expected values of operators; that's as much as we can ask for in describing the state of a system. We now use this not just in quantum mechanics.)
+
+%state of stat mech system.
+%not all subsets of uncountably infinite set can be treated as measurable.
+%contradiction if every set is measurable.
+%construct in finitary way notion.
+%set prob assigned subset of $\si$-algebra.
+
+%axiom of choice to get non-measurable set.
+
+The theorem says we can capture a probability measure by giving the probabilities of various events, or by giving the expected value of functions.
+%enter under quantum mechanics. 
+It's an analogy of von Neumann's Theorem, characterizing quantum states in terms of functionals.
+
+See Barry Simon's book. 
+%diorge's book
+
+In finite volumes, equilibrium states are measures of the form 
+\[\rh_{\La,\be}(d\si) = \fc{e^{-\be H_{\La}^{\pat{b.c.}}(\si_\La)} \rh_0(d\si_{\La})}{Z^{\pat{b.c.}}}.\]
+Why can't we simply take the infinite-volume limit? 
+The energy of the system is the sum of an infinite number of terms. The typical order of magnitude is exponential in the size of the system. When you take the system to $\iy$, we get $\fc 00$ or $\fc{\iy}{\iy}$.
+%not translation invariant.
+
+What survives out of this formula for conditional distributions. It is characterized by saying how the probability of a configuration changes under local changes. If $\La$ is a finite subet, conditioned on $G_{\La\bs \La_0}$, we have a probability measure on $G_{\La}$. This makes sense even in the infinite-volume limit. 
+
+This formula is due to Dobrushin, Lonford, and Ruelle (DLR).
+\begin{equation}\label{eq:dlr}
+\rh(\si_{\La_0}|\si_{\La\bs \La_0}) = \fc{e^{-\be H_{\La_0}(\si_{\La_0}|\si_{\La\bs \La_0})}\rh_0(d\si_{\La_0})}{Z_{\La_0}^{\si_{\La\bs \La_0}}}
+\end{equation}
+where $H_{\La}(\si_{\La_0}|\si_{\La\bs \La_0}) = \sum_{A\sub \La, A\cap \La_1\ne \phi} J_A\phi_A(\si_A)$. %This makes sense even if the large box go
+The outside provides boundary conditions, such that the conditional distribution is given by the Gibbs equilibrium formula.
+
+\begin{df}
+A \ivocab{Gibbs equilibrium state} of an infinite system is a probability measure on $(\Om,\Si)$ for which the finite volume conditional expectations are given by the DLR formula~\eqref{eq:dlr}. 
+\end{df}
+
+\begin{df}
+For each finite $\La$, a function $f:\Om\to \C$ is \vocab{measurable in $\La$} if $f(\si) = F_{\La}(\si_\La)$ with $F_\La:\Om_\La\to \C$ measurable.
+
+Let $\cal B_{\La}$ denote the space of such functions, 
+\[
+\Si_{\La} = \set{\al\in \Om}{\one_\al\in \cal B_{\La}}
+\]
+and let
+\[
+\Si = \ol{\bigcup_{\La\sub \cal G,|\La|<\iy} \Si_{\La}}.
+\]
+Define the space of functions \vocab{measurable at $\iy$} to be 
+\[
+\cal B_{\iy} = \bigcap_{|\La|<\iy} \cal B_{\cal G\bs \La}.
+\]
+\end{df}
+%analogy of binary sequence.
+
+\begin{ex}
+For $x=\{\si_j\}_{j=1}^{\iy}$, $\varlimsup_{L\to \iy} \rc{L} \sumo nL \si_n$ is a function that is measurable at $\iy$.
+
+For example, if $\si_j$ are independent Bernoulli($\rc2$) variables, this function is a.s. $\rc2$ by the Law of Large Numbers. If $\si_j$ are independent Bernoulli($p$) variables
+\begin{align*}
+\mu_p(\{\si_n=1\}) &= p\\
+\mu_p(\{\si_n=0\}) &=1-p,
+\end{align*}
+it is a.s. $p$.
+These measures are orthogonal (mutually singular): there is an event with probability 1 in one measure and 0 in the other (look at the value of the limsup).
+\end{ex}
+%for each parameter $p$, ... this property.
+
+In the infinite volume limit, we can ask whether what used to be the boundary values is still detectable deep inside.
+
+We are naturally led to questions of uniqueness of Gibbs measures. A discontinuity in the derivative translates to nonuniqueness of Gibbs measures.
+%pos, negative magnetic field.
+
+We already saw one proof of phase transitions. It's a simple exercise to use the Piesch argument to prove that the ferromagnetic Gibbs measure at low temperature is not unique.
+
+Measurability at $\iy$ is a nice concept. Using results at probability theory, we can show in 1 dimension there is no phase transition. We will show that a sufficient condition for uniqueness of Gibbs state is that the total interaction to the left and right is uniformly bounded. We will show a 0-1 law.
+
+
+
