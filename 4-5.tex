@@ -1,0 +1,158 @@
+
+\blu{4-5-16}
+
+We define symmetry breaking slightly differently.
+
+\begin{df}
+A \vocab{symmetry} is a measurable map $T:\Om\to \Om$ that satisfies the following.
+\begin{enumerate}
+\item
+It is invertible and preserves $\rh_0(d\si)$.
+\item
+$H(T\si) = H(\si)$ in the sense that $\phi_A(T\si) = \phi_A(\si)$ for all $A\subeq \cal G$.
+\end{enumerate}
+\end{df}
+
+\begin{df}
+A Gibbs state $\mu$ is said to exhibit symmetry breaking if $\mu$ is decomposable into a linear combination of Gibbs state of which a positive fraction fail to be invariant under one of the system's symmetries.
+\end{df}
+
+%\begin{ex}
+Consider the 2D Ising model at low temperature with $h=0$ and free boundary conditions. In this model, $H=-\sum J\si_x\si_y$, and the symmetry is global spin flip, $(T\si)_\La = -\si_\La$.
+%\end{ex}
+
+\begin{thm}[Symmetry breaking]
+The 2D Ising model with $h=0$ with free boundary conditions exhibits symmetry breaking for all $\be$ such that $3e^{-2\be}<1$.
+%twice becase compare 
+%contours are lines which separate spins of opposite sign.
+%flip the spins inside the contour.
+%contrary to proof before
+%symmetry breaking occurs as soon as we have
+\end{thm}
+
+Recall we saw that $\Pj^+(\si_0=-1) \le \fc 43 \sum_{l\ge 4}(3e^{-2\be})^l$.
+%of very large contours
+%excess energy, 1-to-1 mapping which improves on it.
+For each closed path $\ga$,
+\[
+\Pj(\ga \text{ occurs among the contours of }0) \le e^{-2\be|\ga|}.
+\]
+The probability there exists a contour within the annular region of outer radius $R$ and inner radius $r$ is $\le \sum_{4r\le l}(3e^{-2\mu})^l$. This is the tail of a convergent series which can be made as small as desired. By picking $r$ large enough, we do not find any contour enclosing that region.
+There must be an infinite cluster of the same spins.
+
+There are 2 types of configurations in the infinite volume limit: there is an infinite cluster of $+$, or an infinite cluster of $-$.
+%$\mu= \rc2 (\mu_++\mu_-_$.
+
+%No path separating $+$ from $-$ clusters. 
+Let $C_+(R) = \set{x\in\Z^2}{...}$. \fixme{(to be filled in)}
+
+At low temperatures the Gibbs states show agreement among neighboring spins. 
+%Either all agree on $+$ or $-$. 
+%To keep happy...
+The predominant behavior is a sponge that percolates to infinity (an infinite connected component) where all spins have the same sign; there may be islands within the cluster. 
+%boundary of huge length, get exponential penalty.
+There are many paths (exponentially many). If the energy penalty beats the entropy, then the probability of seeing a lone line goes to 0. 
+Any finite configuration will be realized somewhere, so you have to localize the bounds.
+
+Taking the Gibbs state with $+$ boundary conditions, defined as 
+\[
+\mu_\be^+ = \lim_{\La\nearrow \Z^d} \mu_\La^{(+)}.
+\]
+We can prove $\mu^+\ne \mu^-$ by showing $\mu^{(+)} \ne \mu^{(-)}$ for a well-chosen event $A$.
+
+\begin{thm}
+A sufficient condition for $H$ to have a unique Gibbs state of given $\be$ is that for any pair of Gibbs equilibrium measures, there exists $B<\iy$ such that  $\mu_1(f)\le B\mu_2(f)$ for all positive functions $f\in C(\Om, \R)$. 
+\end{thm}
+
+\begin{thm}
+For 1D systems, a sufficient condition for uniqueness of the Gibbs state is that for all $x$,
+\[
+\sumr{A\sub \Z, A\cap [x,\iy)\ne \phi}{A\cap (-\iy,x] \ne \phi}
+J_A \ve{\phi_A}\le B<\iy.
+\]
+For example, for the Ising model this is satisfied when
+$
+\sumr{x\ge 0}{y<0} |J_{x-y}|<\iy
+$
+or equivalently, $\sum_{u\ge 0} |J_u|<\iy$.
+\end{thm}
+%any interaction which decays faster.
+
+Here is a continuous version of the theorem.
+\begin{thm}[Mernin-Wagner]
+Translation invariant systems in $D\le 2$ dimensions with finite-range interactions and continuous (compct) symmetry do not exhibit symmetry breaking.
+\end{thm}
+For example consider $O(N)$, with $H=-\sum J_{x-y} \an{\si_{x},\si_{y}}$, $S=\set{\si\in \R^n}{|\si|=1}$.
+Now the system is invariant under global rotation. This symmetry is not broken if you only have finite-range interactoins. We use the fact that the symmetry group here is compact.
+
+We have
+\[
+\mu(-) = \int \mu(-|\cal B_\iy)(\eta) \mu(d\eta).
+\]
+Note that for each $\eta\in \Om$, 
+\[
+\mu(-|\cal B_\iy) (\eta)
+\]
+is a Gibbs state.
+
+Recall DLR: For $f\in \cal B_{\La_0}$, 
+\[
+\mu(f) = \int \mu(f|\cal B_{\La_0^c})(\eta) \,\mu(d\eta)
+\]
+where $\mu(f|\cal B_{\La_0}^c)$ are given by DLR.
+%If you start from some equilibrium state with boundary conditions, you can 
+(We have $\mu(f) = \int \mu(f| \cal B)(\si)\,\mu(d\eta)$ for any $\si$-algebra $\cal B$.) %If you first take conditional expectation and then take the integral, you get the same answer as if you just took the integral.
+
+The formula says that the  functional (measure) $\mu$ can be decomposed as an integral of functionals (measure). % ; Decompose a measure into an integral of measures.
+
+In the limit $\cal B_\iy = \bigcap_{|\La_0|<\iy} \cal B_{\La_0^c}$. 
+%average magnetization: does it have nonzero pointing in some direction?
+``Does the configuration have a limit for the magnetization and is it nonzero?" is a valid question.
+
+The conditional expectation is a Gibbs measure in any finite volume so is a Gibbs measure.
+
+Any Gibbs measure can be decomposed into a collection of extremal Gibbs measures so that the $\si$-algebra at $\iy$ is trivial with respect to each of those. %Any functions measurable with repsect to that 
+The Gibbs measures are mutually singular. 
+
+%$\eta$ is the configuration.
+%depends on behavior of $\eta$ at $\iy$? You can ask nontrivial question that is nontrivial at $\iy$. Each state has a decomposition. identical or mutually singular.
+
+\begin{clm}
+%evila
+For almost every pair $\eta_1, \eta_2\in \Om$, 
+\[
+\mu(-|\cal B_0)(\eta_1) ,\quad \mu(-|\cal B_0)(\eta_2) 
+\]
+are either equal or mutually singular. 
+\end{clm}
+Mutually singular means that their supports are disjoint. 
+%measurable take almost surelu
+\begin{proof}
+For all $g\in \cal B_\iy$, 
+\[
+\mu(g|\cal B_\iy) (\eta) = g(\eta).
+\]
+$\mu(g|\cal B_\iy)$ is the conditional mean of $g$ when only this information about $\eta$? If $g$ is measurable with respect to $B_\iy$, it's just $g(\eta)$.
+%$\si$-algebra corresponds to a partition. Rest is abstract generalization when atoms can have al Fibration by vertical lines.
+% +/- spins percolate.
+
+``Is there a $+/-$ measure" is measurable with respect to $\cal B_{\iy}$.
+\end{proof}
+
+Take the $O(N)$ model with boundary spins oriented the same. Does it exhibit symmetry breaking? %The question of symmetry breaking or not i.
+%Two definitions of symmetry breaking: 
+%locally hamiltonian in a priori measure.
+
+Symmetry breaking occurs even when you have a state that is itself symmetric. For example, $\rc2 (\mu^{(+)} + \mu^{(-)})$. 
+
+Consider a functional symmetric under rotation. 
+
+Symmetric breaking is associated with the picture of the Mexican hat, with minimum attained on a ring. These points are not symmetric. 
+
+%$T$-symmetry of $\rh_0$ and $H$. $\rc2 (\mu^{(+)} + \mu^{(-)})$. 
+
+What if we rotate all boundary spins to another value? It is ferromagnetic so there is a bias towards the condition prescribed by the boundary. %What is the difference between 
+%taste of pudding
+We ask how these compare, $\mu^{(\nearrow)} (f(\si))$ and $\mu^{(\nearrow)} (f(R\si))$ where $R$ is a rotation. The second is equal to $\mu^{(R\nearrow)}(f(\si))$. 
+
+What if you gradually untwist the rotation, doing it gradually throughout the system? Do soft rotations.

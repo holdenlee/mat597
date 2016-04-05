@@ -2921,6 +2921,164 @@ Consider taking the limit
 {\color{red}Before the limit, if we have free boundary conditions, this would be symmetric. If you put boundary conditions, this would not be symmetric. Does the asymmetry persist in the limit? It can't disappear; the limit is characterized by the local DLR equation.}
 %product measure.
 
+
+{\color{blue}4-5-16}
+
+We define symmetry breaking slightly differently.
+
+\begin{definition}
+A \textbf{symmetry} is a measurable map $T:\Omega\to \Omega$ that satisfies the following.
+\begin{enumerate}
+\item
+It is invertible and preserves $\rho_0(d\sigma)$.
+\item
+$H(T\sigma) = H(\sigma)$ in the sense that $\phi_A(T\sigma) = \phi_A(\sigma)$ for all $A\subseteq \mathcal{G}$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+A Gibbs state $\mu$ is said to exhibit symmetry breaking if $\mu$ is decomposable into a linear combination of Gibbs state of which a positive fraction fail to be invariant under one of the system's symmetries.
+\end{definition}
+
+%\begin{example}
+Consider the 2D Ising model at low temperature with $h=0$ and free boundary conditions. In this model, $H=-\sum J\sigma_x\sigma_y$, and the symmetry is global spin flip, $(T\sigma)_\Lambda = -\sigma_\Lambda$.
+%\end{example}
+
+\begin{theorem}[Symmetry breaking]
+The 2D Ising model with $h=0$ with free boundary conditions exhibits symmetry breaking for all $\beta$ such that $3e^{-2\beta}<1$.
+%twice becase compare 
+%contours are lines which separate spins of opposite sign.
+%flip the spins inside the contour.
+%contrary to proof before
+%symmetry breaking occurs as soon as we have
+\end{theorem}
+
+Recall we saw that $\mathbb{P}^+(\sigma_0=-1) \le \frac{4}{3} \sum_{l\ge 4}(3e^{-2\beta})^l$.
+%of very large contours
+%excess energy, 1-to-1 mapping which improves on it.
+For each closed path $\gamma$,
+\be
+\mathbb{P}(\gamma \text{ occurs among the contours of }0) \le e^{-2\beta|\gamma|}.
+\ee
+The probability there exists a contour within the annular region of outer radius $R$ and inner radius $r$ is $\le \sum_{4r\le l}(3e^{-2\mu})^l$. This is the tail of a convergent series which can be made as small as desired. By picking $r$ large enough, we do not find any contour enclosing that region.
+There must be an infinite cluster of the same spins.
+
+There are 2 types of configurations in the infinite volume limit: there is an infinite cluster of $+$, or an infinite cluster of $-$.
+%$\mu= \rc2 (\mu_++\mu_-_$.
+
+%No path separating $+$ from $-$ clusters. 
+Let $C_+(R) = \left\{{x\in\mathbb{Z}^2}:{...}\right\}$. {\color{red}(to be filled in)}
+
+At low temperatures the Gibbs states show agreement among neighboring spins. 
+%Either all agree on $+$ or $-$. 
+%To keep happy...
+The predominant behavior is a sponge that percolates to infinity (an infinite connected component) where all spins have the same sign; there may be islands within the cluster. 
+%boundary of huge length, get exponential penalty.
+There are many paths (exponentially many). If the energy penalty beats the entropy, then the probability of seeing a lone line goes to 0. 
+Any finite configuration will be realized somewhere, so you have to localize the bounds.
+
+Taking the Gibbs state with $+$ boundary conditions, defined as 
+\be
+\mu_\beta^+ = \lim_{\Lambda\nearrow \mathbb{Z}^d} \mu_\Lambda^{(+)}.
+\ee
+We can prove $\mu^+\ne \mu^-$ by showing $\mu^{(+)} \ne \mu^{(-)}$ for a well-chosen event $A$.
+
+\begin{theorem}
+A sufficient condition for $H$ to have a unique Gibbs state of given $\beta$ is that for any pair of Gibbs equilibrium measures, there exists $B<\infty$ such that  $\mu_1(f)\le B\mu_2(f)$ for all positive functions $f\in C(\Omega, \mathbb{R})$. 
+\end{theorem}
+
+\begin{theorem}
+For 1D systems, a sufficient condition for uniqueness of the Gibbs state is that for all $x$,
+\be
+\sum_{\scriptsize \begin{array}{c}{A\subset \mathbb{Z}, A\cap [x,\infty)\ne \phi}\\{A\cap (-\infty,x] \ne \phi}\end{array}}
+J_A \left\Vert {\phi_A}\right\Vert\le B<\infty.
+\ee
+For example, for the Ising model this is satisfied when
+$
+\sum_{\scriptsize \begin{array}{c}{x\ge 0}\\{y<0}\end{array}} |J_{x-y}|<\infty
+$
+or equivalently, $\sum_{u\ge 0} |J_u|<\infty$.
+\end{theorem}
+%any interaction which decays faster.
+
+Here is a continuous version of the theorem.
+\begin{theorem}[Mernin-Wagner]
+Translation invariant systems in $D\le 2$ dimensions with finite-range interactions and continuous (compct) symmetry do not exhibit symmetry breaking.
+\end{theorem}
+For example consider $O(N)$, with $H=-\sum J_{x-y} \left\langle {\sigma_{x},\sigma_{y}}\right\rangle$, $S=\left\{{\sigma\in \mathbb{R}^n}:{|\sigma|=1}\right\}$.
+Now the system is invariant under global rotation. This symmetry is not broken if you only have finite-range interactoins. We use the fact that the symmetry group here is compact.
+
+We have
+\be
+\mu(-) = \int \mu(-|\mathcal{B}_\infty)(\eta) \mu(d\eta).
+\ee
+Note that for each $\eta\in \Omega$, 
+\be
+\mu(-|\mathcal{B}_\infty) (\eta)
+\ee
+is a Gibbs state.
+
+Recall DLR: For $f\in \mathcal{B}_{\Lambda_0}$, 
+\be
+\mu(f) = \int \mu(f|\mathcal{B}_{\Lambda_0^c})(\eta) \,\mu(d\eta)
+\ee
+where $\mu(f|\mathcal{B}_{\Lambda_0}^c)$ are given by DLR.
+%If you start from some equilibrium state with boundary conditions, you can 
+(We have $\mu(f) = \int \mu(f| \mathcal{B})(\sigma)\,\mu(d\eta)$ for any $\sigma$-algebra $\mathcal{B}$.) %If you first take conditional expectation and then take the integral, you get the same answer as if you just took the integral.
+
+The formula says that the  functional (measure) $\mu$ can be decomposed as an integral of functionals (measure). % ; Decompose a measure into an integral of measures.
+
+In the limit $\mathcal{B}_\infty = \bigcap_{|\Lambda_0|<\infty} \mathcal{B}_{\Lambda_0^c}$. 
+%average magnetization: does it have nonzero pointing in some direction?
+``Does the configuration have a limit for the magnetization and is it nonzero?" is a valid question.
+
+The conditional expectation is a Gibbs measure in any finite volume so is a Gibbs measure.
+
+Any Gibbs measure can be decomposed into a collection of extremal Gibbs measures so that the $\sigma$-algebra at $\infty$ is trivial with respect to each of those. %Any functions measurable with repsect to that 
+The Gibbs measures are mutually singular. 
+
+%$\eta$ is the configuration.
+%depends on behavior of $\eta$ at $\iy$? You can ask nontrivial question that is nontrivial at $\iy$. Each state has a decomposition. identical or mutually singular.
+
+\begin{clm}
+%evila
+For almost every pair $\eta_1, \eta_2\in \Omega$, 
+\be
+\mu(-|\mathcal{B}_0)(\eta_1) ,\quad \mu(-|\mathcal{B}_0)(\eta_2) 
+\ee
+are either equal or mutually singular. 
+\end{clm}
+Mutually singular means that their supports are disjoint. 
+%measurable take almost surelu
+\begin{proof}
+For all $g\in \mathcal{B}_\infty$, 
+\be
+\mu(g|\mathcal{B}_\infty) (\eta) = g(\eta).
+\ee
+$\mu(g|\mathcal{B}_\infty)$ is the conditional mean of $g$ when only this information about $\eta$? If $g$ is measurable with respect to $B_\infty$, it's just $g(\eta)$.
+%$\si$-algebra corresponds to a partition. Rest is abstract generalization when atoms can have al Fibration by vertical lines.
+% +/- spins percolate.
+
+``Is there a $+/-$ measure" is measurable with respect to $\mathcal{B}_{\infty}$.
+\end{proof}
+
+Take the $O(N)$ model with boundary spins oriented the same. Does it exhibit symmetry breaking? %The question of symmetry breaking or not i.
+%Two definitions of symmetry breaking: 
+%locally hamiltonian in a priori measure.
+
+Symmetry breaking occurs even when you have a state that is itself symmetric. For example, $\frac{1}{2} (\mu^{(+)} + \mu^{(-)})$. 
+
+Consider a functional symmetric under rotation. 
+
+Symmetric breaking is associated with the picture of the Mexican hat, with minimum attained on a ring. These points are not symmetric. 
+
+%$T$-symmetry of $\rh_0$ and $H$. $\rc2 (\mu^{(+)} + \mu^{(-)})$. 
+
+What if we rotate all boundary spins to another value? It is ferromagnetic so there is a bias towards the condition prescribed by the boundary. %What is the difference between 
+%taste of pudding
+We ask how these compare, $\mu^{(\nearrow)} (f(\sigma))$ and $\mu^{(\nearrow)} (f(R\sigma))$ where $R$ is a rotation. The second is equal to $\mu^{(R\nearrow)}(f(\sigma))$. 
+
+What if you gradually untwist the rotation, doing it gradually throughout the system? Do soft rotations.
 %INSERT_HERE
 
 %\appendix
