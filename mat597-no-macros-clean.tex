@@ -3079,6 +3079,93 @@ What if we rotate all boundary spins to another value? It is ferromagnetic so th
 We ask how these compare, $\mu^{(\nearrow)} (f(\sigma))$ and $\mu^{(\nearrow)} (f(R\sigma))$ where $R$ is a rotation. The second is equal to $\mu^{(R\nearrow)}(f(\sigma))$. 
 
 What if you gradually untwist the rotation, doing it gradually throughout the system? Do soft rotations.
+
+\subsection{Phase transitions}
+
+{\color{blue}4-7-16}
+
+%To classify non-unique states, develop a terminology and theory to describe it.
+%$\si$-algebra of observable.
+%A similar notion in random walks on graphs is the Martin boundary.
+
+%want to have some criteria to decide whether whe have phase transtfirst-order phase transitions and phase transitions.
+
+%First half of class: go over Ch. 10 notes
+
+What may cause a phase transitions? There are other reasons besides symmetry breaking.
+
+Consider the 1D Ising model $H=-\sum J_{x,y} \sigma_x\sigma_y$. 
+
+\begin{theorem}
+For the 1D Ising model with $\sum_{\scriptsize \begin{array}{c}{x\ge u}\\{y<u}\end{array}}|J_{x,y}|\le B<\infty$ for all $u$, the Gibbs state is unique for all $\beta<\infty$.
+\end{theorem}
+For example, if $J_{x,y} = \frac{1}{|x-y|^2}$, there is no first order phase transition if $\tau>2$.
+
+To see this, index the sum by the difference $v=x-y$ and note each difference appears $v$ times.
+\be\sum_{\scriptsize \begin{array}{c}{x\ge 0}\\{y<0}\end{array}}|J_{x-y}| = \sum_{v\ge 0} v|J_v|.
+\ee
+
+\begin{proof}
+It suffices to show that there exists $C$ such that for all $\mu_1,\mu_2$ and $f\in \mathcal{B}_0$ with $f\ge 0$, 
+\be
+\mu_1(f)\le D \mu_2(f).
+\ee
+
+
+The basic idea is to use conditional expectation.  By DLR,
+\begin{align}
+\mu(f) &= \int \mathbb{E}_{[u,v]^c} (f|\sigma) \,\mu(d\sigma)\\
+\mathbb{E}_{\Lambda^c} (f|\sigma) &= \int f(\eta_\Lambda, \sigma_{\Lambda^c}) \frac{e^{-\beta H_{\Lambda}(\eta_\Lambda, \sigma_{\Lambda^c})}}{Z_{\Lambda}^{(\sigma_{\Lambda^c})}}\rho_0(d\eta_A).
+\end{align}
+%Compare with the Metropolis algorithm; forget about what is inside because it will be regenerated.
+Included in $e^{-\beta H_{\Lambda}(\eta_\Lambda, \sigma_{\Lambda^c})}$ include interactions between sites inside the finite region and between sites in the finite region and the outside. Not included is interactions between outside sites.
+
+%Throw out 
+Now 
+\be
+|H_{\Lambda}^{\text{b.c.}} (\eta_\Lambda, \sigma_{\Lambda^c}) - H_{\Lambda}^{\circ} (\eta_\Lambda)| \le 2B.
+\ee
+Let f.b.c. denote ``free boundary conditions." 
+We conclude that 
+\begin{align}
+\mathbb{E}_{\Lambda^c}(f|\sigma)  &\le \mathbb{E}_{\Lambda^c}^{\text{f.b.c}} (f) e^{4B}\\
+\mathbb{E}_{\Lambda^c}(f|\sigma)  &\ge \mathbb{E}_{\Lambda^c}^{\text{f.b.c}} (f) e^{-4B}
+\end{align}
+(Note we use the fact that $f$ is positive.)
+
+Hence
+\begin{align}
+\mu_j(f) &= \int \mathbb{E}_{\Lambda^c} \mathbb{E}_{\Lambda^c}(f(\sigma)) \le \mu_j(f) \\
+e^{-4B} \mathbb{E}_{\Lambda^c}^{\text{f.b.c}} (f) \le \mu_j(f) &\le e^{4B} \mathbb{E}_N^{\text{f.b.c}} (f).
+\end{align}
+This proves that there cannot be 2 mutually singular Gibbs states.
+\end{proof}
+
+%any extremal state is rotation invariance.
+
+For the $O(N)$ model in 2D, we show there is also a unique Gibbs state by showing that any extremal state is rotation invariant. Letting $R_\theta$ denote rotation by $\theta$ and defining its action on functions and measures as
+\begin{align}
+(Rf)(\sigma) &= f(R\sigma)\\
+(R\mu)(f)&= \mu(Rf).
+\end{align}
+%$(R_\te\si)_x$
+We will show that that in the 2D model with nearest neighbor interactions, for all $f\in B$, $\mu(Rf)\le C\mu(f)$.  
+
+%extremal state to 
+%either identical or mutually singular. 
+Every extremal Gibbs state is actually equal to its rotation, so it is rotationally invariant. Thus there is no symmetry breaking.
+
+In 1D we disconnected the coupling. We can't do this in 2D. The reason is that. Removing couplings across the boundary costs $L^{d-1}=L$, which is not uniformly bounded. However, for rotational symmetry, consider the effect of gradual rotation. If we rotate spins uniformly in the volume, we still pay the price of discontinuity. But if we rotate at a linear rate across space, the effect on the energy is smaller.
+\be
+\sum_{\scriptsize \begin{array}{c}{x,y\in \Lambda_L\backslash \Lambda_{L/2}}\\{|x-y|=1}\end{array}} ((R_{\theta(x)}\underline{\sigma}_x)\cdot R_{\theta(x)}(\underline{\sigma}_y)) - (\underline{\sigma}_x,\underline{\sigma}_y) .
+\ee
+Here is the heuristic idea. %If you are at the ground state, 
+%$|\nb \te|+|\nb \te|^L$, $\fc{L^d}{L^2}$
+The quadratic term introduces a correction term which behaves as $\frac{1}{L^2}$. The quadratic term is under control. Next time I'll consider the linear term.
+
+
+
+
 %INSERT_HERE
 
 %\appendix
