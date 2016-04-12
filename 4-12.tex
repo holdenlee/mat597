@@ -1,0 +1,152 @@
+
+\blu{4/12}
+
+%I.e. for every local $f\in \cal B_0$, $\mu(R_\al f)=\mu(f)$ for all Gibbs states $\mu$.
+
+It suffices to prove in 2D there exists $D$ such that for all Gibbs states $\mu$,
+\[
+\mu(R_\al f) \le D\mu(f)
+\]
+for all positive $f\in \cal B_0$.
+%rotation invariance of a priori measure
+%still get a Gibbs measure.
+Note that the measure $\wt \mu(f) = \mu(R_\al f)$ is also a Gibbs state. 
+
+To see this, consider a finite volume Gibbs state
+\[
+\mu_{\La}(f) = \int f(\si_\La) \fc{e^{-\be H^{\text{b.c.}}_\La(\si_\La)}}{Z_{\La}^{\text{b.c.}}} \rh_0(d\si_\La).
+\]
+Applying a rotation to this gives
+\begin{align}
+\wt\mu(f) := \mu(R_\al f)&= \int f(\ub{R_\al\si_\La}{\eta}) \fc{e^{-\be H^{\text{b.c.}}_\La(\si_\La)} }{Z_{\La}^{\text{b.c.}}} \rh_0(d\si_\La)\\
+&=\int f(\eta) \fc{e^{-\be H^{R_\al^{-1}(\text{b.c.})}_\La (\cancel{R_{\al}^{-1}}\eta)} }{Z_{\La}^{\text{b.c.}}} \rh_0(d\cancel{R_{\al}^{-1}}\eta)\\
+&= \mu^{R_{\al}\pat{b.c.}}(f).
+\end{align}
+(The boundary conditions are rotated by $-\al$.)
+The DLR condition is invariant under rotations (exercise).
+%identical or mutually singular.
+
+\fixme{See lemma 11.5 in notes. Change $D$ to $C$ and $<$ to $\ge$ in Lemma 11.5.}
+
+%what distinguishes is not local function, but function measurable at $\iy$.
+%Choosing a box large enough, you seldom see a difference in magnetization.
+
+%\begin{lem}
+%For any system on $\Z^D$ with $O(2)$ symmetries of finite range interactions set
+%\[
+%\ab{
+%\pdxy{}{}
+%}
+%\]
+%\end{lem}
+
+\begin{proof}
+Let 
+\[
+\te(x) = \pi \begin{cases}
+1, &\ve{x}\le L_0\\
+\fc{2L-\ve{x}_{\iy}}L, & L_0\le \ve{x}\le 2L_0\\
+0, &\ve{x}_2\ge 2L_0.
+\end{cases}•
+\]
+(We rotate the configuration in such a way so that the rotation does not extend to $\iy$.)
+
+%\hat R not a uniform rotation, but depends on position.
+We will consider the rotation $\wh R_{\fc{\al}{\pi}\te}$ (we use a hat to emphasize that the rotation depends on $x$). 
+In the box $\ve{x}\le L_0$, $\wh R_{\fc{\al}{\pi}\te}$ acts as uniform rotation:
+\begin{align}
+\mu(R_\al f) &= \mu(f(\wh R_{\fc{\al}{\pi}\te}\si))\\
+&=\int \ba{
+\int_{\Om_{\La}(2L_0)} 
+f(\ub{\wh R_{\fc{\al}{\pi}\te} \si_{\wt \La}}{\si_{\wt \La}'}) \fc{e^{-\be H_{\wt \La}(\si_{\wt \La}|\si_{\wt \La^c})}}{Z_{\wt\La}(\si_{\wt \La^c})} \rh_0(d\si_{\wt \La})
+} \rh(d\si_{\wt\La^c})\\
+&=\int \ba{
+\int_{\Om_{\La}(2L_0)} 
+f(\si_{\wt \La}') \fc{e^{-\be H_{\wt \La}(\wh R_{\fc{\al}{\pi}}\si_{\wt \La}'|\si_{\wt \La^c})}}{Z_{\wt\La}(\si_{\wt \La^c})} \rh_0(d\si_{\wt \La}')
+} \rh(d\si_{\wt\La^c})
+\end{align}
+When you carry out a gradual rotation, the energy does not change by a lot.
+We have
+\begin{align}
+\mu(R_\al f) &= \mu(\wh R_{\fc{\al}{\pi}\te}f) \\
+&= \mu(fe^{-\be [H(\wh R_{\fc{\al}{\pi}\te}\si) - H(\si)]}).
+\end{align}
+%If we allow self to proceed by leaps of imagination, can arrive here immediately.
+Formally, we rewrote
+%infinite, go through finite value truncation.
+%taper to 0 in a finite distance
+\[
+f(0) e^{-\be H(\wh R^{-1}\si)} \fc{\rh_0(d\si)}{Z}
+= e^{-\be[R^{-1}H - H]} e^{-\be H(\si)}\fc{\rh_0(d\si)}{Z}
+\]
+Note $R^{-1}H-H$ is finite; what is left is to estimte it. We estimate it in the case $H=-\sum_{|x-y|=1}\ul{\si}_x\cdot \ul{\si}_y$. We calculate
+\begin{align}
+H(R^{-1}\si) - H(\si) 
+&= - \sum_{\text{nearest neighbor}} \ba{
+(R_{\te(x)}^{-1}\ul{\si}_x)\cdot 
+(R_{\te(y)}^{-1}\ul{\si}_y) - \ul{\si}_x\cdot \ul{\si}_y
+}\\
+&= \sum_{\text{nearest neighbor}} [\ul{\si}_x \cdot \ul{\si}_y - \ul{\si}_x \cdot R_{\te(x) - \te(y)} \ul{\si}_y]\\
+&= \sum_{\text{nearest neighbor}} [\al(\ul{\si}_x\cdot \cal L \ul{\si}_y)]\\
+&=\sum_{\text{nearest neighbor}} [\fc{\al}{\pi} \de_1(H) + \de_2(H)],
+%taylor expansion 
+\end{align}
+where $\de_i$ is the $i$th order correction, from the Tylor expansion. Then 
+\begin{align}
+\mu(R_\al f) &= \mu(\wh R_{\fc{\al}{\pi}\te}f)\\
+&= \mu(f e^{-\be [H(\wh R^{-1}_{\fc\al\pi\te}\si) - H(\si)]}\\
+&= \mu(f e^{[\fc{\al}{\pi} \de_1(H) + \de_2(H)]})
+\end{align}
+%boundary increases
+%softly rotate. drop $L^{D-1}$ to $L^{D-2}$
+%If dimension $\le 2$ the bounded.
+with $|\de_2(H)|\le C\sum |\te(x)-\te(y)|^2 \le CL^{D-2}$. 
+
+If the dimension is $D\le 2$ this is bounded. The soft rotation dropped this quantity from $L^{D-1}$ to $L^{D-2}$.
+
+However, $\de_1(H)$ might be bigger; a priori we only have $|\de_1(H)|\le C\sum|\te(x)-\te(y)|=O(L^{D-1})$.
+The idea is that we can rotate ``from the other side." To deal with the first order term,
+\begin{align}
+%\mu(f) &= 
+\mu(f) &= \mu(f e^{-\fc{(2\pi-\al)}{\pi}\de_1(H) + \wt \de_2(H)})
+\end{align}
+The second-order term is controllable, the first-order term is hard to control. We have two expressions where the coefficient of the first-order terms has different signs. Let convexity work for us.
+
+Consider 
+\[
+Q(t) = \mu(f e^{(1-t)[\fc\al\pi\de_1(H)+\de_2(H)]} e^{t[-\fc{(2\pi - \al)}{\pi}\de_1(H) + \wt\de_2(H)]}).
+\]
+The function $\ln Q(t)$ is convex in $t$ with $Q(0)=Q(1) = \mu(R_\al f)$. Thus by convexity, or H\"older's inequality,
+%convexity or Holder
+for all $0\le t\le 1$, 
+\[
+Q(t) \le Q(0)^{1-t}Q(1)^{t} = \mu(Rf).
+\]
+%Both terms are uniformly bounded
+$(1-t)\al - t(2\pi - \al) = 0$. At $t=t_\al$,
+\[
+Q(t) = \mu(f) e^{(1-t) \de_2+ t\wt{\de}_2} \ge e^{-CL^{D-2}} \mu(f)
+\]
+giving us $\mu(R_\al f) \ge e^{-CL^{D-2}}\mu(f)$.
+
+%Expected vlue of rotatied is identical to original times difference produced 
+%look at cost of rotating spins gently.
+\end{proof}
+What gave physicists the intution to look at second order term is that at low temperature, when the spins line up, the first order term vanishes. The second-order term is $\fc{L^d}{L^2}$. But there is chaos and term-by-term it's not true that the first-order term can be ignored. We sidestep this in the analysis.
+%If you ask how the sysem responds to gentle rotation, the first derivative should not play a role.
+
+If $D>2$, the bound says nothing.
+
+
+The theorem implies that the pressure $\Psi(\be, \ul h)$ is differentiable in $\ul h$ at $\ul h = \ul 0$. We know it's symmetric, but it could have a kink or be smooth with zero derivative. The theorem tells us it is smooth.
+
+The argument works equally well for quantum systems and for systems with disorder. For a while people had two predictions based on 2 theories. Disordered systems in $D$ dimensions behaved as ordered systems in $D-2$ dimensions. Imry and Ma predicted that for $D\le 4$ there is no symmetry breaking. it uses this technology with bootstrapping.
+%instead that continuous symmetry breaking is pushed 
+
+Rigorous proofs arrived before physicists had a consensus.
+%\begin{thm}[Imry-Ma Theorem]
+%
+%\end{thm}
+
+Symmetry breaking occurs in dimensions $D\ge 3$. %reflection positivity.
+
