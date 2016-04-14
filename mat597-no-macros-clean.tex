@@ -3319,6 +3319,180 @@ Rigorous proofs arrived before physicists had a consensus.
 Symmetry breaking occurs in dimensions $D\ge 3$. %reflection positivity.
 
 
+
+{\color{blue}4-14-16}
+
+Remarks on DLR condition: For any measure $\mu$ on $(\Omega, \mathcal{B})$, we have a map
+\be
+P_{\Lambda^c}(f) = \mathbb{E}(f|\sigma_{\Lambda^c}) = \mathbb{E}_{\mathcal{B}_{\Lambda^c}}(f|\sigma),
+\ee
+%there is no Santa Claus. Very large system.
+giving the expected value of a function which depends on everything, conditioned on the spins outside $\Lambda$.
+
+The towering property is the following: For $\Lambda_1\subset \Lambda_2\subset\cdots$, for all $m>n$,
+\be
+(P_{\Lambda_m^c}P_{\Lambda_n^c})f = P_{\Lambda_m^c}f.
+\ee
+The measures $\mathcal{B}_{\Lambda_n^c}$ are decreasing.
+
+%two step produces same as get if just freeze and 
+%$\si$-algebra depends on local functions. Build all functions based on local functions.
+%functions with bizarre property
+$\mathcal{B}_0$ are ``local functions": each only depends on variables in a finite region. An infinite sum of these may not be local, for example, $\sum_{|x|\in \mathbb{Z}^d} e^{-\alpha|x|} \sigma_x\not\in \mathcal{B}_0$. However, up to $\varepsilon>0$ it can be approximated uniformly by local functions.
+
+$\mathcal{B}$ is the smallest collection of functions containing the local functions and that is closed under the usual operations.
+%can take $\E$ of nonlocal but in here.
+
+For all finite $\Lambda$, $P_{\Lambda^c}$ is an orthonormal projection onto $\left\{{f\in L^2(d\mu)}:{f\in \mathcal{B}_{\Lambda^c}}\right\}$. 
+%strong convergence
+%proven using martingales.
+%Family of projections
+\begin{theorem}[Based on martingale convergence theorem]
+For all bounded $f$, 
+\be
+\mathbb{E}_{\mathcal{B}_\infty} (f|\sigma)=\lim_{n\nearrow \infty} P_{\Lambda_n^c} f(\sigma) 
+\ee
+exists for $\mu$-almost every $\sigma$.
+%only depends on asymptotic behavior of configuration.
+\end{theorem}
+The averages stay the same but have diminishing fluctuations.
+
+There are $\sigma$ for which the limit does not converge, e.g., spins organized in rings of $+$ and $-$.
+
+Gibbs measures are characterized by the fact that the conditional expectations are given by nothing else other than the DLR conditions. 
+%$\mu$-independent standard formula.
+
+%Fixing structure of...
+%for many potentially different...
+%For example, another configuration that is the same as $\cdots +++\cdots $ at $\iy$ is any configuration that differs from it by a finite number of flips.
+Any two configurations that differ by a finite number of spins are the same at $\infty$. 
+
+%We care about $\varlimsup_{\al\searrow 0} \al \sum e^{-\al|x|}\si_x$.
+%parametrize Gibbs states
+
+%how compute if bounded but not local?
+
+Suppose you have a function which is measurable and bounded. Suppose we only know integrals of continuous functions. We can take pointwise limits. Use Monotone Convergence Theorems.
+
+Given a measure on the unit interval, how do we read the integral of measurable functions which are not continuous?
+
+%prob of inner contour exp small.
+
+Remarks on the Mermin-Wagner Theorem: In 2 dimensions there is no symmetry breaking. 
+%rotated gradually. 
+The idea was to look at the energy penalty for gradual rotation. 
+To estimate $H(\widehat{R}_\theta\sigma) - H(\sigma)$, we bounded the second-order term $\delta_2(H)\le c\sum_{\{x,y\}, |x-y|} |\theta_x-\theta_y|^2$.
+
+Using discrete notation, we saw that (for $r=L, R=2L$)
+\be
+\min_{\theta_x = \begin{cases}
+0,&|x|=R\\
+1,&|x|=r.
+\end{cases}} \sum_x|\nabla \theta|^2\le cL^{d-2}
+\ee
+We could do better:
+\be
+\min
+\left\{{\int_{r<|x|<R} |\nabla \theta|^2 \,d^2x }:{\theta(x) = \begin{cases}
+0, & |x|=R\\
+1, & |x|=r.
+\end{cases}
+}\right\}.
+\ee
+The solution is a harmonic function, satisfying $\Delta \theta=0$:
+\be
+\theta(x) = \frac{\ln \left( {\frac{1}{R}} \right){|x|}}{\ln \frac{R}{r}},\quad \ln |x| = \Re \ln x.
+\ee
+We have $\nabla \theta =\frac{1}{\ln \frac{R}{r}} \frac{1}{|x|}$, and
+\be
+\int_{r<|x|<R} |\nabla \theta|^2 d^2x = \frac{1}{\ln \left( {\frac{R}{r}} \right)}.
+\ee
+%multiply by divergent factor. 
+In the energy estimate, the second-order term can be made as small as desired.
+
+\section{Random field models}
+
+Let 
+\be
+H_0=-\sum J_{x-y} (\underline{\sigma}_x \cdot \underline{\sigma}_y) = \sum_A J_A \Phi(\sigma_A);
+\ee
+this is rotationally invariant.
+
+Consider now
+\be
+H = H_0 - \sum (\underline{h} + \varepsilon \underline{\eta}_x , \underline{\sigma}_x);
+\ee
+we couple with an external field $\underline{h}$ that encourages the spins to line up with it. However, there is disorder; $\underline{\eta}_x$ are iid with $|\eta_x|=1$. What are the statistical mechanics?
+%spins line up with field
+%selected at random but with measure selected at uniform.
+
+Would the system remember boundary conditions or would the local disorder $\underline{\eta}_x$ dominate?
+
+\begin{theorem}[Imry-Ma (Aizenmann-Wehr)]
+For such systems, in $D\le 4$, for such a system with continuous symmetry, 
+\be
+\psi(\beta, \varepsilon, \underline{h}) 
+\ee
+is differentiable at $\underline{h}=0$.
+\end{theorem}
+Why is the pressure of such a system defined in the infinite-volume limit? We first generate a random environment. 
+%convex in $\be$.
+It is defined because the way we prove existence of thermodynamic limit was to partition it into noncommunicating regions. If you add randomness, %at that stage of the argument, 
+the law of large numbers for independent variables implies that the $\psi(\beta, \varepsilon, \underline{h})$ is independent of $\eta$ almost surely (independent of disorder). 
+
+The pressure and free energy exist. With frozen disorder, 
+%without, want to collaborate.
+If there is initally some bias, then we maintain it. The disorder itself may create some symmetry breaking. In low dimensions the disorder plays a decisive role.
+
+\section{Proof of symmetry-breaking of continuous symmetries
+}
+
+Let's return to homogeneous systems. We are coming to research-level questions. There is a dearth of arguments to prove symmetry breaking for continuous spaces. 
+
+\subsection{The spin-wave perspective}
+%in this room
+
+The key results were by Fr\"ohlich-Simon-Spencer, Fr\"ohlich-Israel-Lieb-Simon.
+
+We can write 
+\be
+H(\sigma) = \frac{1}{4} \sum_{x,y} |\underline{\sigma}_x - \underline{\sigma}_y|^2.
+\ee
+(Note that $|\underline{\sigma}_x|^2 + |\underline{\sigma}_y|^2$ is constant, while the cross-term is what we had originally.)
+Define
+\be
+\widehat{\sigma} (p) = \frac{1}{\sqrt{|\Lambda|}} \sum_{x\in \Lambda} e^{i\underline{p} \cdot \underline{x}} \underline{\sigma}_x.
+\ee
+Being invariant under translations, we can express $H$ as a sum of Fourier modes,
+\be
+H(\sigma) = \frac{1}{4}\sum_{\underline{k}} \mathcal{E}(k) |\widehat{\sigma}(k)|^2
+\ee
+where $\underline{k} \in \frac{2\pi}{L}\mathbb{Z}^d \cap [-\pi, \pi]^d$,
+the momenta for which the function is periodic.
+
+You may be tempted to say the problem is now trivial. There is energy for each mode and no coupling. Had this been the end of the story, we have a bunch of independent random variables. However, they are not independent. There are bizarre correlations between the Fourier modes. If we ignored them we would have a quadratic interaction and the equipartition law says that the expected energy per mode is on the order of 
+\be
+\mathcal{E}(k) |\widehat{\sigma}(k)|^2 \approx \frac{1}{2\beta}.
+\ee
+Under certain conditions (reflection positivity), we can prove
+\be
+\mathcal{E}(k) |\widehat{\sigma}(k)|^2 \le \frac{1}{2\beta}.
+\ee
+We'll show how to derive this and how to conclude the theorem from it. It's a beautiful argument but it's a crystal vase. When you have reflection positivity, you use this physically motivated argument; when you don't, the vase breaks.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 %INSERT_HERE
 
 %\appendix

@@ -1,0 +1,173 @@
+
+\blu{4-14-16}
+
+Remarks on DLR condition: For any measure $\mu$ on $(\Om, \cal B)$, we have a map
+\[
+P_{\La^c}(f) = \E(f|\si_{\La^c}) = \E_{\cal B_{\La^c}}(f|\si),
+\]
+%there is no Santa Claus. Very large system.
+giving the expected value of a function which depends on everything, conditioned on the spins outside $\La$.
+
+The towering property is the following: For $\La_1\sub \La_2\sub\cdots$, for all $m>n$,
+\[
+(P_{\La_m^c}P_{\La_n^c})f = P_{\La_m^c}f.
+\]
+The measures $\cal B_{\La_n^c}$ are decreasing.
+
+%two step produces same as get if just freeze and 
+%$\si$-algebra depends on local functions. Build all functions based on local functions.
+%functions with bizarre property
+$\cal B_0$ are ``local functions": each only depends on variables in a finite region. An infinite sum of these may not be local, for example, $\sum_{|x|\in \Z^d} e^{-\al|x|} \si_x\nin \cal B_0$. However, up to $\ep>0$ it can be approximated uniformly by local functions.
+
+$\cal B$ is the smallest collection of functions containing the local functions and that is closed under the usual operations.
+%can take $\E$ of nonlocal but in here.
+
+For all finite $\La$, $P_{\La^c}$ is an orthonormal projection onto $\set{f\in L^2(d\mu)}{f\in \cal B_{\La^c}}$. 
+%strong convergence
+%proven using martingales.
+%Family of projections
+\begin{thm}[Based on martingale convergence theorem]
+For all bounded $f$, 
+\[
+\E_{\cal B_\iy} (f|\si)=\lim_{n\nearrow \iy} P_{\La_n^c} f(\si) 
+\]
+exists for $\mu$-almost every $\si$.
+%only depends on asymptotic behavior of configuration.
+\end{thm}
+The averages stay the same but have diminishing fluctuations.
+
+There are $\si$ for which the limit does not converge, e.g., spins organized in rings of $+$ and $-$.
+
+Gibbs measures are characterized by the fact that the conditional expectations are given by nothing else other than the DLR conditions. 
+%$\mu$-independent standard formula.
+
+%Fixing structure of...
+%for many potentially different...
+%For example, another configuration that is the same as $\cdots +++\cdots $ at $\iy$ is any configuration that differs from it by a finite number of flips.
+Any two configurations that differ by a finite number of spins are the same at $\iy$. 
+
+%We care about $\varlimsup_{\al\searrow 0} \al \sum e^{-\al|x|}\si_x$.
+%parametrize Gibbs states
+
+%how compute if bounded but not local?
+
+Suppose you have a function which is measurable and bounded. Suppose we only know integrals of continuous functions. We can take pointwise limits. Use Monotone Convergence Theorems.
+
+Given a measure on the unit interval, how do we read the integral of measurable functions which are not continuous?
+
+%prob of inner contour exp small.
+
+Remarks on the Mermin-Wagner Theorem: In 2 dimensions there is no symmetry breaking. 
+%rotated gradually. 
+The idea was to look at the energy penalty for gradual rotation. 
+To estimate $H(\wh R_\te\si) - H(\si)$, we bounded the second-order term $\de_2(H)\le c\sum_{\{x,y\}, |x-y|} |\te_x-\te_y|^2$.
+
+Using discrete notation, we saw that (for $r=L, R=2L$)
+\[
+\min_{\te_x = \begin{cases}
+0,&|x|=R\\
+1,&|x|=r.
+\end{cases}} \sum_x|\nb \te|^2\le cL^{d-2}
+\]
+We could do better:
+\[
+\min
+\set{\int_{r<|x|<R} |\nb \te|^2 \,d^2x }{\te(x) = \begin{cases}
+0, & |x|=R\\
+1, & |x|=r.
+\end{cases}
+}.
+\]
+The solution is a harmonic function, satisfying $\De \te=0$:
+\[
+\te(x) = \fc{\ln \prc{R}{|x|}}{\ln \fc{R}{r}},\quad \ln |x| = \Re \ln x.
+\]
+We have $\nb \te =\rc{\ln \fc Rr} \rc{|x|}$, and
+\[
+\int_{r<|x|<R} |\nb \te|^2 d^2x = \fc{1}{\ln \pf{R}{r}}.
+\]
+%multiply by divergent factor. 
+In the energy estimate, the second-order term can be made as small as desired.
+
+\section{Random field models}
+
+Let 
+\[
+H_0=-\sum J_{x-y} (\ul \si_x \cdot \ul \si_y) = \sum_A J_A \Phi(\si_A);
+\]
+this is rotationally invariant.
+
+Consider now
+\[
+H = H_0 - \sum (\ul h + \ep \ul\eta_x , \ul \si_x);
+\]
+we couple with an external field $\ul h$ that encourages the spins to line up with it. However, there is disorder; $\ul\eta_x$ are iid with $|\eta_x|=1$. What are the statistical mechanics?
+%spins line up with field
+%selected at random but with measure selected at uniform.
+
+Would the system remember boundary conditions or would the local disorder $\ul \eta_x$ dominate?
+
+\begin{thm}[Imry-Ma (Aizenmann-Wehr)]
+For such systems, in $D\le 4$, for such a system with continuous symmetry, 
+\[
+\psi(\be, \ep, \ul h) 
+\]
+is differentiable at $\ul h=0$.
+\end{thm}
+Why is the pressure of such a system defined in the infinite-volume limit? We first generate a random environment. 
+%convex in $\be$.
+It is defined because the way we prove existence of thermodynamic limit was to partition it into noncommunicating regions. If you add randomness, %at that stage of the argument, 
+the law of large numbers for independent variables implies that the $\psi(\be, \ep, \ul h)$ is independent of $\eta$ almost surely (independent of disorder). 
+
+The pressure and free energy exist. With frozen disorder, 
+%without, want to collaborate.
+If there is initally some bias, then we maintain it. The disorder itself may create some symmetry breaking. In low dimensions the disorder plays a decisive role.
+
+\section{Proof of symmetry-breaking of continuous symmetries
+}
+
+Let's return to homogeneous systems. We are coming to research-level questions. There is a dearth of arguments to prove symmetry breaking for continuous spaces. 
+
+\subsection{The spin-wave perspective}
+%in this room
+
+The key results were by Fr\"ohlich-Simon-Spencer, Fr\"ohlich-Israel-Lieb-Simon.
+
+We can write 
+\[
+H(\si) = \rc 4 \sum_{x,y} |\ul \si_x - \ul \si_y|^2.
+\]
+(Note that $|\ul\si_x|^2 + |\ul \si_y|^2$ is constant, while the cross-term is what we had originally.)
+Define
+\[
+\wh \si (p) = \rc{\sqrt{|\La|}} \sum_{x\in \La} e^{i\ul p \cdot \ul x} \ul \si_x.
+\]
+Being invariant under translations, we can express $H$ as a sum of Fourier modes,
+\[
+H(\si) = \rc 4\sum_{\ul k} \cal E(k) |\wh \si(k)|^2
+\]
+where $\ul k \in \fc{2\pi}{L}\Z^d \cap [-\pi, \pi]^d$,
+the momenta for which the function is periodic.
+
+You may be tempted to say the problem is now trivial. There is energy for each mode and no coupling. Had this been the end of the story, we have a bunch of independent random variables. However, they are not independent. There are bizarre correlations between the Fourier modes. If we ignored them we would have a quadratic interaction and the equipartition law says that the expected energy per mode is on the order of 
+\[
+\cal E(k) |\wh \si(k)|^2 \approx \rc{2\be}.
+\]
+Under certain conditions (reflection positivity), we can prove
+\[
+\cal E(k) |\wh \si(k)|^2 \le \rc{2\be}.
+\]
+We'll show how to derive this and how to conclude the theorem from it. It's a beautiful argument but it's a crystal vase. When you have reflection positivity, you use this physically motivated argument; when you don't, the vase breaks.
+
+
+
+
+
+
+
+
+
+
+
+
+
