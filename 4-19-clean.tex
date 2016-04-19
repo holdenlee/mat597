@@ -1,0 +1,167 @@
+
+{\color{blue}4-19-16: We continue talking about continuous symmetry breaking.}
+
+We will cover the infrared bound, reflection positivity, and the chessboard inequality.
+
+Now the symmetry of the lattice will play a role.
+
+Here $H=-\sum_{\{x,y\}} J_{x-y} \underline{\sigma}_x\cdot \underline{\sigma}_y$. We first cover the nearest-neighbor case. Our argument is not very robust; it only covers the nearest-neighbor case and several other special cases. It would be an achievement to find a generalization.
+
+We pass to the Fourier transform. A basis for the space of periodic functions is 
+\be
+\frac{1}{\sqrt{|\Lambda|}}e^{i\underline{k}\cdot \underline{x}} ,\qquad \underline{k} = \frac{2\pi}{L} (n_1,\ldots, n_d).
+\ee
+We scale to take the $(0,L]^d$ grid into the grid $(-\pi,\pi]^d$ with intervals $|\Delta k_i| = \frac{2\pi}{L}$. 
+
+%Does not mix between different momenta spaces.
+Let $\widehat{\sigma}(p)$ be as in~\eqref{eq:csb-f}. The Fourier expansion of $\sigma$ is
+\begin{align}
+\sigma_x &= \frac{1}{\sqrt{|\Lambda|}} \sum_k^* e^{-ikx}\widehat{\sigma}(k).
+%\\ H &= \sum_{k\in (-\pi,\pi]^k}^* \cal E(k)|\wh \si(k)|^2.
+\end{align}
+Letting $H$ be as in~\eqref{eq:csb-h1}, we find that the momentum representation of $H$ is given by~\eqref{eq:csb-h}.
+Think of~\eqref{eq:csb-h1} as the discrete analogue of the integral of a gradient. Similarly,~\eqref{eq:csb-h} is the discretized version of an integral.
+%Certain mnemonic devices help. 
+
+We show that
+\be
+\widehat{\underline{\sigma}}(k) = 2\sum_{j=1}^{d} \sin^2\left( {\frac{k_j}{2}} \right) \approx \frac{1}{2} |\underline{k}|^2.
+\ee
+We calculate
+\begin{align}
+H &= -\frac{1}{2}\left( {\frac{1}{\sqrt{|\Lambda|}}} \right)^2\sum_{x,y} \sum_{\underline{k}, \underline{k}'} \widehat{\underline{\sigma}}(\underline{k})\widehat{\underline{\sigma}}(\underline{k}') e^{i\underline{k}\cdot \underline{x}} e^{-i\underline{k}'\cdot \underline{y}}J_{x-y}\\
+&=-\frac{1}{2}\frac{1}{|\Lambda|}  
+\sum_{x,y} \sum_{\underline{k}, \underline{k}'} \widehat{\underline{\sigma}}(\underline{k})\widehat{\underline{\sigma}}(\underline{k}') e^{i\underline{k}\cdot (\underline{x}-\underline{y})} e^{-i(\underline{k}-\underline{k}')\cdot \underline{y}}J_{x-y}\\
+&=-\frac{1}{2}\frac{1}{|\Lambda|} \sum_{u,y} \sum_{\underline{k}, \underline{k}'} \widehat{\underline{\sigma}}(\underline{k})\widehat{\underline{\sigma}}(\underline{k}') e^{i\underline{k}\cdot \underline{u}} e^{-i(\underline{k}-\underline{k}')\cdot \underline{y}}J_{u}\\
+&\quad \text{using }\sum_{\underline{k},\underline{k}'} e^{i(\underline{k}-\underline{k}')\cdot\underline{y}} = \frac{1}{|\Lambda|} \delta_{k,k'}\\
+&=-\frac{1}{2}\sum_{\underline{k}} |\widehat{\sigma}(k)|^2 \widehat{J}(k)\\
+\widehat{J}(k) &= \sum_u e^{i\underline{k}\cdot \underline{u}} J_{\underline{u}} \\
+&=\sum_{j=1}^{d} (e^{ik_j}+e^{-ik_j})\\
+&=%2
+-\frac{1}{2} \sum_{j=1}^{d} \cos(k_j)\\
+&= -\sum_{j=1}^{d} \left( {1-2\sin^2\left( {\frac{k_j}{2}} \right)} \right)
+%CHECK FACTORS HERE.
+\end{align}
+
+%fluctuate. phases change. 
+Looking at this intuitively, %when we pull out a configuration and sum over volume, 
+how big can we expect to be $\sum_{x\in \Lambda} e^{ikx}\sigma_x$? The Central Limit Theorem suggest that the order of magnitude should be $\sqrt{|\Lambda|}$, making $\widehat{\sigma}(k)=O(1)$ (in high temperature). The energy $H$ is given by a sum of terms of order 1, hence is of order $O(|\Lambda|)$. 
+
+This leads us to the right ``infrared behavior." $\mathcal{E}(\underline{k}) = -\widehat{J}(k) + \widehat{J}(0)$. (?)
+
+Plancharel's identity tells us
+\begin{align}
+\frac{1}{|\Lambda|}\sum_x |\sigma_x|^2 &= 
+\frac{1}{|\Lambda|}\sum_{\underline{k}}^* |\widehat{\sigma}(k)|^2\\
+1 &= \frac{1}{|\Lambda|}|\widehat{\sigma}(0)|^2 + \frac{1}{|\Lambda|} \sum_{\underline{k} = \frac{2\pi}{L} \underline{n}\in (-\pi, \pi]^d}|\widehat{\sigma}(k)|^2
+\end{align}
+Think of this as a Riemann sum approximation to the integral $\frac{1}{(2\pi)^d}\int_{(-\pi,\pi]^d}\,du$. (Each cube has volume $\left( {\frac{2\pi}{L}} \right)^d$.
+%Volume $\pf{2\pi}{L}^d$.
+
+\subsection{Infrared bound}
+\begin{theorem}[Infrared bound]
+For the nearest neighbor (and other reflection positive models), \be\left\langle {|\widehat{\underline{\sigma}}(k)|^2}\right\rangle_{\beta, L}^{\text{p.b.c}}\le \frac{1}{2\beta \mathcal{E}(k)}.\ee
+Equivalently,
+\begin{equation}\label{eq:csb-fs}
+\mathcal{E}(k) \left\langle {|\widehat{\underline{\sigma}}(k)|^2}\right\rangle \le \frac{1}{2\beta}.
+\end{equation}
+\end{theorem}
+Near 0, $\mathcal{E}(k) \approx \frac{1}{2}| k|^2$. Thus the infrared bound diverges at 0.
+
+This is a very physical statement. %it's meaningful in physical terms. 
+The physical interpretation is that $\mathcal{E}(k) \left\langle {|\widehat{\underline{\sigma}}(k)|^2}\right\rangle$ is the mean energy in the $k$th mode. %The equipartition law says you have $\rc 2 kp$ per mode. 
+
+Take the mean value of~\eqref{eq:csb-fs} to obtain
+\be
+1 = \left\langle {\frac{1}{|\Lambda|} |\widehat{\sigma}(0)|^2}\right\rangle + \frac{1}{|\Lambda|} \sum_{\underline{k}=\frac{2\pi}{L} \underline{n}\in (-\pi, \pi]^d} \underbrace{\left\langle {|\widehat{\sigma}(k)|^2}\right\rangle}_{\frac{1}{2\beta} \frac{1}{\mathcal{E}(k)}}.
+\ee
+%(Small values of $k$ is the infrared regime.)
+
+If $d>2$, although the bound diverges at 0, it is integrable. 
+
+We have
+\begin{align}
+1&\le \frac{1}{|\Lambda|} \left\langle {|\widehat{\sigma}(0)|^2}\right\rangle +\left[ { \int \frac{1}{(2\pi)^d} \text{``} \int_{(-\pi,\pi), k\ne 0} \text{"}\frac{1}{\mathcal{E}(k)} } \right]\frac{1}{2\beta}\\
+\lim_{L\to \infty} \frac{1}{L^d} \left\langle {|\widehat{\sigma}(0)|^2}\right\rangle_{L,\beta} 
+&\ge 1-\frac{1}{2\beta} \underbrace{\frac{1}{(2\pi)^d} \int_{(-\pi, \pi]^d} \,du^d \frac{1}{\mathcal{E}(k)}}_{=:C_d<\infty \text{ when }d>2}
+%if $\be$ small, no news.
+%if $\be$ is large
+%0 momentum requires positive mass.
+%bose-einstein condensation. mass weight to particular mode.
+\end{align}
+This says that ``zero momentum requires positive mass." Compare this to Bose-Einstein condensation, when there is a point mass at a particular mode.
+
+%1/\sqrt{|\La|}, add another
+This is more informative if $\beta$ is large. For $\beta >2 C_D$, 
+\be
+\left\langle {\left| {\frac{1}{|\Lambda|}\sum \sigma_x} \right|^2}\right\rangle=
+\frac{1}{|\Lambda|}\left\langle {|\widehat{\sigma}(0)|^2}\right\rangle_{L,\beta} \ge \left( {1-\frac{C_D}{2\beta}} \right)>0.
+\ee
+Also, 
+\begin{align}
+\left\langle {\underline{\sigma}_0\underline{\sigma}_x}\right\rangle &= 
+\left\langle {\left( { \frac{1}{\sqrt{|\Lambda|}} \sum_{k'}^* \widehat{\sigma}(k')} \right)
+\left( {\frac{1}{\sqrt{|\Lambda|}} \sum_k^* e^{-i\underline{k} \cdot x} \widehat{\sigma}(k)} \right)}\right\rangle\\
+\left\langle {\underline{\sigma}_0\underline{\sigma}_x}\right\rangle&= \frac{1}{|\Lambda|} \sum_k\left\langle { |\widehat{\sigma}(k)|^2}\right\rangle e^{-i\underline{k}\cdot \underline{x}}\\
+%get info by apply Plancharel
+%\an{\rc{\sqrt{|\La|}}\sum
+\frac{1}{|\Lambda|}\sum_x\left| {\left\langle {\underline{\sigma}_0\underline{\sigma}_x}\right\rangle } \right|^2 &= \frac{1}{|\Lambda|^2} \left\langle {\left| {\widehat{\sigma}(0)} \right|}\right\rangle^2
++ \text{``}\frac{1}{2\pi} \int_{(-\pi, \pi]^d} \,du\text{"} \left\langle {|\widehat{\sigma}(k)|^2}\right\rangle e^{ikx}.
+%\rc{|\La|} \sum_{x\in \La} |\an{\si_0,\si_x}|^2 
+%&=
+\end{align}
+The function has an integrable singularity at the origin. A Riemann-Lebesgue argument shows this tends to 0 as $x\to \infty$ with $|x|\le \frac{L}{2}$. (I.e., take $\lim_{|x|\to \infty}\lim_{L\to \infty}$.)
+%for each $x$ take $L\to \iy$. Then $|x|\to \iy$.
+%1\ll 
+%For large volumes, this quantity tends to 0. The 0-momentum mode has massive mean value. 
+
+We get that 
+\be\left\langle {\underline{\sigma}_0,\underline{\sigma}_x}\right\rangle_{L,\beta} =\Omega(1)
+\ee for all $L$ (long-range order).
+
+To saturate the sum rule, we have to get massive density/volume-type occupation at 0.
+
+The IR bound gives
+\begin{align}
+Z&=\int e^{\frac{\beta}{ }2 \sum_{x,y} J_{x-y} |\underline{\sigma}_x - \underline{\sigma}_y|^2 }\,\rho_0(d\sigma)\\
+%\rc{2^{|\La|}} \sum_{\si:\si_x=\pm1} \cdots \equiv \int \cdots \rh_0\,d\si
+%yank different spins out of $\pm1$ by shifting. What is the optimal shift? The best you can do is do nothing.
+Z(\underline{h}) &= \int e^{\frac{\beta}{2}\sum_{x,y} J_{x,y}|(\underline{\sigma}_x + \underline{h}_x) - (\underline{\sigma}_y + \underline{h}_y)|^2}\, \rho_0(d\sigma).
+\end{align}
+We yank different spins out of $\pm1$ by shifting. What is the optimal shift? The best you can do is do nothing.
+
+We claim $Z(\underline{h}) \le Z(\underline{0})$.
+
+Then $\frac{\partial^2 }{\partial {x}^2} Z(\lambda \underline{h})|_{\lambda=0} \le 0$, giving the IR bound.
+
+\subsection{Reflection positivity}
+Recall the Cauchy-Schwarz inequality: If $\left\langle {\cdot, \cdot}\right\rangle$ is a bilinear positive form ($\left\langle {\psi,\psi}\right\rangle\ge 0$), then
+\be
+|\left\langle {\psi,\varphi}\right\rangle|\le |\left\langle {\psi|\psi}\right\rangle|^{\frac{1}{2}}|\left\langle {\varphi,\varphi}\right\rangle|^{\frac{1}{2}}.
+\ee
+%Now we put this on steroids.
+
+\begin{definition}
+A system is \textbf{reflection positive} with respect to a plane if letting $R$ be the reflection around the plane, letting $L$ and $R$ be the left and right side of the plane, for every $f\in \mathcal{B}_L$,
+\be
+(Rf)(0) = f(R\sigma)
+\ee
+and
+\be
+\left\langle {\overline{F}(\sigma)  F(R\sigma)}\right\rangle\ge 0.
+\ee
+\end{definition}
+The Schwarz inequality and reflection positivity say that for all $F,G\in \mathcal{B}_L$, 
+\be
+|\left\langle {F(\sigma)G(R\sigma)}\right\rangle| \le \left\langle {\overline{F}RF}\right\rangle^{\frac{1}{2}} \cdots \left\langle {\overline{G}RG}\right\rangle^{\frac{1}{2}}.
+\ee
+
+%bootstrap and give upper bound. 
+The idea is to take reflections over many different planes. Consider a product over boxes $\alpha$,
+\be
+\left\langle {\pi_\alpha F_{\alpha}(\sigma)}\right\rangle \le \prod_\alpha\left\langle {\prod_{\alpha'} F_\alpha^{\#}(\sigma_{\alpha'})}\right\rangle^{\frac{1}{|\Lambda|}}\ge 0
+\ee
+%take multiple images
+%chessboard.
+%Taking a single function and duplicating over the system
+where $F_\alpha^{\#}$ is $F_\alpha$ extended to all squares by reflection, the ``chessboard" extension. %We get the partition function of a function modified extensively.

@@ -1,0 +1,167 @@
+
+\blu{4-19-16: We continue talking about continuous symmetry breaking.}
+
+We will cover the infrared bound, reflection positivity, and the chessboard inequality.
+
+Now the symmetry of the lattice will play a role.
+
+Here $H=-\sum_{\{x,y\}} J_{x-y} \ul \si_x\cdot \ul \si_y$. We first cover the nearest-neighbor case. Our argument is not very robust; it only covers the nearest-neighbor case and several other special cases. It would be an achievement to find a generalization.
+
+We pass to the Fourier transform. A basis for the space of periodic functions is 
+\[
+\rc{\sqrt{|\La|}}e^{i\ul k\cdot \ul x} ,\qquad \ul k = \fc{2\pi}{L} (n_1,\ldots, n_d).
+\]
+We scale to take the $(0,L]^d$ grid into the grid $(-\pi,\pi]^d$ with intervals $|\De k_i| = \fc{2\pi}{L}$. 
+
+%Does not mix between different momenta spaces.
+Let $\wh \si(p)$ be as in~\eqref{eq:csb-f}. The Fourier expansion of $\si$ is
+\begin{align}
+\si_x &= \rc{\sqrt{|\La|}} \sum_k^* e^{-ikx}\wh\si(k).
+%\\ H &= \sum_{k\in (-\pi,\pi]^k}^* \cal E(k)|\wh \si(k)|^2.
+\end{align}
+Letting $H$ be as in~\eqref{eq:csb-h1}, we find that the momentum representation of $H$ is given by~\eqref{eq:csb-h}.
+Think of~\eqref{eq:csb-h1} as the discrete analogue of the integral of a gradient. Similarly,~\eqref{eq:csb-h} is the discretized version of an integral.
+%Certain mnemonic devices help. 
+
+We show that
+\[
+\wh{\ul \si}(k) = 2\sumo jd \sin^2\pf{k_j}2 \approx \rc 2 |\ul k|^2.
+\]
+We calculate
+\begin{align}
+H &= -\rc 2\prc{\sqrt{|\La|}}^2\sum_{x,y} \sum_{\ul k, \ul k'} \wh{\ul\si}(\ul k)\wh{\ul\si}(\ul k') e^{i\ul k\cdot \ul x} e^{-i\ul k'\cdot \ul y}J_{x-y}\\
+&=-\rc 2\rc{|\La|}  
+\sum_{x,y} \sum_{\ul k, \ul k'} \wh{\ul\si}(\ul k)\wh{\ul\si}(\ul k') e^{i\ul k\cdot (\ul x-\ul y)} e^{-i(\ul k-\ul k')\cdot \ul y}J_{x-y}\\
+&=-\rc 2\rc{|\La|} \sum_{u,y} \sum_{\ul k, \ul k'} \wh{\ul\si}(\ul k)\wh{\ul\si}(\ul k') e^{i\ul k\cdot \ul u} e^{-i(\ul k-\ul k')\cdot \ul y}J_{u}\\
+&\quad \text{using }\sum_{\ul k,\ul k'} e^{i(\ul k-\ul k')\cdot\ul y} = \rc{|\La|} \de_{k,k'}\\
+&=-\rc 2\sum_{\ul k} |\wh\si(k)|^2 \wh J(k)\\
+\wh J(k) &= \sum_u e^{i\ul k\cdot \ul u} J_{\ul u} \\
+&=\sumo jd (e^{ik_j}+e^{-ik_j})\\
+&=%2
+-\rc 2 \sumo jd \cos(k_j)\\
+&= -\sumo jd \pa{1-2\sin^2\pf{k_j}2}
+%CHECK FACTORS HERE.
+\end{align}
+
+%fluctuate. phases change. 
+Looking at this intuitively, %when we pull out a configuration and sum over volume, 
+how big can we expect to be $\sum_{x\in \La} e^{ikx}\si_x$? The Central Limit Theorem suggest that the order of magnitude should be $\sqrt{|\La|}$, making $\wh \si(k)=O(1)$ (in high temperature). The energy $H$ is given by a sum of terms of order 1, hence is of order $O(|\La|)$. 
+
+This leads us to the right ``infrared behavior." $\cal E(\ul k) = -\wh J(k) + \wh J(0)$. (?)
+
+Plancharel's identity tells us
+\begin{align}
+\rc{|\La|}\sum_x |\si_x|^2 &= 
+\rc{|\La|}\sum_{\ul k}^* |\wh \si(k)|^2\\
+1 &= \rc{|\La|}|\wh \si(0)|^2 + \rc{|\La|} \sum_{\ul k = \fc{2\pi}{L} \ul n\in (-\pi, \pi]^d}|\wh \si(k)|^2
+\end{align}
+Think of this as a Riemann sum approximation to the integral $\rc{(2\pi)^d}\int_{(-\pi,\pi]^d}\,du$. (Each cube has volume $\pf{2\pi}{L}^d$.
+%Volume $\pf{2\pi}{L}^d$.
+
+\subsection{Infrared bound}
+\begin{thm}[Infrared bound]
+For the nearest neighbor (and other reflection positive models), \[\an{|\wh{\ul\si}(k)|^2}_{\be, L}^{\text{p.b.c}}\le \rc{2\be \cal E(k)}.\]
+Equivalently,
+\beq{eq:csb-fs}
+\cal E(k) \an{|\wh{\ul\si}(k)|^2} \le \rc{2\be}.
+\eeq
+\end{thm}
+Near 0, $\cal E(k) \approx \rc 2| k|^2$. Thus the infrared bound diverges at 0.
+
+This is a very physical statement. %it's meaningful in physical terms. 
+The physical interpretation is that $\cal E(k) \an{|\wh{\ul\si}(k)|^2}$ is the mean energy in the $k$th mode. %The equipartition law says you have $\rc 2 kp$ per mode. 
+
+Take the mean value of~\eqref{eq:csb-fs} to obtain
+\[
+1 = \an{\rc{|\La|} |\wh \si(0)|^2} + \rc{|\La|} \sum_{\ul k=\fc{2\pi}L \ul n\in (-\pi, \pi]^d} \ub{\an{|\wh \si(k)|^2}}{\rc{2\be} \rc{\cal E(k)}}.
+\]
+%(Small values of $k$ is the infrared regime.)
+
+If $d>2$, although the bound diverges at 0, it is integrable. 
+
+We have
+\begin{align}
+1&\le \rc{|\La|} \an{|\wh \si(0)|^2} +\ba{ \int \rc{(2\pi)^d} \text{``} \int_{(-\pi,\pi), k\ne 0} \text{"}\rc{\cal E(k)} }\rc{2\be}\\
+\lim_{L\to \iy} \rc{L^d} \an{|\wh \si(0)|^2}_{L,\be} 
+&\ge 1-\rc{2\be} \ub{\rc{(2\pi)^d} \int_{(-\pi, \pi]^d} \,du^d \rc{\cal E(k)}}{=:C_d<\iy \text{ when }d>2}
+%if $\be$ small, no news.
+%if $\be$ is large
+%0 momentum requires positive mass.
+%bose-einstein condensation. mass weight to particular mode.
+\end{align}
+This says that ``zero momentum requires positive mass." Compare this to Bose-Einstein condensation, when there is a point mass at a particular mode.
+
+%1/\sqrt{|\La|}, add another
+This is more informative if $\be$ is large. For $\be >2 C_D$, 
+\[
+\an{\ab{\rc{|\La|}\sum \si_x}^2}=
+\rc{|\La|}\an{|\wh \si(0)|^2}_{L,\be} \ge \pa{1-\fc{C_D}{2\be}}>0.
+\]
+Also, 
+\begin{align}
+\an{\ul \si_0\ul\si_x} &= 
+\an{\pa{ \rc{\sqrt{|\La|}} \sum_{k'}^* \wh \si(k')}
+\pa{\rc{\sqrt{|\La|}} \sum_k^* e^{-i\ul k \cdot x} \wh \si(k)}}\\
+\an{\ul\si_0\ul \si_x}&= \rc{|\La|} \sum_k\an{ |\wh \si(k)|^2} e^{-i\ul k\cdot \ul x}\\
+%get info by apply Plancharel
+%\an{\rc{\sqrt{|\La|}}\sum
+\rc{|\La|}\sum_x\ab{\an{\ul \si_0\ul \si_x} }^2 &= \rc{|\La|^2} \an{\ab{\wh \si(0)}}^2
++ \text{``}\rc{2\pi} \int_{(-\pi, \pi]^d} \,du\text{"} \an{|\wh \si(k)|^2} e^{ikx}.
+%\rc{|\La|} \sum_{x\in \La} |\an{\si_0,\si_x}|^2 
+%&=
+\end{align}
+The function has an integrable singularity at the origin. A Riemann-Lebesgue argument shows this tends to 0 as $x\to \iy$ with $|x|\le \fc{L}{2}$. (I.e., take $\lim_{|x|\to \iy}\lim_{L\to \iy}$.)
+%for each $x$ take $L\to \iy$. Then $|x|\to \iy$.
+%1\ll 
+%For large volumes, this quantity tends to 0. The 0-momentum mode has massive mean value. 
+
+We get that 
+\[\an{\ul\si_0,\ul\si_x}_{L,\be} =\Om(1)
+\] for all $L$ (long-range order).
+
+To saturate the sum rule, we have to get massive density/volume-type occupation at 0.
+
+The IR bound gives
+\begin{align}
+Z&=\int e^{\fc \be 2 \sum_{x,y} J_{x-y} |\ul \si_x - \ul \si_y|^2 }\,\rh_0(d\si)\\
+%\rc{2^{|\La|}} \sum_{\si:\si_x=\pm1} \cdots \equiv \int \cdots \rh_0\,d\si
+%yank different spins out of $\pm1$ by shifting. What is the optimal shift? The best you can do is do nothing.
+Z(\ul h) &= \int e^{\fc \be2\sum_{x,y} J_{x,y}|(\ul\si_x + \ul h_x) - (\ul \si_y + \ul h_y)|^2}\, \rh_0(d\si).
+\end{align}
+We yank different spins out of $\pm1$ by shifting. What is the optimal shift? The best you can do is do nothing.
+
+We claim $Z(\ul h) \le Z(\ul 0)$.
+
+Then $\pdt{}{x} Z(\la \ul h)|_{\la=0} \le 0$, giving the IR bound.
+
+\subsection{Reflection positivity}
+Recall the Cauchy-Schwarz inequality: If $\an{\cdot, \cdot}$ is a bilinear positive form ($\an{\psi,\psi}\ge 0$), then
+\[
+|\an{\psi,\ph}|\le |\an{\psi|\psi}|^{\rc 2}|\an{\ph,\ph}|^{\rc 2}.
+\]
+%Now we put this on steroids.
+
+\begin{df}
+A system is \vocab{reflection positive} with respect to a plane if letting $R$ be the reflection around the plane, letting $L$ and $R$ be the left and right side of the plane, for every $f\in \cal B_L$,
+\[
+(Rf)(0) = f(R\si)
+\]
+and
+\[
+\an{\ol F(\si)  F(R\si)}\ge 0.
+\]
+\end{df}
+The Schwarz inequality and reflection positivity say that for all $F,G\in \cal B_L$, 
+\[
+|\an{F(\si)G(R\si)}| \le \an{\ol FRF}^{\rc 2} \cdots \an{\ol GRG}^{\rc 2}.
+\]
+
+%bootstrap and give upper bound. 
+The idea is to take reflections over many different planes. Consider a product over boxes $\al$,
+\[
+\an{\pi_\al F_{\al}(\si)} \le \prod_\al\an{\prod_{\al'} F_\al^{\#}(\si_{\al'})}^{\rc{|\La|}}\ge 0
+\]
+%take multiple images
+%chessboard.
+%Taking a single function and duplicating over the system
+where $F_\al^{\#}$ is $F_\al$ extended to all squares by reflection, the ``chessboard" extension. %We get the partition function of a function modified extensively.

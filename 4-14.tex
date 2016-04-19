@@ -134,18 +134,18 @@ Let's return to homogeneous systems. We are coming to research-level questions. 
 The key results were by Fr\"ohlich-Simon-Spencer, Fr\"ohlich-Israel-Lieb-Simon.
 
 We can write 
-\[
-H(\si) = \rc 4 \sum_{x,y} |\ul \si_x - \ul \si_y|^2.
-\]
+\beq{eq:csb-h1}
+H(\si) = \rc 4 \sum_{x,y} J_{x,y} |\ul \si_x - \ul \si_y|^2.
+\eeq%added J_{x,y}
 (Note that $|\ul\si_x|^2 + |\ul \si_y|^2$ is constant, while the cross-term is what we had originally.)
 Define
-\[
+\beq{eq:csb-f}
 \wh \si (p) = \rc{\sqrt{|\La|}} \sum_{x\in \La} e^{i\ul p \cdot \ul x} \ul \si_x.
-\]
+\eeq
 Being invariant under translations, we can express $H$ as a sum of Fourier modes,
-\[
+\beq{eq:csb-h}
 H(\si) = \rc 4\sum_{\ul k} \cal E(k) |\wh \si(k)|^2
-\]
+\eeq
 where $\ul k \in \fc{2\pi}{L}\Z^d \cap [-\pi, \pi]^d$,
 the momenta for which the function is periodic.
 

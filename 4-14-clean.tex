@@ -134,18 +134,18 @@ Let's return to homogeneous systems. We are coming to research-level questions. 
 The key results were by Fr\"ohlich-Simon-Spencer, Fr\"ohlich-Israel-Lieb-Simon.
 
 We can write 
-\be
-H(\sigma) = \frac{1}{4} \sum_{x,y} |\underline{\sigma}_x - \underline{\sigma}_y|^2.
-\ee
+\begin{equation}\label{eq:csb-h1}
+H(\sigma) = \frac{1}{4} \sum_{x,y} J_{x,y} |\underline{\sigma}_x - \underline{\sigma}_y|^2.
+\end{equation}%added J_{x,y}
 (Note that $|\underline{\sigma}_x|^2 + |\underline{\sigma}_y|^2$ is constant, while the cross-term is what we had originally.)
 Define
-\be
+\begin{equation}\label{eq:csb-f}
 \widehat{\sigma} (p) = \frac{1}{\sqrt{|\Lambda|}} \sum_{x\in \Lambda} e^{i\underline{p} \cdot \underline{x}} \underline{\sigma}_x.
-\ee
+\end{equation}
 Being invariant under translations, we can express $H$ as a sum of Fourier modes,
-\be
+\begin{equation}\label{eq:csb-h}
 H(\sigma) = \frac{1}{4}\sum_{\underline{k}} \mathcal{E}(k) |\widehat{\sigma}(k)|^2
-\ee
+\end{equation}
 where $\underline{k} \in \frac{2\pi}{L}\mathbb{Z}^d \cap [-\pi, \pi]^d$,
 the momenta for which the function is periodic.
 
