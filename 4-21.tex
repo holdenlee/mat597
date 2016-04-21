@@ -1,0 +1,165 @@
+
+\blu{4-21: We continue continuous symmetry breaking. }
+
+%for independent random variables, Fourier coefficients mean value 1
+
+\begin{thm}
+In a translation invariant model ($\ve{H}<\iy$, $H_0$ invariant under rotations), if for some $\be$,
+\[
+\an{|\wh \si(0)|^2}_{\La_L,\be,\ul h=0}^{\text{p.b.c.}}\ge \al |\La|.
+\]
+Then $\Psi(\be, \ul h)$ is not differentiable at $\ul h=\ul 0$ and the model exhibits symmetry breaking and
+\[
+\an{\ul \si_0}_\be^{(\ul n)} = m \ul n,
+\]
+$m(\be)>0$.
+\end{thm}
+Recall that
+\[
+\Psi(\be, \ul h) = \lim_{L\to \iy} \rc{|\La_L|}\ln \sum_{\si\in \Om_{\La_L}} e^{-\be (H + \sum_{x\in \La} \ul h\cdot \ul \si_x)}
+\]
+``Not differentiable" means that 
+\begin{align}
+\ddd\la \ul n \cdot \ul{\nb}_h \Psi(\be, \ul h = \la \ul n) |_{\la = 0+} &>0\\
+\ddd\la \ul n \cdot \ul{\nb}_h \Psi(\be, \ul h = \la \ul n) |_{\la = 0-} &<0
+\end{align}
+We can construct a continuum of Gibbs states, corresponding to states in which the system is left when you turn the magnetization to 0 under a particular configuration.
+
+Spontaneous magnetization is %take a symmetric situation 
+when we take the field down to the temperature, it decomposes into a linear superposition of states.
+
+\begin{proof}
+Assume $\Psi(\be, \ul h)$ is differentiable with respect to $\ul h$ at $\ul h=\ul 0$. 
+%Take a box $B$. (The order of limits is $\lim_{B\nearrow \Z^d}\lim_{L\to \iy}$.)
+
+We have 
+%(here $\Pj$ means $\lim_{L\to \iy}\Pj_{\La_L}$)
+%\[
+%\Pj_{\be, \ul 0}\pa{
+%\ab{\rc{|B|}\sum_{x\in B} \ul \si_x \cdot \ul n\ge \ep 
+%}}\le A e^{-|B|\de(\ep)}.
+%\]
+\[
+\Pj_{\La,\be, \ul 0}\pa{
+\ab{\rc{|\La|}\sum_{x\in \La} \ul \si_x \cdot \ul n\ge \ep 
+}}\le A e^{-|B|\de(\ep)}.
+\]
+This means that the average converges in distribution,
+\[
+\rc{|\La|}\sum_{x\in \La} \ul \si_x \xra{D} \ul 0.
+\]
+That the variable is bounded means that
+\[
+\E_{\La, \be, \ul h = \ul 0} \pa{\ab{\rc{|\La|} \sum_\La \ul\si_x}^2}\to 0.
+%\E\ba{\pa{\rc B \sum_x \si_x}^2}\to 0.
+\]
+This a contradiction because 
+\[
+\an{\ab{\rc{|B|} \sum_B \ul\si_x}^2} = \rc{|B|} \si.
+\]
+
+In more detail,
+\begin{align}
+\wh{\ul \si}(0)& = \rc{\sqrt{|\La|}} \sum_{x\in \La} \ul \si_x\\
+\rc{|\La|}|\wh \si(0)|^2 &= \rc{|\La|^2} \ab{\sum_{x\in \La} \si_x}^2\\
+\rc{|\La|} \an{|\wh\si(0)|^2} &= \E\pa{\ab{\rc{|\La|} \sum_\La \si_x}^2}.
+\end{align}
+Recall that we showed
+\[
+1\le \rc{|\La|} \an{|\wh \si(0)|^2} + \rc{2\be} \int_{[-\pi,\pi]} \fc{dk}{(2\pi)^d} \rc{\cal E(k)}.
+\]
+A Bose-Einstein argument for $g>2$ showed the right term is a constant. This means we have a macroscopic buildup at 0 momentum.
+%critical, do not all decay exponentially. 
+%multiple spin correlations.
+%coefficients for Fourier transform correspond to smoothness. Here it corresponds to decay rate.
+%decay in real space, smoothness in transformed space.
+\end{proof}
+
+
+The infrared bound (also called Gaussian domination) gave us
+\[
+\an{\ab{\wh \si(p)}^2} \le \rc{2\be \cal E(h)}.
+\]
+$Z(h)\le Z(\ul 0)$, $\sum_\si e^{-\be \sum J_{x-y} |(\ul \si_x + \ul h)- (\ul \si_y+\ul h_x)|^2}$.
+
+
+\begin{proof}[Proof of Theorem~\ref{thm:chessboard}]
+
+The expected value of the product is dominated by what you obtain if you leave the left side invariant but on the right take the image under reflection. Each time you increase the number of pairs where there is agreement:
+\[
+\an{
+\begin{array}{|c|c|}
+\hline
+G(\si_L) & F(\si_R)\\
+\hline
+\end{array}
+}\le
+\an{
+\begin{array}{|c|c|}
+\hline
+G(\si_L) & RG(\si_R)\\
+\hline
+\end{array}
+}^{\rc 2} 
+\an{
+\begin{array}{|c|c|}
+\hline
+RF(\si_L) & F(\si_R)\\
+\hline
+\end{array}
+}^{\rc 2}
+\]
+
+\Wog, for all $\al$, $\an{\prod_{\al'} F_\al^{\#} (\si_{\al'})}=1$. Let $Q=\max_{\al'(\al)} \ab{\ab{\prod_{\al'} F^{\#}_{\al(\al')}(\si_{\al'})}}$.  Applying the Schwarz inequality, we deduce that $Q$ is realized on a configuration with maximal agreement.
+
+We have 
+\[
+Z(\ul h) = \int e^{-\be H_0(\si)} \prod_j \pf{\rh(\si+h)}{\rh(\si)}\rh_0(d\si)
+\]
+Think of this as multiplication by some $\nu_{\ul h}(\ul\si)$. 
+%sum with respect to shifted by a constant. 
+%does not quite work for discrete spins
+%space within which the spins take value.
+%integral with respect to spins supported on a shifted version. 
+%the shift can be represented by such a product. 
+%a function which compensates for that.
+%integral over surface can be viewed as a limit. 
+%shifting the support is the same as multiplication by a factor. 
+Then we can write this as 
+\[
+Z(\ul h) = Z(0) \E\pa{\prod_x \nu_{\ul h_x} (\ul\si_x)} \le 1
+\]
+where the inequality follows from the chessboard inequality.
+\end{proof}
+
+There are other situations which don't have symmetry, but where we have contours, and can use a Peierls type estimate. 
+%size of box pure power of 2.
+
+%less than if you homogenize
+
+The probability of having a contour $C$ as a boundary between $+/-$'s is 
+\begin{align}
+\Pj(C) &\le \E\pa{\prod_{\al\in C} \one_A (\si_\al)}\\
+&\le \prod_{\al\in C}\Pj\pa{\prod \one_{A^L} (\si_\al)}^{\rc N}\\
+%$e^{-\Psi_A|\La|}$
+&\le e^{-\Psi_A(\ep)}.
+\end{align}
+This is a free-energy quantity. We have an exponential suppression of aberrant behavior.
+
+The Gaussian domination bound 
+\[
+\an{\ab{\wh \si(p)}^2} \le \rc{2\be \cal E(h)}.
+\]
+implies that the correlation is at most the Gaussian version
+\[
+\an{\si_x,\si_y}\le (-\De)^{-1} (x,y),
+\]
+at least in a volume-av sense.
+Here the inverse Laplacian kernel is
+\[
+(\De)_{x,y}^{-1} = \int e^{i\ul k(x-y)} \rc{\cal E(k)} \,du \sim \rc{|x-y|^{d-2}}.
+\]
+At $T\ge T_c$, 
+\[
+\an{\si_x,\si_y} \le \fc{C}{|x-y|^{d-2}}.
+\]

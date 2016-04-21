@@ -3636,14 +3636,14 @@ Recall the Cauchy-Schwarz inequality: If $\left\langle {\cdot, \cdot}\right\rang
 \ee
 %Now we put this on steroids.
 
+For a transformation (e.g. a rotation) $R$, define
+\be
+(Rf)(\sigma) = f(R\sigma)
+\ee
 \begin{definition}
 A system is \textbf{reflection positive} with respect to a plane if letting $R$ be the reflection around the plane, letting $L$ and $R$ be the left and right side of the plane, for every $f\in \mathcal{B}_L$,
 \be
-(Rf)(0) = f(R\sigma)
-\ee
-and
-\be
-\left\langle {\overline{F}(\sigma)  F(R\sigma)}\right\rangle\ge 0.
+\left| {RF\cdot F} \right| = \left\langle {\overline{F}(\sigma)  F(R\sigma)}\right\rangle\ge 0.
 \ee
 \end{definition}
 The Schwarz inequality and reflection positivity say that for all $F,G\in \mathcal{B}_L$, 
@@ -3660,6 +3660,192 @@ The idea is to take reflections over many different planes. Consider a product o
 %chessboard.
 %Taking a single function and duplicating over the system
 where $F_\alpha^{\#}$ is $F_\alpha$ extended to all squares by reflection, the ``chessboard" extension. %We get the partition function of a function modified extensively.
+
+%Recall the definition of reflection positivity.
+\begin{theorem}\label{thm:chessboard}
+For any periodic shift invariant reflection positive state, 
+\be
+\left\langle {\prod_\alpha F_\alpha(\sigma_\alpha)}\right\rangle \le \prod_\alpha \left\langle {\prod_{\alpha'} F_\alpha^{\#} (\sigma_{\alpha'})}\right\rangle,
+\ee
+where $\alpha$ ranges over boxes. 
+
+In the RHS, pick a box $\alpha$, take the function on $\alpha$ but duplicated it over the lattice by reflection.
+\be
+\begin{array}{|c|c|}
+\hline
+\rotatebox[origin=c]{180}{\textnormal{F}} &\rotatebox[origin=c]{180}{\reflectbox{\textnormal{F}}} \\
+\hline
+\reflectbox{\textnormal{F}}& \textnormal{F}\\
+\hline
+\end{array}
+\ee
+\end{theorem}
+
+
+{\color{blue}4-21: We continue continuous symmetry breaking. }
+
+%for independent random variables, Fourier coefficients mean value 1
+
+\begin{theorem}
+In a translation invariant model ($\left\Vert {H}\right\Vert<\infty$, $H_0$ invariant under rotations), if for some $\beta$,
+\be
+\left\langle {|\widehat{\sigma}(0)|^2}\right\rangle_{\Lambda_L,\beta,\underline{h}=0}^{\text{p.b.c.}}\ge \alpha |\Lambda|.
+\ee
+Then $\Psi(\beta, \underline{h})$ is not differentiable at $\underline{h}=\underline{0}$ and the model exhibits symmetry breaking and
+\be
+\left\langle {\underline{\sigma}_0}\right\rangle_\beta^{(\underline{n})} = m \underline{n},
+\ee
+$m(\beta)>0$.
+\end{theorem}
+Recall that
+\be
+\Psi(\beta, \underline{h}) = \lim_{L\to \infty} \frac{1}{|\Lambda_L|}\ln \sum_{\sigma\in \Omega_{\Lambda_L}} e^{-\beta (H + \sum_{x\in \Lambda} \underline{h}\cdot \underline{\sigma}_x)}
+\ee
+``Not differentiable" means that 
+\begin{align}
+\frac{d}{d \lambda} \underline{n} \cdot \underline{\nabla}_h \Psi(\beta, \underline{h} = \lambda \underline{n}) |_{\lambda = 0+} &>0\\
+\frac{d}{d \lambda} \underline{n} \cdot \underline{\nabla}_h \Psi(\beta, \underline{h} = \lambda \underline{n}) |_{\lambda = 0-} &<0
+\end{align}
+We can construct a continuum of Gibbs states, corresponding to states in which the system is left when you turn the magnetization to 0 under a particular configuration.
+
+Spontaneous magnetization is %take a symmetric situation 
+when we take the field down to the temperature, it decomposes into a linear superposition of states.
+
+\begin{proof}
+Assume $\Psi(\beta, \underline{h})$ is differentiable with respect to $\underline{h}$ at $\underline{h}=\underline{0}$. 
+%Take a box $B$. (The order of limits is $\lim_{B\nearrow \Z^d}\lim_{L\to \iy}$.)
+
+We have 
+%(here $\Pj$ means $\lim_{L\to \iy}\Pj_{\La_L}$)
+%\be
+%\Pj_{\be, \ul 0}\pa{
+%\ab{\rc{|B|}\sum_{x\in B} \ul \si_x \cdot \ul n\ge \ep 
+%}}\le A e^{-|B|\de(\ep)}.
+%\ee
+\be
+\mathbb{P}_{\Lambda,\beta, \underline{0}}\left( {
+\left| {\frac{1}{|\Lambda|}\sum_{x\in \Lambda} \underline{\sigma}_x \cdot \underline{n}\ge \varepsilon 
+} \right|} \right)\le A e^{-|B|\delta(\varepsilon)}.
+\ee
+This means that the average converges in distribution,
+\be
+\frac{1}{|\Lambda|}\sum_{x\in \Lambda} \underline{\sigma}_x \xrightarrow{D} \underline{0}.
+\ee
+That the variable is bounded means that
+\be
+\mathbb{E}_{\Lambda, \beta, \underline{h} = \underline{0}} \left( {\left| {\frac{1}{|\Lambda|} \sum_\Lambda \underline{\sigma}_x} \right|^2} \right)\to 0.
+%\E\ba{\pa{\rc B \sum_x \si_x}^2}\to 0.
+\ee
+This a contradiction because 
+\be
+\left\langle {\left| {\frac{1}{|B|} \sum_B \underline{\sigma}_x} \right|^2}\right\rangle = \frac{1}{|B|} \sigma.
+\ee
+
+In more detail,
+\begin{align}
+\widehat{\underline{\sigma}}(0)& = \frac{1}{\sqrt{|\Lambda|}} \sum_{x\in \Lambda} \underline{\sigma}_x\\
+\frac{1}{|\Lambda|}|\widehat{\sigma}(0)|^2 &= \frac{1}{|\Lambda|^2} \left| {\sum_{x\in \Lambda} \sigma_x} \right|^2\\
+\frac{1}{|\Lambda|} \left\langle {|\widehat{\sigma}(0)|^2}\right\rangle &= \mathbb{E}\left( {\left| {\frac{1}{|\Lambda|} \sum_\Lambda \sigma_x} \right|^2} \right).
+\end{align}
+Recall that we showed
+\be
+1\le \frac{1}{|\Lambda|} \left\langle {|\widehat{\sigma}(0)|^2}\right\rangle + \frac{1}{2\beta} \int_{[-\pi,\pi]} \frac{dk}{(2\pi)^d} \frac{1}{\mathcal{E}(k)}.
+\ee
+A Bose-Einstein argument for $g>2$ showed the right term is a constant. This means we have a macroscopic buildup at 0 momentum.
+%critical, do not all decay exponentially. 
+%multiple spin correlations.
+%coefficients for Fourier transform correspond to smoothness. Here it corresponds to decay rate.
+%decay in real space, smoothness in transformed space.
+\end{proof}
+
+
+The infrared bound (also called Gaussian domination) gave us
+\be
+\left\langle {\left| {\widehat{\sigma}(p)} \right|^2}\right\rangle \le \frac{1}{2\beta \mathcal{E}(h)}.
+\ee
+$Z(h)\le Z(\underline{0})$, $\sum_\sigma e^{-\beta \sum J_{x-y} |(\underline{\sigma}_x + \underline{h})- (\underline{\sigma}_y+\underline{h}_x)|^2}$.
+
+
+\begin{proof}[Proof of Theorem~\ref{thm:chessboard}]
+
+The expected value of the product is dominated by what you obtain if you leave the left side invariant but on the right take the image under reflection. Each time you increase the number of pairs where there is agreement:
+\be
+\left\langle {
+\begin{array}{|c|c|}
+\hline
+G(\sigma_L) & F(\sigma_R)\\
+\hline
+\end{array}
+}\right\rangle\le
+\left\langle {
+\begin{array}{|c|c|}
+\hline
+G(\sigma_L) & RG(\sigma_R)\\
+\hline
+\end{array}
+}\right\rangle^{\frac{1}{2}} 
+\left\langle {
+\begin{array}{|c|c|}
+\hline
+RF(\sigma_L) & F(\sigma_R)\\
+\hline
+\end{array}
+}\right\rangle^{\frac{1}{2}}
+\ee
+
+ Without loss of generality , for all $\alpha$, $\left\langle {\prod_{\alpha'} F_\alpha^{\#} (\sigma_{\alpha'})}\right\rangle=1$. Let $Q=\max_{\alpha'(\alpha)} \left| {\left| {\prod_{\alpha'} F^{\#}_{\alpha(\alpha')}(\sigma_{\alpha'})} \right|} \right|$.  Applying the Schwarz inequality, we deduce that $Q$ is realized on a configuration with maximal agreement.
+
+We have 
+\be
+Z(\underline{h}) = \int e^{-\beta H_0(\sigma)} \prod_j \left( {\frac{\rho(\sigma+h)}{\rho(\sigma)}} \right)\rho_0(d\sigma)
+\ee
+Think of this as multiplication by some $\nu_{\underline{h}}(\underline{\sigma})$. 
+%sum with respect to shifted by a constant. 
+%does not quite work for discrete spins
+%space within which the spins take value.
+%integral with respect to spins supported on a shifted version. 
+%the shift can be represented by such a product. 
+%a function which compensates for that.
+%integral over surface can be viewed as a limit. 
+%shifting the support is the same as multiplication by a factor. 
+Then we can write this as 
+\be
+Z(\underline{h}) = Z(0) \mathbb{E}\left( {\prod_x \nu_{\underline{h}_x} (\underline{\sigma}_x)} \right) \le 1
+\ee
+where the inequality follows from the chessboard inequality.
+\end{proof}
+
+There are other situations which don't have symmetry, but where we have contours, and can use a Peierls type estimate. 
+%size of box pure power of 2.
+
+%less than if you homogenize
+
+The probability of having a contour $C$ as a boundary between $+/-$'s is 
+\begin{align}
+\mathbb{P}(C) &\le \mathbb{E}\left( {\prod_{\alpha\in C} \mathds{1}_A (\sigma_\alpha)} \right)\\
+&\le \prod_{\alpha\in C}\mathbb{P}\left( {\prod \mathds{1}_{A^L} (\sigma_\alpha)} \right)^{\frac{1}{N}}\\
+%$e^{-\Psi_A|\La|}$
+&\le e^{-\Psi_A(\varepsilon)}.
+\end{align}
+This is a free-energy quantity. We have an exponential suppression of aberrant behavior.
+
+The Gaussian domination bound 
+\be
+\left\langle {\left| {\widehat{\sigma}(p)} \right|^2}\right\rangle \le \frac{1}{2\beta \mathcal{E}(h)}.
+\ee
+implies that the correlation is at most the Gaussian version
+\be
+\left\langle {\sigma_x,\sigma_y}\right\rangle\le (-\Delta)^{-1} (x,y),
+\ee
+at least in a volume-av sense.
+Here the inverse Laplacian kernel is
+\be
+(\Delta)_{x,y}^{-1} = \int e^{i\underline{k}(x-y)} \frac{1}{\mathcal{E}(k)} \,du \sim \frac{1}{|x-y|^{d-2}}.
+\ee
+At $T\ge T_c$, 
+\be
+\left\langle {\sigma_x,\sigma_y}\right\rangle \le \frac{C}{|x-y|^{d-2}}.
+\ee
 
 %INSERT_HERE
 

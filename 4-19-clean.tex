@@ -141,14 +141,14 @@ Recall the Cauchy-Schwarz inequality: If $\left\langle {\cdot, \cdot}\right\rang
 \ee
 %Now we put this on steroids.
 
+For a transformation (e.g. a rotation) $R$, define
+\be
+(Rf)(\sigma) = f(R\sigma)
+\ee
 \begin{definition}
 A system is \textbf{reflection positive} with respect to a plane if letting $R$ be the reflection around the plane, letting $L$ and $R$ be the left and right side of the plane, for every $f\in \mathcal{B}_L$,
 \be
-(Rf)(0) = f(R\sigma)
-\ee
-and
-\be
-\left\langle {\overline{F}(\sigma)  F(R\sigma)}\right\rangle\ge 0.
+\left| {RF\cdot F} \right| = \left\langle {\overline{F}(\sigma)  F(R\sigma)}\right\rangle\ge 0.
 \ee
 \end{definition}
 The Schwarz inequality and reflection positivity say that for all $F,G\in \mathcal{B}_L$, 
@@ -165,3 +165,23 @@ The idea is to take reflections over many different planes. Consider a product o
 %chessboard.
 %Taking a single function and duplicating over the system
 where $F_\alpha^{\#}$ is $F_\alpha$ extended to all squares by reflection, the ``chessboard" extension. %We get the partition function of a function modified extensively.
+
+%Recall the definition of reflection positivity.
+\begin{theorem}\label{thm:chessboard}
+For any periodic shift invariant reflection positive state, 
+\be
+\left\langle {\prod_\alpha F_\alpha(\sigma_\alpha)}\right\rangle \le \prod_\alpha \left\langle {\prod_{\alpha'} F_\alpha^{\#} (\sigma_{\alpha'})}\right\rangle,
+\ee
+where $\alpha$ ranges over boxes. 
+
+In the RHS, pick a box $\alpha$, take the function on $\alpha$ but duplicated it over the lattice by reflection.
+\be
+\begin{array}{|c|c|}
+\hline
+\rotatebox[origin=c]{180}{\textnormal{F}} &\rotatebox[origin=c]{180}{\reflectbox{\textnormal{F}}} \\
+\hline
+\reflectbox{\textnormal{F}}& \textnormal{F}\\
+\hline
+\end{array}
+\ee
+\end{theorem}

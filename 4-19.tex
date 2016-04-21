@@ -141,14 +141,14 @@ Recall the Cauchy-Schwarz inequality: If $\an{\cdot, \cdot}$ is a bilinear posit
 \]
 %Now we put this on steroids.
 
+For a transformation (e.g. a rotation) $R$, define
+\[
+(Rf)(\si) = f(R\si)
+\]
 \begin{df}
 A system is \vocab{reflection positive} with respect to a plane if letting $R$ be the reflection around the plane, letting $L$ and $R$ be the left and right side of the plane, for every $f\in \cal B_L$,
 \[
-(Rf)(0) = f(R\si)
-\]
-and
-\[
-\an{\ol F(\si)  F(R\si)}\ge 0.
+\ab{RF\cdot F} = \an{\ol F(\si)  F(R\si)}\ge 0.
 \]
 \end{df}
 The Schwarz inequality and reflection positivity say that for all $F,G\in \cal B_L$, 
@@ -165,3 +165,23 @@ The idea is to take reflections over many different planes. Consider a product o
 %chessboard.
 %Taking a single function and duplicating over the system
 where $F_\al^{\#}$ is $F_\al$ extended to all squares by reflection, the ``chessboard" extension. %We get the partition function of a function modified extensively.
+
+%Recall the definition of reflection positivity.
+\begin{thm}\llabel{thm:chessboard}
+For any periodic shift invariant reflection positive state, 
+\[
+\an{\prod_\al F_\al(\si_\al)} \le \prod_\al \an{\prod_{\al'} F_\al^{\#} (\si_{\al'})},
+\]
+where $\al$ ranges over boxes. 
+
+In the RHS, pick a box $\al$, take the function on $\al$ but duplicated it over the lattice by reflection.
+\[
+\begin{array}{|c|c|}
+\hline
+\rotatebox[origin=c]{180}{\txtn{F}} &\rotatebox[origin=c]{180}{\reflectbox{\txtn{F}}} \\
+\hline
+\reflectbox{\txtn{F}}& \txtn{F}\\
+\hline
+\end{array}
+\]
+\end{thm}
